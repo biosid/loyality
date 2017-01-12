@@ -1,0 +1,67 @@
+﻿@model dynamic
+@Html.AddScriptBlock(@<script>
+                          require([
+                              'Main/banner-newyear'
+                          ], function (banner) {
+                              banner({
+                                  selector: '#banner-newyear',
+                                  max: 150000,
+                                  def: 150000
+                              });
+                          });
+</script>)
+<div class="banner-carousel__item @(Model.IsActive ? "active" : null)" id="banner-newyear">
+    <div class="banner-newyear__background">
+        <div class="banner-newyear__wrap">
+            <a class="banner-newyear__gift gift-sound"
+               href="@Url.Action("Search", "Catalog", new { term = "акустическая система" })"
+               data-bonus-value="4300" >
+                <span class="banner-newyear__star"></span>
+                <span class="banner-newyear__baloon">4 300</span>
+            </a>
+            <a class="banner-newyear__gift gift-pancakes"
+               href="@Url.Action("Search", "Catalog", new { term = "unit" })"
+               data-bonus-value="3967" >
+                <span class="banner-newyear__star"></span>
+                <span class="banner-newyear__baloon">3 967</span>
+            </a>
+            <a class="banner-newyear__gift gift-tree"
+               href="@Url.Action("Index", "Catalog", new { id = 1007 })"
+               data-bonus-value="698" >
+                <span class="banner-newyear__star"></span>
+                <span class="banner-newyear__baloon">698</span>
+            </a>
+            <a class="banner-newyear__gift gift-cosmetics"
+               href="@Url.Action("Index", "Catalog", new { id = 1019, vendor = "L'Occitane" })"
+               data-bonus-value="2059" >
+                <span class="banner-newyear__star"></span>
+                <span class="banner-newyear__baloon">2 059</span>
+            </a>
+            <a class="banner-newyear__gift gift-plate"
+               href="@Url.Action("Index", "Catalog", new { id = 587, product_type = 659 })"
+               data-bonus-value="698" >
+                <span class="banner-newyear__star"></span>
+                <span class="banner-newyear__baloon">698</span>
+            </a>
+            <a class="banner-newyear__gift gift-sheep"
+               href="@Url.Action("Index", "Catalog", new { id = 586, product_type = 644 })"
+               data-bonus-value="890" >
+                <span class="banner-newyear__star"></span>
+                <span class="banner-newyear__baloon">890</span>
+            </a>
+            <a class="banner-newyear__gift gift-vase"
+               href="@Url.Action("Index", "Catalog", new { id = 1009 })"
+               data-bonus-value="1663" >
+                <span class="banner-newyear__star"></span>
+                <span class="banner-newyear__baloon">1 663</span>
+            </a>
+            <a class="banner-newyear__gift gift-pizza"
+               href="@Url.Action("Search", "Catalog", new { term = "Princess" })"
+               data-bonus-value="2564" >
+                <span class="banner-newyear__star"></span>
+                <span class="banner-newyear__baloon">2 564</span>
+            </a>
+        </div>
+    </div>
+    @Html.Partial("_CardSlider", new { Model.IsActive, Model.IsAuthenticated })
+</div>

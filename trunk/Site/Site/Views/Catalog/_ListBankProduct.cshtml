@@ -1,0 +1,29 @@
+﻿@model Vtb24.Site.Models.Catalog.ListBankProductModel
+<li class="bank-products__product">
+    <h5>
+        <a href="@Url.Action("BankProduct", "Catalog", new { id = Model.Id })" title="@Model.Title">@Model.Title</a>
+    </h5>
+    <div class="bank-products__product-card">
+        <span class="bank-products__product-card-expiration">
+            до @Model.ExpirationDate.ToString("dd.MM.yyyy")
+        </span>
+        <a class="bank-products__product-image"
+           href="@Url.Action("BankProduct", "Catalog", new { id = Model.Id })"
+           style="background: url('/content/images/bankproduct/@Model.Thumbnail') no-repeat center center;"></a>
+        <div class="bank-products__product-price">
+            @Html.RawPluralize(Model.Price, "<span>{1:N0}</span>&nbsp;бонус", "<span>{2:N0}</span>&nbsp;бонуса", "<span>{5:N0}</span>&nbsp;бонусов")
+        </div>
+        @if (Model.CanRedeem)
+        {
+            <a class="bank-products__product-buy" href="@Url.Action("BankProduct", "Catalog", new { id = Model.Id })" rel="nofollow">
+                <span>Заказать</span>
+            </a>
+        }
+        else
+        {
+            <a class="bank-products__product-buy disabled" title="@Model.RedeemDenyReason">
+                <span>Заказать</span>
+            </a>
+        }
+    </div>
+</li>

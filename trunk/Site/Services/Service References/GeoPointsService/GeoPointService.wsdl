@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GeoPointService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.OutputResults" />
+      <xsd:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Kladr.Model" />
+      <xsd:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" />
+      <xsd:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGeoPointService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetAddressByKladrCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressByKladrCode" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetAddressByKladrCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressByKladrCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetExistKladrCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExistKladrCodes" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetExistKladrCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExistKladrCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetCountriesNamesByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountriesNamesByCode" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetCountriesNamesByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountriesNamesByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetCountries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountries" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetCountries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationsByParent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsByParent" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationsByParent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsByParentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationsByIP_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsByIP" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationsByIP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsByIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationByIP_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByIP" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationByIP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationById" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationByExternalId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByExternalId" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationByExternalId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByExternalIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationByKladrCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByKladrCode" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationByKladrCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByKladrCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationsByKladrCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsByKladrCode" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationsByKladrCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsByKladrCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationByCoordinates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByCoordinates" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetLocationByCoordinates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByCoordinatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetServiceVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="IGeoPointService_GetServiceVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGeoPointService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:IGeoPointService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:IGeoPointService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByKladrCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetAddressByKladrCode" message="tns:IGeoPointService_GetAddressByKladrCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetAddressByKladrCodeResponse" message="tns:IGeoPointService_GetAddressByKladrCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExistKladrCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetExistKladrCodes" message="tns:IGeoPointService_GetExistKladrCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetExistKladrCodesResponse" message="tns:IGeoPointService_GetExistKladrCodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountriesNamesByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetCountriesNamesByCode" message="tns:IGeoPointService_GetCountriesNamesByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetCountriesNamesByCodeResponse" message="tns:IGeoPointService_GetCountriesNamesByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetCountries" message="tns:IGeoPointService_GetCountries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetCountriesResponse" message="tns:IGeoPointService_GetCountries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByParent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationsByParent" message="tns:IGeoPointService_GetLocationsByParent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationsByParentResponse" message="tns:IGeoPointService_GetLocationsByParent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByIP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationsByIP" message="tns:IGeoPointService_GetLocationsByIP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationsByIPResponse" message="tns:IGeoPointService_GetLocationsByIP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByIP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByIP" message="tns:IGeoPointService_GetLocationByIP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByIPResponse" message="tns:IGeoPointService_GetLocationByIP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationById" message="tns:IGeoPointService_GetLocationById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByIdResponse" message="tns:IGeoPointService_GetLocationById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByExternalId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByExternalId" message="tns:IGeoPointService_GetLocationByExternalId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByExternalIdResponse" message="tns:IGeoPointService_GetLocationByExternalId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByKladrCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByKladrCode" message="tns:IGeoPointService_GetLocationByKladrCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByKladrCodeResponse" message="tns:IGeoPointService_GetLocationByKladrCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByKladrCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationsByKladrCode" message="tns:IGeoPointService_GetLocationsByKladrCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationsByKladrCodeResponse" message="tns:IGeoPointService_GetLocationsByKladrCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByCoordinates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByCoordinates" message="tns:IGeoPointService_GetLocationByCoordinates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetLocationByCoordinatesResponse" message="tns:IGeoPointService_GetLocationByCoordinates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeoPointService/GetServiceVersion" message="tns:IGeoPointService_GetServiceVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeoPointService/GetServiceVersionResponse" message="tns:IGeoPointService_GetServiceVersion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGeoPointService" type="tns:IGeoPointService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISupportService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByKladrCode">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetAddressByKladrCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExistKladrCodes">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetExistKladrCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountriesNamesByCode">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetCountriesNamesByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetCountries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByParent">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetLocationsByParent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByIP">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetLocationsByIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByIP">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetLocationByIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationById">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetLocationById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByExternalId">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetLocationByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByKladrCode">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetLocationByKladrCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByKladrCode">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetLocationsByKladrCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByCoordinates">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetLocationByCoordinates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceVersion">
+      <soap:operation soapAction="http://tempuri.org/IGeoPointService/GetServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GeoPointService">
+    <wsdl:port name="BasicHttpBinding_IGeoPointService" binding="tns:BasicHttpBinding_IGeoPointService">
+      <soap:address location="http://rphqbuild1:49210/GeoPointService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

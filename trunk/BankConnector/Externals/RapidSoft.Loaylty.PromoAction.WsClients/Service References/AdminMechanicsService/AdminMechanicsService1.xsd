@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:57451/AdminMechanicsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" />
+  <xs:import schemaLocation="http://localhost:57451/AdminMechanicsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" />
+  <xs:import schemaLocation="http://localhost:57451/AdminMechanicsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" />
+  <xs:import schemaLocation="http://localhost:57451/AdminMechanicsService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="Echo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EchoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EchoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMetadataByDomainId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMetadataByDomainIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="GetMetadataByDomainIdResult" nillable="true" type="q1:GetMetadataByDomainIdResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveRuleDomain">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="ruleDomain" nillable="true" type="q2:RuleDomain" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveRuleDomainResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="SaveRuleDomainResult" nillable="true" type="q3:RuleDomainResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRuleDomain">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRuleDomainResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="GetRuleDomainResult" nillable="true" type="q4:RuleDomainResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRuleDomains">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRuleDomainsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="GetAllRuleDomainsResult" nillable="true" type="q5:RuleDomainsResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRuleDomainById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRuleDomainByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="DeleteRuleDomainByIdResult" nillable="true" type="q6:ResultBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateRule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="rule" nillable="true" type="q7:Rule" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateRuleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="CreateRuleResult" nillable="true" type="q8:RuleResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="rule" nillable="true" type="q9:Rule" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRuleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="UpdateRuleResult" nillable="true" type="q10:RuleResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRuleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="GetRuleResult" nillable="true" type="q11:RuleResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRules">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q12:GetRulesParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRulesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="GetRulesResult" nillable="true" type="q13:RulesResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPromoActions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q14:GetRulesParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPromoActionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="GetPromoActionsResult" nillable="true" type="q15:RulesResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRuleById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRuleByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="DeleteRuleByIdResult" nillable="true" type="q16:ResultBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeactivateRule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeactivateRuleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="DeactivateRuleResult" nillable="true" type="q17:ResultBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeactivateRules">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ids" nillable="true" type="q18:ArrayOflong" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeactivateRulesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="DeactivateRulesResult" nillable="true" type="q19:ResultBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRuleHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q20:GetRuleHistoryParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRuleHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="GetRuleHistoryResult" nillable="true" type="q21:GetRuleHistoryResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetRuleApproved">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" minOccurs="0" name="approves" nillable="true" type="q22:ArrayOfApprove" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetRuleApprovedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" minOccurs="0" name="SetRuleApprovedResult" nillable="true" type="q23:ResultBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

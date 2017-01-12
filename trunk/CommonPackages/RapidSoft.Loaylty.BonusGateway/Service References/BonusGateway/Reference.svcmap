@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d1d566e1-16fa-4fa3-8936-0ed01a88a23a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.62.159:19120/BonusGateway.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BonusGateway.xsd" MetadataType="Schema" ID="43c1288c-cd83-4181-9718-b19062881717" SourceId="1" SourceUrl="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd1" />
+    <MetadataFile FileName="BonusGateway.wsdl" MetadataType="Wsdl" ID="96d68d5e-165a-4d3a-be81-f98efdd19ad8" SourceId="1" SourceUrl="http://192.168.62.159:19120/BonusGateway.svc?wsdl" />
+    <MetadataFile FileName="BonusGateway1.wsdl" MetadataType="Wsdl" ID="76d479a9-c395-4935-b6d3-d78dd76bc3e8" SourceId="1" SourceUrl="http://192.168.62.159:19120/BonusGateway.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="BonusGateway1.xsd" MetadataType="Schema" ID="54fb90b9-b997-4880-b968-19e259e35f67" SourceId="1" SourceUrl="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd0" />
+    <MetadataFile FileName="BonusGateway1.disco" MetadataType="Disco" ID="718dec3a-b71a-4072-88f5-acb892265da2" SourceId="1" SourceUrl="http://192.168.62.159:19120/BonusGateway.svc?disco" />
+    <MetadataFile FileName="BonusGateway2.xsd" MetadataType="Schema" ID="2a23b415-ca1e-42c3-a363-feb54e1d1ba1" SourceId="1" SourceUrl="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd2" />
+    <MetadataFile FileName="BonusGateway3.xsd" MetadataType="Schema" ID="80b7f40b-2d40-444d-b33a-ec0ec2663605" SourceId="1" SourceUrl="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

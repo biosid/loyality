@@ -1,0 +1,530 @@
+﻿@using System.Linq
+@using Vtb24.Site.Models.Buy
+@using Vtb24.Site.Services.GiftShop.Catalog.Models
+@model BuyModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Оформление заказа";
+}
+@Html.AddScriptBlock(
+    @<script>
+         require(['Buy/buy'], function(buy) {
+             buy({
+                 balance: @Model.Balance,
+                 deliveryVariantsUrl: '@Url.Action("DeliveryVariants", "Buy")',
+                 locationUrl: '@Url.Action("SearchCityOrTown", "Geo")',
+                 isDeliveryVariantsSupported: @(Model.OnlineDeliveryVariantsEnabled ? "true" : "false"),
+                 advancePaymentSupport: '@Model.AdvancePaymentSupport',
+                 maxAdvanceFraction: @Model.MaxAdvanceFraction,
+                 itemsPriceBonus: @Model.ItemsPriceBonus.ToString("F0"),
+                 itemsPriceRur: @Model.ItemsPriceRur.ToString("F0"),
+             });
+         });
+    </script>
+    )
+
+@using (Html.BeginForm("Items", "Buy", FormMethod.Post, new { id = "delivery-form", autocomplete = "off" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.PartnerId)
+    @Html.HiddenFor(m => m.BonusPayment)
+    @Html.HiddenFor(m => m.AdvancePayment)
+    foreach (var basketItemId in Model.BasketItemIds)
+    {
+        <input type="hidden" name="@Html.NameFor(m => m.BasketItemIds)" value="@basketItemId" />
+    }
+    foreach (var productId in Model.ProductIds)
+    {
+        <input type="hidden" name="@Html.NameFor(m => m.ProductIds)" value="@productId" />
+    }
+    <div class="full-content shdw" style="margin-bottom: 20px;">
+        <div class="fc-padding" style="padding-bottom: 10px;">
+            <div style="float: right;"><div class="dostavka-order"><a href="/dostavka" target="_blank">Правила доставки</a></div></div>
+
+            <ul class="steps clearfix reset">
+                <li class="step curent">
+                    <div class="st">Шаг 1</div>
+                    <div class="name">Оформление заказа</div>
+                </li>
+                <li class="step">
+                    <div class="st">Шаг 2</div>
+                    <div class="name">Подтверждение</div>
+                </li>
+            </ul>
+
+            @if (Model.ShowItemsWarning)
+            {
+                <p class="shared__warning-text" style="margin-top: 25px;">
+                    Уважаемый клиент! В связи с ограничениями работы системы, не все товары из корзины были добавлены в заказ. Оставшиеся товары Вы можете приобрести, оформив еще один заказ.
+                </p>
+            }
+
+            <div class="attention red italic" style="border: none; display: none" id="price-change-notification"></div> <!-- есть заглушка -->
+
+            <section class="dlvr__contact">@Contact()</section>
+            <section class="dlvr__postcode" id="postcode">@PostCode()</section>
+            <section class="dlvr__variants" id="variants">@Variants()</section>
+            <section class="dlvr__address" id="address" style="display:@(Model.OnlineDeliveryVariantsEnabled ? "none" : "block")">@Address()</section>
+        </div>
+    </div>
+    <section class="dlvr__items" style="margin-bottom: 10px;">@Items()</section>
+    @Advance()
+    <div class="full-content shdw" style="margin-bottom: 20px;">
+        <div class="fc-padding" style="padding-bottom: 40px; min-height: 0;">
+            <div class="gifts-grid__total" style="margin-bottom: 30px">
+                <table>
+                    <colgroup>
+                        <col style="width: 100%;" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>Итого бонусов:</td>
+                            <td class="gifts-grid__total-text" id="total-bonus-text">
+                                @Model.ItemsPriceBonus.ToString("N0")
+                            </td>
+                        </tr>
+                        @if (Model.AdvancePaymentSupport != AdvancePaymentSupportMode.None)
+                        {
+                            <tr id="total-rur" style="display: none;">
+                                <td>Итого рублей:</td>
+                                <td class="gifts-grid__total-text" id="total-rur-text"></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @if (!ViewData.ModelState.IsValidField(""))
+            {
+                <div class="shared__well-red" style="margin-bottom: 10px;" id="proceed-error">
+                    <p class="shared__warning-text">
+                        <b>Внимание!</b><br/>
+                        <span id="proceed-error-text">
+                            @Html.ValidationMessageFor(m => m)
+                        </span>
+                    </p>
+                </div>
+                <script> window.setTimeout(function() { window.location.hash = '#proceed-error'; }, 100);</script>
+            }
+            else
+            {
+                <div class="shared__well-red" style="margin: 10px 0; display: none;" id="proceed-error">
+                    <p class="shared__warning-text">
+                        <b>Внимание!</b><br/>
+                        <span id="proceed-error-text"></span>
+                    </p>
+                </div>
+            }
+            @PartnerInfo()
+            @Proceed()
+        </div>
+    </div>
+}
+@*
+
+
+
+
+*@
+@helper Contact()
+{
+    <div class="middle-line white">
+        <div class="ml-text"><span class="size28">Контактные данные получателя</span></div>
+    </div>
+    <p class="red italic" style="display:none" data-validation-summary-for=".dlvr__contact">
+        @Html.ValidationMessageFor(m => m.Contact.LastName)
+        @Html.ValidationMessageFor(m => m.Contact.FirstName)
+        @Html.ValidationMessageFor(m => m.Contact.MiddleName)
+        @Html.ValidationMessageFor(m => m.Contact.PhoneNumber)
+        @if (Model.IsEmailRequired)
+        {
+            @Html.ValidationMessageFor(m => m.Contact.RequiredEmail)
+            @Html.ValidationMessageFor(m => m.Contact.ConfirmRequiredEmail)
+        }
+        else
+        {
+            @Html.ValidationMessageFor(m => m.Contact.Email)
+        }
+    </p>
+    <div class="table form-order">
+        <ul class="reset row">
+            <li class="cell">Фамилия</li>
+            <li class="cell">@Html.TextBoxFor(m => m.Contact.LastName, new { maxlength = 50 })</li>
+        </ul>
+        <ul class="reset row">
+            <li class="cell">Имя</li>
+            <li class="cell">@Html.TextBoxFor(m => m.Contact.FirstName, new { maxlength = 50 })</li>
+        </ul>
+        <ul class="reset row">
+            <li class="cell">Отчество</li>
+            <li class="cell">@Html.TextBoxFor(m => m.Contact.MiddleName, new { maxlength = 50 })</li>
+        </ul>
+        <ul class="reset row">
+            <li class="cell">Мобильный телефон</li>
+            <li class="cell">
+                <ul class="reset table">
+                    <li class="cell">@Html.TextBoxFor(m => m.Contact.PhoneNumber, new { @class = "numeric", maxlength = 17, data_numeric = Html.Json(new { allow = "(,),-,' ', +" }) })</li>
+                </ul>
+            </li>
+        </ul>
+        @Html.HiddenFor(m => m.IsEmailRequired)
+        @if (Model.IsEmailRequired)
+        {
+            <ul class="reset row">
+                <li class="cell">E-mail</li>
+                <li class="cell">@Html.TextBoxFor(m => m.Contact.RequiredEmail)</li>
+            </ul>
+            <ul class="reset row">
+                <li class="cell">Повторно введите E-mail</li>
+                <li class="cell">@Html.TextBoxFor(m => m.Contact.ConfirmRequiredEmail)</li>
+            </ul>
+            if (Model.ProposeToSaveEmail)
+            {
+                <ul class="reset row">
+                    <li class="cell"></li>
+                    <li class="cell">
+                        <input type="checkbox" class="styled-cbox" id="@Html.IdFor(m => m.Contact.SaveEmail)" name="@Html.NameFor(m => m.Contact.SaveEmail)" value="true" @(Model.Contact.SaveEmail ? "checked" : null) />
+                        @Html.LabelFor(m => m.Contact.SaveEmail, "Сохранить этот E-mail в качестве основного")
+                    </li>
+                </ul>
+            }
+        }
+        else
+        {
+            <ul class="reset row">
+                <li class="cell">E-mail</li>
+                <li class="cell">@Html.TextBoxFor(m => m.Contact.Email)</li>
+            </ul>
+        }
+    </div>
+}
+@*
+
+
+
+
+
+*@
+@helper PostCode()
+{
+    <div class="middle-line white">
+        <div class="ml-text"><span class="size28">Почтовый индекс</span></div>
+    </div>
+    <p class="red italic" style="display:none" data-validation-summary-for=".dlvr__postcode">
+        @Html.ValidationMessageFor(m => m.Address.PostCode)
+    </p>
+    if (Model.ShowSavedAddresses)
+    {
+        <p><strong>Выберите один из прежних адресов доставки или введите новый</strong></p>
+    }
+    <div class="table form-order" id="delivery-form-address">
+
+        @if (Model.ShowSavedAddresses)
+        {
+            <ul class="reset row">
+                <li class="cell">&nbsp;</li>
+                <li class="cell">
+                    <div class="select-decor wide340">
+                        <select id="delivery-addresses" class="html-select">
+                            <option selected="selected" value="0">Выберите...</option>
+
+                            @for (var i = 0; i < Model.SavedAddresses.Length; i++)
+                            {
+                                var address = Model.SavedAddresses[i];
+                                var data = Html.Json(address).ToString().Replace("'", @"\'");
+                                <option value="@(i + 1)" data-json='@data'>@address.Title</option>
+                            }
+                        </select>
+                    </div>
+                </li>
+            </ul>
+        }
+        <ul class="reset row">
+            <li class="cell">Почтовый индекс</li>
+            <li class="cell">
+                @Html.TextBoxFor(m => m.Address.PostCode, new { @class = "width-third", maxlength = "6", data_numeric = "" })
+                <small>
+                    Если Вы не помните индекс Вашего населённого пункта &mdash; воспользуйтесь <a href="http://www.russianpost.ru/rp/servise/ru/home/postuslug/searchops1" target="_blank">электронным справочником</a> Почты России и скопируйте найденный индекс в поле ввода.
+                </small>
+            </li>
+        </ul>
+
+    </div>
+}
+@*
+
+
+
+
+
+*@
+@helper Variants()
+{
+    <div class="middle-line white">
+        <div class="ml-text"><span class="size28">Выбор способа доставки</span></div>
+    </div>
+
+    <p id="delivery-variants-summary" class="red italic" style="display:none" data-validation-summary-for="#variants" >
+		@Html.ValidationMessageFor(m => m.DeliveryType)
+        @Html.ValidationMessageFor(m => m.DeliveryVariantId)
+        @Html.ValidationMessageFor(m => m.PickupPointId)
+    </p>
+
+    <div id="delivery-variants-values" style="width: 0; height :0; overflow: hidden; display:none" >
+	    @Html.TextBoxFor(m => m.DeliveryType)
+		@Html.TextBoxFor(m => m.DeliveryVariantId)
+        @Html.TextBoxFor(m => m.PickupPointId)
+    </div>
+
+    <p id="delivery-variants-preface" style="margin-bottom:70px; @(Model.Variants != null || !Model.OnlineDeliveryVariantsEnabled ? "display:none" : "")">Для получения доступных Вам способов доставки укажите почтовый индекс.</p>
+
+    if (Model.Variants != null && Model.Variants.Groups != null && Model.Variants.Groups.Any())
+    {
+        <div id="delivery-variants-controls">
+            @Html.Partial("_DeliveryVariants", Model.Variants)
+        </div>
+    }
+    else if (!Model.OnlineDeliveryVariantsEnabled)
+    {
+        @Html.Partial("_NoVariants")
+    }
+    else
+    {
+        <div id="delivery-variants-controls" style="display: none"></div>
+    }
+}
+@*
+
+
+
+
+*@
+@helper Address()
+{
+    <div class="middle-line white">
+        <div class="ml-text"><span class="size28">Адрес доставки</span></div>
+    </div>
+    <p class="red italic" style="display:none" data-validation-summary-for=".dlvr__address">
+        @Html.ValidationMessageFor(m => m.Address.LocationKladr)
+        @Html.ValidationMessageFor(m => m.Address.Street)
+        @Html.ValidationMessageFor(m => m.Address.House)
+        @Html.ValidationMessageFor(m => m.Address.Flat)
+        @Html.ValidationMessageFor(m => m.Comment)
+    </p>
+    <div class="table form-order">
+        @if (Model.OnlineDeliveryVariantsEnabled)
+        {
+            <ul class="reset row">
+                <li class="cell">Населенный пункт</li>
+                <li class="cell">@Html.TextBoxFor(m => m.Address.Location, new { @readonly = true })</li>
+            </ul>
+        }
+        else
+        {
+            <ul class="reset row">
+                    <li class="cell">Регион</li>
+                    <li class="cell">
+                        <div class="select-decor wide340">
+                            @Html.DropDownListFor(m => m.Address.RegionKladr, Model.Regions, new { @class = "html-select" })
+                        </div>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">Населенный пункт</li>
+                    <li class="cell">
+                        <div class="select-decor wide340">
+                            @Html.TextBoxFor(m => m.Address.LocationKladr, new { @class = "html-select", data_text = Model.Address.Location })
+                        </div>
+                    </li>
+                </ul>
+        }
+        <ul class="reset row">
+            <li class="cell">Улица</li>
+            <li class="cell">@Html.TextBoxFor(m => m.Address.Street, new { maxlength = 50 })</li>
+        </ul>
+        <ul class="reset row">
+            <li class="cell"><span class="norm">Дом, корпус, владение</span></li>
+            <li class="cell">
+                @Html.TextBoxFor(m => m.Address.House, new { @class = "width-third", maxlength = 20 })
+            </li>
+        </ul>
+        <ul class="reset row">
+            <li class="cell">Квартира</li>
+            <li class="cell">@Html.TextBoxFor(m => m.Address.Flat, new { @class = "width-third", maxlength = 10 })</li>
+        </ul>
+        <ul class="reset row">
+            <li class="cell">Дополнительная информация</li>
+            <li class="cell">
+                @Html.TextAreaFor(m => m.Comment, new { cols = 30, rows = 10, maxlength = 500 })
+                <p>
+                    Вы можете оставить дополнительную информацию по доставке, например,
+                    предпочитаемое время получения вознаграждения
+                </p>
+            </li>
+        </ul>
+    </div>
+}
+@*
+
+
+
+
+*@
+@helper Items()
+{
+    <table class="gifts-grid" data-hide-on="empty-list" cellspacing="0" cellpadding="0">
+        <colgroup>
+            <col width="666" />
+            <col width="110" />
+            <col width="198" />
+        </colgroup>
+        <thead class="gifts-grid__head">
+            <tr>
+                <th class="gifts-grid__head__col">Вознаграждения</th>
+                <th class="gifts-grid__head__col">Количество</th>
+                <th class="gifts-grid__head__col">Итого</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Items)
+        {
+            var imageUrl = string.IsNullOrWhiteSpace(item.Thumbnail) ? "/content/images/gift144.png" : Url.ImageProcessor("product_recommend", item.Thumbnail);
+            <tbody>
+                <tr class="gifts-grid__margin"><td colspan="3"></td></tr>
+                <tr class="gifts-grid__row">
+                    <td class="gifts-grid__cell">
+                        <figure class="gift-figure">
+                            <div class="gift-figure__picture">
+                                @if (!item.IsAvailable)
+                                {
+                                    <div class="gift-figure__picture-not-available">
+                                        <p>@item.ProductNotification</p>
+                                    </div>
+                                }
+                                <img src="@imageUrl" width="145" height="145" onerror="this.src='/content/images/gift144.png'" />
+                            </div>
+                            <figcaption class="gift-figure__title">
+                                @item.Title
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td class="gifts-grid__cell gifts-grid__itemquantity">
+                        @item.Quantity
+                    </td>
+                    <td class="gifts-grid__cell gifts-grid__itemtotal gifts-grid__itemtotal--buy">
+                        @item.BasketItemPrice.ToString("N0")
+                    </td>
+                </tr>
+            </tbody>
+        }
+        <tbody data-x="/buy/items/delivery" style="display: none;">
+            <tr class="gifts-grid__margin"><td colspan="3"></td></tr>
+            <tr class="gifts-grid__row">
+                <td class="gifts-grid__cell">
+                    <figure class="gift-figure">
+                        <div class="gift-figure__picture">
+                            <img src="/Content/images/deliveryitem.jpg" width="145" height="145" />
+                        </div>
+                        <figcaption class="gift-figure__title" data-x="/buy/items/delivery-caption"></figcaption>
+                    </figure>
+                </td>
+                <td class="gifts-grid__cell gifts-grid__itemquantity">1</td>
+                <td class="gifts-grid__cell gifts-grid__itemtotal gifts-grid__itemtotal--buy" data-x="/buy/items/delivery-price"></td>
+            </tr>
+        </tbody>
+    </table>
+}
+@*
+
+
+
+
+
+*@
+@helper PartnerInfo()
+{
+    var partners = new Dictionary<int, dynamic>
+    {
+        {1, new {Name = "OZON.RU", Logo = "/content/buy/partners/ozon.png"}},
+        {12, new {Name = "Conde` Nast Россия", Logo = "/content/buy/partners/condenast.png"}},
+        {20, new {Name = "Сити Класс", Logo = "/content/buy/partners/cityclass.png"}},
+        {22, new {Name = "DesignBoom", Logo = "/content/buy/partners/designboom.png"}},
+        {23, new {Name = "Дарить легко", Logo = "/content/buy/partners/mygiftcard.png"}},
+        {24, new {Name = "Sanoma Independent Media", Logo = "/content/buy/partners/sanoma.png"}},
+        {25, new {Name = "Sanoma Independent Media", Logo = "/content/buy/partners/sanoma.png"}},
+        {27, new {Name = "ЛитРес", Logo = "/content/buy/partners/litres.png"}},
+        {28, new {Name = "Интерфлора", Logo = "/content/buy/partners/Interflora.jpg"}},
+        @*{29, new {Name = "РУСФОНД", Logo = "/content/buy/partners/rusfond.png"}},*@
+        {31, new {Name = "Русский АвтоМотоКлуб", Logo = "/content/buy/partners/ramk.png"}},
+        {32, new {Name = "SAPATO.RU", Logo = "/content/buy/partners/sapato.jpg"}},
+        {34, new {Name = "Выход", Logo = "/content/buy/partners/vihod.png"}},
+    };
+    if (partners.ContainsKey(Model.PartnerId))
+    {
+        var partner = partners[Model.PartnerId];
+        <div class="dlvr__partner">
+            <img src="@partner.Logo" class="dlvr__partner-logo" alt="@partner.Name" />
+            <p class="dlvr__partner-text">Спасибо за заказ на сайте программы «Коллекция»! Наш партнер @partner.Name свяжется с Вами для доставки вознаграждения.</p>
+        </div>
+    }
+}
+@*
+
+
+
+
+
+*@
+@helper Proceed()
+{
+    <div class="button-wrap">
+        <a href="@Url.Action("Index", "Basket")" class="goback">Назад</a>
+        <button type="submit" class="btn-blue large" disabled="@Model.DisableButton"><span>Продолжить</span></button>
+        @if (Model.ShowFormalOffer)
+        {
+            <p class="oferta-desc">
+                Нажимая кнопку &laquo;Продолжить&raquo; вы принимаете условия <a href="@Model.FormalOfferUrl" target="_blank">оферты</a>
+            </p>
+        }
+    </div>
+}
+@*
+
+
+
+
+
+*@
+@helper Advance()
+{
+    <div class="full-content shdw" style="margin-bottom: 10px; display: none;" data-x="/buy/advance">
+        <div class="advance__wrapper" >
+            <div class="advance__text">
+                <div class="advance__caption">
+                    <span class="advance__caption-optional" style="display:none;" data-x="/buy/advance/optional">Хотите оплатить часть заказа рублями по карте ВТБ24?</span>
+                    <span class="advance__caption-optional" style="display:none;" data-x="/buy/advance/optional-delivery">Вы можете оплатить доставку рублями по карте ВТБ24</span>
+                    <span class="advance__caption-required" style="display:none;" data-x="/buy/advance/required">Вам не хватает бонусов для оплаты.</span>
+                </div>
+                <div class="advance__description">
+                    <span style="display:none;" data-x="/buy/advance/range-desc">
+                        Вы можете оплатить часть заказа рублями по Вашей карте ВТБ24.
+                        <br/>
+                        Пожалуйста, выберите сумму в рублях из предложенного ниже диапазона.
+                    </span>
+                    <span style="display:none;" data-x="/buy/advance/delivery-desc">
+                        Стоимость доставки <span></span>
+                    </span>
+                    <span style="display:none;" data-x="/buy/advance/required-desc">
+                        У Вас недостаточно бонусов для полной оплаты заказа. Недостающую сумму Вы можете оплатить рублями по Вашей карте ВТБ24.
+                    </span>
+                </div>
+            </div>
+            <div class="advance__slider-wrapper" style="display:none;">
+                <div class="advance__slider-caption">Размер доплаты:</div>
+                <input class="advance__slider-value" type="text"/>
+                <div class="advance__slider-unit">руб.</div>
+                <div class="advance__slider-min"></div>
+                <div class="advance__slider-max"></div>
+                <div class="advance__slider"></div>
+            </div>
+        </div>
+    </div>
+}

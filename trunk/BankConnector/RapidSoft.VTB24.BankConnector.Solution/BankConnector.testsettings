@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestSettings name="BankConnector" id="c8ca651b-b623-4d6c-b69c-801bda719d6d" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Description>These are default test settings for a local test run.</Description>
+  <Deployment userDeploymentRoot="TestResults" useDefaultDeploymentRoot="false">
+    <DeploymentItem filename="..\RapidSoft.VTB24.BankConnector.Tests\Configuration\log4net.config" outputDirectory="Configuration" />
+    <DeploymentItem filename="..\Externals\RapidSoft.Etl\RapidSoft.Etl.Runtime.Tests\Files" outputDirectory="Files" />
+    <DeploymentItem filename="packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.Configuration.dll" />
+    <DeploymentItem filename="Configuration\endpoints.config" outputDirectory="Configuration" />
+    <DeploymentItem filename="..\RapidSoft.VTB24.BankConnector.Tests\Configuration\etlConfig.config" outputDirectory="Configuration" />
+    <DeploymentItem filename="Configuration\bindings.config" outputDirectory="Configuration" />
+    <DeploymentItem filename="packages\Unity.Interception.3.0.1304.0\lib\NET45\Microsoft.Practices.Unity.Interception.dll" />
+    <DeploymentItem filename="..\RapidSoft.VTB24.BankConnector.Tests\Configuration\unity.config" outputDirectory="Configuration" />
+    <DeploymentItem filename="Configuration\connectionStrings.config" outputDirectory="Configuration" />
+    <DeploymentItem filename="packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <DeploymentItem filename="..\RapidSoft.VTB24.BankConnector.Tests\Configuration\appSettings.config" outputDirectory="Configuration" />
+  </Deployment>
+  <Execution>
+    <TestTypeSpecific>
+      <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+        <AssemblyResolution>
+          <TestDirectory useLoadContext="true" />
+        </AssemblyResolution>
+      </UnitTestRunConfig>
+    </TestTypeSpecific>
+    <AgentRule name="LocalMachineDefaultRole">
+    </AgentRule>
+  </Execution>
+</TestSettings>

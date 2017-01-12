@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:5657/FeedbackEmailNotificationQueueService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfThreadMessagesToNotify">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ThreadMessagesToNotify" nillable="true" type="tns:ThreadMessagesToNotify" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfThreadMessagesToNotify" nillable="true" type="tns:ArrayOfThreadMessagesToNotify" />
+  <xs:complexType name="ThreadMessagesToNotify">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstMessageIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="LastMessageIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThreadMessagesToNotify" nillable="true" type="tns:ThreadMessagesToNotify" />
+  <xs:complexType name="ArrayOfThreadMessagesToMarkAsNotified">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ThreadMessagesToMarkAsNotified" nillable="true" type="tns:ThreadMessagesToMarkAsNotified" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfThreadMessagesToMarkAsNotified" nillable="true" type="tns:ArrayOfThreadMessagesToMarkAsNotified" />
+  <xs:complexType name="ThreadMessagesToMarkAsNotified">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LastMessageIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThreadMessagesToMarkAsNotified" nillable="true" type="tns:ThreadMessagesToMarkAsNotified" />
+</xs:schema>

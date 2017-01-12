@@ -1,0 +1,154 @@
+﻿@using Vtb24.Site.Models.Feedback
+@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@model  FeedbackThreadModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Menu = "Messages";
+}
+
+@Html.AddScriptBlock(
+    @<script>
+        require(['Feedback/thread'], function (thread) {
+            thread({
+                captcha: {
+                    refreshButton: '.btn-capcha',
+                    image: '.fdbck-thrd__reply-captcha img'
+                },
+                fileUpload: {
+                    button: 'label[for=@Html.IdFor(m=>m.ReplyForm.Files)]',
+                    fileInput: '#@Html.IdFor(m=>m.ReplyForm.Files)',
+                    list: '.fdbck-thrd__reply-uploads .shared-dwnlds__files-list'
+                }
+            });
+        });
+    </script>
+)
+
+@if (Model.ShowClientMenu)
+{
+    @section secondary
+    {
+        @Html.Action("ClientMenu", "Layout", new { activeMenu = ViewBag.Menu })
+    }
+    <div class="mnl16 white-shadowed">
+        @Thread()
+    </div>
+}
+else
+{
+    <div class="full-content shdw mnt16">
+        <div class="fc-padding">
+            @Thread()
+        </div>
+    </div>
+}
+
+
+@helper  Thread()
+{
+    <div class="middle-line white">
+        <div class="ml-text"><span class="size28">@Model.Title</span></div>
+    </div>
+    foreach (var message in Model.Messages)
+    {
+        @Message(message)
+    }
+
+    if (Model.ShowReplyForm)
+    {
+        @ReplyForm()
+    }
+
+    if (Model.TotalPages > 1)
+    {
+        <div class="fdbck-thrd__pager">
+            @Html.Pager(total: Model.TotalPages, page: Model.Page, items: Model.ShowClientMenu ? 6 : 9)        
+        </div>
+    }
+    
+}
+@helper Message(FeedbackThreadModel.Message message)
+{
+    <article class="fdbck-thrd__msg-by-@(message.IsReply ? "operator" : "client")" id="message-@message.Index">
+        <div class="fdbck-thrd__msg-date">
+            @message.Time.ToString("dd.MM.yyyy H:mm")
+        </div>
+        <div class="fdbck-thrd__msg-title">
+            @(message.IsReply ? "Ответ специалиста:" : "Ваше сообщение:")
+        </div>
+        <div class="fdbck-thrd__msg-bubble">
+            <i class="fdbck-thrd__msg-sprite-ftr"></i>
+            <i class="fdbck-thrd__msg-sprite-fbr"></i>
+            <i class="fdbck-thrd__msg-sprite-ftl"></i>
+            <i class="fdbck-thrd__msg-sprite-fbl"></i>
+            <div class="fdbck-thrd__msg-sprite-l">
+                <div class="fdbck-thrd__msg-sprite-r">
+                    <div class="fdbck-thrd__msg-text">@Html.HighlightLinks(message.Text)</div>
+                </div>
+            </div>
+        </div>
+        @if (message.Attachments != null && message.Attachments.Any())
+        {
+            <ul class="fdbck-thrd__msg-attachments">
+                @foreach (var attach in message.Attachments)
+                {
+                    @Attach(attach)
+                }
+            </ul>
+        }
+    </article>
+}
+@helper Attach(FeedbackThreadModel.Attachment attach)
+{
+    var type = string.IsNullOrEmpty(attach.Type) ? "unknown" : attach.Type.Substring(1);
+    <li class="shared-dwnlds__file shared-dwnlds__ext-@type"><a href="@attach.Link">@attach.Title</a></li>
+}
+@helper ReplyForm()
+{   
+    using (Html.BeginForm(Model.MvcAction, "Feedback", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m=>m.ReplyForm.Id)
+        @Html.ValidationSummary()
+        <fieldset class="fdbck-thrd__reply-text">
+            <label>Ответить специалисту:</label>
+            @Html.TextAreaFor(m => m.ReplyForm.Text)
+        </fieldset>
+
+        if (Model.AllowUploads)
+        {
+            @Uploads()
+        }
+
+        if (Model.ShowCaptcha) 
+        {
+            @Captcha()
+        }
+
+        <div class="button-wrap mnt40">
+            <button class="btn-blue large" type="submit"><span>Отправить</span></button>
+        </div>
+    }
+}
+@helper Uploads()
+{
+    <fieldset class="fdbck-thrd__reply-uploads">
+        <input type="file" name="@Html.NameFor(m=>m.ReplyForm.Files)" id="@Html.IdFor(m=>m.ReplyForm.Files)" class="shared-uplds__input" />
+        <ul class="shared-dwnlds__files-list" style="display: none"></ul>
+        @Html.LabelFor(m => m.ReplyForm.Files, "Прикрепить файлы:", new { @class = "shared-uplds__button" })
+        <p class="shared-uplds__info">
+            Размер одного файла до @Model.MaxFileSizeMb Мб<br />
+            Общий размер прикрепляемых файлов до @Model.MaxTotalFilesSizeMb Мб
+        </p>
+    </fieldset>
+}
+@helper Captcha()
+{
+    <fieldset class="fdbck-thrd__reply-captcha">
+        @Html.LabelFor(m => m.ReplyForm.Captcha, "Введите код с картинки:")
+        <img src="@Url.CaptchaUrl(width: 72, height: 24)" width="72" height="24" alt="Введите код с картинки" />
+        <input type="button" class="btn-capcha">
+        @Html.TextBoxFor(x => x.ReplyForm.Captcha, new {@class = "capcha", maxlength = "8"})
+    </fieldset>
+}

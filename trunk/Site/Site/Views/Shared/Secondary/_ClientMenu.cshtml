@@ -1,0 +1,7 @@
+﻿@using Vtb24.Site.Models.Feedback
+@model IList<MenuItemModel>
+@Html.Partial("_LeftMenu", Model)
+<ul class="under-left-menu">
+    <li class="item"><a href="@Url.Action("ChangePassword", "Account")">Сменить пароль</a></li>
+    <li class="item"><a href="@Url.Action("Index", "Feedback", new { type = FeedbackType.Unsubscribe })">Отключиться от программы</a></li>
+</ul>

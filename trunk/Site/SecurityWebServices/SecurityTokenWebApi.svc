@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Vtb24.Site.SecurityWebServices.SecurityTokenWebApi" CodeBehind="SecurityTokenWebApi.svc.cs" %>

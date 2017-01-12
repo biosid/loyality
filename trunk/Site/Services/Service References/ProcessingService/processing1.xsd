@@ -1,0 +1,1105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://rapidsoft.ru/processing/" elementFormDefault="qualified" targetNamespace="http://rapidsoft.ru/processing/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AuthorizeDiscountByChequeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:AuthorizeDiscountByChequeRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthorizeDiscountByChequeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:AuthorizeDiscountByChequeResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthorizeWithdrawByAccountRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:AuthorizeWithdrawByAccountRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthorizeWithdrawByAccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:AuthorizeWithdrawByAccountResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchActivateClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchActivateClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchActivateClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchActivateClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchAddMaskedCardNumbersRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchAddMaskedCardNumbersRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchAddMaskedCardNumbersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchAddMaskedCardNumbersResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchConfirmTransactionsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchConfirmTransactionsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchConfirmTransactionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchConfirmTransactionsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchCreateCardsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchCreateCardsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchCreateCardsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchCreateCardsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchCreateClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchCreateClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchCreateClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchCreateClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDeactivateClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchDeactivateClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDeactivateClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchDeactivateClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDeleteClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchDeleteClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDeleteClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchDeleteClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDepositByCardRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchDepositByCardRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDepositByCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchDepositByCardResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDepositByClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchDepositByClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDepositByClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchDepositByClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchLockClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchLockClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchLockClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchLockClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsByClientRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:GetAccountsByClientRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsByClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:GetAccountsByClientResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBalanceByCardRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:GetBalanceByCardRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBalanceByCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:GetBalanceByCardResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCardsByClientRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:GetCardsByClientRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCardsByClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:GetCardsByClientResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrenciesByLoyaltyProgramRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:GetCurrenciesByLoyaltyProgramRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrenciesByLoyaltyProgramResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:GetCurrenciesByLoyaltyProgramResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOperationHistoryRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:GetOperationHistoryRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOperationHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:GetOperationHistoryResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefundByChequeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:RefundByChequeRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefundByChequeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:RefundByChequeResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefundByTransactionExternalIdRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:RefundByTransactionExternalIdRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefundByTransactionExternalIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:RefundByTransactionExternalIdResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RollbackTransactionByIdRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:RollbackTransactionByIdRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RollbackTransactionByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:RollbackTransactionByIdResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Cheque">
+    <xs:sequence>
+      <xs:element name="ChequeNumber" type="xs:string" />
+      <xs:element name="ChequeDateTime" type="xs:dateTime" />
+      <xs:element name="ChequeSum" type="xs:decimal" />
+      <xs:element name="Currency" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChequeItem" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ArticleId" type="xs:string" />
+            <xs:element name="ArticleName" type="xs:string" />
+            <xs:element name="Amount" type="xs:decimal" />
+            <xs:element name="ItemSum" type="xs:decimal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetCurrenciesByLoyaltyProgramRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchCreateClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientRegistrationResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientRegistrationResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDeactivateClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientDeactivationResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientDeactivationResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchCreateClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="ClientRegistrationFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientRegistrationFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" type="xs:string" />
+                  <xs:element name="RegistrationDateTime" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RefundByChequeResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="TransactionId" nillable="true" type="xs:long" />
+      <xs:element name="OriginalTransactionId" nillable="true" type="xs:long" />
+      <xs:element name="ClientMessage" nillable="true" type="xs:string" />
+      <xs:element name="ChequeMessage" nillable="true" type="xs:string" />
+      <xs:element name="OperatorMessage" nillable="true" type="xs:string" />
+      <xs:element name="TransactionProcDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransactionProcDateTimeUTC" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDeleteClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientDeletionResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientDeletionResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetAccountsByClientResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="Accounts" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="AccountId" type="xs:long" />
+                  <xs:element name="AccountCurrency" type="xs:string" />
+                  <xs:element name="IsPrimary" type="xs:boolean" />
+                  <xs:element name="Balance" type="xs:decimal" />
+                  <xs:element name="AuthLimit" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="BalanceDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="BalanceDateTimeUTC" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDepositByClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="DepositByClientResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DepositByClientResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="TransactionExternalId" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="TransactionId" nillable="true" type="xs:long" />
+                  <xs:element name="TransactionDateTime" nillable="true" type="xs:dateTime" />
+                  <xs:element name="TransactionDateTimeUTC" nillable="true" type="xs:dateTime" />
+                  <xs:element name="BonusSum" nillable="true" type="xs:decimal" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDepositByCardRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="EtlSessionId" type="xs:string" />
+      <xs:element name="DepositTransactions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DepositTransaction">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CardId" type="xs:string" />
+                  <xs:element name="TransactionHash" type="xs:string" />
+                  <xs:element name="TransactionExternalId" type="xs:string" />
+                  <xs:element name="TransactionPOSDateTime" type="xs:dateTime" />
+                  <xs:element name="BonusSum" type="xs:decimal" />
+                  <xs:element name="TransactionDescription" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDeleteClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="DeletionFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DeletionFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchAddMaskedCardNumbersRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="MaskedCardNumbers">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="MaskedCardNumberInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CardExternalId" type="xs:string" />
+                  <xs:element name="MaskedCardNumber" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchActivateClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="ActivationFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivationFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchLockClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientLockResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientLockResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RefundByTransactionExternalIdRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="ChannelId" type="xs:int" />
+      <xs:element name="TransactionExternalId" type="xs:string" />
+      <xs:element name="OriginalTransactionExternalId" type="xs:string" />
+      <xs:element name="PartnerId" type="xs:string" />
+      <xs:element name="PosId" type="xs:string" />
+      <xs:element name="TerminalId" type="xs:string" />
+      <xs:element name="CardId" type="xs:string" />
+      <xs:element name="RefundSum" type="xs:decimal" />
+      <xs:element name="Cheque">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Currency" type="xs:string" />
+            <xs:element minOccurs="0" name="Items" nillable="true">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="ChequeItemRefundInfo">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="ArticleId" type="xs:string" />
+                        <xs:element name="Amount" type="xs:decimal" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TransactionPOSDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDepositByClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="DepositTransactions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DepositTransaction">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="TransactionHash" type="xs:string" />
+                  <xs:element name="TransactionExternalId" type="xs:string" />
+                  <xs:element name="TransactionPOSDateTime" type="xs:dateTime" />
+                  <xs:element name="BonusSum" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="TransactionDescription" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetOperationHistoryResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="OperationHistory" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="OperationInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="OperationId" type="xs:long" />
+                  <xs:element name="AccountId" type="xs:long" />
+                  <xs:element name="AccountCurrency" type="xs:string" />
+                  <xs:element name="CardId" nillable="true" type="xs:string" />
+                  <xs:element name="PartnerGroupId" nillable="true" type="xs:string" />
+                  <xs:element name="PartnerGroupName" nillable="true" type="xs:string" />
+                  <xs:element name="PartnerId" nillable="true" type="xs:string" />
+                  <xs:element name="PartnerName" nillable="true" type="xs:string" />
+                  <xs:element name="PosId" nillable="true" type="xs:string" />
+                  <xs:element name="TerminalId" nillable="true" type="xs:string" />
+                  <xs:element name="RecordType" nillable="true" type="xs:byte" />
+                  <xs:element name="OperationDesc" nillable="true" type="xs:string" />
+                  <xs:element name="TransactionPosDateTime" nillable="true" type="xs:dateTime" />
+                  <xs:element name="TransactionProcDateTime" type="xs:dateTime" />
+                  <xs:element name="TransactionProcDateTimeUTC" type="xs:dateTime" />
+                  <xs:element name="OperationTypeCode" type="xs:string" />
+                  <xs:element name="IsHold" type="xs:byte" />
+                  <xs:element name="OperationSum" type="xs:decimal" />
+                  <xs:element name="Cheque" nillable="true" type="tns:Cheque" />
+                  <xs:element name="TransactionExternalId" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AccountsTotal" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountTotal">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="AccountId" type="xs:long" />
+                  <xs:element name="AccountCurrency" type="xs:string" />
+                  <xs:element name="TotalWithdraw" type="xs:decimal" />
+                  <xs:element name="TotalDeposit" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TotalCount" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchCreateCardsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="CardIdentifiers">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="CardIdentifier">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientId" type="xs:string" />
+                  <xs:element name="CardId" type="xs:string" />
+                  <xs:element name="CardExternalId" type="xs:string" />
+                  <xs:element name="ExpireDate" type="xs:dateTime" />
+                  <xs:element name="RegistrationDateTime" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RefundByChequeRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="ChannelId" type="xs:int" />
+      <xs:element name="TransactionExternalId" type="xs:string" />
+      <xs:element name="PartnerId" type="xs:string" />
+      <xs:element name="PosId" type="xs:string" />
+      <xs:element name="TerminalId" type="xs:string" />
+      <xs:element name="CardId" type="xs:string" />
+      <xs:element name="RefundSum" type="xs:decimal" />
+      <xs:element name="Cheque">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChequeNumber" type="xs:string" />
+            <xs:element name="ChequeDateTime" type="xs:dateTime" />
+            <xs:element name="ChequeSum" type="xs:decimal" />
+            <xs:element name="Currency" type="xs:string" />
+            <xs:element minOccurs="0" name="Items" nillable="true">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="ChequeItemRefundInfo">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="ArticleId" type="xs:string" />
+                        <xs:element name="Amount" type="xs:decimal" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TransactionPOSDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetBalanceByCardRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="ChannelId" type="xs:int" />
+      <xs:element name="PartnerId" type="xs:string" />
+      <xs:element name="PosId" type="xs:string" />
+      <xs:element name="TerminalId" type="xs:string" />
+      <xs:element name="CardId" type="xs:string" />
+      <xs:element minOccurs="0" name="Cheque" nillable="true" type="tns:Cheque" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetAccountsByClientRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthorizeWithdrawByAccountRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="ChannelId" type="xs:int" />
+      <xs:element name="TransactionExternalId" type="xs:string" />
+      <xs:element name="PartnerId" type="xs:string" />
+      <xs:element name="PosId" type="xs:string" />
+      <xs:element name="TerminalId" type="xs:string" />
+      <xs:element name="AccountId" type="xs:long" />
+      <xs:element name="WithdrawalSum" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Cheque" nillable="true" type="tns:Cheque" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RefundByTransactionExternalIdResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="TransactionId" nillable="true" type="xs:long" />
+      <xs:element name="OriginalTransactionId" nillable="true" type="xs:long" />
+      <xs:element name="ClientMessage" nillable="true" type="xs:string" />
+      <xs:element name="ChequeMessage" nillable="true" type="xs:string" />
+      <xs:element name="OperatorMessage" nillable="true" type="xs:string" />
+      <xs:element name="TransactionProcDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransactionProcDateTimeUTC" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthorizeDiscountByChequeRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="ChannelId" type="xs:int" />
+      <xs:element name="TransactionExternalId" type="xs:string" />
+      <xs:element name="PartnerId" type="xs:string" />
+      <xs:element name="PosId" type="xs:string" />
+      <xs:element name="TerminalId" type="xs:string" />
+      <xs:element name="CardId" type="xs:string" />
+      <xs:element name="ChequeDiscount" type="xs:decimal" />
+      <xs:element name="Cheque" type="tns:Cheque" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetCurrenciesByLoyaltyProgramResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="Currencies" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Currency">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CurrencyCode" type="xs:string" />
+                  <xs:element name="CurrencyName" type="xs:string" />
+                  <xs:element name="CurrencyType" type="xs:byte" />
+                  <xs:element name="RateToAccountingCurrency" type="xs:decimal" />
+                  <xs:element name="RateFromAccountingCurrency" type="xs:decimal" />
+                  <xs:element name="Precision" type="xs:byte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetCardsByClientResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="Cards" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="CardInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CardId" type="xs:string" />
+                  <xs:element name="CardExternalId" type="xs:string" />
+                  <xs:element name="ExpireDate" type="xs:dateTime" />
+                  <xs:element name="ExpireDateUTC" type="xs:dateTime" />
+                  <xs:element name="MaskedCardNumber" nillable="true" type="xs:string" />
+                  <xs:element name="CardStatus" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchAddMaskedCardNumbersResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="MaskedCardNumberAdditionResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="MaskedCardNumberAdditionResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CardExternalId" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetOperationHistoryRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:long" />
+      <xs:element name="FromDate" type="xs:dateTime" />
+      <xs:element name="ToDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OperationTypes" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="WithdrawOperation" nillable="true" type="xs:byte" />
+            <xs:element minOccurs="0" name="DepositOperation" nillable="true" type="xs:byte" />
+            <xs:element minOccurs="0" name="WithdrawHold" nillable="true" type="xs:byte" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SkipCount" type="xs:int" />
+      <xs:element name="RowCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetCardsByClientRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="ClientId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchConfirmTransactionsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ConfirmTransactionsResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ConfirmTransactionResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="TransactionExternalId" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchLockClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="LockFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="LockFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RollbackTransactionByIdResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RollbackTransactionByIdRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="TransactionExternalId" type="xs:string" />
+      <xs:element name="PartnerId" type="xs:string" />
+      <xs:element name="OriginalTransactionId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetBalanceByCardResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="CardStatus" nillable="true" type="xs:int" />
+      <xs:element name="WithdrawalAllowed" nillable="true" type="xs:int" />
+      <xs:element name="MinSum" nillable="true" type="xs:decimal" />
+      <xs:element name="ClientMessage" nillable="true" type="xs:string" />
+      <xs:element name="Balance" nillable="true" type="xs:decimal" />
+      <xs:element name="ProgramAccountingCurrencyBalance" nillable="true" type="xs:decimal" />
+      <xs:element name="AuthLimit" nillable="true" type="xs:decimal" />
+      <xs:element name="ProgramAccountingCurrencyAuthLimit" nillable="true" type="xs:decimal" />
+      <xs:element name="AccountCurrency" nillable="true" type="xs:string" />
+      <xs:element name="ProgramAccountingCurrency" nillable="true" type="xs:string" />
+      <xs:element name="BalanceDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="BalanceDateTimeUTC" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchCreateCardsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="CardRegistrationResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="CardRegistrationResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="CardId" nillable="true" type="xs:string" />
+                  <xs:element name="CardExternalId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchActivateClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientActivationResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientActivationResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDeactivateClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="DeactivationFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DeactivationFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDepositByCardResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="DepositByCardResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DepositByCardResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="TransactionExternalId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="TransactionId" nillable="true" type="xs:long" />
+                  <xs:element name="TransactionDateTime" nillable="true" type="xs:dateTime" />
+                  <xs:element name="TransactionDateTimeUTC" nillable="true" type="xs:dateTime" />
+                  <xs:element name="BonusSum" nillable="true" type="xs:decimal" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchConfirmTransactionsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="EtlSessionId" type="xs:string" />
+      <xs:element name="ConfirmedTransactions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ConfirmedTransaction">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="TransactionExternalId" type="xs:string" />
+                  <xs:element name="PartnerId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthorizeDiscountByChequeResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="CardStatus" nillable="true" type="xs:int" />
+      <xs:element name="TransactionId" nillable="true" type="xs:long" />
+      <xs:element name="DiscountSum" nillable="true" type="xs:decimal" />
+      <xs:element name="ChequeDiscountInfo" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChequeDiscount" nillable="true" type="xs:decimal" />
+            <xs:element name="MinSum" nillable="true" type="xs:decimal" />
+            <xs:element name="ChequeItems" nillable="true">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="ChequeItemDiscountInfo">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="ArticleId" type="xs:string" />
+                        <xs:element name="Discount" type="xs:decimal" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClientMessage" type="xs:string" />
+      <xs:element name="ChequeMessage" nillable="true" type="xs:string" />
+      <xs:element name="OperatorMessage" nillable="true" type="xs:string" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="TransactionProcDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransactionProcDateTimeUTC" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthorizeWithdrawByAccountResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="TransactionId" nillable="true" type="xs:long" />
+      <xs:element name="TransactionSum" nillable="true" type="xs:decimal" />
+      <xs:element name="Currency" nillable="true" type="xs:string" />
+      <xs:element name="TransactionProcDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransactionProcDateTimeUTC" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

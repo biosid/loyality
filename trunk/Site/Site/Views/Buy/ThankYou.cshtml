@@ -1,0 +1,33 @@
+﻿@model Vtb24.Site.Models.Buy.ThankYouModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Заказ принят";
+}
+<div style="margin-right: 16px;">
+    <div class="full-content shdw">
+        <div class="fc-padding" style="min-height: 0; padding-bottom: 30px;">
+            <div class="middle-line white" style="margin-top: 10px;">
+                <div class="ml-text"><span class="size28">Спасибо за заказ!</span></div>
+            </div>
+            <p>
+                Уважаемый клиент! Ваш заказ принят. Статус Вы можете посмотреть в разделе <a href="@Url.Action("Index", "MyOrders")">Заказы</a>.
+            </p>
+        </div>
+    </div>
+
+    @if (Model != null)
+    {
+        <div class="middle-line thank-you__popuplar-title">
+            <div class="ml-text"><span class="size28">Популярные вознаграждения по заказам</span></div>
+        </div>
+
+        <div class="viewport thank-you__viewport">
+            <ul class="catalog clearfix cat-main">
+                @foreach (var product in Model.PopularProductsByOrder)
+                {
+                    @Html.Partial("Catalog/_ListProduct", product)
+                }
+            </ul>
+        </div>
+    }
+</div>

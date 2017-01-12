@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = Model.EditMode == PartnerEditMode.Edit ? "Редактирование поставщика" : "Создание поставщика";
+
+    ViewBag.MenuId = "suppliers";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.Catalog.Models.Partners
+@model SupplierEditModel
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/Partners/Edit/save'
+            ],
+            function (save) {
+                save();
+            });
+            $('.sticky-save').sticky({ topSpacing: 0, center: false });
+    </script>
+)
+<div class="tab-pane active" id="tab5">
+    <div class="sticky-save" style="width:940px;">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                <div class="row pad-left-20">
+                    <div class="pull-right mar-right-20">
+                        <button class="btn btn-primary" data-x="partners/edit/save">
+                            @if (Model.EditMode == PartnerEditMode.Create)
+                            {
+                                @: Создать
+                            }
+                            else
+                            {
+                                @: Сохранить
+                            }
+                        </button>
+                        <a href="@Url.Action("Index", "Suppliers")" role="button" data-toggle="modal" class="btn mar-right-0">Отмена</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        @using (Html.BeginForm(Model.EditMode == PartnerEditMode.Create ? "Create" : "Edit", "Suppliers", FormMethod.Post, new { data_x = "partners/edit/form" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" id="@Html.IdFor(m => m.EditMode)" name="@Html.NameFor(m => m.EditMode)" value="@Model.EditMode"/>
+            <input type="hidden" id="@Html.IdFor(m => m.SupplierId)" name="@Html.NameFor(m => m.SupplierId)" value="@Model.SupplierId"/>
+
+            <h3 class="font-normal">@ViewBag.Title</h3>
+
+            <div class="row">
+                <div class="span2 line-height-30">Наименование:</div>
+                <div class="span10">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "input-block-level", maxlength = "256" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2 line-height-30">Тип:</div>
+                <div class="span10">
+                    @if (Model.EditMode == PartnerEditMode.Create)
+                    {
+                        @Html.EnumDropDownListFor(m => m.Type)
+                        @Html.ValidationMessageFor(m => m.Type)
+                    }
+                    else
+                    {
+                        @Html.DescriptionFor(Model.Type)
+                        @Html.HiddenFor(m => m.Type)
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2 line-height-30">Доверенность:</div>
+                <div class="span10">
+                    @Html.EnumDropDownListFor(m => m.TrustLevel)
+                    @Html.ValidationMessageFor(m => m.TrustLevel)
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2 line-height-30">Статус:</div>
+                <div class="span10">
+                    @Html.EnumDropDownListFor(m => m.Status)
+                    @Html.ValidationMessageFor(m => m.Status)
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2 line-height-30">Курьер:</div>
+                <div class="span10">
+                    @Html.DropDownListFor(m => m.CarrierId, Model.CarriersList)
+                    @Html.ValidationMessageFor(m => m.CarrierId)
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2 line-height-30">Описание:</div>
+                <div class="span10">
+                    @Html.TextAreaFor(m => m.Description, new { @class = "input-block-level", @rows = "10", @cols = "30", maxlength = "256" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+            </div>
+            if (Model.EditMode != PartnerEditMode.Create && Model.Settings != null && Model.Settings.Length > 0)
+            {
+                if (Model.EditMode == PartnerEditMode.Setup)
+                {
+                    <div class="row">
+                        <div class="span2"></div>
+                        <div class="span10">
+                            <div class="alert alert-block alert-error">
+                                <p>
+                                    <b>
+                                        Для завершения создания поставщика необходимо задать настройки. Настройки можно задать позднее, но до этого момента поставщик останется в статусе "@Html.DescriptionFor(Statuses.Disabled)".
+                                    </b>
+                                </p>
+                                <a href="@Url.Action("Index", "Suppliers")" class="btn mar-top-15">Задать позже</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="span2 line-height-30">Настройки:</div>
+                    <div class="span10">
+                        @foreach (var index in Enumerable.Range(0, Model.Settings.Length))
+                        {
+                            @Html.Partial("_PartnerSetting", new Tuple<PartnerSettingModel, string, string>(
+                                                                 Model.Settings[index],
+                                                                 Html.NameFor(m => m.Settings[index].Name).ToString(),
+                                                                 Html.NameFor(m => m.Settings[index].Value).ToString()))
+                        }
+                    </div>
+                </div>
+                if (Model.OtherSettings != null && Model.OtherSettings.Count > 0)
+                {
+                    <div class="row none">
+                        <div class="span2 line-height-30">Прочие настройки:</div>
+                        <div class="span10">
+                            @foreach (var setting in Model.OtherSettings.OrderBy(s => s.Key))
+                            {
+                                <div class="row"><div class="span10">@setting.Key</div></div>
+                                <div class="row"><div class="span10 well well-small">@setting.Value</div></div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

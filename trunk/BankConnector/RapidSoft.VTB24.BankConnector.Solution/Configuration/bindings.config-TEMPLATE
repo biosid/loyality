@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bindings>
+  <basicHttpBinding>
+    <binding name="" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IAdminMechanicsService" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_ISecurityWebApi" maxReceivedMessageSize = "1000000" sendTimeout="00:00:30"/>
+    <binding name="BasicHttpBinding_BonusGateway" maxReceivedMessageSize = "1000000"/>
+    <binding name="ClientProfileServicePortBinding" maxReceivedMessageSize = "1000000"/>
+    <binding name="ProcessingServicePortBinding" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IOrderManagementService" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IClientMessageService" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IBasketService" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_ICatalogAdminService" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_ICatalogSearcher" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IComponentInfo" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IWishListService" maxReceivedMessageSize = "1000000" sendTimeout="00:30:00" receiveTimeout="00:30:00" />
+    <binding name="BasicHttpBinding_IMechanicsService" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IServiceInfo" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_ITargetAudienceService" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IEmailSender" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_ISecurityTokenWebApi" maxReceivedMessageSize = "1000000"/>
+    <binding name="BasicHttpBinding_IPublicProfileWebApi" maxReceivedMessageSize = "1000000"/>
+  </basicHttpBinding>
+</bindings>

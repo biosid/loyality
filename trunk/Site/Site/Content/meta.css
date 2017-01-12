@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Meta';
+	src: url('fonts/meta/METB.EOT');
+	src: url('fonts/meta/METB.EOT?#iefix') format('embedded-opentype')
+    , url('fonts/mtmdcylr/mtcybdrl.dfont') format('dfont')
+    , url('fonts/meta/METB.OTF') format('opentype')
+    , url('fonts/meta/METB.TTF') format('truetype')
+    , url('fonts/meta/METB.WOFF') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Meta';
+    src: url('fonts/meta/METBI.EOT');
+	src: url('fonts/meta/METBI.EOT?#iefix') format('embedded-opentype')
+    , url('fonts/meta/METBI.OTF') format('opentype')
+    , url('fonts/meta/METBI.TTF') format('truetype')
+    , url('fonts/meta/METBI.WOFF') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Meta';
+	src: url('fonts/meta/METMedium.eot');
+	src: url('fonts/meta/METMedium.eot?#iefix') format('embedded-opentype')
+    , url('fonts/mtmdcylr/mtmdcylr.dfont') format('dfont')
+	, url('fonts/meta/METMedium.OTF') format('opentype')
+    , url('fonts/meta/METMedium.TTF') format('truetype')
+    , url('fonts/meta/METMedium.WOFF') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Meta';
+	src: url('fonts/meta/METMediumItalic.eot');
+	src: url('fonts/meta/METMediumItalic.eot?#iefix') format('embedded-opentype')
+	, url('fonts/meta/METMediumItalic.OTF') format('opentype')
+    , url('fonts/meta/METMediumItalic.TTF') format('truetype')
+    , url('fonts/meta/METMediumItalic.WOFF') format('woff');
+    font-weight: 600;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Meta';
+	src: url('fonts/meta/METNormal.eot');
+	src: url('fonts/meta/METNormal.eot?#iefix') format('embedded-opentype')
+	, url('fonts/meta/METNormal.OTF') format('opentype')
+    , url('fonts/meta/METNormal.TTF') format('truetype')
+    , url('fonts/meta/METNormal.WOFF') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Meta';
+	src: url('fonts/meta/METNormalItalic.eot');
+	src: url('fonts/meta/METNormalItalic.eot?#iefix') format('embedded-opentype')
+	, url('fonts/meta/METNormalItalic.OTF') format('opentype')
+    , url('fonts/meta/METNormalItalic.TTF') format('truetype')
+    , url('fonts/meta/METNormalItalic.WOFF') format('woff');
+    font-weight: 200;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Meta';
+	src: url('fonts/meta/METBookItalic.eot');
+	src: url('fonts/meta/METBookItalic.eot?#iefix') format('embedded-opentype')
+	, url('fonts/meta/METBookItalic.OTF') format('opentype')
+    , url('fonts/meta/METBookItalic.TTF') format('truetype')
+    , url('fonts/meta/METBookItalic.WOFF') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Meta';
+	src: url('fonts/meta/METBook.eot');
+	src: url('fonts/meta/METBook.eot?#iefix') format('embedded-opentype')
+    , url('fonts/mtmdcylr/mtnocylr.dfont') format('dfont')
+	, url('fonts/meta/METBook.OTF') format('opentype')
+    , url('fonts/meta/METBook.TTF') format('truetype')
+    , url('fonts/meta/METBook.WOFF') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {font-family: 'MetaSharp'; src: url('fonts/meta/METB.TTF') format('truetype'); font-weight: bold; font-style: normal;}
+@font-face {font-family: 'MetaSharp'; src: url('fonts/meta/METBI.TTF') format('truetype'); font-weight: bold; font-style: italic;}
+@font-face {font-family: 'MetaSharp'; src: url('fonts/meta/METMedium.TTF') format('truetype'); font-weight: 600; font-style: normal;}
+@font-face {font-family: 'MetaSharp'; src: url('fonts/meta/METMediumItalic.TTF') format('truetype'); font-weight: 600; font-style: italic;}
+@font-face {font-family: 'MetaSharp'; src: url('fonts/meta/METNormal.TTF') format('truetype'); font-weight: 200; font-style: normal;}
+@font-face {font-family: 'MetaSharp'; src: url('fonts/meta/METNormalItalic.TTF') format('truetype'); font-weight: 200; font-style: italic;}
+@font-face {font-family: 'MetaSharp'; src: url('fonts/meta/METBookItalic.TTF') format('truetype'); font-weight: normal; font-style: italic;}
+@font-face {font-family: 'MetaSharp'; src: url('fonts/meta/METBook.TTF') format('truetype'); font-weight: normal; font-style: normal;}
+
+.font-meta {font-family: 'Meta',sans-serif;}
+.font-meta-sharp {font-family: 'MetaSharp','Meta',sans-serif;}

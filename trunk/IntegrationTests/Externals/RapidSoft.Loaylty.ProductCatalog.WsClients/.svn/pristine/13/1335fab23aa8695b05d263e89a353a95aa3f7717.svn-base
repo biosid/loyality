@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_ICatalogAdminService" />
+                <binding name="BasicHttpBinding_IBasketService" />
+                <binding name="BasicHttpBinding_ICatalogSearcher" />
+                <binding name="BasicHttpBinding_IOrderManagementService" />
+                <binding name="BasicHttpBinding_IWishListService" />
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:8101/CatalogAdminService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICatalogAdminService"
+                contract="CatalogAdminService.ICatalogAdminService" name="BasicHttpBinding_ICatalogAdminService" />
+            <endpoint address="http://localhost:8101/BasketService.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IBasketService" contract="BasketService.IBasketService"
+                name="BasicHttpBinding_IBasketService" />
+            <endpoint address="http://localhost:8101/CatalogSearcherService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICatalogSearcher"
+                contract="CatalogSearcherService.ICatalogSearcher" name="BasicHttpBinding_ICatalogSearcher" />
+            <endpoint address="http://localhost:8101/OrderManagementService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOrderManagementService"
+                contract="OrderManagementService.IOrderManagementService"
+                name="BasicHttpBinding_IOrderManagementService" />
+            <endpoint address="http://localhost:8101/WishListService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IWishListService"
+                contract="WishListService.IWishListService" name="BasicHttpBinding_IWishListService" />
+        </client>
+    </system.serviceModel>
+</configuration>

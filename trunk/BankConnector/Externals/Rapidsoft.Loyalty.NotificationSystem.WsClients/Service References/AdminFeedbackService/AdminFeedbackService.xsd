@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" />
+  <xs:import schemaLocation="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="AdminGetThreadsParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" minOccurs="0" name="ClientType" nillable="true" type="q1:ThreadClientTypes" />
+      <xs:element minOccurs="0" name="CountToSkip" type="xs:int" />
+      <xs:element name="CountToTake" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" minOccurs="0" name="FeedbackType" nillable="true" type="q2:FeedbackTypes" />
+      <xs:element minOccurs="0" name="Filter" type="tns:AnsweredFilters" />
+      <xs:element minOccurs="0" name="MaxDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MinDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OperatorLogin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchTerm" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdminGetThreadsParameters" nillable="true" type="tns:AdminGetThreadsParameters" />
+  <xs:simpleType name="AnsweredFilters">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All" />
+      <xs:enumeration value="Answered" />
+      <xs:enumeration value="Unanswered" />
+      <xs:enumeration value="UnansweredFirst" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AnsweredFilters" nillable="true" type="tns:AnsweredFilters" />
+  <xs:complexType name="AdminGetThreadMessagesParameters">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GetThreadMessagesParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AdminGetThreadMessagesParameters" nillable="true" type="tns:AdminGetThreadMessagesParameters" />
+  <xs:complexType name="GetThreadMessagesParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountToSkip" type="xs:int" />
+      <xs:element name="CountToTake" type="xs:int" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetThreadMessagesParameters" nillable="true" type="tns:GetThreadMessagesParameters" />
+  <xs:complexType name="AdminReplyParameters">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" minOccurs="0" name="Attachments" nillable="true" type="q3:ArrayOfMessageAttachment" />
+      <xs:element minOccurs="0" name="MessageBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdminReplyParameters" nillable="true" type="tns:AdminReplyParameters" />
+  <xs:complexType name="ChangeAnsweredStatusParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsAnswered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangeAnsweredStatusParameters" nillable="true" type="tns:ChangeAnsweredStatusParameters" />
+  <xs:complexType name="AdminGetThreadByIdParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdminGetThreadByIdParameters" nillable="true" type="tns:AdminGetThreadByIdParameters" />
+</xs:schema>

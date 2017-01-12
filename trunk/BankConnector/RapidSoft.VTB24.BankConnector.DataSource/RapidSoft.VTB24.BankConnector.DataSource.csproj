@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD8442FE-FE00-4D13-B454-34728F9FDD77}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.VTB24.BankConnector.DataSource</RootNamespace>
+    <AssemblyName>RapidSoft.VTB24.BankConnector.DataSource</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interface\IBankOfferRepository.cs" />
+    <Compile Include="Interface\IBankSmsRepository.cs" />
+    <Compile Include="Interface\IOrderAttemptsRepository.cs" />
+    <Compile Include="Interface\IOrderItemsForPaymentRepository.cs" />
+    <Compile Include="Interface\IClientForBankPwdResetRepository.cs" />
+    <Compile Include="Interface\IClientForBankPwdResetResponseRepository.cs" />
+    <Compile Include="Interface\ILoyaltyClientUpdateRepository.cs" />
+    <Compile Include="Interface\IClientUpdatesRepository.cs" />
+    <Compile Include="Interface\IClientPersonalMessageRepository.cs" />
+    <Compile Include="Interface\IClientForBankRegistrationRepository.cs" />
+    <Compile Include="Interface\IClientForBankRegistrationResponseRepository.cs" />
+    <Compile Include="Interface\IClientPersonalMessageResponseRepository.cs" />
+    <Compile Include="Interface\IOrderPaymentResponse2Repository.cs" />
+    <Compile Include="Interface\IProfileCustomFieldsRepository.cs" />
+    <Compile Include="Interface\IProfileCustomFieldsValuesRepository.cs" />
+    <Compile Include="Interface\IRegisterBankOffersRepository.cs" />
+    <Compile Include="Interface\IRegisterBankOffersResponseRepository.cs" />
+    <Compile Include="Interface\IUnitellerPaymentsRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Interface\IPromoActionResponseRepository.cs" />
+    <Compile Include="Provider\AdminMechanicsServiceProvider.cs" />
+    <Compile Include="Interface\IAdminMechanicsServiceProvider.cs" />
+    <Compile Include="Interface\IClientForActivationRepository.cs" />
+    <Compile Include="Interface\IClientForRegistrationRepository.cs" />
+    <Compile Include="Interface\IClientForRegistrationResponseRepository.cs" />
+    <Compile Include="Interface\IGenericRepository.cs" />
+    <Compile Include="Interface\IOrderForPaymentRepository.cs" />
+    <Compile Include="Interface\IOrderPaymentResponseRepository.cs" />
+    <Compile Include="Interface\IPromoActionRepository.cs" />
+    <Compile Include="Repository\AccrualRepository.cs" />
+    <Compile Include="Repository\BankOfferRepository.cs" />
+    <Compile Include="Repository\BankSmsRepository.cs" />
+    <Compile Include="Repository\ClientForBankPwdResetRepository.cs" />
+    <Compile Include="Repository\ClientForBankPwdResetResponseRepository.cs" />
+    <Compile Include="Repository\ClientForBankRegistrationRepository.cs" />
+    <Compile Include="Repository\ClientForBankRegistrationResponseRepository.cs" />
+    <Compile Include="Repository\ClientLoginBankUpdatesRepository.cs" />
+    <Compile Include="Repository\ClientLoginBankUpdatesResponseRepository.cs" />
+    <Compile Include="Repository\ClientPersonalMessageRepository.cs" />
+    <Compile Include="Repository\ClientPersonalMessageResponseRepository.cs" />
+    <Compile Include="Repository\ClientForDeletionRepository.cs" />
+    <Compile Include="Repository\ClientForDeletionResponseRepository.cs" />
+    <Compile Include="Repository\ClientUpdatesRepository.cs" />
+    <Compile Include="Interface\IClientLoginBankUpdatesRepository.cs" />
+    <Compile Include="Interface\IClientLoginBankUpdatesResponseRepository.cs" />
+    <Compile Include="Repository\OrderAttemptsRepository.cs" />
+    <Compile Include="Repository\OrderItemsForPaymentRepository.cs" />
+    <Compile Include="Repository\LoyaltyClientUpdateRepository.cs" />
+    <Compile Include="Repository\OrderPaymentResponse2Repository.cs" />
+    <Compile Include="Repository\ProfileCustomFieldsRepository.cs" />
+    <Compile Include="Repository\ProfileCustomFieldsValuesRepository.cs" />
+    <Compile Include="Repository\PromoActionRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ClientForActivationRepository.cs" />
+    <Compile Include="Repository\ClientForRegistrationRepository.cs" />
+    <Compile Include="Repository\ClientForRegistrationResponseRepository.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\OrderForPaymentRepository.cs" />
+    <Compile Include="Repository\OrderPaymentResponseRepository.cs" />
+    <Compile Include="Repository\PromoActionResponseRepository.cs" />
+    <Compile Include="Repository\RegisterBankOffersRepository.cs" />
+    <Compile Include="Repository\RegisterBankOffersResponseRepository.cs" />
+    <Compile Include="Repository\UnitellerPaymentsRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PromoAction.WsClients\RapidSoft.Loaylty.PromoAction.WsClients.csproj">
+      <Project>{8533AA36-8D8A-4215-94B7-C8A4989C6F32}</Project>
+      <Name>RapidSoft.Loaylty.PromoAction.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.DataModels\RapidSoft.VTB24.BankConnector.DataModels.csproj">
+      <Project>{A197184A-8429-4DC1-8541-37F57A802F61}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.Infrastructure\RapidSoft.VTB24.BankConnector.Infrastructure.csproj">
+      <Project>{5bf06308-29f4-4e47-ab46-76214c953b7f}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.WsClients\RapidSoft.VTB24.BankConnector.WsClients.csproj">
+      <Project>{40BDD6B9-BCFE-4364-BB9E-4890F966EBBC}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.WsClients</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a26adf13-4a9c-4d0d-a7fe-2e8f920bef5e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>true</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:57451/TargetAudienceService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TargetAudienceService.wsdl" MetadataType="Wsdl" ID="2e7e9895-96b7-4a62-a18e-3e404b738387" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?wsdl" />
+    <MetadataFile FileName="TargetAudienceService.xsd" MetadataType="Schema" ID="ce0d159f-0355-4011-9913-682e9eb92d1b" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd4" />
+    <MetadataFile FileName="TargetAudienceService5.xsd" MetadataType="Schema" ID="b8122ec8-a4cd-4ae7-948f-b67f608d0b15" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd5" />
+    <MetadataFile FileName="TargetAudienceService51.xsd" MetadataType="Schema" ID="b8bf2f2d-b05d-42e6-8650-d4d6d4bb94c9" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd6" />
+    <MetadataFile FileName="TargetAudienceService1.xsd" MetadataType="Schema" ID="13417c5b-ded6-4ee7-b9c3-07f2b062835a" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TargetAudienceService2.xsd" MetadataType="Schema" ID="b5af98a5-b258-445b-b41f-f9a001f2ca0f" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TargetAudienceService3.xsd" MetadataType="Schema" ID="0797bac5-0980-4290-accd-ead2b21a898d" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TargetAudienceService4.xsd" MetadataType="Schema" ID="a55cdee9-8fc4-4bec-a825-99d95072439f" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TargetAudienceService.disco" MetadataType="Disco" ID="097dadd6-c9a7-4b69-b039-cde4e2954718" SourceId="1" SourceUrl="http://rphqbuild1:57451/TargetAudienceService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

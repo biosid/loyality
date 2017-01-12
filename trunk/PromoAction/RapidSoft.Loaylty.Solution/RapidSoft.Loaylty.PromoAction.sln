@@ -1,0 +1,140 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77C1BD89-D859-4CB2-B1FF-BF0C64DB35AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidSoft.Loaylty.PromoAction", "..\RapidSoft.Loaylty.PromoAction\RapidSoft.Loaylty.PromoAction.csproj", "{CE0AD634-D856-402C-AD8F-2BE723A770F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidSoft.Loaylty.PromoAction.Tests", "..\RapidSoft.Loaylty.PromoAction.Tests\RapidSoft.Loaylty.PromoAction.Tests.csproj", "{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{EA820AE2-A88D-45B3-ADA4-4F3C50E7E74B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SingleConfig", "SingleConfig", "{13D0A0A4-5AA7-40D6-B040-6CA56BBAAEFA}"
+	ProjectSection(SolutionItems) = preProject
+		..\Config\SingleConfig\local.xml = ..\Config\SingleConfig\local.xml
+		..\Config\SingleConfig\local_ogrishchenko.xml = ..\Config\SingleConfig\local_ogrishchenko.xml
+		..\Config\SingleConfig\local_sfedorov.xml = ..\Config\SingleConfig\local_sfedorov.xml
+		..\Config\SingleConfig\local_vkocheryzhkin.xml = ..\Config\SingleConfig\local_vkocheryzhkin.xml
+		..\Config\SingleConfig\local_zakharov.xml = ..\Config\SingleConfig\local_zakharov.xml
+		..\Config\SingleConfig\loyalty-win0_TEST.xml = ..\Config\SingleConfig\loyalty-win0_TEST.xml
+		..\Config\SingleConfig\rphqbuild1_DEV.xml = ..\Config\SingleConfig\rphqbuild1_DEV.xml
+		..\Config\SingleConfig\SingleConfig.exe = ..\Config\SingleConfig\SingleConfig.exe
+		..\Config\SingleConfig\winsql0.xml = ..\Config\SingleConfig\winsql0.xml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidSoft.Loaylty.PromoAction.Api", "..\RapidSoft.Loaylty.PromoAction.Api\RapidSoft.Loaylty.PromoAction.Api.csproj", "{30B65739-C589-4A2F-9001-3E3CFC8E3F71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidSoft.Loaylty.PromoAction.WsClients", "..\RapidSoft.Loaylty.PromoAction.WsClients\RapidSoft.Loaylty.PromoAction.WsClients.csproj", "{8533AA36-8D8A-4215-94B7-C8A4989C6F32}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4} = {CE0AD634-D856-402C-AD8F-2BE723A770F4}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{DC75D0FC-3C4B-4517-A517-E3DB9392A546}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidSoft.VTB24.ArmSecurity", "..\Externals\RapidSoft.VTB24.ArmSecurity\RapidSoft.VTB24.ArmSecurity.csproj", "{87F9069D-E59F-4195-97F4-9309E6A764DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidSoft.Extensions", "..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj", "{63DF64B8-C9F3-4A51-841D-58D6D1841627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidSoft.Loaylty.Logging", "..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj", "{6B6E5793-B048-473D-8707-23031CC227CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonConfiguration", "CommonConfiguration", "{723367E1-522D-4045-ABFB-6AD042081B9A}"
+	ProjectSection(SolutionItems) = preProject
+		..\Config\SingleConfig\CommonConfiguration\local_endpoints.xml = ..\Config\SingleConfig\CommonConfiguration\local_endpoints.xml
+		..\Config\SingleConfig\CommonConfiguration\loyalty-win0_endpoints.xml = ..\Config\SingleConfig\CommonConfiguration\loyalty-win0_endpoints.xml
+		..\Config\SingleConfig\CommonConfiguration\rphqbuild1_endpoints.xml = ..\Config\SingleConfig\CommonConfiguration\rphqbuild1_endpoints.xml
+		..\Config\SingleConfig\CommonConfiguration\winsql0_endpoints.xml = ..\Config\SingleConfig\CommonConfiguration\winsql0_endpoints.xml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidSoft.Loaylty.Monitoring", "..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj", "{E10328E0-16F8-448C-8F26-E754D9A1FE83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|X64 = Debug|X64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|X64 = Release|X64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4}.Release|X64.ActiveCfg = Release|Any CPU
+		{CE0AD634-D856-402C-AD8F-2BE723A770F4}.Release|x86.ActiveCfg = Release|Any CPU
+		{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}.Release|X64.ActiveCfg = Release|Any CPU
+		{0AF9D02C-9B76-400A-8CBC-4A770A8E79D0}.Release|x86.ActiveCfg = Release|Any CPU
+		{30B65739-C589-4A2F-9001-3E3CFC8E3F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B65739-C589-4A2F-9001-3E3CFC8E3F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B65739-C589-4A2F-9001-3E3CFC8E3F71}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{30B65739-C589-4A2F-9001-3E3CFC8E3F71}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{30B65739-C589-4A2F-9001-3E3CFC8E3F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B65739-C589-4A2F-9001-3E3CFC8E3F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B65739-C589-4A2F-9001-3E3CFC8E3F71}.Release|X64.ActiveCfg = Release|Any CPU
+		{30B65739-C589-4A2F-9001-3E3CFC8E3F71}.Release|x86.ActiveCfg = Release|Any CPU
+		{8533AA36-8D8A-4215-94B7-C8A4989C6F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8533AA36-8D8A-4215-94B7-C8A4989C6F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8533AA36-8D8A-4215-94B7-C8A4989C6F32}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{8533AA36-8D8A-4215-94B7-C8A4989C6F32}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8533AA36-8D8A-4215-94B7-C8A4989C6F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8533AA36-8D8A-4215-94B7-C8A4989C6F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8533AA36-8D8A-4215-94B7-C8A4989C6F32}.Release|X64.ActiveCfg = Release|Any CPU
+		{8533AA36-8D8A-4215-94B7-C8A4989C6F32}.Release|x86.ActiveCfg = Release|Any CPU
+		{87F9069D-E59F-4195-97F4-9309E6A764DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F9069D-E59F-4195-97F4-9309E6A764DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F9069D-E59F-4195-97F4-9309E6A764DF}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{87F9069D-E59F-4195-97F4-9309E6A764DF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{87F9069D-E59F-4195-97F4-9309E6A764DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F9069D-E59F-4195-97F4-9309E6A764DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F9069D-E59F-4195-97F4-9309E6A764DF}.Release|X64.ActiveCfg = Release|Any CPU
+		{87F9069D-E59F-4195-97F4-9309E6A764DF}.Release|x86.ActiveCfg = Release|Any CPU
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627}.Release|X64.ActiveCfg = Release|Any CPU
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627}.Release|x86.ActiveCfg = Release|Any CPU
+		{6B6E5793-B048-473D-8707-23031CC227CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B6E5793-B048-473D-8707-23031CC227CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B6E5793-B048-473D-8707-23031CC227CD}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{6B6E5793-B048-473D-8707-23031CC227CD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6B6E5793-B048-473D-8707-23031CC227CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B6E5793-B048-473D-8707-23031CC227CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B6E5793-B048-473D-8707-23031CC227CD}.Release|X64.ActiveCfg = Release|Any CPU
+		{6B6E5793-B048-473D-8707-23031CC227CD}.Release|x86.ActiveCfg = Release|Any CPU
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83}.Release|X64.ActiveCfg = Release|Any CPU
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{13D0A0A4-5AA7-40D6-B040-6CA56BBAAEFA} = {EA820AE2-A88D-45B3-ADA4-4F3C50E7E74B}
+		{723367E1-522D-4045-ABFB-6AD042081B9A} = {13D0A0A4-5AA7-40D6-B040-6CA56BBAAEFA}
+		{87F9069D-E59F-4195-97F4-9309E6A764DF} = {DC75D0FC-3C4B-4517-A517-E3DB9392A546}
+		{63DF64B8-C9F3-4A51-841D-58D6D1841627} = {DC75D0FC-3C4B-4517-A517-E3DB9392A546}
+		{6B6E5793-B048-473D-8707-23031CC227CD} = {DC75D0FC-3C4B-4517-A517-E3DB9392A546}
+		{E10328E0-16F8-448C-8F26-E754D9A1FE83} = {DC75D0FC-3C4B-4517-A517-E3DB9392A546}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

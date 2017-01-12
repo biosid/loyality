@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ValidateRegExp>@(\w*)@</ValidateRegExp>
+  <GlobalConfigFileTransformations>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@logsRoot@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@loyaltyLogs@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@elasticsearchCluster@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:9200</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Database settings -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBHOST@</string>
+      </Patterns>
+      <ReplaceTo>RPHQBUILD1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBNAME@</string>
+      </Patterns>
+      <ReplaceTo>PromoActionDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBUSER@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBPASS@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBTIMEOUT@</string>
+      </Patterns>
+      <ReplaceTo>60</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBLog4NetAppenderRef@</string>
+      </Patterns>
+      <ReplaceTo><![CDATA[<appender-ref ref="AdoNetAppender" />]]></ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@EmailLog4NetAppenderRef@</string>
+      </Patterns>
+      <ReplaceTo></ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- SMTP START -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LoyaltyEmail@</string>
+      </Patterns>
+      <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SMTPHOST@</string>
+      </Patterns>
+      <ReplaceTo>localhost</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpUserName@</string>
+      </Patterns>
+      <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ErrorMessageTo@</string>
+      </Patterns>
+      <ReplaceTo>vtb-team-errors@rapidsoft.ru</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- SMTP END -->
+
+  </GlobalConfigFileTransformations>
+
+  <ConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\Database\AutoPatch\AutoPatch.exe.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\AutoPatch\AutoPatch.exe.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\DB_DROP_CREATE.cmd-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\DB_DROP_CREATE.cmd</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\Scripts\!DBCreate.sql-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\Scripts\!DBCreate.sql</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PromoAction\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PromoAction\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PromoAction\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PromoAction\log4net.config</NewFilePath>
+    </ConfigFile>
+  </ConfigFiles>
+
+  <DevConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PromoAction.Tests\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PromoAction.Tests\App.config</NewFilePath>
+    </ConfigFile>
+  </DevConfigFiles>
+
+  <ExternalTransformationsFiles>
+    <ExternalTransformationsFile>
+      <FilePath>CommonConfiguration\local_endpoints.xml</FilePath>
+    </ExternalTransformationsFile>
+  </ExternalTransformationsFiles>
+
+</SingleConfig>

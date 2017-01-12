@@ -1,0 +1,36 @@
+﻿@model Vtb24.Arms.Models.HomePermissionsModel
+@{
+    ViewBag.Title = "Система Управления Бонусной Программой";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@helper ArmButton(string controller, string area, string title) {
+    <div class="span3">
+        @if (controller != null)
+        {
+            <a href="@Url.Action("Index", controller, new { area })" class="btn arm">
+                @title
+            </a>
+        }
+        else
+        {
+            <a class="btn arm disabled">
+                @title
+            </a>
+        }
+    </div>
+}
+<div class="choose-the-arm">
+    <h3 class="text-center">Система Управления Бонусной Программой</h3>
+
+    <div class="row">
+        @ArmButton(Model.CatalogControllerName, "Catalog", "Каталог и заказы")
+        @ArmButton(Model.ActionsControllerName, "Actions", "Управление ценами")
+        @ArmButton(Model.SecurityControllerName, "Security", "Клиенты")
+    </div>
+    <div class="row">
+        <div class="span3"></div>
+        @ArmButton(Model.SiteControllerName, "Site", "Страницы и новости")
+        @ArmButton(Model.ArmSecurityControllerName, "AdminSecurity", "Учётные записи АРМ")
+    </div>
+</div>

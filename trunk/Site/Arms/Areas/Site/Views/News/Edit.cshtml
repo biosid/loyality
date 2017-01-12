@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "Создание новости";
+
+    if (Model.Status != NewsModelStatus.New)
+    {
+        ViewBag.Title = "Редактирование новости";
+    }
+    if (Model.Status == NewsModelStatus.History)
+    {
+        ViewBag.Title = string.Format("Версия новости от {0}", Model.CreationDate.Value);
+    }
+
+    ViewBag.MenuId = "news";
+    Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
+}
+@using System.Configuration
+@using Vtb24.Arms.Site.Models.News
+@model EditNewsMessageModel
+
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Content/News/Edit/index'
+            ],
+            function (index) {
+                index();
+            });
+    </script>
+)
+
+<div class="tab-pane active" id="tab1">
+    @using (Html.BeginForm(Model.Status == NewsModelStatus.New ? "Create" : "Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data", data_x="news/edit/form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Status)
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.PictureUrl, new { data_x="news/edit/pictureUrl" })
+        @Html.HiddenFor(m => m.SnapshotId)
+
+        <div class="sticky-save">
+            <div class="navbar mar-bottom-0" data-x="news/edit/navbar" style="width: 940px; z-index: 2;">
+                <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                    <div class="row mar-left-0">
+                        
+                            <div data-x="news/actions_panel">
+                                <div class="pull-right mar-right-20">
+                                    <a class="btn btn-primary" data-x="news/edit/save">Сохранить</a>
+                                    <a href="@Url.Action("Index", "News")" class="btn">Отмена</a>
+                                </div>
+                                @if (Model.Status == NewsModelStatus.History)
+                                {
+                                    <div class="pull-right mar-top-5">
+                                        <div class="line-height-30 mar-right-20 text-right">Вы редактируете не последнюю версию новости.</div>
+                                    </div>
+                                }
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <h3 class="font-normal">@ViewBag.Title</h3>
+        <div class="row">
+            <div class="span2">Картинка:</div>
+            <div class="span10">
+                <div class="to-delete-image @(Model.Status == NewsModelStatus.New || string.IsNullOrEmpty(Model.PictureUrl) ? "none" : "")" data-x="news/edit/picture_container">
+                    <img src="@(!string.IsNullOrEmpty(Model.PictureUrl) ? 
+                                    string.Format("{0}{1}", ConfigurationManager.AppSettings["content_pictures_view_path"], Model.PictureUrl) : "")" 
+                        class="pull-left mar-right-10 face-article-pic mar-bottom-1em" style="float: left;" />
+                    <a class="btn del-image-button" data-x="news/edit/del_picture">Удалить</a>
+                </div>
+
+                <div class="fileupload fileupload-new mar-bottom-0 @(Model.Status == NewsModelStatus.New || string.IsNullOrEmpty(Model.PictureUrl) ? "" : "none")" data-provides="fileupload" data-x="news/edit/picture_control" style="z-index: 1;">
+                    <div class="input-append">
+                        <div class="uneditable-input span4 mar-top--05ex">
+                            <i class="icon-file fileupload-exists"></i> 
+                            <span class="fileupload-preview">Картинка на главную страницу</span>
+                        </div>
+                        <span class="btn btn-file mar-top--05ex">
+                            <span class="fileupload-new">Выберите файл</span>
+                            <span class="fileupload-exists">Другой файл</span>
+                            <input type="file" name="file">
+                        </span>
+                        <a href="#" class="btn fileupload-exists mar-top--05ex" data-dismiss="fileupload">Отмена</a>
+                    </div>
+                </div>
+                <div>@Html.ValidationMessageFor(m => m.PictureUrl)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2">Приоритет:</div>
+            <div class="span10 mar-left-0">                                    
+                <div class="span2 mar-top--05ex">@Html.TextBoxFor(m => m.Priority, new {@type = "text", @class = "input-mini", @tabindex = "1", @autocomplete = "off", @data_numeric = "", @maxlength = "6"})</div>
+                <div>@Html.ValidationMessageFor(m => m.Priority)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2">Период действия:</div>
+            <div class="span10">                                    
+                <div class="span2 mar-left-0">
+                    <input type="text" name="StartDate" placeholder = "Дата с" value="@(Model.StartDate.HasValue ? Model.StartDate.Value.ToShortDateString() : "")" class="input-block-level mar-top--05ex" tabindex="2" autocomplete="off" data-x="news/edit/dateFrom">
+                    <div>@Html.ValidationMessageFor(m => m.StartDate)</div>
+                </div>                                    
+                <div class="span2 mar-left-10">
+                    <input type="text" name="EndDate" placeholder = "по" value="@(Model.EndDate.HasValue ? Model.EndDate.Value.ToShortDateString() : "")" class="input-block-level mar-top--05ex" tabindex="3" autocomplete="off" data-x="news/edit/dateTo">
+                    <div>@Html.ValidationMessageFor(m => m.EndDate)</div>
+                </div>
+                <div class="span2">
+                    <label class="checkbox">@Html.CheckBoxFor(m => m.IsPublished, new {@autocomplete = "off"}) опубликовать</label>
+                </div>                                                           
+            </div>
+                                
+        </div>
+        <div class="row">
+            <div class="span2">Название:</div>
+            <div class="span10">
+                @Html.TextBoxFor(m => m.Title, new {@class = "input-block-level mar-top--05ex", @tabindex = "4", @autocomplete = "off", @maxlength="256"})
+                <div>@Html.ValidationMessageFor(m => m.Title)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2">Краткое описание:</div>
+            <div class="span10">
+                @Html.TextAreaFor(m => m.Description, new {@rows = "4", @class = "input-block-level mar-top--05ex", @tabindex = "5", @autocomplete = "off", @maxlength="128"})
+                <div>@Html.ValidationMessageFor(m => m.Description)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2">Ссылка на новость:</div>
+            <div class="span10">
+                @Html.TextBoxFor(m => m.Url, new {@class = "input-block-level mar-top--05ex", @tabindex = "6", @autocomplete = "off", @maxlength="128",  @placeholder="Url"})
+                <div>@Html.ValidationMessageFor(m => m.Url)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2">Сегмент:</div>
+            <div class="span10 mar-top--05ex ">
+                @Html.TextBoxFor(m => m.Segment, new {@class = "input-block-level", @tabindex = "7", @autocomplete = "off"})
+            </div>
+        </div>
+
+        if (Model.Status != NewsModelStatus.New)
+        {
+            if (Model.History.Any())
+            {
+                <div class="row">                                
+                    <div class="span12">
+                        <p><b>История версий:</b></p>
+                        <table class="table-bordered table-striped width-full version-table mar-bottom-1em">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10em !important;">Дата</th>
+                                    <th class="text-left" style="width: auto;">Автор изменений</th>                                               
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var row in Model.History)
+                                {
+                                    var url = Url.Action("EditVersion", "News", new {snapshotId=row.SnapshotId});
+                                    if (row.IsLastVersion)
+                                    {
+                                        url = Url.Action("Edit", "News", new {Id=row.EntityId});
+                                    }
+                                    <tr>
+                                        <td class="text-center"><a href="@url">@row.CreationDate</a></td>
+                                        <td>@row.Author</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>

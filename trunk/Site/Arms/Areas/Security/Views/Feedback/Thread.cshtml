@@ -1,0 +1,147 @@
+﻿@using Vtb24.Arms.Security.Models.Feedback
+@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@model FeedbackThreadModel
+@{
+    ViewBag.Title = "Обращение";
+    ViewBag.MenuId = "feedback";
+    Layout = "~/Areas/Security/Views/Shared/_Layout.cshtml";
+}
+
+@Html.AddScriptBlock(
+@<script>
+    require(['Security/Feedback/thread'], function (thread) {
+        thread($('#thread'));
+    });
+    $('.sticky-save').sticky({ topSpacing: 0, center: false });
+</script>)
+
+<div class="tab-pane active" id="thread">
+    <div class="sticky-save">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                <div class="row" style="width: 940px; margin-left: 0;">
+
+                    <div class="row mar-left-20">
+                        <div class="pull-right mar-right-20">
+                            <a href="@Url.Action("Index", "Feedback", FeedbackIndexModel.DeserializeFilters(Model.Filter))" role="button" class="btn">
+                                Назад
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>@Model.Title</h3>
+    
+    @foreach (var message in Model.Messages)
+    {
+        <article class="row feedback__thread_message" id="message-@message.Index">
+            <section class="span3 feedback__thread_message-info">
+                @Author(message)
+                <br />
+                <small class="muted">@message.Time</small>
+                @AuthorInfo(message)
+            </section>
+            <section class="span9 feedback__thread_message-body">
+                <p>@Html.HighlightLinks(message.Text)</p>
+                @Attachments(message.Attachments)
+            </section>
+        </article>
+    }
+    
+    @if (Model.Page == Model.PagesCount)
+    {
+        using (Html.BeginForm("Thread", "Feedback", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m=>m.Reply.Id)
+            @Html.HiddenFor(m=>m.Filter)
+            @Html.HiddenFor(m=>m.Page)
+            <div class="row">
+                <div class="span12">
+                    @Html.ValidationSummary()
+                    @Html.TextAreaFor(m=>m.Reply.Text, new {placeholder="Написать ответ...", rows=10, style="width:100%"})
+                    @FileUpload()
+                    <small class="muted">
+                        Максимальный размер одного файла &mdash; <b>@(Model.MaxFileSizeMb)Мб</b><br />
+                        Максимальный размер всех файлов &mdash; <b>@(Model.MaxTotalFilesSizeMb)Мб</b>
+                    </small>
+                    <button class="btn pull-right btn-success mar-left-10" type="submit">Отправить</button>
+                    @if (Model.ShowMarkAsAnswered)
+                    {
+                        <button class="btn pull-right cancel" name="@Html.NameFor(m => m.Reply.IgnoreThread)" value="true">Оставить без ответа</button>
+                    }
+                </div>
+            </div>
+        }
+    }
+    
+    @if (Model.PagesCount > 1)
+    {
+        @Html.Pager(total: Model.PagesCount, page: Model.Page)
+    }
+</div>
+@helper Author(FeedbackThreadModel.Message message)
+{
+    if (message.IsOperator)
+    {
+        <strong class="text-success">@message.Author</strong>
+    }
+    else if (message.ShowAuthorLink)
+    {
+        var authorUrl = message.AuthorUrl(clientId => Url.Action("EditByClientId", "Users", new { clientId }));
+        <a href="@authorUrl" target="_blank">@message.Author</a>
+    }
+    else
+    {
+        @message.Author
+    }
+}
+@helper AuthorInfo(FeedbackThreadModel.Message message)
+{
+    if (!string.IsNullOrWhiteSpace(message.AuthorMail))
+    {
+        <br/><br/>
+        <small>Email: <a href="mailto:@message.AuthorMail">@message.AuthorMail</a></small>
+        if (!string.IsNullOrWhiteSpace(Model.ClientPhone))
+        {
+            <br/>
+            <small>Телефон: @Model.ClientPhone</small>
+        }
+    }
+}
+@helper Attachments(FeedbackThreadModel.Attach[] files)
+{
+    if (files != null && files.Any())
+    {
+        <div class="row feedback__thread_attachments">
+            <strong class="pull-left"><i class="icon icon-download"></i> Вложения:</strong>
+            <ul class="inline">
+                @foreach (var file in files)
+                {
+                    <li><a href="@file.Link">@file.Filename</a></li>
+                }
+            </ul>
+        </div>
+    }
+}
+@helper FileUpload()
+{   
+    <div class="fileupload fileupload-new mar-bottom-0" data-provides="fileupload">
+        <div class="input-append">
+            <div class="uneditable-input span6 mar-top--05ex">
+                <i class="icon-file fileupload-exists"></i> 
+                <span class="fileupload-preview">Добавить файл к ответу</span>
+            </div>
+            <span class="btn btn-file mar-top--05ex">
+                <span class="fileupload-new">Выберите файл</span>
+                <span class="fileupload-exists">Другой файл</span>
+                <input type="file" name="@Html.NameFor(m=>m.Reply.Files)">
+            </span>
+            <a href="#" class="btn fileupload-exists mar-top--05ex" data-dismiss="fileupload">Отмена</a>
+        </div>
+    </div>
+}

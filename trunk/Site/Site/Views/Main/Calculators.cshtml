@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Calculators";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="full-content shdw">
+    <div class="fc-padding">
+
+        <div class="middle-line white">
+            <div class="ml-text"><span class="size28">Какая-то страница</span></div>
+        </div>
+        
+        <p>Для того чтобы иметь возможность заказывать такие вознаграждения, Вам следует <a href="@Url.Action("Register", "Account")">зарегистрироваться!</a></p>
+        
+        <form action="#" id="popup" class="bonus-calc" style="position: absolute; width: 976px; display:none;">
+            <i class="shared__dark-overlay"></i>
+            <div class="shared__modal-container" style="z-index: 12;">
+                <i class="shared__modal-close-btn"></i>
+
+                <div class="middle-line white" style="margin-top:0">
+                    <div class="ml-text"><span class="size28">Бонусный калькулятор</span></div>
+                </div>
+
+                <h4>Посчитайте, как быстро вы сможете накопить бонусы на интересующие вас подарки!</h4>
+
+                <fieldset>
+                    <div class="layout__form-w540">
+                        <label for="bonus-calc__target" class="layout__col1">
+                            Моя цель накопить бонусов
+                        </label>
+                        <div class="layout__col2">
+                            <input type="text" class="full" name="target" id="bonus-calc__target" data-numeric='{"allow":"0123456789 "}' data-val="true" data-val-required="Укажите цель" />
+                            <span class="field-validation-valid" data-valmsg-for="target" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <div class="layout__form-w540">
+                        <label for="bonus-calc__card" class="layout__col1">
+                            Я владелец карты
+                        </label>
+                        <div class="layout__col2">
+                            <select id="bonus-calc__card" name="card" class="html-select full" data-val="true" data-val-required="Выберите карту">
+                                <option selected="selected" value="">Выберите...</option>
+                                <option data-rate="50" value="classic">Классика</option>
+                                <option data-rate="30" value="gold">Золото</option>
+                                <option data-rate="25" value="privilege">Привилегия</option>
+                                <option data-rate="20" value="prime">Прайм</option>
+                                <option data-rate="50" value="online">Всё онлайн</option>
+                            </select>
+                            <span class="field-validation-valid" data-valmsg-for="card" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <hr class="shared__hr" />
+                
+                <fieldset>
+                    <div class="layout__form-w540">
+                        <div class="layout__col1">
+                            Для достижения цели Вам необходимо совершить покупок по карте на сумму:
+                        </div>
+                        <div class="layout__col2 bonus-calc__points">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <hr class="shared__hr" />
+
+                <h4>Оцените, как скоро Вы достигните цели:</h4>
+
+                <fieldset>
+                    <div class="layout__form-w540">
+                        <label for="bonus-calc__estimate" class="layout__col1">
+                            Расчетное время накопления
+                        </label>
+                        <div class="layout__col2">
+                            <input name="estimate" class="layout__shortinput" value="5" id="bonus-calc__estimate" type="text" data-numeric='{"allow":"0123456789 "}' data-val="true" data-val-required="Укажите расчетное время накопления" />
+                            <span>месяцев</span>
+                            <span class="field-validation-valid" data-valmsg-for="estimate" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <hr class="shared__hr" />
+                
+                <fieldset>
+                    <div class="layout__form-w540">
+                        <div class="layout__col1">
+                            Для достижения цели за расчетное время Вам необходимо совершить покупок по карте в месяц на сумму:
+                        </div>
+                        <div class="layout__col2 bonus-calc__rubles">
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <div class="button-wrap" style="margin-top:50px">
+                    <button type="submit" class="btn-blue large"><span>Пересчитать</span></button>
+                </div>
+            </div>
+        </form>
+        
+        @Html.AddScriptBlock(@<script>
+            require(['Shared/bonus_calc_v1'], function(calc){
+                var $el = $('.bonus-calc');
+                calc({el: $el});
+
+                $(window).on('resize', function(){ 
+                    $el.show().position({my:'center', at:'center', collision:'fit', of:window});
+                })
+                .trigger('resize');
+            });
+        </script>):
+
+
+        <div class="space280"></div>
+    </div>
+</div>

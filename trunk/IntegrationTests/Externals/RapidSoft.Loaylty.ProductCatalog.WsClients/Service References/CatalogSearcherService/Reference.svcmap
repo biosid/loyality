@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b0d6cff1-9e4a-4130-8a2e-52e2dd4bd16a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8101/CatalogSearcherService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CatalogSearcherService.xsd" MetadataType="Schema" ID="c71856df-95c9-40f0-9d6e-91207e7ae4ac" SourceId="1" SourceUrl="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CatalogSearcherService1.xsd" MetadataType="Schema" ID="76262200-feb8-4928-b08e-4ec28b35b992" SourceId="1" SourceUrl="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CatalogSearcherService2.xsd" MetadataType="Schema" ID="a5b55211-7de9-460d-b9e5-6d499c6cce0d" SourceId="1" SourceUrl="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CatalogSearcherService3.xsd" MetadataType="Schema" ID="2c8f641c-6d72-4e66-aaea-dbbc510ab288" SourceId="1" SourceUrl="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CatalogSearcherService4.xsd" MetadataType="Schema" ID="7f6fcb1c-ccc5-4ff7-aee0-bbb93e0bba37" SourceId="1" SourceUrl="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CatalogSearcherService5.xsd" MetadataType="Schema" ID="02136ff0-beeb-42ee-ae2e-08d2d5ee5f39" SourceId="1" SourceUrl="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd5" />
+    <MetadataFile FileName="CatalogSearcherService.disco" MetadataType="Disco" ID="fd6a651f-20df-451b-b9d3-0740c59598f9" SourceId="1" SourceUrl="http://localhost:8101/CatalogSearcherService.svc?disco" />
+    <MetadataFile FileName="CatalogSearcher.wsdl" MetadataType="Wsdl" ID="96671227-1006-4352-aca6-1f4a19c60f4e" SourceId="1" SourceUrl="http://localhost:8101/CatalogSearcherService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

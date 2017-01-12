@@ -1,0 +1,3 @@
+UPDATE [etl].[EtlPackages]
+SET Name='ClientUpdater'
+WHERE Id=N'0CE83A24-44AC-4D1E-81C2-80D2D7A3B124';

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<configSections>
+		<!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+		<section name="entityFramework"
+						 type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+						 requirePermission="false" />
+		<section name="log4net"
+						 type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+	</configSections>
+  <appSettings>
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="PromoAction" />
+    <add key="LogSubsystemName" value="Tests" />
+  </appSettings>
+  <connectionStrings>
+		<add name="LoyaltyDB" 
+				 connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;User ID=@DBUSER@;Password=@DBPASS@;Connect Timeout=@DBTIMEOUT@;MultipleActiveResultSets=true;" 
+				 providerName="System.Data.SqlClient" />
+	</connectionStrings>
+	<log4net>
+		<appender name="CsvAppender" type="log4net.Appender.RollingFileAppender">
+			<lockingmodel type="log4net.Appender.FileAppender+MinimalLock" />
+			<file value="Logs\log.csv" />
+			<appendtofile value="true" />
+			<encoding value="utf-8" />
+			<maxsizerollbackups value="10" />
+			<maximumfilesize value="200MB" />
+			<staticlogfilename value="true" />
+			<layout type="RapidSoft.Loaylty.Logging.Cvs.CsvPatternLayout">
+				<conversionPattern value="%d{yyyy-MM-dd HH:mm:ss,fff};%level;%csvmessage;%csvexception;%n" />
+			</layout>
+		</appender>
+		<appender name="CsvAppender2" type="log4net.Appender.ConsoleAppender">
+			<layout type="RapidSoft.Loaylty.Logging.Cvs.CsvPatternLayout">
+				<conversionPattern value='%d{yyyy-MM-dd HH:mm:ss,fff};%level;%csvmessage;%csvexception;%n' />
+			</layout>
+		</appender>
+		<appender name="EventLogAppender" type="log4net.Appender.EventLogAppender">
+			<filter type="log4net.Filter.LevelRangeFilter">
+				<levelMin value="WARN" />
+				<levelMax value="FATAL" />
+			</filter>
+			<param name="LogName" value="VTB24.Loaylty" />
+			<param name="ApplicationName" value="RapidSoft.Loaylty.PromoAction.Tests" />
+			<layout type="log4net.Layout.PatternLayout">
+				<conversionPattern value="%d{yyyy-MM-dd HH:mm:ss,fff} [%thread] %-5level - %message%n%exception" />
+			</layout>
+		</appender>
+		<root>
+			<level value="ALL" />
+			<appender-ref ref="CsvAppender" /><appender-ref ref="CsvAppender2" /><appender-ref ref="EventLogAppender" />
+		</root>
+	</log4net>
+	<entityFramework>
+		<defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
+	</entityFramework>
+	<system.serviceModel>
+		<bindings>
+			<basicHttpBinding>
+				<binding name="" closeTimeout="00:05:00"
+								 openTimeout="00:05:00" receiveTimeout="00:10:00" sendTimeout="00:05:00"
+								 maxBufferSize="1073741824" maxBufferPoolSize="1073741824"
+								 maxReceivedMessageSize="1073741824">
+					<readerQuotas maxStringContentLength="1073741824" maxArrayLength="100000"
+												maxBytesPerRead="1073741824" maxDepth="32" maxNameTableCharCount="1073741824"/>
+					<security mode="None" />
+				</binding>
+			</basicHttpBinding>
+		</bindings>
+		<client>
+			<endpoint address="http://localhost:57451/PromoActionService.svc"
+								binding="basicHttpBinding" 
+								contract="PromoAction.IPromoActionService" name="BasicHttpBinding_IPromoActionService" />
+			<endpoint address="http://localhost:57451/PromoActionService.svc"
+								binding="basicHttpBinding" 
+								contract="PromoAction.IServiceInfo" name="BasicHttpBinding_IServiceInfo" />
+		</client>
+	</system.serviceModel>
+</configuration>

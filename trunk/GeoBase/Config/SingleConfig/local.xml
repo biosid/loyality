@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ValidateRegExp>@(\w*)@</ValidateRegExp>
+  <GlobalConfigFileTransformations>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@logsRoot@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@loyaltyLogs@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@elasticsearchCluster@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:9200</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Database settings -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBHOST@</string>
+      </Patterns>
+      <ReplaceTo>RPHQBUILD1\MSSQLSERVER2008</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBNAME@</string>
+      </Patterns>
+      <ReplaceTo>Geopoints</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBUSER@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBPASS@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBTIMEOUT@</string>
+      </Patterns>
+      <ReplaceTo>60</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- SMTP START -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LoyaltyEmail@</string>
+      </Patterns>
+      <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SMTPHOST@</string>
+      </Patterns>
+      <ReplaceTo>localhost</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpUserName@</string>
+      </Patterns>
+      <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ErrorMessageTo@</string>
+      </Patterns>
+      <ReplaceTo>vtb-team-errors@rapidsoft.ru</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- SMTP END -->
+
+  </GlobalConfigFileTransformations>
+  <ConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\Rapidsoft.Loaders.KLADR\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Rapidsoft.Loaders.KLADR\App.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\Rapidsoft.Loaders.KLADR\bin\Debug\RapidSoft.Loaders.KLADR.exe.config</string>
+        <string>..\..\Rapidsoft.Loaders.KLADR\bin\Release\RapidSoft.Loaders.KLADR.exe.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Rapidsoft.Loaders.IPDB\app.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Rapidsoft.Loaders.IPDB\app.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\Rapidsoft.Loaders.IPDB\bin\Debug\RapidSoft.Loaders.IPDB.exe.config</string>
+        <string>..\..\Rapidsoft.Loaders.IPDB\bin\Release\RapidSoft.Loaders.IPDB.exe.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Rapidsoft.Loaders.Geocoder\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Rapidsoft.Loaders.Geocoder\App.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.GeoPoints\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.GeoPoints\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.GeoPoints\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.GeoPoints\log4net.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\AutoPatch\AutoPatch.exe.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\AutoPatch\AutoPatch.exe.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\DB_DROP_CREATE.cmd-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\DB_DROP_CREATE.cmd</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\Scripts\!DBCreate.sql-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\Scripts\!DBCreate.sql</NewFilePath>
+    </ConfigFile>
+  </ConfigFiles>
+
+  <DevConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.GeoPoints.Tests\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.GeoPoints.Tests\App.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.GeoPoints.Tests\bin\Debug\RapidSoft.GeoPoints.Tests.dll.config</string>
+        <string>..\..\RapidSoft.GeoPoints.Tests\bin\Release\RapidSoft.GeoPoints.Tests.dll.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+  </DevConfigFiles>
+
+</SingleConfig>

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{33ACAD91-6BCD-4C0C-B5A0-52E59C08CE69}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.PartnersConnector</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.PartnersConnector</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PartnersConnectorSupportService.svc" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Schemas\run.txt" />
+    <Content Include="YmlFiles\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HttpHandlers\Online\GetPaymentStatusHttpHandler.cs" />
+    <Compile Include="HttpHandlers\Online\NotifyOrderHttpHandler.cs" />
+    <Compile Include="HttpHandlers\Offline\NotifyOrderStatus.cs" />
+    <Compile Include="HttpHandlers\PartnerInteractionHttpHandler.cs" />
+    <Compile Include="Services\BonusPaymentGatewayService.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HttpHandlers\HttpHelpers.cs" />
+    <Compile Include="HttpHandlers\Online\ValidateUserHttpHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NotifyOrderStatus.ashx" />
+    <Content Include="ValidateUser.ashx" />
+    <Content Include="NotifyOrder.ashx" />
+    <Content Include="Web.config-TEMPLATE">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config-TEMPLATE">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="..\Certificates\TestBankPrivateKey.pem">
+      <Link>TestBankPrivateKey.pem</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="packages.config" />
+    <Content Include="GetPaymentStatus.ashx" />
+    <None Include="Properties\PublishProfiles\13.pubxml" />
+    <None Include="Schemas\Online\CancelPaymentResult.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Offline\FixBasketItemPrice.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Online\GetPaymentStatusResult.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Online\NotifyOrderResult.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Offline\NotifyOrdersResult.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Online\ValidateUserResult.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Online\NotifyOrder.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63df64b8-c9f3-4a51-841d-58d6d1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.BonusGateway\RapidSoft.Loaylty.BonusGateway.csproj">
+      <Project>{a130d3dc-72ea-4e07-ae64-caa194245b6e}</Project>
+      <Name>RapidSoft.Loaylty.BonusGateway</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6b6e5793-b048-473d-8707-23031cc227cd}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj">
+      <Project>{E10328E0-16F8-448C-8F26-E754D9A1FE83}</Project>
+      <Name>RapidSoft.Loaylty.Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ProductCatalog.WsClients\RapidSoft.Loaylty.ProductCatalog.WsClients.csproj">
+      <Project>{fa8260e1-3e5b-4be8-9c65-5c6554310ef6}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loyalty.Security\RapidSoft.Loyalty.Security.csproj">
+      <Project>{58f9d3de-b234-483c-9674-cc838206524e}</Project>
+      <Name>RapidSoft.Loyalty.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.Site\RapidSoft.VTB24.Site.csproj">
+      <Project>{bef9525f-6493-469f-bd15-acbbb7b011a8}</Project>
+      <Name>RapidSoft.VTB24.Site</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Common\RapidSoft.Loaylty.PartnersConnector.Common.csproj">
+      <Project>{24baf73d-238c-43a2-9670-f937ce31cb7f}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Interfaces\RapidSoft.Loaylty.PartnersConnector.Interfaces.csproj">
+      <Project>{f80d391a-fe15-4ebb-aac0-ca1a229e9c35}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Queue\RapidSoft.Loaylty.PartnersConnector.Queue.csproj">
+      <Project>{89bba02c-6700-49fc-8057-7fe55f716046}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Queue</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>31412</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:11396/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:500</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

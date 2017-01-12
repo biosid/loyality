@@ -1,0 +1,127 @@
+﻿@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@{
+    ViewBag.Title = "Заказы клиента " + Model.Query.login;
+    ViewBag.MenuId = "users";
+    Layout = "~/Areas/Security/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.Security.Models.Users
+@model UserOrdersModel
+@Html.AddScriptBlock(
+    @<script>
+         require(['Security/Users/orders'], function(orders) {
+             orders();
+         });
+     </script>
+    )
+@*
+--------------------- Навигация
+*@
+<ul class="nav nav-pills mar-left-0 mar-bottom-10">
+    <li><a href="@Url.Action("Edit", "Users", new { Model.Query.login })"><span>Профиль</span></a></li>
+    <li><a href="@Url.Action("Messages", "Users", new { Model.Query.login })">Личные сообщения</a></li>
+    <li class="disabled"><a href="@Url.Action("Orders", "Users", new { Model.Query.login })">Заказы</a></li>
+    <li><a href="@Url.Action("Points", "Users", new { Model.Query.login })">Выписка</a></li>
+</ul>
+@*
+--------------------- Шапка
+*@
+<div class="sticky-save" data-x="security/users/orders/navbar">
+    <div class="navbar" style="width: 940px;">
+        <div class="navbar-inner mar-bottom-10 no-border pad-left-12 mar-left-0 pad-top-5">
+            @using(Html.BeginForm("Orders", "Users", FormMethod.Get, new { @class = "mar-bottom-0" }))
+            {
+                @Html.Hidden("login", Model.Query.login)
+                <div class="row">
+                    <div class="span2">
+                        <input type="text" id="from" name="from" placeholder="Дата с" value="@(Model.Query.from.HasValue ? Model.Query.from.Value.ToShortDateString() : "")" class="input-block-level mar-bottom-0">
+                    </div>
+                    <div class="span2">
+                        <input type="text" id="to" name="to" placeholder="по" value="@(Model.Query.to.HasValue ? Model.Query.to.Value.ToShortDateString() : "")" class="input-block-level mar-bottom-0">
+                    </div>
+                    <div class="span3">
+                        @Html.EnumDropDownList("kind", Model.Query.kind, new { @class = "input_block_level mar-bottom-0" })
+                    </div>
+                    <div class="span2">
+                        <button class="btn" style="margin-top: 0;" type="submit"><i class="icon-search"></i> Найти</button>
+                    </div>
+                    <a href="@Url.Action("Index", "Users")" class="btn pull-right" style="margin-top: 0;">Назад</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<h3>@ViewBag.Title</h3>
+@*
+--------------------- Заказы
+*@
+@if (Model.Orders != null && Model.Orders.Length > 0)
+{
+    <table class="table info-table table-bordered font-size-13 table-row-select" data-x="security/users/orders/list">
+        <thead>
+            <tr>
+                <th><span class="nowrap">Дата&nbsp;/&nbsp;Время</span></th>
+                <th>№&nbsp;заказа</th>
+                <th>Статус</th>
+                <th>Наименование</th>
+                <th>К&#8209;во</th>
+                <th>Цена, бонусы</th>
+                <th style="text-align: center;">Доставка</th>
+            </tr>
+        </thead>
+        <tbody class="middled">
+            @foreach(var order in Model.Orders)
+            {
+                <tr data-x="security/users/orders/row">
+                    <td rowspan="@order.Items.Length">@order.OrderTime.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td rowspan="@order.Items.Length"><a href="@Url.Action("Order", "Users", new { query = Model.Query.ToQuery(), Model.Query.login, orderId = order.Id })">@order.Id</a></td>
+                    <td rowspan="@order.Items.Length">@order.Status</td>
+                    
+                    @if (order.Items.Length > 0)
+                    {
+                        <td class="text-left">@order.Items[0].Title</td>
+                        <td class="text-center">@order.Items[0].Quantity</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+
+                    <td rowspan="@order.Items.Length">@order.TotalPrice.ToString("N0")</td>
+                    <td rowspan="@order.Items.Length" style="white-space: pre-wrap">@Html.SanitizeHtml(order.DeliveryString.Trim())</td>
+                </tr>
+                    
+                foreach (var item in order.Items.Skip(1))
+                    {
+                        <tr data-x="security/users/orders/order-item-row">
+                            <td class="text-left">@item.Title</td>
+                            <td class="text-center">@item.Quantity</td>
+                        </tr>
+                    }
+            }
+        </tbody>
+    </table>
+    if (Model.TotalPages > 1)
+    {
+        @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+    }
+}
+else
+{
+    <div class="row mar-left-0">
+        <div class="span12">
+            @switch (Model.Query.kind)
+            {
+                case OrdersKind.inprocess:
+                    <text>Активные заказы не найдены</text>
+                    break;
+                case OrdersKind.history:
+                    <text>Завершенные заказы не найдены</text>
+                    break;
+                default:
+                    <text>Заказы не найдены</text>
+                    break;
+            }
+        </div>
+    </div>
+}

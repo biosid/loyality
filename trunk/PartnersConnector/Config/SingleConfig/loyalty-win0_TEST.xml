@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs\PartnersConnector</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Database settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBHOST@</string>
+          </Patterns>
+          <ReplaceTo>loyalty-win0</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- PartnersConnector -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PartnersConnectorThumbprint@</string>
+          </Patterns>
+          <ReplaceTo>8f 8d ad 59 d2 40 f9 a4 98 a7 0b cd b6 02 92 c9 5d c8 40 50</ReplaceTo>
+        </ConfigFileTransformation>
+
+
+        <!-- Импорт каталога ОЗОН -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@OzonLocalFileUrl@</string>
+          </Patterns>
+          <ReplaceTo>http://loyalty-win0:700/YmlFiles/vtb.xml</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@OzonImportChron@</string>
+          </Patterns>
+          <ReplaceTo>0 30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Импорт каталога Холодильник.ру -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@HolodilnikPartnerId@</string>
+          </Patterns>
+          <ReplaceTo>103</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@HolodilnikRemoteUrl@</string>
+          </Patterns>
+          <ReplaceTo>http://front-41.holodilnik.ru/ozon_products/vtb_yml.xml</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@HolodilnikLocalUrl@</string>
+          </Patterns>
+          <ReplaceTo>http://loyalty-win0:700/YmlFiles/holodilnik.xml</ReplaceTo>
+        </ConfigFileTransformation>
+
+
+        <!-- Litres customization -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@LitresPartnerId@</string>
+          </Patterns>
+          <ReplaceTo>100</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Email settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpFrom@</string>
+          </Patterns>
+          <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpUserName@</string>
+          </Patterns>
+          <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpPassword@</string>
+          </Patterns>
+          <ReplaceTo>mail</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpHost@</string>
+          </Patterns>
+          <ReplaceTo>loyalty-win0</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpEnableSsl@</string>
+          </Patterns>
+          <ReplaceTo>false</ReplaceTo>
+        </ConfigFileTransformation>
+
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\loyalty-win0_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

@@ -1,0 +1,19 @@
+﻿@model Vtb24.Arms.Catalog.Models.Shared.CategoriesLevelModel
+@foreach (var category in Model.CategoryItems)
+{
+    var childrenCategoriesModel = category.GetChildrenCategoriesModel(Model);
+    var className = category.IsPermissinsGranted ? null : "disabled";
+    var url = Model.ToActionUrl != null ? Model.ToActionUrl(category) : null;
+    <li class="dropcatitem"> 
+        <i data-x="shared/categories/expand_subcat"><b></b></i>
+
+        <a href="@url" class="@className" data-x="shared/categories/item">@category.Title</a>
+
+        <ul class="dropcatcategory1">
+        @if (childrenCategoriesModel != null)
+        {
+            @Html.Partial("_GiftsCategoriesLevel", childrenCategoriesModel)
+        }
+        </ul>
+    </li>
+}

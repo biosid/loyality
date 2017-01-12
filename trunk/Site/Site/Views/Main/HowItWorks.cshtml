@@ -1,0 +1,143 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Как программа работает";
+}
+
+@Html.AddScriptBlock(@<script>
+    $('.hpwrks-intro .dashed').on('click', function(){
+        $(this).next('p').toggle();
+        return false;
+    });
+
+    $('.shared__more-block').on('click', function(){
+        if ($('.hpwrks-content').is(':hidden')) {
+            $('.shared__more-block').addClass('_is-open').find('span').text('Свернуть');
+        } else {
+            $('.shared__more-block').removeClass('_is-open').find('span').text('Подробнее');
+        }
+
+        $('.hpwrks-content').toggle('blind', 300, function(){
+            // fix для IE8 и counter-reset
+            $(this).find('.shared__num-list').html($(this).find('.shared__num-list').html());
+        });
+
+        return false;
+    });
+</script>)
+
+<div class="full-content shdw">
+    <div class="fc-padding">
+
+        <div class="middle-line white">
+            <div class="ml-text"><span class="size28">Как программа работает</span></div>
+        </div>
+        
+        <section class="hpwrks-intro" style="margin-bottom:20px">
+            <div class="hpwrks-intro__cell">
+                <h3 class="hpwks-intro__heading _is-first">Регистрация</h3>
+                <div class="hpwrks-intro__block _have-card">
+                    <a href="/cards" class="hpwrks-intro_ico-lnk" target="_blank"></a>
+                    <h4 class="hpwrks-intro__subheading">У Вас есть карта ВТБ24?</h4>
+                    <ol class="hpwrks-intro__list shared__num-list">
+                        <li class="shared__num-list-bullet _is-bold">
+                            <a href="#" class="dashed">Регистрируйтесь на сайте</a>
+                            <p style="display:none">В течение 24 часов Вы получите SMS 
+                                с результатами регистрации в программе.</p>
+                        </li>
+                        <li class="shared__num-list-bullet _is-bold">Начинайте накапливать бонусы</li>
+                    </ol>
+                </div>
+                <div class="hpwrks-intro__block _have-no-card">
+                    <h4 class="hpwrks-intro__subheading">У Вас нет карты ВТБ24?</h4>
+                    <ol class="hpwrks-intro__list shared__num-list">
+                        <li class="shared__num-list-bullet _is-bold">Оформите карту ВТБ24 в любом <a href="http://www.vtb24.ru/Pages/OfficeSearch.aspx" target="_blank">отделении банка</a></li>
+                        <li class="shared__num-list-bullet _is-bold">Начинайте накапливать бонусы</li>
+                    </ol>
+                </div>
+
+            </div>
+            <div class="hpwrks-intro__margin-cell"></div>
+            <div class="hpwrks-intro__cell">
+                <h3 class="hpwks-intro__heading _is-second">Получение вознаграждения</h3>
+                <div class="hpwrks-intro__block _is-gift">
+                    <a href="@Url.Action("Index", "Catalog")" class="hpwrks-intro_ico-lnk" target="_blank"></a>
+                    <h4 class="hpwrks-intro__subheading">Как заказать?</h4>
+                    <ol class="hpwrks-intro__list shared__num-list">
+                        <li class="shared__num-list-bullet _is-bold">
+                            <a href="#" class="dashed">Пройдите активацию</a>
+                            <p style="display:none">В течение 3-х дней после успешной
+                                регистрации Вы получите предложение
+                                от Банка активировать свое участие
+                                в программе через <a href="http://www.vtb24.ru/Pages/AtmSearch.aspx" target="_blank">банкоматы ВТБ24</a>
+                                или <a href="https://www.telebank.ru/WebNew/Login.aspx" target="_blank">Телебанк</a>.</p>
+                        </li>
+                        <li class="shared__num-list-bullet _is-bold">
+                            <a href="#" class="dashed">Вы получите SMS с номером участника программы от ВТБ24</a>
+                            <p style="display:none">В течение 5 дней после после успешной 
+                                активации Вы получите по SMS номер карты 
+                                участника, который понадобится Вам для 
+                                первого заказа.</p>
+                        </li>
+                        <li class="shared__num-list-bullet _is-bold">Заказывайте подарки на сайте</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        
+        <p>Регистрация возможна только для владельцев <a href="/cards" target="_blank">карт ВТБ24</a>, участвующих в программе.</p>
+
+        <a href="#" class="shared__more-block" style="margin-top: 25px">
+            <div class="hpwrks-more-block__fix"><i></i><span class="dashed">Подробнее</span></div>
+        </a>
+
+        <section class="hpwrks-content" style="display:none;">
+
+            <h3><span>1.</span>Регистрация и накопление бонусов</h3>
+
+            <p><a href="@Url.Action("Register", "Account")" target="_blank">Регистрируйтесь</a> на сайте и накапливайте бонусы, расплачиваясь за свои покупки картами ВТБ24!</p>
+
+            <figure class="hpwrks-registration">
+                <ul class="hpwrks-registration__steps">
+                    <li class="hpwrks-registration__form-step">
+                        <a href="@Url.Action("Register", "Account")" class="hpwrks-registration_ico-lnk" target="_blank"></a>
+                        Заполните<br/> форму<br/>регистрации
+                    </li>
+                    <li class="hpwrks-registration__sms-step">SMS-подтверждение регистрации</li>
+                </ul>
+                <ul class="hpwrks-registration__steps2">
+                    <li class="hpwrks-registration__pay-step">Оплачивайте картой <br/>ВТБ24 товары и услуги <br/>в любых магазинах</li>
+                    <li class="hpwrks-registration__promo-step">Участвуйте <br/>в акциях программы <br/>«Коллекция»</li>
+                    <li class="hpwrks-registration__partner-step">Получайте бонусы от <br/>партнёров программы <br/>«Коллекция»</li>
+                </ul>
+                <figcaption><p>Копите бонусы</p></figcaption>
+            </figure>
+
+            <hr class="shared__hr" style="margin-top:55px"/>
+
+            <h3><span>2.</span>Получение вознаграждения</h3>
+            <p>Для получения доступа к заказу вознаграждений Вам необходимо пройти активацию через <a href="http://www.vtb24.ru/Pages/AtmSearch.aspx" target="_blank">банкоматы ВТБ24</a> или <a href="https://www.telebank.ru/WebNew/Login.aspx" target="_blank">Телебанк</a>. После активации Вы можете обменивать накопленные бонусы на вознаграждения из <a href="@Url.Action("Index", "Catalog")" target="_blank">каталога программы</a>, представленного на сайте.</p>
+
+            <figure class="hpwrks-order">
+                <ul class="hpwrks-order__steps">
+                    <li class="hpwrks-order__activate-step">
+                        <ol class="shared__num-list">
+                            <li class="shared__num-list-bullet _is-bold">Пройдите активацию <br/>через банкоматы ВТБ24<br/> или Телебанк</li>
+                            <li class="shared__num-list-bullet _is-bold">Вы получите SMS с номером участника программы</li>
+                        </ol>
+                    </li>
+                    <li class="hpwrks-order__order-step">Выбирайте<br> вознаграждения<br/> в каталоге <br/>и оформляйте <br/>заказы на сайте</li>
+                    <li class="hpwrks-order__get-step">
+                        <a href="@Url.Action("Index", "Catalog")" class="hpwrks-order__ico-lnk" target="_blank"></a>
+                        Получайте вознаграждения
+                    </li>
+                </ul>
+            </figure>
+
+            <a href="#" class="shared__more-block _is-open" style="margin: 20px 0 0 0">
+                <div class="hpwrks-more-block__fix"><i></i><span class="dashed">Свернуть</span></div>
+            </a>
+
+        </section>
+
+    </div>
+</div>

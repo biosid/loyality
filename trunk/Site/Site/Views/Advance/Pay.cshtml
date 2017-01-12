@@ -1,0 +1,18 @@
+﻿@model Vtb24.Site.Models.Advance.PaymentFormModel
+@{
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+    ViewBag.Title = "Оплата картой";
+}
+@Html.AddScriptBlock(
+    @<script>
+         require(['Advance/pay'], function(pay) {
+             pay();
+         });
+     </script>
+    )
+<form id="pay-advance-starter" action="@Model.Url" method="@Model.Method">
+    @foreach (var parameter in Model.Parameters)
+    {
+        <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+    }
+</form>

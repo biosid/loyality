@@ -1,0 +1,71 @@
+﻿@model Vtb24.Site.Models.Catalog.BankProductModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.WrapClass = "two-col2";
+    ViewBag.Title = Model.Title;
+    ViewBag.MainMenu = "Catalog";
+}
+@section secondary
+{
+    <div class="prod-container">
+        <div class="prod-card shdw">
+            <div class="prod-img">
+                <span class="fancy_big_asimage" style="background-image: url('/Content/images/bankproduct/@Model.Thumbnail');">&nbsp;</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="prod-descript bank-products__prod-descript">
+    @Html.Partial("_BreadCrumbs", Model.BreadCrumbs)
+
+    <h2>@Model.Title</h2>
+
+    @if (!Model.IsUserActivated)
+    {
+        <div class="text shared__typography" style="margin-bottom: 0;">
+            <p>Для оплаты вознаграждений, пожалуйста, активируйте свое участие в Программе «Коллекция» через <a target="_blank" href="https://www.telebank.ru">Телебанк</a> или <a target="_blank" href="http://www.vtb24.ru/pages/atmsearch.aspx">банкоматы ВТБ24</a>. Спасибо.</p>
+        </div>
+    }
+
+    <div class="shared__well-yellow bank-products__prod-expiration">
+        <span class="shared__well-yellow-icon"></span>
+        <span class="shared__well-yellow-title" style="margin-bottom: 0;">
+            Предложение действительно до @Model.ExpirationDate.ToString("dd.MM.yyyy").
+        </span>
+    </div>
+
+    <div>
+        <p class="balls" style="margin-bottom: 20px;">@Html.RawPluralize(Model.Price, "<span>{1:N0}</span> бонус", "<span>{2:N0}</span> бонуса", "<span>{5:N0}</span> бонусов")</p>
+    </div>
+
+    @if (Model.IsUserActivated && Model.PointsDeficit.HasValue)
+    {
+        <div class="no-enough" style="padding-right: 4px;">
+            <span class="table">
+                <span class="cell">
+                    <span class="text">@Html.RawPluralize(Model.PointsDeficit.Value, "Вам не хватает <span class=\"red\">{1:N0}</span> бонус.", "Вам не хватает <span class=\"red\">{2:N0}</span> бонуса.", "Вам не хватает <span class=\"red\">{5:N0}</span> бонусов.")</span>
+                </span>
+                <span class="cell">
+                    <span class="indicator-bg">
+                        <span class="indicator-fg" style="width: @Model.PointsProgress%"></span>
+                    </span>
+                </span>
+            </span>
+        </div>
+    }
+
+    @using (Html.BeginForm("BankProduct", "Buy", FormMethod.Get, new { id = "bank_product_form" }))
+    {
+        @Html.Hidden("bankProductId", Model.Id)
+        <button type="@(Model.CanRedeem ? "submit" : "button")" class="bank-products__product-pay @(Model.CanRedeem ? "" : "disabled")" @(Model.CanRedeem ? "" : " disabled='disabled'")>
+            <span>Оплатить</span>
+        </button>
+    }
+
+    <div class="text shared__typography">
+        <p>В случае успешного проведения операции деньги будут переведены на счет продукта.</p>
+    </div>
+</div>
+
+<div class="prod-descript-bg"></div>

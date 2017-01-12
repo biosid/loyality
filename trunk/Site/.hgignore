@@ -1,0 +1,13 @@
+syntax: glob
+packages/
+Services/bin/
+Services/obj/
+ServicesTests/obj/
+Site/bin/
+Site/obj/
+Site/Site.csproj.user
+VTB24Site.v11.suo
+Site/Site.csproj.orig
+Site/Infrastructure/BaseController.cs.orig
+Site/Content/local.js.orig
+Site/App_Start/BundleConfig.cs.orig

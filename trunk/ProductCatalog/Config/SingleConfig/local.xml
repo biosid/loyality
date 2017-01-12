@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ValidateRegExp>@(\w*)@</ValidateRegExp>
+  <GlobalConfigFileTransformations>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@CONFIGFILENAME@</string>
+      </Patterns>
+      <ReplaceTo>local.xml</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@logsRoot@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@loyaltyLogs@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@elasticsearchCluster@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:9200</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Database settings -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBHOST@</string>
+      </Patterns>
+      <ReplaceTo>.</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBNAME@</string>
+      </Patterns>
+      <ReplaceTo>ProductCatalogDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBUSER@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBPASS@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBTIMEOUT@</string>
+      </Patterns>
+      <ReplaceTo>60</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@STUBFOREXTERNALSERVICE@</string>
+      </Patterns>
+      <ReplaceTo>true</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- SMTP START -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LoyaltyEmail@</string>
+      </Patterns>
+      <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SMTPHOST@</string>
+      </Patterns>
+      <ReplaceTo>localhost</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpUserName@</string>
+      </Patterns>
+      <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ErrorMessageTo@</string>
+      </Patterns>
+      <ReplaceTo>vtb-team-errors@rapidsoft.ru</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- SMTP END -->
+
+    <!-- Email settings -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@MAILTO@</string>
+      </Patterns>
+      <ReplaceTo>vtb-back-team@rapidsoft.ru</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@MAILFROM@</string>
+      </Patterns>
+      <ReplaceTo>DZakharovRapidSoft@gmail.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@MAILUSERNAME@</string>
+      </Patterns>
+      <ReplaceTo>DZakharovRapidSoft@gmail.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@MAILPASSWORD@</string>
+      </Patterns>
+      <ReplaceTo>ZxcAsdQwe</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@MAILSMTPHOST@</string>
+      </Patterns>
+      <ReplaceTo>smtp.gmail.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@MAILSMTPPORT@</string>
+      </Patterns>
+      <ReplaceTo>587</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@MailEnableSsl@</string>
+      </Patterns>
+      <ReplaceTo>true</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- PartnerIntegration -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@FixBasketItemPriceUrl@</string>
+      </Patterns>
+      <ReplaceTo>https://ogrishchenko-w7.rapidsoft.local:643/Actions/FixBasketItemPrice</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@CheckOrderURL@</string>
+      </Patterns>
+      <ReplaceTo>https://ogrishchenko-w7.rapidsoft.local:643/Actions/CheckOrder</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ConfirmOrderURL@</string>
+      </Patterns>
+      <ReplaceTo>https://ogrishchenko-w7.rapidsoft.local:643/Actions/ConfirmOrder</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@BatchConfirmOrderURL@</string>
+      </Patterns>
+      <ReplaceTo>https://ogrishchenko-w7.rapidsoft.local:643/Actions/BatchConfirmOrder</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@TestPartnerThumbprint@</string>
+      </Patterns>
+      <ReplaceTo>10 8e 80 42 da 05 48 78 80 c3 e5 b0 c1 a2 39 dc f8 ea 63 1b</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@BankProductsPartnerId@</string>
+      </Patterns>
+      <ReplaceTo>171</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- ETL -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ETLSchemaName@</string>
+      </Patterns>
+      <ReplaceTo>dbo</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- OrdersNotifications  -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ArmOrderUrlTemplate@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:3051/Catalog/Orders/Edit/{0}</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- BonusGateway -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@BonusGatewayPartnerId@</string>
+      </Patterns>
+      <ReplaceTo>vtb_partner_1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@BonusGatewayPosId@</string>
+      </Patterns>
+      <ReplaceTo>vtb_pos_1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@BonusGatewayTerminalId@</string>
+      </Patterns>
+      <ReplaceTo>vtb_terminal_1</ReplaceTo>
+    </ConfigFileTransformation>
+
+  </GlobalConfigFileTransformations>
+
+  <ConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.WebServices\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.WebServices\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.WebServices\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.WebServices\log4net.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.WebServices\quartz.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.WebServices\quartz.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\App.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\bin\Quartz.Server.exe.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\quartz.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\quartz.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\bin\quartz.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\quartz_jobs.xml-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\quartz_jobs.xml</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\bin\quartz_jobs.xml</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\etl.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\etl.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\bin\etl.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\log4net.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\bin\log4net.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\AutoPatch\AutoPatch.exe.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\AutoPatch\AutoPatch.exe.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\Scripts\!DBCreate.sql-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\Scripts\!DBCreate.sql</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\DB_DROP_CREATE.cmd-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\DB_DROP_CREATE.cmd</NewFilePath>
+    </ConfigFile>
+  </ConfigFiles>
+
+  <DevConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Editor\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Editor\App.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Etl\RapidSoft.Etl.Editor\bin\Debug\RapidSoft.Etl.Editor.exe.config</string>
+        <string>..\..\RapidSoft.Etl\RapidSoft.Etl.Editor\bin\Release\RapidSoft.Etl.Editor.exe.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Monitor\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Monitor\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Tests\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Tests\App.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Tests\quartz.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Tests\quartz.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Tests\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.Tests\log4net.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.ProductCatalog.ImportTests\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.ProductCatalog.ImportTests\App.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Monitor\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Monitor\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>configure.cmd-TEMPLATE</FilePath>
+      <NewFilePath>configure.cmd</NewFilePath>
+    </ConfigFile>
+  </DevConfigFiles>
+
+  <ExternalTransformationsFiles>
+    <ExternalTransformationsFile>
+      <FilePath>CommonConfiguration\local_endpoints.xml</FilePath>
+    </ExternalTransformationsFile>
+  </ExternalTransformationsFiles>
+
+</SingleConfig>

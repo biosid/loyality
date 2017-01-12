@@ -1,0 +1,101 @@
+﻿@model Vtb24.Site.Models.MyInfo.MyInfoModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Мои данные";
+    ViewBag.Menu = "MyInformation";
+}
+
+@section secondary
+{
+    @Html.Action("ClientMenu", "Layout", new { activeMenu = ViewBag.Menu })
+}
+
+@Html.AddScriptBlock(
+    @<script>
+         require(['Shared/form.submit'], function (module) {
+             module({ form: '#myinfo-form' });
+         });
+    </script>
+)
+
+<div class="mnl16 white-shadowed">    
+    <div class="middle-line white">
+        <div class="ml-text"><span class="size28">Мои данные</span></div>
+    </div>
+<!-- -->
+    @using (Html.BeginForm("Index", "MyInfo", FormMethod.Post, new { id="myinfo-form", autocomplete = "off" }))
+        {
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+            <div class="table form-order">
+                <ul class="reset row">
+                    <li class="cell">
+                        <label>Ваше ФИО</label>
+                    </li>
+                    <li class="cell">
+                        @Model.Fio
+                    </li>
+                </ul>
+               
+                    <ul class="reset row">
+                        <li class="cell">
+                            <label>Дата рождения</label>
+                        </li>
+                        <li class="cell">
+                            @if (Model.BirthDate.HasValue)
+                            {
+                                @Model.BirthDate.Value.ToString("dd.MM.yyyy")
+                            }
+                            else
+                            {
+                                <text>Не указана</text>
+                            }
+                        </li>
+                    </ul>
+                
+                <ul class="reset row">
+                    <li class="cell">
+                        <label>Пол</label>
+                    </li>
+                    <li class="cell">
+                        @Model.Gender
+                    </li>
+                </ul>
+                
+                <ul class="reset row">
+                    <li class="cell">
+                        <label>Номер мобильного телефона</label>
+                    </li>
+                    <li class="cell">
+                        @Model.PhoneNumber
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        @Html.LabelFor(m => m.Email, "Адрес электронной почты (E-mail)")
+                    </li>
+                    <li class="cell">
+                        @Html.TextBoxFor(m=>m.Email)
+                    </li>
+                </ul>
+                
+                @for (var i=0; i<Model.CustomFields.Length; i++)
+                {
+                    <ul class="reset row">
+                        <li class="cell">
+                            @Html.LabelFor(m=>m.CustomFields[i].Value, Model.CustomFields[i].Title)
+                        </li>
+                        <li class="cell">
+                            @Html.TextBoxFor(m=>m.CustomFields[i].Value, new {maxlength=250})
+                            @Html.HiddenFor(m=>m.CustomFields[i].Id)
+                        </li>
+                    </ul>
+                }
+            </div>
+            <div class="button-wrap mnt40">
+                <button class="btn-blue large" type="submit"><span>Сохранить изменения</span></button>
+            </div>
+        }
+<!-- -->
+</div>

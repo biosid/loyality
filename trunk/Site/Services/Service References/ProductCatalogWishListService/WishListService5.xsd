@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:8101/WishListService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:simpleType name="ProductAvailabilityStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Available" />
+      <xs:enumeration value="CategoryIsNotActive" />
+      <xs:enumeration value="PartnerIsNotActive" />
+      <xs:enumeration value="ProductIsNotActive" />
+      <xs:enumeration value="CategoryPermissionNotFound" />
+      <xs:enumeration value="DeliveryRateNotFound" />
+      <xs:enumeration value="TargetAudienceNotFound" />
+      <xs:enumeration value="ModerationNotApplied" />
+      <xs:enumeration value="PriceNotFound" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProductAvailabilityStatuses" nillable="true" type="tns:ProductAvailabilityStatuses" />
+  <xs:complexType name="Product">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Adult" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Artist" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Available" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Barcode" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="BasePriceRUR" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BasePriceRurDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Binding" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryNamePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryOfOrigin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataTour" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Days" type="xs:int" />
+      <xs:element minOccurs="0" name="Delivery" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Director" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Downloadable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ExternalLocationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Format" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HallPlan" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelStars" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ISBN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Included" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsActionPrice" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDeliveredByEmail" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsKids" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPremiere" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRecommended" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastChangedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastChangedUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ManufacturerWarranty" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Meal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Media" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModerationStatus" type="tns:ProductModerationStatuses" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageExtent" type="xs:int" />
+      <xs:element minOccurs="0" name="Param" nillable="true" type="tns:ArrayOfProductParam" />
+      <xs:element minOccurs="0" name="Part" type="xs:int" />
+      <xs:element minOccurs="0" name="PartnerCategoryId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="PartnerProductId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PerformanceType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PerformedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pickup" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Pictures" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Place" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PriceBase" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PriceRUR" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProductId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Publisher" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecordingLength" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Room" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesNotes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Starring" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="tns:ProductStatuses" />
+      <xs:element minOccurs="0" name="StatusChangedCause" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusChangedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StatusChangedUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Storage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Store" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TableOfContents" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TargetAudiencesIds" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Transport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypePrefix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vendor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VendorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Volume" type="xs:int" />
+      <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="WorldRegion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Year" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Product" nillable="true" type="tns:Product" />
+  <xs:simpleType name="ProductModerationStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="InModeration" />
+      <xs:enumeration value="Canceled" />
+      <xs:enumeration value="Applied" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProductModerationStatuses" nillable="true" type="tns:ProductModerationStatuses" />
+  <xs:complexType name="ArrayOfProductParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductParam" nillable="true" type="tns:ProductParam" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductParam" nillable="true" type="tns:ArrayOfProductParam" />
+  <xs:complexType name="ProductParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductParam" nillable="true" type="tns:ProductParam" />
+  <xs:simpleType name="ProductStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotActive" />
+      <xs:enumeration value="Active" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProductStatuses" nillable="true" type="tns:ProductStatuses" />
+</xs:schema>

@@ -1,0 +1,249 @@
+﻿@using Vtb24.Arms.Actions.Models
+@using Vtb24.Arms.AdminServices.ActionsManagement.Actions
+@model ActionEditModel
+@{
+    ViewBag.Title = Model.IsNewAction ? "Создание механики" : "Редактирование механики";
+    Layout = "~/Areas/Actions/Views/Shared/_Layout.cshtml";
+
+    var showPriority = Model.Type == Types.base_addition || Model.Type == Types.base_multiplication || Model.IsExclusive;
+}
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Actions/Edit/index'
+            ],
+            function (index) {
+                index({
+                    targetAudienceValue: '@(Model.IsNewAction ? Actions.AUDIENCE_ATTRIBUTE_TOKEN : Actions.FormatAudienceName(Model.Id))',
+                    targetAudienceRegexp: '@Actions.AUDIENCE_ATTRIBUTE_REGEXP',
+                    cfFactorModelName: '@Html.NameFor(m => m.ConditionalFactors[0].Factor)',
+                    cfPriorityModelName: '@Html.NameFor(m => m.ConditionalFactors[0].Priority)',
+                    cfPredicateModelName: '@Html.NameFor(m => m.ConditionalFactors[0].Predicate)',
+                    baseAdditionRuleName: '@Types.base_addition',
+                    baseMultiRuleName: '@Types.base_multiplication'
+                });
+            });
+    </script>
+)
+@*
+--------------------- Форма
+*@       
+<div class="tab-pane active">
+    <div class="container">
+        @using (Html.BeginForm(Model.IsNewAction ? "Create" : "Edit", "Actions", FormMethod.Post, new { data_x = "actions/actual/edit/form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.query)
+            @Html.HiddenFor(m => m.IsNewAction)
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Status)
+            @Html.HiddenFor(m => m.MechanicId)
+            @Html.HiddenFor(m => m.Metadata)
+            <div class="sticky-save">
+                <div class="navbar mar-bottom-0">
+                    <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                        <div class="row">
+                            <div class="span12">
+                                @if (!Model.IsNewAction)
+                                {
+                                    <div class="pull-left mar-left-20">
+                                        <a href="@Url.Action("History", "Actions", new { id = Model.Id, Model.query })" role="button" class="btn">История изменений</a>
+                                    </div>
+                                }
+                                <div class="pull-right mar-right-20">
+                                    <button class="btn btn-primary" type="submit">Сохранить</button>
+                                    <a href="@Url.Action("List", "Actions", Model.ActionsQueryModel)" role="button" data-toggle="modal" class="btn">Отмена</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="font-normal">@ViewBag.Title:</h3>
+            <div class="row">
+                <div class="span12">
+                    <ul class="unstyled">                        
+                        @if (!Model.IsNewAction)
+                        {
+                            <li class="row">
+                                <div class="span2 line-height-30 mar-bottom-5">ID</div>
+                                <div class="span10 line-height-30 mar-bottom-5">@Model.Id</div>
+                            </li>
+                        }
+                        <li class="row">
+                            <div class="span2 line-height-30">Наименование:</div>
+                            <div class="span10">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "input-block-level", maxlength = 256 })
+                                @Html.ValidationMessageFor(m => m.Name)
+                            </div>
+                        </li>
+                        <li class="row">
+                            <div class="span2 line-height-30">Период:</div>
+                            <div class="span2">
+                                @Html.TextBoxFor(m => m.From, "{0:dd.MM.yyyy}", new { @class = "input-small", placeholder = "Дата с", id = "from", data_val = "true", data_val_dateru = "Неверный формат даты" })
+                                @Html.ValidationMessageFor(m => m.From)
+                            </div>                        
+                            <div class="span2">
+                                @Html.TextBoxFor(m => m.To, "{0:dd.MM.yyyy}", new { @class = "input-small", placeholder = "по", id = "to", data_val = "true" })
+                                @Html.ValidationMessageFor(m => m.To)
+                            </div>
+                        </li>
+                        @if (!Model.IsNewAction)
+                        {
+                            <li class="row mar-bottom-5">
+                                <div class="span2 line-height-30">Статус:</div>
+                                <div class="span10 line-height-30">@Html.DescriptionFor(Model.Status)</div>
+                            </li>
+                            <li class="row mar-bottom-5">
+                                <div class="span2 line-height-30">Модерация:</div>
+                                <div class="span10 line-height-30">
+                                    @{
+                                        string className = null;
+                                        switch (Model.ApproveStatus)
+                                        {
+                                            case ApproveStatuses.not_approved:
+                                                className = "label-important";
+                                                break;
+                                            case ApproveStatuses.approved:
+                                                className = "label-success";
+                                                break;
+                                            case ApproveStatuses.correction:
+                                                className = "label-warning";
+                                                break;
+                                        }
+                                        <div class="label @className">
+                                            @Html.DescriptionFor(Model.ApproveStatus)
+                                        </div>
+                                        @Model.ApproveMessage
+                                    }
+                                </div>
+                            </li>
+                        }
+                        <li class="row">
+                            <div class="span2"><span class="line-height-30" data-val="0">Приоритет:</span></div>
+                            
+                                <div class="span2">@Html.TextBoxFor(m => m.Priority, showPriority ? (object)new { @class = "input-mini span2", maxlength = "4", data_numeric = "", data_x = "actions/actual/edit/priority" } 
+                                                                                : new { @readonly="readonly", @class = "input-mini span2", maxlength = "4", data_numeric = "", data_x = "actions/actual/edit/priority" })</div>
+                                <div class="span2">
+                                    <label class="checkbox mar-top-5">
+                                        @Html.CheckBoxFor(m => m.IsExclusive, new { data_x = "actions/actual/edit/isExclusive" })
+                                        Исключающая
+                                    </label>
+                                    <label class="checkbox mar-top-5">
+                                        @Html.CheckBoxFor(m => m.IsNotExcludedBy)
+                                        Неисключаемая
+                                    </label>
+                                </div>
+                                <div class="line-height-30">
+                                    <small class="muted">Приоритет учитывается только в базовых и исключающих правилах</small>
+                                </div>
+                                <div style="clear: left; margin-left: 180px;">@Html.ValidationMessageFor(m => m.Priority)</div>
+                                
+                            
+                        </li>
+                        <li class="row mar-top-1ex">
+                            <div class="span2 mar-bottom-1ex line-height-30">Условие:</div>
+                            <div class="span10">
+                                <div class="nowrap" data-x="actions/actual/edit/filter_builder"></div>
+                                @Html.HiddenFor(m => m.Predicate)
+                                <div class="mar-top-20" style="clear: left;">
+                                    @Html.ValidationMessageFor(m => m.Predicate)
+                                </div>
+                            </div>
+                        </li>
+                        <li class="row">
+                            <div class="span2 mar-bottom-1ex">Условные факторы:</div>
+                            <div class="span10 error-mes-sprava" data-x="actions/edit/factors_error">@Html.ValidationMessageFor(m => m.ConditionalFactors)</div>
+                            <div class="span12 mar-left-20 nowrap">
+                                <table class="astable-decor table-bordered object-specifications-table" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:2em !important;">&nbsp;</th>
+                                            <th style="width:4em !important;" class="text-center">Фактор</th>
+                                            <th style="width:4em !important;" class="text-center">Приоритет</th>
+                                            <th>Условие</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-x="actions/actual/edit/factor_template" style="display:none" class="tr-val-top">
+                                            <td class="text-center"><a data-x="actions/actual/edit/remove_factor" class="btn"><i class="icon-remove"></i></a></td>
+                                            <td class="text-center">
+                                                <input data-val="true" data-val-required="Необходимо указать фактор" data-floatnumeric="" type="text" value="0" class="input-mini" data-x="actions/actual/edit/factor_template_factor"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <input data-val="true" data-val-required="Необходимо указать приоритет" data-numeric="" type="text" value="0" class="input-mini" data-x="actions/actual/edit/factor_template_priority"/>
+                                            </td>
+                                            <td>
+                                                <input type="hidden" value="{}" data-x="actions/actual/edit/factor_template_predicate"/>
+                                                <div class="nowrap" data-x="actions/actual/edit/factor_template_filter_builder"></div>
+                                            </td>
+                                        </tr>
+                                        @if (Model.ConditionalFactors != null && Model.ConditionalFactors.Length > 0)
+                                        {
+                                            foreach (var index in Enumerable.Range(0, Model.ConditionalFactors.Length))
+                                            {
+                                                <tr data-x="actions/actual/edit/factor" class="tr-val-top">
+                                                    <td class="text-center"><a data-x="actions/actual/edit/remove_factor" class="btn"><i class="icon-remove"></i></a></td>
+                                                    <td class="text-center">
+                                                        @Html.TextBoxFor(m => m.ConditionalFactors[index].Factor, "{0:0.######}", new { @class = "input-mini", data_floatnumeric = "", maxlength = 10 })
+                                                        @Html.ValidationMessageFor(m => m.ConditionalFactors[index].Factor)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @Html.TextBoxFor(m => m.ConditionalFactors[index].Priority, new { @class = "input-mini", data_numeric = "" })
+                                                        @Html.ValidationMessageFor(m => m.ConditionalFactors[index].Priority)
+                                                    </td>
+                                                    <td>
+                                                        <div class="nowrap" data-x="actions/actual/edit/cf_filter_builder"></div>
+                                                        @Html.HiddenFor(m => m.ConditionalFactors[index].Predicate, new { data_x = "actions/actual/edit/cf_predicate" })
+                                                        <div class="mar-top-20" style="clear: left;">
+                                                            @Html.ValidationMessageFor(m => m.ConditionalFactors[index].Predicate)
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        <tr>
+                                            <td class="text-center"><a data-x="actions/actual/edit/add_factor" class="btn btn-success"><i class="icon-plus icon-white"></i></a></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li class="row mar-top-1em">
+                            <div class="span2 line-height-30">Механика:</div>
+                            <div class="span10">
+                                <div class="stock-condition">
+                                    <div class="row pad-bottom-10">
+                                        <div class="span1"></div>
+                                        <div class="span5 nowrap"><b>@Model.MechanicName</b></div>
+                                    </div>
+                                    <div class="row pad-bottom-10">
+                                        <div class="span1 text-right">Тип:</div>
+                                        <div class="span5">
+                                            @Html.EnumDropDownListFor(m => m.Type, new { @class = "input-block-level", data_x="actions/actual/edit/mechanic_type" })
+                                            @Html.ValidationMessageFor(m => m.Type)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="span1 text-right">Фактор:</div>
+                                        <div class="span5 error-mes-sprava">
+                                            @Html.TextBoxFor(m => m.Factor, "{0:0.######}", new { @class = "input-mini", data_signed_floatnumeric = "", maxlength = 10 })
+                                            @Html.ValidationMessageFor(m => m.Factor)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>

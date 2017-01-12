@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        EtlStandardValueFormatSnippet
+      </Title>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Type</ToolTip>
+          <Default>Int32</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+
+<![CDATA[public static bool TryParse$type$(string str, out $type$ result)
+        {
+            if ($type$.TryParse(str, NumberStyles.None, CultureInfo.InvariantCulture, out result))
+            {
+                return true;
+            }
+            else
+            {
+                result = default($type$);
+                return false;
+            }
+        }
+
+        public static $type$ Parse$type$(string str)
+        {
+            $type$ result;
+            if (TryParse$type$(str, out result))
+            {
+                return result;
+            }
+            else
+            {
+                throw GetFormatException(str, typeof($type$));
+            }
+        }
+
+        public static $type$? Parse$type$OrNull(string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return null;
+            }
+
+            return Parse$type$(str);
+        }
+
+        public static bool TryParse$type$(object obj, out $type$ result)
+        {
+            var typeCode = Convert.GetTypeCode(obj);
+            switch (typeCode)
+            {
+                case TypeCode.$type$:
+                    result = ($type$)obj;
+                    return true;
+                default:
+                    return TryParse$type$(ToString(obj, typeCode), out result);
+            }
+        }
+
+        public static $type$ Parse$type$(object obj)
+        {
+            $type$ result;
+            if (TryParse$type$(obj, out result))
+            {
+                return result;
+            }
+            else
+            {
+                throw GetFormatException(obj, typeof($type$));
+            }
+        }
+
+        public static $type$? Parse$type$OrNull(object obj)
+        {
+            var typeCode = Convert.GetTypeCode(obj);
+            switch (typeCode)
+            {
+                case TypeCode.DBNull:
+                case TypeCode.Empty:
+                    return null;
+
+                case TypeCode.$type$:
+                    return ($type$)obj;
+
+                case TypeCode.String:
+                    var str = (string)obj;
+                    if (str == "")
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        $type$ result;
+                        if (TryParse$type$(str, out result))
+                        {
+                            return result;
+                        }
+                        else
+                        {
+                            throw GetFormatException(obj, typeof($type$));
+                        }
+                    }
+                
+                default:
+                    {
+                        $type$ result;
+                        if (TryParse$type$(ToString(obj, typeCode), out result))
+                        {
+                            return result;
+                        }
+                        else
+                        {
+                            throw GetFormatException(obj, typeof($type$));
+                        }
+                    }
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

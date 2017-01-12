@@ -1,0 +1,23 @@
+﻿@model OnlinePartnerStub.Models.Main.MainModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Онлайн-партнер \"Заглушка\"";
+}
+<h2>Онлайн-партнер "Заглушка"</h2>
+<ul>
+    <li>Полное имя: <b>@Model.FullName</b></li>
+    <li>Email: <b>@Model.Email</b></li>
+    <li>Город: <b>@Model.City</b></li>
+    <li>Баланс: <b>@(Model.Balance.HasValue ? Model.Balance.Value.ToString("N0") : "")</b></li>
+    <li>Мультипликативный коэффициент: <b>@Model.BonusRate</b></li>
+    <li>Аддитивный коэффициент: <b>@Model.BonusDelta</b></li>
+</ul>
+<a href="@Url.Action("Buy", "Main", new { userTicket = Model.UserTicket, price = 100m, rate = Model.BonusRate, delta = Model.BonusDelta })">Товар на 100 рублей</a>
+<br/>
+<a href="@Url.Action("Buy", "Main", new { userTicket = Model.UserTicket, price = 200m, rate = Model.BonusRate, delta = Model.BonusDelta })">Товар на 200 рублей</a>
+<br/>
+<a href="@Url.Action("Buy", "Main", new { userTicket = Model.UserTicket, price = 500m, rate = Model.BonusRate, delta = Model.BonusDelta })">Товар на 500 рублей</a>
+<br/>
+<a href="@Url.Action("Buy", "Main", new { userTicket = Model.UserTicket, price = 1000m, rate = Model.BonusRate, delta = Model.BonusDelta })">Товар на 1000 рублей</a>
+<br/>
+<a href="@Url.Action("Buy", "Main", new { userTicket = Model.UserTicket, price = 1000m, rate = Model.BonusRate * 0.5m, delta = Model.BonusDelta })">Товар на 1000 рублей (с неверным расчетом стоимости в бонусах)</a>

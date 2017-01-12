@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40BDD6B9-BCFE-4364-BB9E-4890F966EBBC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.VTB24.BankConnector.WsClients</RootNamespace>
+    <AssemblyName>RapidSoft.VTB24.BankConnector.WsClients</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AdminBankConnectorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BankConnectorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PaymentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="WebClientCaller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService.wsdl" />
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService1.wsdl" />
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.AppendProfileCustomFieldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.EchoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.GenericBankConnectorResponseOfint.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.GetAllProfileCustomFieldsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.RemoveProfileCustomFieldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.RenameProfileCustomFieldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.SimpleBankConnectorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.UpdateClientEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.AdminBankConnectorService.UpdateClientPhoneNumberResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService.wsdl" />
+    <None Include="Service References\BankConnectorService\BankConnectorService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService1.wsdl" />
+    <None Include="Service References\BankConnectorService\BankConnectorService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.BlockClientToDeleteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.ClearOrderAttemptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.DisableOfferResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.EchoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.EnqueueSmsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.GenericBankConnectorResponseOfBankOffersServiceResponseXZrH00sf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.GenericBankConnectorResponseOfboolean.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.GenericBankConnectorResponseOfCardRegistrationParametersXZrH00sf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.GenericBankConnectorResponseOfClientProfileGVwQv096.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.GenericBankConnectorResponseOfNullableOfboolean5F2dSckg.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.GetBankOffersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.GetCardRegistrationParametersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.GetClientProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.IsCardRegisteredResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.IsClientAddedToDetachListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.RegisterCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.RegisterNewClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.SaveOrderAttemptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.SimpleBankConnectorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.UnregisterCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.UpdateClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\RapidSoft.VTB24.BankConnector.WsClients.BankConnectorService.VerifyCardRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PaymentService\PaymentService.wsdl" />
+    <None Include="Service References\PaymentService\PaymentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentService\PaymentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentService\PaymentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentService\PaymentService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentService\RapidSoft.VTB24.BankConnector.WsClients.PaymentService.GenericBankConnectorResponseOfboolean.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PaymentService\RapidSoft.VTB24.BankConnector.WsClients.PaymentService.GenericBankConnectorResponseOfPaymentFormParametersXZrH00sf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PaymentService\RapidSoft.VTB24.BankConnector.WsClients.PaymentService.SimpleBankConnectorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdminBankConnectorService\" />
+    <WCFMetadataStorage Include="Service References\BankConnectorService\" />
+    <WCFMetadataStorage Include="Service References\PaymentService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PaymentService\PaymentService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PaymentService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PaymentService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PaymentService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorService\BankConnectorService.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

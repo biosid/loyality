@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RapidSoft.Loaylty.Mechanics.Core.Repositories.EntityRepositoryBase&lt;TEntity&gt;" Collapsed="true">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAiQAAABAAAAgAAAAAAAAAAAQAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Core\EntityRepositoryBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RapidSoft.Loaylty.Mechanics.Core.Repositories.TraceableEntityRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Core\TraceableEntityRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RapidSoft.Loaylty.Mechanics.Core.Repositories.EntityRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="6.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Core\EntityRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="RapidSoft.Loaylty.Mechanics.Core.Repositories.IEntityRepositoryBase&lt;TEntity, TKey&gt;" Collapsed="true">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Core\IEntityRepositoryBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RapidSoft.Loaylty.Mechanics.Core.Repositories.IEntityRepository&lt;TEntity, TKey&gt;" Collapsed="true">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Core\IEntityRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RapidSoft.Loaylty.Mechanics.Core.Repositories.ITraceableEntityRepository&lt;TEntity, TKey&gt;" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Core\ITraceableEntityRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

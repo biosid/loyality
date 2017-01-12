@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C588DBF4-95B2-46BA-ACE9-A94F5B265265}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.PartnersConnector.QuarzTasks</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.PartnersConnector.QuarzTasks</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DataKeys.cs" />
+    <Compile Include="JobDataMapExtentions.cs" />
+    <Compile Include="Jobs\CommitOrdersJob.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Jobs\ImportDeliveryRatesOzonJob.cs" />
+    <Compile Include="Jobs\ImportJobBase.cs" />
+    <Compile Include="Jobs\ImportYmlJob.cs" />
+    <Compile Include="Jobs\JobBase.cs" />
+    <Compile Include="Jobs\ClearDeletedGiftsFilesJob.cs" />
+    <Compile Include="Jobs\RestartHelper.cs" />
+    <Compile Include="Jobs\SendLitresRemainingCodesCountReport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\Quartz\Quartz.2010.csproj">
+      <Project>{aef8823b-e45b-4b35-a4d0-c08c1196d017}</Project>
+      <Name>Quartz.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63df64b8-c9f3-4a51-841d-58d6d1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6b6e5793-b048-473d-8707-23031cc227cd}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ProductCatalog.WsClients\RapidSoft.Loaylty.ProductCatalog.WsClients.csproj">
+      <Project>{FA8260E1-3E5B-4BE8-9C65-5C6554310EF6}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Common\RapidSoft.Loaylty.PartnersConnector.Common.csproj">
+      <Project>{24BAF73D-238C-43A2-9670-F937CE31CB7F}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Interfaces\RapidSoft.Loaylty.PartnersConnector.Interfaces.csproj">
+      <Project>{f80d391a-fe15-4ebb-aac0-ca1a229e9c35}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Litres\RapidSoft.Loaylty.PartnersConnector.Litres.csproj">
+      <Project>{3fbe62a1-a43f-4f75-8bff-eea251aeda76}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Litres</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

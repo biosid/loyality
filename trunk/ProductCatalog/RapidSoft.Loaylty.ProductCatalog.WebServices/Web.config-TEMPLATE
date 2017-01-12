@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+<configuration>
+  <configSections>
+    <section name="quartz" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0,Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <section name="fakeData" type="RapidSoft.Loaylty.ProductCatalog.Fake.FakeDataConfigSection, RapidSoft.Loaylty.ProductCatalog"/>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+    <section name="activeDirectory" type="RapidSoft.VTB24.ArmSecurity.ActiveDirectoryConfigSection, RapidSoft.VTB24.ArmSecurity"/>
+  </configSections>
+  <appSettings>
+    <add key="LoyaltyProgramId" value="5"/>
+    <add key="VtbSystemUserName" value="vtbSystemUser" />
+    <add key="MaxResultsCountBasketItems" value="1000"/>
+    <add key="MaxBasketItemProductsQuantity" value="9"/>
+    <add key="MaxResultsCountOrders" value="1000"/>
+    <add key="MaxResultsCountCategories" value="1000"/>
+    <add key="MaxResultsCountProducts" value="1000"/>
+    <add key="MaxResultsCountWishList" value="1000"/>
+    <add key="MaxWishListItemProductsQuantity" value="9"/>
+    <add key="MaxWishListProductsQuantity" value="30"/>
+    <add key="MaxResultsCountRecommendedProducts" value="10"/>
+    <add key="MaxResultsCountPopularProducts" value="10"/>
+    <add key="MechanicsCasheSeconds" value="10"/>
+    <!-- Тип сериализации параметров методов web-сервисов. Поддерживаются значения "JSON" и "XML", если не указано то используется ToString метод. -->
+    <add key="ParamLogSerializer" value="JSON"/>
+    <!-- Список email адресов через ";", на которые необходимо отправлять отчеты импорта и сообщения об ошибке уникальности идентификаторов заказов в системе поставщика/партнера. -->
+    <add key="reportRecipients" value="@MAILTO@" />
+    <!-- Список идентификаторов дополнительных etl-пакетов импорта тарифов доставки (77A3E3C6-C00B-41FF-8376-DCEF0DF79A00 - указывать не надо) -->
+    <add key="ImportDeliveryRatesEtlPackageIds" value="777FF1A8-3FBF-4127-96D3-70A0FA7FD05C" />
+    <!--add key="log4net.Internal.Debug" value="true"/-->
+    <!-- Настройки для БПШ -->
+    <add key="BonusGatewayPartnerId" value="@BonusGatewayPartnerId@" />
+    <add key="BonusGatewayPosId" value="@BonusGatewayPosId@" />
+    <add key="BonusGatewayTerminalId" value="@BonusGatewayTerminalId@" />
+    <!-- Настройки для рассчета скидок. -->
+    <add key="ProductPriceDropThresholdPercent" value="90" />
+    <add key="ProductPriceRiseThresholdPercent" value="95" />
+    <add key="ProductPriceDiscountPeriod" value="14" />
+    <!-- Настройки для учета незавершенных заказов -->
+    <add key="SaveOrderAttemptMinHour" value="0" />
+    <add key="SaveOrderAttemptMaxHour" value="19" />
+    <add key="ClearOrderAttemptMinHour" value="0" />
+    <add key="ClearOrderAttemptMaxHour" value="20" />
+    <!-- Настройки автоматического подтверждения заказов -->
+    <add key="CustomCommitMethodSettingName" value="CustomCommitMethod" />
+    <!-- Настройка продуктов банка -->
+    <add key="BankProductsPartnerId" value="@BankProductsPartnerId@" />
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="ProductCatalog" />
+    <add key="LogSubsystemName" value="WebServices" />
+    <add key="EventLogSourceName" value="RapidSoft.Loyalty.ProductCatalog" />
+    <add key="LogsElasticSearchNodes" value="@elasticsearchCluster@" />
+  </appSettings>
+  <system.web>
+    <compilation debug="true" targetFramework="4.5">
+      <assemblies>
+        <add assembly="System.Data.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+      </assemblies>
+    </compilation>
+    <httpRuntime targetFramework="4.5" />
+  </system.web>
+
+  <quartz configSource="quartz.config" />
+
+  <system.serviceModel>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true" />
+    <bindings>
+      <basicHttpBinding>
+        <binding name="" maxReceivedMessageSize = "100000000" maxBufferSize="100000000" />
+        <binding name="ClientProfileServicePortBinding" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_IGeoPointService" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_IOrderManagementService" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_IPartnerSecurityService" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="ProcessingServicePortBinding" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_IAdminMechanicsService" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_IMechanicsService" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_IServiceInfo" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_ITargetAudienceService" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_IServiceInfo1" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_ICatalogSearcher" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BonusGatewayPortBinding" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_BankConnector" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+        <binding name="BasicHttpBinding_BankConnectorPayment" maxReceivedMessageSize = "5000000" maxBufferSize="5000000" />
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="@ClientProfileAddress@"
+                binding="basicHttpBinding" bindingConfiguration="ClientProfileServicePortBinding"
+                contract="ClientProfileService.ClientProfileService" name="ClientProfileServicePort" />
+      <endpoint address="@GEOSERVICEURL@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IGeoPointService"
+                contract="GeoPointService.IGeoPointService" name="BasicHttpBinding_IGeoPointService" />
+      <endpoint address="@PartnersConnectorOrderManagementURL@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOrderManagementService"
+                contract="PartnersOrderManagementService.IOrderManagementService"
+                name="BasicHttpBinding_IOrderManagementService" />
+      <endpoint address="@PartnersConnectorPartnerSecurityURL@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IPartnerSecurityService"
+                contract="PartnerSecurityService.IPartnerSecurityService"
+                name="BasicHttpBinding_IPartnerSecurityService" />
+      <endpoint address="@ProcessingAddress@" binding="basicHttpBinding"
+                bindingConfiguration="ProcessingServicePortBinding" contract="ProcessingService.ProcessingService"
+                name="ProcessingServicePort" />
+      <endpoint address="@AdminMechanicsService@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IAdminMechanicsService"
+                contract="AdminMechanicsService.IAdminMechanicsService" name="BasicHttpBinding_IAdminMechanicsService" />
+      <endpoint address="@MechanicsService@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IMechanicsService"
+                contract="MechanicsService.IMechanicsService" name="BasicHttpBinding_IMechanicsService" />
+      <endpoint address="@MechanicsService@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceInfo"
+                contract="MechanicsService.IServiceInfo" name="BasicHttpBinding_IServiceInfo" />
+      <endpoint address="@TargetAudienceService@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ITargetAudienceService"
+                contract="TargetAudienceService.ITargetAudienceService" name="BasicHttpBinding_ITargetAudienceService" />
+      <endpoint address="@TargetAudienceService@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceInfo1"
+                contract="TargetAudienceService.IServiceInfo" name="BasicHttpBinding_IServiceInfo1" />
+      <endpoint address="@CatalogSearcherService@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICatalogSearcher"
+                contract="CatalogSearcherService.ICatalogSearcher" name="BasicHttpBinding_ICatalogSearcher" />
+      <endpoint address="@BonusGatewayUrl@" binding="basicHttpBinding"
+                bindingConfiguration="BonusGatewayPortBinding" contract="BonusGateway.BonusGateway"
+                name="BonusGatewayPort" />
+      <endpoint address="@BankConnectorService@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_BankConnector"
+                contract="BankConnectorService.BankConnector" name="BasicHttpBinding_BankConnector" />
+      <endpoint address="@BankConnectorPaymentService@"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_BankConnectorPayment"
+                contract="PaymentService.IPaymentService" name="BasicHttpBinding_BankConnectorPayment" />
+    </client>
+  </system.serviceModel>
+
+  <fakeData>
+    <priceMechanic useFakePriceMechanic="@STUBFOREXTERNALSERVICE@" 
+                   baseMult="1"
+                   baseAdd="CASE WHEN p.PartnerId=1 THEN 1000.00000 ELSE 0 END"
+                   mult="1"
+                   add="CASE WHEN p.vendor='Издательский Дом &quot;Равновесие&quot;' THEN -500 ELSE 0.00000 END+CASE WHEN p.vendor='Новый Диск / ID Company' THEN -600 ELSE 0.00000 END" />
+    <checkOrderResult useFake="@STUBFOREXTERNALSERVICE@"
+                      checked="1"
+                      reason="Fake resp Есть в наличии"
+                      reasonCode="Fake resp" />
+    <commitOrdersAsyncResult useFake="@STUBFOREXTERNALSERVICE@"
+                             success="true"
+                             reason="Fake resp Поставлено в очередь"
+                             reasonCode="25" />
+    <fixBasketItemPrice useFake="@STUBFOREXTERNALSERVICE@"
+                        confirmed="1"
+                        actualPrice="123"
+                        reason="Fake зафиксированно"
+                        reasonCode="Fake" />
+    <calcSingleValue useFake="@STUBFOREXTERNALSERVICE@"
+                     result="123" />
+    <fakeGeopoints useFake="@STUBFOREXTERNALSERVICE@" />
+  </fakeData>
+
+  <connectionStrings>
+    <add name="LoyaltyProductCatalogDB" 
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@" 
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <log4net configSource="log4net.config" />
+
+  <system.net>
+    <mailSettings>
+      <smtp deliveryMethod="Network" from="@MAILFROM@">
+        <network host="@MAILSMTPHOST@"
+                 port="@MAILSMTPPORT@"
+                 enableSsl="@MailEnableSsl@"
+                 userName="@MAILUSERNAME@"
+                 password="@MAILPASSWORD@" />
+      </smtp>
+    </mailSettings>
+  </system.net>
+
+  <activeDirectory>
+    <connection path="@ActiveDirectoryPath@" username="@ActiveDirectoryUserName@" password="@ActiveDirectoryPassword@" />
+  </activeDirectory>
+
+  <!--system.diagnostics>
+    <trace autoflush="true">
+      <listeners>
+        <add
+            name="textWriterTraceListener"
+            type="System.Diagnostics.TextWriterTraceListener"
+            initializeData="Logs\trace.txt" />
+      </listeners>
+    </trace>
+  </system.diagnostics-->
+
+</configuration>

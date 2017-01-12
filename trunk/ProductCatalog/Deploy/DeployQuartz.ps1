@@ -1,0 +1,2 @@
+.\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\bin\Quartz.Server.exe uninstall /instance:ProductCatalog
+.\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\bin\Quartz.Server.exe install /instance:ProductCatalog

@@ -1,0 +1,27 @@
+﻿@model Vtb24.Site.Models.Catalog.ListProductModel[]
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Товара нет в наличии";
+}
+<div class="full-content shdw">
+    <div class="fc-padding">
+        <div class="middle-line white" style="margin-bottom: 10px">
+            <div class="ml-text">
+                <span class="size28">Товара нет в наличии</span>
+            </div>
+        </div>
+        <p class="shared__well-blueish" style="padding:10px 22px">            
+            К сожалению, данного товара временно нет в наличии.
+            Вы можете проверить наличие товара в ближайшее время на нашем сайте или найти другое вознаграждение в нашем <a href="@Url.Action("Index", "Catalog")">каталоге</a>.
+        </p>
+
+        <h2 style="font-weight: normal; border-bottom: none; margin-top: 60px;">Представляем Вам рекомендации по вознаграждениям</h2>
+        
+        <ul class="catalog clearfix catalog__white-bg" style="margin-left:-15px;">
+            @foreach (var product in Model)
+            {
+                @Html.Partial("Catalog/_ListProduct", product)
+            }
+        </ul>
+    </div>
+</div>

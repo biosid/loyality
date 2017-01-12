@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>RapidSoft.VTB24.ArmSecurity</id>
+    <version>1.0.0</version>
+    <authors>egoncharov</authors>
+    <owners>egoncharov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>VTB24 common packages: RapidSoft.VTB24.ArmSecurity</description>
+    <dependencies>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" />
+      <frameworkAssembly assemblyName="System.Configuration" />
+      <frameworkAssembly assemblyName="System.Core" />
+      <frameworkAssembly assemblyName="System.DirectoryServices" />
+    </frameworkAssemblies>
+    </metadata>
+  <files>
+    <file src="bin\Release\RapidSoft.VTB24.ArmSecurity.*" target="lib" />
+  </files>
+</package>

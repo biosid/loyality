@@ -1,0 +1,86 @@
+﻿@using Rapidsoft.VTB24.Reports.Etl.EtlFiles.Models
+@using Rapidsoft.VTB24.Reports.Etl.EtlReports.Models
+@model Report<RequestWithTwoRepliesReportItem>
+@{
+    Layout = "~/Views/InteractionReports/_Layout.cshtml";
+    ViewBag.Title = Html.DescriptionFor(Model.Request.Type);
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @FileHeaderItem("Исходный файл", "Коллекция", true)
+            @FileHeaderItem("Ответный файл", "Террадата", false)
+            @FileHeaderItem("Файл с результатами", "Коллекция", true)
+        </tr>
+        <tr>
+            @FileHeader2Item(true)
+            @FileHeader2Item(false)
+            @FileHeader2Item(true)
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                @FileItem(item.Request, true, false)
+                @if (item.BankReply != null)
+                {
+                    @FileItem(item.BankReply, false, item.HasBankRowCountDiscrepancy)
+                    @(item.LoyaltyReply != null ? FileItem(item.LoyaltyReply, true, item.HasLoyaltyRowCountDiscrepancy) : NoFileItem(true, item.IsLoyaltyReplyDelayed))
+                }
+                else
+                {
+                    @NoFileItem(false, item.IsBankReplyDelayed)
+                    <td colspan="4"></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+@helper FileHeaderItem(string caption, string side, bool withSize)
+{
+    <th class="text-center" colspan="@(withSize ? 4 : 3)">@caption<br/>@side</th>
+}
+@helper FileHeader2Item(bool withSize)
+{
+    <th class="text-center">Дата/время</th>
+    <th>Наименование</th>
+    <th class="text-center">Количество записей</th>
+    if (withSize)
+    {
+        <th class="text-center">Размер, KB</th>
+    }
+}
+@helper FileItem(EtlFile file, bool withSize, bool hasRowDiscrepancy)
+{
+    <td class="text-center">
+        @file.Timestamp.ToString("dd.MM.yyyy HH:mm:ss")
+    </td>
+    <td>
+        @file.Name
+    </td>
+    <td class="text-center @(hasRowDiscrepancy ? " danger" : null)">
+        @(file.RowCount.HasValue ? file.RowCount.Value.ToString("D") : "-")
+    </td>
+    if (withSize)
+    {
+        <td class="text-center @(file.SizeExceeded ? " danger" : null)">
+            @(file.Size.HasValue ? (file.Size.Value / 1024.0).ToString("F1") : "-")
+        </td>
+    }
+}
+@helper NoFileItem(bool withSize, bool isDelayed)
+{
+    if (isDelayed)
+    {
+        <td colspan="@(withSize ? 4 : 3)" class="text-center danger">
+            Превышено время ожидания (@Rapidsoft.VTB24.Reports.Site.Infrastructure.Settings.MaxReplyDelayHours часов)
+        </td>
+    }
+    else
+    {
+        <td colspan="@(withSize ? 4 : 3)" class="text-center">
+            Отсутствует
+        </td>
+    }
+}

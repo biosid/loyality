@@ -1,0 +1,25 @@
+﻿@model Vtb24.Site.Models.MyOrders.MyOrdersOrderModel
+
+<tbody data-href="@Url.Action("Order", "MyOrders", new { id=Model.OrderId })">
+    <tr class="title">
+        <td class="cursor-pointer align-center">@Model.Date.Date.ToShortDateString()</td>
+        <td class="cursor-pointer align-center">@Model.OrderId</td>
+        <td class="align-center">
+            @foreach (var item in Model.Items)
+            {
+                <p>
+                    @if (!string.IsNullOrEmpty(item.ProductId))
+                    {
+                        <a class="goods-dsqr" href="@Url.Action("Product", "Catalog", new { @id = item.ProductId })">@item.ProductName</a>
+                    }
+                    else
+                    {
+                        @item.ProductName
+                    }
+                </p>
+            }
+        </td>
+        <td class="cursor-pointer align-center"><span class="red">@Model.TotalPrice.ToString("N0")</span></td>
+        <td class="cursor-pointer align-center">@Model.Status</td>
+    </tr>
+</tbody>

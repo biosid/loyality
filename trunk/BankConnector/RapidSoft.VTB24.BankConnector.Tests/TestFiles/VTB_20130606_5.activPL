@@ -1,0 +1,5 @@
+ClientId;LastName;FirstName;MiddleName;BirthDate;Gender;Segment;Email
+okActivated;Фамилия0;Имя0;Отчество0;12-05-1960;2;0;
+notRegisred;LastName4;FirstName4;MiddleName4;12-08-1964;0;1;
+profileNotExists;LastName4;FirstName4;MiddleName4;12-08-1964;0;1;
+canNotBeActivated;LastName4;FirstName4;MiddleName4;12-08-1964;0;1;

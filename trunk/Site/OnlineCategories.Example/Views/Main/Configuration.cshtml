@@ -1,0 +1,12 @@
+﻿@model Dictionary<string, string>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Онлайн-партнер \"Заглушка\"";
+}
+<h2>Настройки онлайн-партнера "Заглушка"</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Key: @item.Value</li>
+    }
+</ul>

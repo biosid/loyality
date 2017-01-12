@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etl_config>
+  <variables>
+
+    <!-- общее  -->
+    <variable name="DB" value="data source=@DBHOST@;initial catalog=@DBNAME@;integrated security=False;User=@DBUSER@;Password=@DBPASS@;Connect Timeout=@DBTIMEOUT@" />
+
+    <!-- отправка нотификаций по заказам -->
+    <variable name="MaxOrdersCount" value="100" />
+
+  </variables>
+</etl_config>

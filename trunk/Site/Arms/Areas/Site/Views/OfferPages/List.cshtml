@@ -1,0 +1,113 @@
+﻿@using Vtb24.Site.Content.Pages.Models
+@model Vtb24.Arms.Site.Models.Pages.OfferPagesModel
+@{
+    ViewBag.Title = "Оферты";
+    ViewBag.MenuId = "offers";
+    Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
+}
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Content/OfferPages/index',
+                'Content/OfferPages/mass-actions',
+                'Content/OfferPages/change-status',
+                'Content/OfferPages/delete'
+            ],
+            function (index, massActions, changeStatus, del) {
+                index();
+                var list = $('#pages-list'),
+                    selector = massActions({ list: list });
+                changeStatus({
+                    selector: selector,
+                    url: '@Url.Action("ChangeStatus", "OfferPages")'
+                });
+                del({
+                    selector: selector,
+                    url: '@Url.Action("Delete", "OfferPages")'
+                });
+            });
+    </script>
+)
+<div class="tab-pane active">
+    <div style="width: 940px; height: 40px; padding-bottom: 1em; position: relative; z-index: 2;" data-x="content/offerpages/navbar">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                <div class="row mar-left-0">
+                    <div class="span1">
+                        <a href="@Url.Action("Create", "OfferPages", new { query = Model.Query.ToQuery() })" role="button" class="btn btn-success"><i class="icon-plus icon-white"></i></a>
+                    </div>
+                    <div class="pull-right mar-right-20 none" data-x="content/offerpages/actions_panel">
+                        <div class="span3 line-height-30 mar-top-5 mar-right-20 text-right" data-x="content/offerpages/counter_node"></div>
+                        <a href="#@PageStatus.Active" class="btn btn-primary" data-x="content/offerpages/changestatus_btn">Активировать</a>
+                        <a href="#@PageStatus.NotActive" class="btn" data-x="content/offerpages/changestatus_btn">Деактивировать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Model.Pages.Length > 0)
+    {
+        <table id="pages-list" class="table table-bordered page-list" style="position: relative; z-index: 1;">
+            <thead>
+                <tr>
+                    <th style="width: 1px;">
+                        <input type="checkbox" data-x="content/offerpages/select_all" />
+                    </th>
+                    <th>Оферта</th>
+                    <th>Статус</th>
+                    <th>Автор изменений</th>
+                    <th style="width: 1px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var page in Model.Pages)
+                {
+                    var data = Html.Json(new { id = page.PartnerId, title = page.PartnerName }).ToString();
+                    var sitePageUrl = SitePagesHelper.SiteRoot + (page.Status == PageStatus.Active
+                                                                      ? page.Url
+                                                                      : Html.SiteOfferPagePreviewUrl(page.PartnerId));
+
+                    <tr data-pagedata="@data" class="@(page.Status == PageStatus.Active ? "" : "muted")">
+                        <td>
+                            <input type="checkbox" name="offer" value="@page.PartnerId"/>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "OfferPages", new { partnerId = page.PartnerId, query = Model.Query.ToQuery() })">@page.PartnerName</a>
+                            <br/>
+                            <a href="@sitePageUrl" target="_blank" class="font-size-11"><span class="site-domain">@SitePagesHelper.SiteRoot</span>@page.Url</a>
+                        </td>
+                        <td>@Html.DescriptionFor(page.Status)</td>
+                        <td>@page.Author<div class="modified">@page.WhenModified.ToString("f")</div></td>
+                        <td>
+                            <a href="#" class="btn" data-x="content/offerpages/delete"><i class="icon-remove"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h4 class="font-normal mar-left-10">
+            Оферты не найдены
+        </h4>
+    }
+@*
+--------------------- Пейджинг
+*@
+    @if (Model.TotalPages > 1)
+    {
+        @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+    }
+</div>
+@*
+--------------------- Удаление
+*@
+@Html.Partial("_Delete")
+
+<style>
+    .item-context {position: relative; width: 0px; height: 0px; top: -15px;}
+    .modified {font-size: 11px; color:#777;}
+    .CodeMirror {height: 21em;}
+</style>

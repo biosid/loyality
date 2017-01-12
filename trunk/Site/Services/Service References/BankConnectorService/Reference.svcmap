@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="30cc6ea5-d9b7-4e81-a674-dedfdfef3435" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>true</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:63910/BankConnectorService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BankConnectorService.wsdl" MetadataType="Wsdl" ID="59bfb6fb-79af-4bbe-843d-caddb83549e9" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="BankConnectorService.disco" MetadataType="Disco" ID="839a64f7-09c6-4d40-9a85-b6cbafb117fc" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?disco" />
+    <MetadataFile FileName="BankConnectorService.xsd" MetadataType="Schema" ID="54e0dc23-9f1e-4243-b7e0-78e9be44a18c" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd4" />
+    <MetadataFile FileName="BankConnectorService1.xsd" MetadataType="Schema" ID="58a39906-b792-4d28-a181-fb6d37c3d97e" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd5" />
+    <MetadataFile FileName="BankConnectorService2.xsd" MetadataType="Schema" ID="4b7a43ee-a981-40ed-b51b-8d907189f726" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BankConnectorService3.xsd" MetadataType="Schema" ID="5bb6559c-c379-4eaf-aca7-ce9b255431f2" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BankConnectorService4.xsd" MetadataType="Schema" ID="a50e1643-70b5-4d3a-bd74-25ce8f817f8e" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BankConnectorService5.xsd" MetadataType="Schema" ID="8738631f-0633-4193-9f03-f20165389a27" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BankConnectorService1.wsdl" MetadataType="Wsdl" ID="7f51684b-e2aa-4cb2-ba98-e13ae8e89837" SourceId="1" SourceUrl="http://rphqbuild1:63910/BankConnectorService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

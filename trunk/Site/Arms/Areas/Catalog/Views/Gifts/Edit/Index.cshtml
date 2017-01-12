@@ -1,0 +1,343 @@
+﻿@{
+    ViewBag.Title = Model.IsNewProduct ? "Создание вознаграждения" : "Редактирование вознаграждения";
+
+    ViewBag.MenuId = "gifts";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.Catalog.Models.Gifts
+@using Vtb24.Common.Configuration
+@using Vtb24.Site.Services
+@model GiftEditModel
+@Html.AddScriptBlock(
+    @<script>
+         require(
+             [
+                 'Catalog/Gifts/Edit/index'
+             ],
+             function (index) {
+                 index();
+             });
+     </script>
+)
+@if (FeaturesConfiguration.Instance.Site520Formatting)
+{
+    @Html.AddScriptBlock(@<script src="/Scripts/markbar/jquery.markbar.js"></script>)
+    @Html.AddScriptBlock(@<link href="/Scripts/markbar/themes/default/default.css" rel="stylesheet"/>)
+    @Html.AddScriptBlock(
+        @<script>
+            require(['marked'], function(marked){
+                var $form = $('[data-x="gifts/edit/form"]'),
+                    $description = $('#Description'),
+                    initialHtml = $description.val(),
+                    initialMarkdown = toMarkdown(initialHtml);
+
+                // настроим marked
+                marked.setOptions({
+                    smartLists: true,
+                    smartypants: true
+                });
+
+                // заменим HTML на Markdown
+                $description.val(initialMarkdown);
+
+                // подключим редактор
+                $description.markbar({
+                    strong: true,
+                    em: true,
+                    h1: true,
+                    h2: true,
+                    h3: true,
+                    ul: true,
+                    ol: true,
+                    a: true,
+                    img: false,
+                    blockquote: false,
+                    code: false
+                });
+
+                // обработка сохранения формы: заменяем Markdown обратно на HTML
+                $form.on('submit', function(){
+                    var md = $description.val(),
+                    html = marked(md);
+
+                    // для отправки формы превращаем в HTML
+                    $description.val(html);
+                    
+                    // сразу после возвращаем обратно Markdown
+                    window.setTimeout(function(){
+                        $description.val(md);
+                    }, 0);
+                });
+            });
+         </script>
+    )
+}
+<div id="tab3" class="tab-pane active">
+    
+    @using (Html.BeginForm(Model.IsNewProduct ? "Create" : "Edit", "Gifts", FormMethod.Post, new { data_x = "gifts/edit/form", enctype = "multipart/form-data" }))
+    {
+        <div class="sticky-save" data-x="gifts/edit/navbar" style="width: 940px;">
+            <div class="navbar mar-bottom-0">
+                <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                    <div class="row">
+                        <div class="span6 pull-right">
+                            <div class="pull-right mar-right-20" data-x="gifts/edit/actions_panel">
+                                <button type="submit" class="btn btn-primary" data-x="gifts/edit/save">Сохранить</button>
+                                <a class="btn mar-right-20" href="@Url.Action("List", "Gifts", Model.GiftsQueryModel)">
+                                    Отмена
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="z-index: 1;">
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.query)
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.IsNewProduct)
+            <h3 class="font-normal">
+                @ViewBag.Title
+            </h3>
+
+            <h4 class="mar-top-0 mar-bottom-20 font-normal">
+                Обязательные характеристики вознаграждения
+            </h4>
+
+            <div class="row object-specifications">
+                <div class="span2 line-height-30">
+                    ID:
+                </div>
+                <div class="span10 line-height-30">
+                    @Model.Id&nbsp;
+                    @if (Model.IsRecommended)
+                    {
+                        <span class="label">Рекомендовано</span>
+                    }
+                </div>
+                <div class="span2 line-height-30">
+                    Поставщик:
+                </div>
+                <div class="span10 line-height-30">
+                    <p>@Model.SupplierName</p>
+                    @Html.HiddenFor(m => m.SupplierId)
+                    @Html.HiddenFor(m => m.SupplierName)
+                    @Html.HiddenFor(m => m.CategoryId)
+                    @Html.HiddenFor(m => m.CategoryPath)
+                </div>
+                <div class="span2 line-height-30">
+                    Категория:
+                </div>
+                <div class="span10 line-height-30">
+                    <p>@Model.CategoryPath</p>
+                </div>                         
+                @if (!Model.IsNewProduct)
+                {
+                    <div class="span2 line-height-30 error-mes-sprava">
+                        Статус модерации:
+                    </div>
+                    <div class="span10 line-height-30 error-mes-sprava">
+                        @Html.HiddenFor(m => m.ModerationStatus)
+                        <p>@Model.ModerationStatus</p>
+                    </div>
+                    <div class="span2 line-height-30 error-mes-sprava">
+                        Активность:
+                    </div>
+                    <div class="span10 line-height-30 error-mes-sprava">
+                        @Html.HiddenFor(m => m.Status)
+                        <p>@Html.DescriptionFor(Model.Status)</p>
+                    </div>
+                    if (!string.IsNullOrWhiteSpace(Model.Segments))
+                    {
+                        <div class="span2 line-height-30 error-mes-sprava">
+                            Сегменты:
+                        </div>
+                        <div class="span10 line-height-30 error-mes-sprava">
+                            @Html.HiddenFor(m => m.Segments)
+                            @Model.Segments
+                        </div>
+                    }
+                }
+                <div class="span2 line-height-30 error-mes-sprava">
+                    Артикул:
+                </div>
+                <div class="span10 line-height-30 error-mes-sprava">
+                    @if (Model.IsNewProduct)
+                    {
+                        <text>
+                            @Html.TextBoxFor(m => m.SupplierProductId, new { maxlength = 256 })
+                            @Html.ValidationMessageFor(m => m.SupplierProductId)
+                        </text>
+                    }
+                    else
+                    {
+                        <p>@Model.SupplierProductId</p>
+                        @Html.HiddenFor(m => m.SupplierProductId)
+                    }
+                </div>
+                <label for="Name" class="span2 line-height-30">
+                    Название:
+                </label>
+                <div class="span10 line-height-30">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "input-block-level", maxlength = 256 }) 
+                    <div>@Html.ValidationMessageFor(m => m.Name)</div>
+                </div>
+                <label for="PriceRUR" class="span2 line-height-30">
+                    Итоговая цена:
+                </label>
+                <div class="span5 line-height-30">
+                    @Html.TextBoxFor(m => m.PriceRUR, (Model.PriceRUR % 1 == 0 ? "{0:F0}" : "{0:F2}"), new { @class = "input-small", @maxlength="10" })
+                    <span class="for-inline-height-30">руб.</span>
+                    <div>@Html.ValidationMessageFor(m => m.PriceRUR)</div>
+                </div>
+                
+                @if (FeaturesConfiguration.Instance.Site500EnableARMActionPrice)
+                {
+                    <label for="BasePriceRUR" class="span2 line-height-30 clear-left">
+                        Цена без скидки:
+                    </label>
+                    <div class="span5 line-height-30">
+                        @Html.TextBoxFor(m => m.BasePriceRUR, (Model.BasePriceRUR%1 == 0 ? "{0:F0}" : "{0:F2}"), new {@class = "input-small", @maxlength = "10"})
+                        <span class="for-inline-height-30">руб.</span>
+                        <div>@Html.ValidationMessageFor(m => m.BasePriceRUR)</div>
+                    </div>
+                }
+
+                <label for="Weight" class="span2 line-height-30 clear-left">
+                    Вес в граммах:
+                </label>
+	            <div class="span10 line-height-30">
+		            @Html.TextBoxFor(m => m.Weight, new RouteValueDictionary { { "class", "input-small" }, { "data_val_digits", "Данное поле может содержать только цифры" }, { "maxlength", "10" }, { "data-x", "gifts/edit/weight_input" } })   
+		            <div>@Html.ValidationMessageFor(m => m.Weight)</div>
+	            </div>
+				
+	            <div class="checkbox span2 line-height-30">
+		            <label>@Html.CheckBoxFor(m => m.IsDeliveredByEmail, new RouteValueDictionary { { "data-x", "gifts/edit/is_delivered_by_email" } })Доставка по e-mail</label>
+					<div>@Html.ValidationMessageFor(m => m.IsDeliveredByEmail)</div>
+	            </div>
+				
+            </div>
+            <h4 class="font-normal">
+                Дополнительные характеристики вознаграждения
+            </h4>
+            
+            <label for="Description" class="span12 line-height-30 mar-left-0">
+            Описание:
+            </label>
+            <div class="span12 mar-left-0">
+                @Html.TextAreaFor(m => m.Description, new { @class = "input-block-level", @rows = "10", @cols = "30", maxlength = 2000 })
+                <div>@Html.ValidationMessageFor(m => m.Description)</div>
+            </div>
+
+            <div class="row">
+                <label for="Vendor" class="span2 line-height-30">
+                    Производитель:
+                </label>
+                <div class="span10">
+                    @Html.TextBoxFor(m => m.Vendor, new { @class = "span4", maxlength = 256 })
+                    <div>@Html.ValidationMessageFor(m => m.Vendor)</div>
+                </div>
+            </div>
+        
+            @if (Model.PictureUrls != null && Model.PictureUrls.Any())
+            {
+                foreach (var image in Model.PictureUrls)
+                {
+                    <fieldset class="image-control well" data-x="gift/edit/image_row">
+                        <legend class="the-legend">Картинка:</legend>
+                        <div class="span4 mar-left-0 imagecontainer" data-x="gifts/edit/image_container" style="float: none;">
+                            <img src="@image" class="goodimage">
+                        </div>
+                        <div class="span1 line-height-30 mar-left-0 mar-right-20 image-control-title">Изображение:</div>
+                        <div class="span8 mar-left-0 input-append image-input-container">
+                            <input type="text" data-x="gift/edit/image_input" class="input-block-level input-data input-image-url" name="PictureUrls" value="@image" readonly="readonly" placeholder="" />                            
+                            <button class="btn remove-image" data-x="gifts/edit/remove_image">Удалить</button>
+                        </div>
+                    </fieldset>
+                }
+            }
+
+            <fieldset class="image-control" data-x="gift/edit/image_row">
+                <legend class="the-legend">Картинка:</legend>
+                <div class="span4 mar-left-0 imagecontainer" data-x="gifts/edit/image_container" style="float: none;"></div>
+
+                <div class="span2 line-height-30 mar-left-0 mar-right-20 image-control-title">Изображение:</div>
+                
+                <div data-x="gifts/edit/file_upload_widget">
+                    <div class="span10 mar-left-0">
+                        <div class="input-append mar-bottom-0">
+                            <div class="uneditable-input span8">
+                                <i class="icon-file fileupload-exists none" data-x="gifts/edit/file_icon"></i>
+                                <span data-x="gifts/edit/file_name">Загрузите изображение вознаграждения</span>
+                            </div>
+                            <span class="btn btn-file" data-x="gifts/edit/file_input_button">
+                                <span>Выберите файл</span>
+                                <input type="file" data-x="gifts/edit/file_input" name="Pictures" accept="image/*" />
+                            </span>
+                            <button class="btn remove-image none" data-x="gifts/edit/remove_image">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="span2 line-height-30 mar-left-0 mar-right-20 image-control-title"></div>
+
+                <div class="span8 input-append mar-left-0 mar-top-20" data-x="gifts/edit/url_image_widget">
+                    <input type="text" data-x="gift/edit/image_url_input" class="input-block-level input-data input-image-url" name="PictureUrls" value="" placeholder="Укажите URL изображения вознаграждения" />
+                    <button class="btn add-image" data-x="gifts/edit/add_image">Добавьте ссылку</button>
+                    <button class="btn remove-image none" data-x="gifts/edit/remove_image">Удалить</button>
+                </div>
+            </fieldset>
+            <table class="table table-bordered object-specifications-table">                            
+                <thead>
+                    <tr>
+                        <th>
+                            Характеристика
+                        </th>
+                        <th>
+                            Значение
+                        </th>
+                        <th width="1">Ед.&nbsp;измер.</th>
+                        <th width="1">&nbsp;</th>
+                        <th width="1">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Parameters != null && Model.Parameters.Any())
+                    {
+                        for (var i = 0; i < Model.Parameters.Length; i++)
+                        {
+                            <tr data-x="gifts/edit/parameter">
+                                <td><input type="text" data-x="gifts/edit/parameter_name" name="Parameters[@(i)].Name" class="input-large clearable-input" value="@Model.Parameters[i].Name"/></td>
+                                <td><div><textarea name="Parameters[@(i)].Value" data-x="gifts/edit/parameter_value" class="input-block-level clearable-input">@Model.Parameters[i].Value</textarea></div></td>
+                                <td class="text-center"> <input type="text" name="Parameters[@(i)].Unit" data-x="gifts/edit/parameter_unit" class="input-mini clearable-input" value="@Model.Parameters[i].Unit"/> </td>
+                                <td>
+                                    <a data-x="gifts/edit/add_parameter" class="btn btn-success add-ost"><i class="icon-plus icon-white"></i></a>
+                                </td>
+                                <td>
+                                    <a data-x="gifts/edit/remove_parameter" class="btn remove-char"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>                            
+                        }
+                    }
+                    else
+                    {
+                        <tr data-x="gifts/edit/parameter">
+                            <td><input type="text" name="Parameters[0].Name" data-x="gifts/edit/parameter_name" class="input-large clearable-input" /></td>
+                            <td><div><textarea name="Parameters[0].Value" data-x="gifts/edit/parameter_value" class="input-block-level clearable-input"></textarea></div></td>
+                            <td class="text-center"> <input type="text" name="Parameters[0].Unit" data-x="gifts/edit/parameter_unit" class="input-mini clearable-input" /> </td>
+                            <td>
+                                <a data-x="gifts/edit/add_parameter" class="btn btn-success add-ost"><i class="icon-plus icon-white"></i></a>
+                            </td>
+                            <td>
+                                <a data-x="gifts/edit/remove_parameter" class="btn remove-char"><i class="icon-remove"></i></a>
+                            </td>
+                        </tr>                        
+                    }
+                </tbody>
+            </table>
+        </div>
+        }                       
+    </div>

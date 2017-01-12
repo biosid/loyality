@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9EB5135E-C8CF-480C-B2E1-BEF4D06A04F7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vtb24.Site.Security</RootNamespace>
+    <AssemblyName>Vtb24.Site.Security</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|AnyCPU'">
+    <OutputPath>bin\LoadTesting\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.4.0.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\ISecurityTokenDataAccess.cs" />
+    <Compile Include="IBankSmsService.cs" />
+    <Compile Include="ISecurityTokenService.cs" />
+    <Compile Include="Migrations\201306051342208_Security_Tokens_Service.cs" />
+    <Compile Include="Migrations\201306051342208_Security_Tokens_Service.Designer.cs">
+      <DependentUpon>201306051342208_Security_Tokens_Service.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306051838584_Otp_AntiSpoof_And_Refactorings.cs" />
+    <Compile Include="Migrations\201306051838584_Otp_AntiSpoof_And_Refactorings.Designer.cs">
+      <DependentUpon>201306051838584_Otp_AntiSpoof_And_Refactorings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306131024277_Security_Otp_Antispoof_MobilePhone.cs" />
+    <Compile Include="Migrations\201306131024277_Security_Otp_Antispoof_MobilePhone.Designer.cs">
+      <DependentUpon>201306131024277_Security_Otp_Antispoof_MobilePhone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306141126591_Security_Tokens_CategoryId.cs" />
+    <Compile Include="Migrations\201306141126591_Security_Tokens_CategoryId.Designer.cs">
+      <DependentUpon>201306141126591_Security_Tokens_CategoryId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306181059496_Security_User_RegistrationDate.cs" />
+    <Compile Include="Migrations\201306181059496_Security_User_RegistrationDate.Designer.cs">
+      <DependentUpon>201306181059496_Security_User_RegistrationDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306251725262_Otp_AntiSpoof_Key_Refactoring.cs" />
+    <Compile Include="Migrations\201306251725262_Otp_AntiSpoof_Key_Refactoring.Designer.cs">
+      <DependentUpon>201306251725262_Otp_AntiSpoof_Key_Refactoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308021039084_Otp_AntiSpoof_Statistics_Refactoring.cs" />
+    <Compile Include="Migrations\201308021039084_Otp_AntiSpoof_Statistics_Refactoring.Designer.cs">
+      <DependentUpon>201308021039084_Otp_AntiSpoof_Statistics_Refactoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311111646455_Security_Change_Login.cs" />
+    <Compile Include="Migrations\201311111646455_Security_Change_Login.Designer.cs">
+      <DependentUpon>201311111646455_Security_Change_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311151120063_Security_Change_Login_Audit_Property.cs" />
+    <Compile Include="Migrations\201311151120063_Security_Change_Login_Audit_Property.Designer.cs">
+      <DependentUpon>201311151120063_Security_Change_Login_Audit_Property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503201032072_SecurityTokenIndexes.cs" />
+    <Compile Include="Migrations\201503201032072_SecurityTokenIndexes.Designer.cs">
+      <DependentUpon>201503201032072_SecurityTokenIndexes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505281431106_OtpViaEmail.cs" />
+    <Compile Include="Migrations\201505281431106_OtpViaEmail.Designer.cs">
+      <DependentUpon>201505281431106_OtpViaEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankSmsType.cs" />
+    <Compile Include="Models\PagingSettings.cs" />
+    <Compile Include="OneTimePasswordService\Models\Inputs\GetDeliveryMeansParameters.cs" />
+    <Compile Include="OneTimePasswordService\Models\OtpDeliveryMeans.cs" />
+    <Compile Include="OneTimePasswordService\Models\OtpToken.cs" />
+    <Compile Include="OneTimePasswordService\Stubs\OneTimePasswordServiceStub.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\OtpDeliveryModeNotSupported.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\OtpViaSmsLimitReached.cs" />
+    <Compile Include="SecurityService\Models\Inputs\ChangeUserPhoneNumberOptions.cs" />
+    <Compile Include="SecurityService\Models\Inputs\CreateUserAndPasswordOptions.cs" />
+    <Compile Include="SecurityService\Models\Inputs\NotifyRegistrationDeniedOptions.cs" />
+    <Compile Include="SecurityService\Models\Inputs\ResetPasswordOptions.cs" />
+    <Compile Include="SecurityService\Models\Inputs\SendChangePasswordOtpOptions.cs" />
+    <Compile Include="SecurityService\Models\Outputs\PhoneNumberChange.cs" />
+    <Compile Include="SecurityService\Models\Outputs\PhoneNumberChangeHistory.cs" />
+    <Compile Include="SecurityService\SecurityConfiguration.cs" />
+    <Compile Include="SecurityTokenService\Models\Exceptions\InvalidSecurityTokenException.cs" />
+    <Compile Include="SecurityTokenService\Models\Exceptions\SecurityTokenServiceException.cs" />
+    <Compile Include="SecurityTokenService\Models\Inputs\InvalidateSecurityTokenParameters.cs" />
+    <Compile Include="SecurityTokenService\Models\Inputs\ValidateSecurityTokenParameters.cs" />
+    <Compile Include="SecurityTokenService\Models\Inputs\CreateSecurityTokenParameters.cs" />
+    <Compile Include="SecurityTokenService\Models\Outputs\ValidateSecurityTokenResult.cs" />
+    <Compile Include="SecurityTokenService\Models\SecurityToken.cs" />
+    <Compile Include="SecurityTokenService\Models\Outputs\CreateSecurityTokenResult.cs" />
+    <Compile Include="SecurityTokenService\SecurityTokenService.cs" />
+    <Compile Include="Migrations\201305291857046_Otp_API_Refactoring.cs" />
+    <Compile Include="Migrations\201305291857046_Otp_API_Refactoring.Designer.cs">
+      <DependentUpon>201305291857046_Otp_API_Refactoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305292018352_Security_Password_Otp_Antispoof.cs" />
+    <Compile Include="Migrations\201305292018352_Security_Password_Otp_Antispoof.Designer.cs">
+      <DependentUpon>201305292018352_Security_Password_Otp_Antispoof.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306021239321_Security_Otp_Statistics.cs" />
+    <Compile Include="Migrations\201306021239321_Security_Otp_Statistics.Designer.cs">
+      <DependentUpon>201306021239321_Security_Otp_Statistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306041149007_Security_Token_MessageTemplate.cs" />
+    <Compile Include="Migrations\201306041149007_Security_Token_MessageTemplate.Designer.cs">
+      <DependentUpon>201306041149007_Security_Token_MessageTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OneTimePasswordService\Models\Exceptions\InvalidOtpTokenException.cs" />
+    <Compile Include="OneTimePasswordService\Models\Exceptions\OtpRenewAttemptsExceededException.cs" />
+    <Compile Include="OneTimePasswordService\Models\Exceptions\TooFrequentOtpSendException.cs" />
+    <Compile Include="OneTimePasswordService\Models\Exceptions\TooManyOtpSendAttemptsException.cs" />
+    <Compile Include="OneTimePasswordService\Models\Inputs\RenewOtpParameters.cs" />
+    <Compile Include="OneTimePasswordService\Models\Inputs\IsConfirmedOtpParameters.cs" />
+    <Compile Include="Migrations\201305291453554_Security_Initial.cs" />
+    <Compile Include="Migrations\201305291453554_Security_Initial.Designer.cs">
+      <DependentUpon>201305291453554_Security_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OneTimePasswordService\Models\Outputs\ConfirmOtpResult.cs" />
+    <Compile Include="OneTimePasswordService\Models\Outputs\RenewOtpResult.cs" />
+    <Compile Include="OneTimePasswordService\OtpConfiguration.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\InvalidChangePasswordOtpException.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\UserAlreadyExistsException.cs" />
+    <Compile Include="SecurityService\Models\Inputs\ChangePasswordOptions.cs" />
+    <Compile Include="SecurityService\Models\Inputs\CreateClientAccountOptions.cs" />
+    <Compile Include="DataAccess\IOtpDataAccess.cs" />
+    <Compile Include="DataAccess\ISecurityDataAccess.cs" />
+    <Compile Include="Infrastructure\AppSettingsHelper.cs" />
+    <Compile Include="IOneTimePasswordService.cs" />
+    <Compile Include="ISecurityService.cs" />
+    <Compile Include="ISmsService.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ClientPrincipal.cs" />
+    <Compile Include="OneTimePasswordService\Models\Exceptions\OneTimePasswordServiceException.cs" />
+    <Compile Include="OneTimePasswordService\Models\Exceptions\OtpAllowedAttemptsExceeded.cs" />
+    <Compile Include="OneTimePasswordService\Models\Exceptions\OtpExpiredException.cs" />
+    <Compile Include="OneTimePasswordService\Models\Inputs\SendOtpParameters.cs" />
+    <Compile Include="OneTimePasswordService\Models\Inputs\ConfirmOtpParameters.cs" />
+    <Compile Include="OneTimePasswordService\Models\Outputs\SendOtpResult.cs" />
+    <Compile Include="OneTimePasswordService\OneTimePasswordService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataAccess\SecurityServiceDbContext.cs" />
+    <Compile Include="SecurityService\Models\Inputs\ResetPasswordWithOtpOptions.cs" />
+    <Compile Include="SecurityService\Models\Outputs\SendChangePasswordOtpResult.cs" />
+    <Compile Include="SecurityService\Models\User.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\UserDisabledException.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\UserLockedOutException.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\UserNotFoundException.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\PasswordNotSetException.cs" />
+    <Compile Include="SecurityService\Models\Exceptions\SecurityServiceException.cs" />
+    <Compile Include="SecurityService\SecurityService.cs" />
+    <Compile Include="SecurityService\Stubs\SecurityServiceStub.cs" />
+    <Compile Include="SecurityService\Stubs\SecurityServiceStubData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201305291453554_Security_Initial.resx">
+      <DependentUpon>201305291453554_Security_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305291857046_Otp_API_Refactoring.resx">
+      <DependentUpon>201305291857046_Otp_API_Refactoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305292018352_Security_Password_Otp_Antispoof.resx">
+      <DependentUpon>201305292018352_Security_Password_Otp_Antispoof.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306021239321_Security_Otp_Statistics.resx">
+      <DependentUpon>201306021239321_Security_Otp_Statistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306041149007_Security_Token_MessageTemplate.resx">
+      <DependentUpon>201306041149007_Security_Token_MessageTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306051342208_Security_Tokens_Service.resx">
+      <DependentUpon>201306051342208_Security_Tokens_Service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306051838584_Otp_AntiSpoof_And_Refactorings.resx">
+      <DependentUpon>201306051838584_Otp_AntiSpoof_And_Refactorings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306131024277_Security_Otp_Antispoof_MobilePhone.resx">
+      <DependentUpon>201306131024277_Security_Otp_Antispoof_MobilePhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306141126591_Security_Tokens_CategoryId.resx">
+      <DependentUpon>201306141126591_Security_Tokens_CategoryId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306181059496_Security_User_RegistrationDate.resx">
+      <DependentUpon>201306181059496_Security_User_RegistrationDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306251725262_Otp_AntiSpoof_Key_Refactoring.resx">
+      <DependentUpon>201306251725262_Otp_AntiSpoof_Key_Refactoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308021039084_Otp_AntiSpoof_Statistics_Refactoring.resx">
+      <DependentUpon>201308021039084_Otp_AntiSpoof_Statistics_Refactoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311111646455_Security_Change_Login.resx">
+      <DependentUpon>201311111646455_Security_Change_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311151120063_Security_Change_Login_Audit_Property.resx">
+      <DependentUpon>201311151120063_Security_Change_Login_Audit_Property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503201032072_SecurityTokenIndexes.resx">
+      <DependentUpon>201503201032072_SecurityTokenIndexes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505281431106_OtpViaEmail.resx">
+      <DependentUpon>201505281431106_OtpViaEmail.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

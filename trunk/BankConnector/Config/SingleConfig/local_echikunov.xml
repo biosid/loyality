@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<IncludeSingleConfigs>
+		<IncludeSingleConfig>
+			<FilePath>local.xml</FilePath>
+			<GlobalConfigFileTransformations>
+				<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+					<Patterns>
+					<string>@DBHOST@</string>
+					</Patterns>
+					<ReplaceTo>.</ReplaceTo>
+				</ConfigFileTransformation>
+			</GlobalConfigFileTransformations>
+		</IncludeSingleConfig>
+	</IncludeSingleConfigs>
+</SingleConfig>

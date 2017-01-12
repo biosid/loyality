@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>e:\LoyaltyLogs\BankConnector</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>e:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@elasticsearchCluster@</string>
+          </Patterns>
+          <ReplaceTo>http://10.14.14.180:9200;http://10.14.14.185:9200</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- ConnectionString -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBHOST@</string>
+          </Patterns>
+          <ReplaceTo>winsql1;Failover Partner=winsql0</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SMTPHOST@</string>
+          </Patterns>
+          <ReplaceTo>winfe0</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpUserName@</string>
+          </Patterns>
+          <ReplaceTo>loyalty@bonus.vtb24.ru</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@LoyaltyEmail@</string>
+          </Patterns>
+          <ReplaceTo>loyalty@bonus.vtb24.ru</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TeradataEmail@</string>
+          </Patterns>
+          <ReplaceTo>rewards_to_be@vtb24.ru,teradataCopy@bonus.vtb24.ru</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BankSmsEmail@</string>
+          </Patterns>
+          <ReplaceTo>sms-info@vtb24.ru,teradataCopy@bonus.vtb24.ru,prokopenkoyv@vtb24.ru,sevalnevps@vtb24.ru,suhachevaan@vtb24.ru</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TERADATAIMAPHOST@</string>
+          </Patterns>
+          <ReplaceTo>winfe0</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@LOYALTYIMAPHOST@</string>
+          </Patterns>
+          <ReplaceTo>winfe0</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Stubs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@VtbEncryption@</string>
+          </Patterns>
+          <ReplaceTo>VtbEncryption</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@UnitellerProvider@</string>
+          </Patterns>
+          <ReplaceTo>UnitellerProvider</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- START Параметры Uniteller -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@UnitellerRegisterShopId@</string>
+          </Patterns>
+          <ReplaceTo>00001756</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@UnitellerLogin@</string>
+          </Patterns>
+          <ReplaceTo>828</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@UnitellerPassword@</string>
+          </Patterns>
+          <ReplaceTo>u2mZZXNgLEdx1wnmTrYh7xypqihcFlMnmXN65rTOHF69peZPfZrnfLwcTQkZex7CGySeohS6jL8LNSc7</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- END Параметры Uniteller -->
+
+        <!-- Настройки рассылки напоминаний о неоформленных заказах -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ClientSiteBasketUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://bonus.vtb24.ru/basket</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Настройки рассылки предложений оценить сервис -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ClientSiteOrderUrlTemplate@</string>
+          </Patterns>
+          <ReplaceTo>https://bonus.vtb24.ru/myorders/order/{0}</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Настройки эквайринга Uniteller -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PaymentUnitellerUsePreauth@</string>
+          </Patterns>
+          <ReplaceTo>true</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PaymentUnitellerLifetime@</string>
+          </Patterns>
+          <ReplaceTo>900</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerLogin@</string>
+          </Patterns>
+          <ReplaceTo>828</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerPassword@</string>
+          </Patterns>
+          <ReplaceTo>u2mZZXNgLEdx1wnmTrYh7xypqihcFlMnmXN65rTOHF69peZPfZrnfLwcTQkZex7CGySeohS6jL8LNSc7</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerPayFormUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://wpay.uniteller.ru/pay/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerResultsUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://wpay.uniteller.ru/results/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerConfirmUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://wpay.uniteller.ru/confirm/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerCancelUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://wpay.uniteller.ru/unblock/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BankProductsPartnerId@</string>
+          </Patterns>
+          <ReplaceTo>35</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Настройки отправки отчетов по файлообмену -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@InteractionReportsUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://winsql1:61280/interactionreports/report</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@InteractionReportsLogin@</string>
+          </Patterns>
+          <ReplaceTo>reports</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@InteractionReportsPwd@</string>
+          </Patterns>
+          <ReplaceTo>dUh2frUs</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@InteractionReportsSendTo@</string>
+          </Patterns>
+          <ReplaceTo>chernyshevia@vtb24.ru;glushkoaa@vtb24.ru;zaharova.ai@vtb24.ru;egor.goncharov@rapidsoft.ru</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- START Cron выражения для расписания выполнения джоб -->
+
+        <!-- Настройки активации участников -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ActivateClientsChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0 22 * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки отправки запросов на регистрацию -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SendRegistrationClientsChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0 10,19 * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки получения результата регистрации от банка -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ReceiveRegistrationClientsChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0/30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки отправки и получения заказов -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SendOrdersChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0 11 * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ReceiveOrdersChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0 23 * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки задачи отправки списка промоакций -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PromoActionSendChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0 0 * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки задачи получения ответа по списку промоакций -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PromoActionReceiveChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0/30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки задачи загрузка сообщений для ЛК клиентов -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PersonalMessagesChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0/30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки отключения участников -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SendDetachListChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0 9,18 * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ReceiveDetachCountChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0/30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки задачи Регистрации клиентов банка -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@RegisterBankClientsChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0/30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки задачи Загрузки продуктов банка -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@RegisterBankOffersChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0/30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Привязка клиентов к целевым аудиториям -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AssignClientTargetAudienceChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0/30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки начисления баллов -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ReceiveAccrualsChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0/30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SendAccrualsChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0 0 * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Настройки рассылки оппвещений WishList -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@WishListNotificationsChron@</string>
+          </Patterns>
+          <ReplaceTo>0 0 0 * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- END Cron выражения для расписания выполнения джоб -->
+
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\winsql0_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

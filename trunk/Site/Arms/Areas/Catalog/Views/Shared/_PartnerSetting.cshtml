@@ -1,0 +1,88 @@
+﻿@using Vtb24.Arms.AdminServices.Infrastructure.PartnerSettingsConfiguration
+@using Vtb24.Arms.Catalog.Models.Partners.Helpers
+@* Передаем в качестве модели Tuple из:
+   1. модели настройки
+   2. name контрола для имени настроки
+   3. name контрола для значения настройки
+*@
+@model Tuple<Vtb24.Arms.Catalog.Models.Partners.PartnerSettingModel, string, string>
+@{
+    var setting = Model.Item1;
+    var nameForName = Model.Item2;
+    var nameForValue = Model.Item3;
+}
+@if (setting.Type != PartnerSettingType.Boolean)
+{
+    <div class="row">
+        <div class="span10">
+            @setting.Label
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="span10">
+        @Html.Hidden(nameForName, setting.Name)
+        @switch (setting.Type)
+        {
+            case PartnerSettingType.Text:
+                @Html.TextArea(nameForValue, setting.Value, new
+                {
+                    @class = "input-block-level",
+                    rows = 5,
+                    maxlength = setting.MaxLength,
+                    data_val = "true",
+                    data_val_length = setting.LengthErrorMessage,
+                    data_val_length_max = setting.MaxLength
+                })
+                break;
+
+            case PartnerSettingType.Boolean:
+                <label class="checkbox">
+                    @Html.CheckBox(nameForValue, setting.Value == "true")
+                    @setting.Label
+                </label>
+                break;
+                
+            case PartnerSettingType.Radio:
+                foreach (var radioValue in setting.RadioValues)
+                {
+                    <label class="radio mar-left-10">
+                        @Html.RadioButton(nameForValue, radioValue.Value, radioValue.Value == setting.Value)
+                        @radioValue.Label
+                    </label>
+                }
+                break;
+
+            default:
+                var htmlAttrs = new Dictionary<string, object>
+                {
+                    { "class", "input-block-level" },
+                    { "maxlength", setting.MaxLength },
+                    { "data-val", "true" },
+                    { "data-val-length", setting.LengthErrorMessage },
+                    { "data-val-length-max", setting.MaxLength }
+                };
+                if (setting.IsRequired)
+                {
+                    htmlAttrs["data-val-required"] = setting.RequiredErrorMessage;
+                }
+                if (setting.Type == PartnerSettingType.Integer)
+                {
+                    htmlAttrs["data-val-digits"] = setting.ValidationErrorMessage;
+                }
+                if (setting.Type == PartnerSettingType.Regexp)
+                {
+                    htmlAttrs["data-val-regex"] = setting.ValidationErrorMessage;
+                    htmlAttrs["data-val-regex-pattern"] = setting.Regexp;
+                }
+                if (setting.Type == PartnerSettingType.Url)
+                {
+                    htmlAttrs["data-val-regex"] = setting.ValidationErrorMessage;
+                    htmlAttrs["data-val-regex-pattern"] = SettingsHelpers.URL_REGEXP_PATTERN;
+                }
+                @Html.TextBox(nameForValue, setting.Value, htmlAttrs)
+                break;
+        }
+        @Html.ValidationMessage(nameForValue)
+    </div>
+</div>

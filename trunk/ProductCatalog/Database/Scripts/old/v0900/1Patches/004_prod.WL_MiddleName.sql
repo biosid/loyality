@@ -1,0 +1,1 @@
+alter table [prod].[WishListItemNotifications] alter column [MiddleName] nvarchar(50) NULL

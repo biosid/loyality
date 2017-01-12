@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="24faf712-72e2-4628-b150-a797043e48b8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:5657/FeedbackEmailNotificationQueueService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FeedbackEmailNotificationQueueService.disco" MetadataType="Disco" ID="94fa3e4e-9159-4941-a78d-089dc711ec95" SourceId="1" SourceUrl="http://localhost:5657/FeedbackEmailNotificationQueueService.svc?disco" />
+    <MetadataFile FileName="FeedbackEmailNotificationQueueService.xsd" MetadataType="Schema" ID="965f609d-32fd-43dc-b7eb-2f7fd79850d1" SourceId="1" SourceUrl="http://localhost:5657/FeedbackEmailNotificationQueueService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FeedbackEmailNotificationQueueService1.xsd" MetadataType="Schema" ID="d4bda846-0b4d-4397-9116-a52d16888c5c" SourceId="1" SourceUrl="http://localhost:5657/FeedbackEmailNotificationQueueService.svc?xsd=xsd4" />
+    <MetadataFile FileName="FeedbackEmailNotificationQueueService.wsdl" MetadataType="Wsdl" ID="06f32bd3-d8f8-46fb-9e6a-39b50041d4c7" SourceId="1" SourceUrl="http://localhost:5657/FeedbackEmailNotificationQueueService.svc?wsdl" />
+    <MetadataFile FileName="FeedbackEmailNotificationQueueService2.xsd" MetadataType="Schema" ID="acaf2a2b-25cc-43ca-930d-a5f6a0b1bd73" SourceId="1" SourceUrl="http://localhost:5657/FeedbackEmailNotificationQueueService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FeedbackEmailNotificationQueueService3.xsd" MetadataType="Schema" ID="4171cde5-11bb-4e88-afa5-013e2c830ba0" SourceId="1" SourceUrl="http://localhost:5657/FeedbackEmailNotificationQueueService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FeedbackEmailNotificationQueueService4.xsd" MetadataType="Schema" ID="7a956bf6-5363-4b16-9da9-9a499da2d650" SourceId="1" SourceUrl="http://localhost:5657/FeedbackEmailNotificationQueueService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

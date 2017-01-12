@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:63910/BankConnectorService.svc?xsd=xsd3" namespace="RapidSoft.VTB24.BankConnector" />
+  <xs:import schemaLocation="http://localhost:63910/BankConnectorService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.DataModels" />
+  <xs:complexType name="GenericBankConnectorResponseOfNullableOfboolean5F2dSckg">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericBankConnectorResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="NullableOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+            <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+          </GenericParameter>
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SimpleBankConnectorResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GenericBankConnectorResponseOfNullableOfboolean5F2dSckg" nillable="true" type="tns:GenericBankConnectorResponseOfNullableOfboolean5F2dSckg" />
+  <xs:complexType name="SimpleBankConnectorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SimpleBankConnectorResponse" nillable="true" type="tns:SimpleBankConnectorResponse" />
+  <xs:complexType name="GenericBankConnectorResponseOfboolean">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericBankConnectorResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SimpleBankConnectorResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GenericBankConnectorResponseOfboolean" nillable="true" type="tns:GenericBankConnectorResponseOfboolean" />
+  <xs:complexType name="GenericBankConnectorResponseOfCardRegistrationParametersXZrH00sf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericBankConnectorResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="CardRegistrationParameters" Namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SimpleBankConnectorResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" nillable="true" type="tns:CardRegistrationParameters" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GenericBankConnectorResponseOfCardRegistrationParametersXZrH00sf" nillable="true" type="tns:GenericBankConnectorResponseOfCardRegistrationParametersXZrH00sf" />
+  <xs:complexType name="CardRegistrationParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShopId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sum" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardRegistrationParameters" nillable="true" type="tns:CardRegistrationParameters" />
+  <xs:complexType name="ArrayOfUpdateProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UpdateProperty" type="tns:UpdateProperty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUpdateProperty" nillable="true" type="tns:ArrayOfUpdateProperty" />
+  <xs:simpleType name="UpdateProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Email" />
+      <xs:enumeration value="CustomFields" />
+      <xs:enumeration value="MobilePhone" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UpdateProperty" nillable="true" type="tns:UpdateProperty" />
+  <xs:complexType name="GenericBankConnectorResponseOfClientProfileGVwQv096">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericBankConnectorResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ClientProfile" Namespace="RapidSoft.VTB24.BankConnector" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SimpleBankConnectorResponse">
+        <xs:sequence>
+          <xs:element xmlns:q1="RapidSoft.VTB24.BankConnector" minOccurs="0" name="Result" nillable="true" type="q1:ClientProfile" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GenericBankConnectorResponseOfClientProfileGVwQv096" nillable="true" type="tns:GenericBankConnectorResponseOfClientProfileGVwQv096" />
+  <xs:simpleType name="ClientProfileStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Activated" />
+      <xs:enumeration value="Created" />
+      <xs:enumeration value="Deaactivated" />
+      <xs:enumeration value="Blocked" />
+      <xs:enumeration value="Deleted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ClientProfileStatus" nillable="true" type="tns:ClientProfileStatus" />
+  <xs:complexType name="BankOffersServiceParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountTotal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ExpirationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkipCount" type="xs:int" />
+      <xs:element minOccurs="0" name="TakeCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BankOffersServiceParameter" nillable="true" type="tns:BankOffersServiceParameter" />
+  <xs:complexType name="GenericBankConnectorResponseOfBankOffersServiceResponseXZrH00sf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericBankConnectorResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="BankOffersServiceResponse" Namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SimpleBankConnectorResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" nillable="true" type="tns:BankOffersServiceResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GenericBankConnectorResponseOfBankOffersServiceResponseXZrH00sf" nillable="true" type="tns:GenericBankConnectorResponseOfBankOffersServiceResponseXZrH00sf" />
+  <xs:complexType name="BankOffersServiceResponse">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.DataModels" minOccurs="0" name="Offers" nillable="true" type="q2:ArrayOfBankOffer" />
+      <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BankOffersServiceResponse" nillable="true" type="tns:BankOffersServiceResponse" />
+  <xs:simpleType name="BankSmsType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LoyaltyRegistration" />
+      <xs:enumeration value="BankRegistration" />
+      <xs:enumeration value="RegistrationDeniedUnknownClient" />
+      <xs:enumeration value="RegistrationDeniedNoCards" />
+      <xs:enumeration value="RegistrationDeniedAlreadyRegistered" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BankSmsType" nillable="true" type="tns:BankSmsType" />
+</xs:schema>

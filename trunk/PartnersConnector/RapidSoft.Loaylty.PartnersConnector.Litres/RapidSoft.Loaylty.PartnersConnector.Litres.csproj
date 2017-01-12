@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FBE62A1-A43F-4F75-8BFF-EEA251AEDA76}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.PartnersConnector.Litres</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.PartnersConnector.Litres</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="DataAccess\Entities\LitresDownloadCode.cs" />
+    <Compile Include="DataAccess\Entities\LitresRemainingCodesCount.cs" />
+    <Compile Include="DataAccess\LitresContext.cs" />
+    <Compile Include="DataAccess\Repositories\LitresDownloadCodesRepository.cs" />
+    <Compile Include="Models\DownloadCodeBinding.cs" />
+    <Compile Include="LitresOrderManagement.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\RemainingCodesCountReport.cs">
+      <DependentUpon>RemainingCodesCountReport.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RemainingCodesCountReportFields.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Reports\RemainingCodesCountReport.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RemainingCodesCountReport.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6b6e5793-b048-473d-8707-23031cc227cd}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ProductCatalog.WsClients\RapidSoft.Loaylty.ProductCatalog.WsClients.csproj">
+      <Project>{fa8260e1-3e5b-4be8-9c65-5c6554310ef6}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Interfaces\RapidSoft.Loaylty.PartnersConnector.Interfaces.csproj">
+      <Project>{f80d391a-fe15-4ebb-aac0-ca1a229e9c35}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

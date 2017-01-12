@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+
+  <configSections>
+    <sectionGroup name="userSettings"
+                  type="System.Configuration.UserSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="RapidSoft.Etl.Editor.Properties.Settings"
+               type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+               allowExeDefinition="MachineToLocalUser" requirePermission="false" />      
+    </sectionGroup>
+    <section name="EtlAgentConfiguration" type="RapidSoft.Etl.Editor.EtlAgentConfiguration, RapidSoft.Etl.Editor" />
+  </configSections>
+
+  <userSettings>
+    <RapidSoft.Etl.Editor.Properties.Settings>
+      <setting name="EtlAgentType" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="ConnectionString" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="SchemaName" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="EtlAgentTypeRight" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="ConnectionStringRight" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="SchemaNameRight" serializeAs="String">
+        <value />
+      </setting>
+    </RapidSoft.Etl.Editor.Properties.Settings>
+  </userSettings>
+  <EtlAgentConfiguration>
+    <EtlAgents>
+    </EtlAgents>
+  </EtlAgentConfiguration>
+
+  <startup>
+    <supportedRuntime version="v4.0.30319" />
+  </startup>
+
+
+  <appSettings>
+    <add key="BatchSize" value="50"/>
+  </appSettings>
+  <connectionStrings>
+      <add name="BankConnectorDBContext" connectionString="metadata=res://*/BankConnectorDBModel.csdl|res://*/BankConnectorDBModel.ssdl|res://*/BankConnectorDBModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=@DBHOST@;initial catalog=@DBNAME@;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+
+</configuration>

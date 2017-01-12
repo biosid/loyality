@@ -1,0 +1,64 @@
+@model dynamic
+@Html.AddScriptBlock(@<script>
+    require([
+        'Main/obj-banner'
+    ], function(banner) {
+        banner({ selector: '#banner-picnic', max: 2000000, def: 2000000 });
+    });
+</script>)
+<div class="banner-carousel__item banner-picnic @(Model.IsActive ? "active" : null)" id="banner-picnic">
+    <div class="obj-banner">
+        @* сумка спортивная *@
+        <div data-value="3967" class="banner-picnic__bag">
+            <a href="https://bonus.vtb24.ru/catalog/search?sort=popularity_desc&term=спортивный+рюкзак" class="obj-banner__pos" style="z-index: 1">
+                <span class="obj-banner__baloon _red _bottom-left" style="top: -52px; left: 24px">3 967</span>
+            </a>
+        </div>
+        @* палатка *@
+        <div data-value="11967" class="banner-picnic__tent">
+            <a href="https://bonus.vtb24.ru/catalog/search?term=Палатка" class="obj-banner__pos">
+                <span class="obj-banner__baloon _red _bottom-left" style="top: 25px; left: 337px;">11 967</span>
+            </a>
+        </div>
+        @* чайный набор *@
+        <div data-value="2060" class="banner-picnic__teaset">
+            <a href=" https://bonus.vtb24.ru/catalog/search?sort=popularity_desc&term=Чайный+набор" class="obj-banner__pos">
+                <span class="obj-banner__baloon _red _bottom-right" style="top: -64px; left: -40px">2 060</span>
+            </a>
+        </div>
+        @* стол *@
+        <div data-value="6610" class="banner-picnic__table">
+            <a href="https://bonus.vtb24.ru/catalog/search?sort=popularity_desc&term=стол+складной" class="obj-banner__pos">
+                <span class="obj-banner__baloon _red _top-right" style="top: 56px; left: 50px">6 610</span>
+            </a>
+            <a href="https://bonus.vtb24.ru/catalog/search?sort=popularity_desc&term=стол+складной" class="obj-banner__pos" style="z-index:1; width: 55px; height: 72px">
+            </a>
+            <a href="https://bonus.vtb24.ru/catalog/search?sort=popularity_desc&term=стол+складной" class="obj-banner__pos" style="z-index:3; width: 40px; height: 40px; margin:18px 0 0 81px">
+            </a>
+        </div>
+        @* колонка *@
+        <div data-value="7200" class="banner-picnic__speaker">
+            <a href="https://bonus.vtb24.ru/catalog/index/729" class="obj-banner__pos">
+                <span class="obj-banner__baloon _red _bottom-left" style="top: -57px; left: -41px">7 200</span>
+            </a>
+        </div>
+        @* Шезлонг *@
+        <div data-value="10000" class="banner-picnic__chair">
+            <a href="https://bonus.vtb24.ru/catalog/search?term=шезлонг" class="obj-banner__pos">
+                <span class="obj-banner__baloon _red _bottom-right" style="top: -66px; left: -40px;">10 000</span>
+            </a>
+        </div>
+        @* термосумка *@
+        <div data-value="2980" class="banner-picnic__thermobag">
+            <a href="https://bonus.vtb24.ru/catalog/search?term=термосумка" class="obj-banner__pos" style="z-index:1">
+                <span class="obj-banner__baloon _red _bottom-left" style="top: -57px; left: 1px;">2 980</span>
+            </a>
+        </div>
+        @* гриль *@
+        <div data-value="4829" class="banner-picnic__grill">
+            <a href="https://bonus.vtb24.ru/catalog/search?sort=popularity_desc&term=гриль&category=584" class="obj-banner__pos">
+                <span class="obj-banner__baloon _red _bottom-left" style="top: -54px; left: 39px;">4 829</span>
+            </a>
+        </div>
+    </div>
+</div>

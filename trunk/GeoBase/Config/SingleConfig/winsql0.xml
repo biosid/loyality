@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>e:\LoyaltyLogs\GeoBase</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>e:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@elasticsearchCluster@</string>
+          </Patterns>
+          <ReplaceTo>http://10.14.14.180:9200;http://10.14.14.185:9200</ReplaceTo>
+        </ConfigFileTransformation>
+	<!-- Database settings -->
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@DBHOST@</string>
+	  </Patterns>
+	  <ReplaceTo>winsql1;Failover Partner=winsql0</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@DBUSER@</string>
+	  </Patterns>
+	  <ReplaceTo>LoyaltyDB</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@DBPASS@</string>
+	  </Patterns>
+	  <ReplaceTo>LoyaltyDB</ReplaceTo>
+	</ConfigFileTransformation>
+	
+	<!-- SMTP START -->
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@LoyaltyEmail@</string>
+	  </Patterns>
+	  <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@SMTPHOST@</string>
+	  </Patterns>
+	  <ReplaceTo>winfe0</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@SmtpUserName@</string>
+	  </Patterns>
+	  <ReplaceTo>loyalty@bonus.vtb24.ru</ReplaceTo>
+	</ConfigFileTransformation>
+	<!-- SMTP END -->
+	
+      </GlobalConfigFileTransformations>
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81967F37-3DFB-45F0-B8EF-E515B765082B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.VTB24.BankConnector</RootNamespace>
+    <AssemblyName>RapidSoft.VTB24.BankConnector</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <TargetFrameworkProfile />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsRuntimeCheckingLevel>ReleaseRequires</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsAssertsToContractsCheckBox>True</CodeContractsAssertsToContractsCheckBox>
+    <CodeContractsRedundantTests>True</CodeContractsRedundantTests>
+    <CodeContractsMissingPublicEnsuresAsWarnings>False</CodeContractsMissingPublicEnsuresAsWarnings>
+    <CodeContractsInferEnsuresAutoProperties>True</CodeContractsInferEnsuresAutoProperties>
+    <CodeContractsSuggestAssumptionsForCallees>False</CodeContractsSuggestAssumptionsForCallees>
+    <CodeContractsNecessaryEnsures>True</CodeContractsNecessaryEnsures>
+    <CodeContractsSuggestReadonly>True</CodeContractsSuggestReadonly>
+    <CodeContractsSkipAnalysisIfCannotConnectToCache>False</CodeContractsSkipAnalysisIfCannotConnectToCache>
+    <CodeContractsBeingOptimisticOnExternal>True</CodeContractsBeingOptimisticOnExternal>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CONTRACTS_FULL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\RapidSoft.VTB24.BankConnector.Solution\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Acquiring\IUnitellerProvider.cs" />
+    <Compile Include="Acquiring\OperationStatusRequest.cs" />
+    <Compile Include="Acquiring\OperationStatusResponse.cs" />
+    <Compile Include="Acquiring\GetChequeRequest.cs" />
+    <Compile Include="Acquiring\GetChequeResponse.cs" />
+    <Compile Include="Acquiring\OperationStatusResponseCode.cs" />
+    <Compile Include="Acquiring\UnitellerAuthInfo.cs" />
+    <Compile Include="Acquiring\UnitellerSignatureCreator.cs" />
+    <Compile Include="Configuration\ConfigurationElementCollectionT.cs" />
+    <Compile Include="Configuration\IKeyProvider.cs" />
+    <Compile Include="Configuration\ParamElement.cs" />
+    <Compile Include="Configuration\EtlConfigSection.cs" />
+    <Compile Include="EtlExecutionWrapper\ActivateClientsWrapperParameters.cs" />
+    <Compile Include="EtlExecutionWrapper\EtlExecutionHandler\EtlExecutionHandler.cs" />
+    <Compile Include="EtlExecutionWrapper\Email\EmailMessage.cs" />
+    <Compile Include="EtlExecutionWrapper\Email\EmailSearcher.cs" />
+    <Compile Include="EtlExecutionWrapper\EtlExecutionHandler\EtlExecutionAbortReason.cs" />
+    <Compile Include="EtlExecutionWrapper\EtlVariableKeys.cs" />
+    <Compile Include="Extension\PartnerExtensions.cs" />
+    <Compile Include="Processors\BankOffersProcessor.cs" />
+    <Compile Include="Processors\ErrorPaymentsProcessor.cs" />
+    <Compile Include="Processors\OrderNotificationsProcessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Quartz Jobs\JobExecutionParameters.cs" />
+    <Compile Include="EtlLogger\WcfEndpointLoggerExtension.cs" />
+    <Compile Include="EtlLogger\WcfEndpointLogger.cs" />
+    <Compile Include="Extension\BonusPluralizeExtension.cs" />
+    <Compile Include="Extension\PluralizeExtensions.cs" />
+    <Compile Include="Processors\AccrualProcessor.cs" />
+    <Compile Include="Processors\BankClientRegistrationStatusCodes.cs" />
+    <Compile Include="Processors\BankClientRegistrator.cs" />
+    <Compile Include="Processors\BankPwdResetProcessor.cs" />
+    <Compile Include="Processors\BatchCreateClientsStatusCodes.cs" />
+    <Compile Include="Processors\ClientLoginBankUpdatesProcessor.cs" />
+    <Compile Include="Processors\LoyaltyClientUpdateHelpers.cs" />
+    <Compile Include="Processors\LoyaltyClientUpdateProcessor.cs" />
+    <Compile Include="Processors\ClientDetachProcessor.cs" />
+    <Compile Include="Entity\PhoneNumber.cs" />
+    <Compile Include="Acquiring\ConfirmPayRequest.cs" />
+    <Compile Include="Acquiring\ConfirmPayResponse.cs" />
+    <Compile Include="Acquiring\PerformPayRequest.cs" />
+    <Compile Include="Acquiring\PerformPayResponse.cs" />
+    <Compile Include="Acquiring\EstablishSessionRequest.cs" />
+    <Compile Include="Acquiring\IUnitellerRequest.cs" />
+    <Compile Include="Acquiring\EstablishSessionResponse.cs" />
+    <Compile Include="Acquiring\UnitellerProvider.cs" />
+    <Compile Include="EtlExecutionWrapper\WrapperBase.cs" />
+    <Compile Include="EtlInvokeHelper.cs" />
+    <Compile Include="Extension\Int32Extension.cs" />
+    <Compile Include="EtlLogger\EtlLogger.cs" />
+    <Compile Include="Processors\ClientProfileClientStatusCodes.cs" />
+    <Compile Include="Processors\ClientRegistrationJoin.cs" />
+    <Compile Include="Processors\ClientUpdater.cs" />
+    <Compile Include="Processors\MapHelpers\MapHelpers.cs" />
+    <Compile Include="Processors\OrdersPaymentProcessor.cs" />
+    <Compile Include="Processors\SendOrdersProcessor.cs" />
+    <Compile Include="Processors\ProcessConstants.cs" />
+    <Compile Include="Processors\PromoActionProcessor.cs" />
+    <Compile Include="Processors\SegmentExtensions.cs" />
+    <Compile Include="Processors\TargetAudienceProcessor.cs" />
+    <Compile Include="Processors\WishListProcessor.cs" />
+    <Compile Include="Processors\WishListTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WishListTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extension\EnumerableExtension.cs" />
+    <Compile Include="Quartz Jobs\AssignClientTargetAudienceJob.cs" />
+    <Compile Include="Quartz Jobs\ClientUpdatesJob.cs" />
+    <Compile Include="Quartz Jobs\ClientLoginBankUpdatesJob.cs" />
+    <Compile Include="Quartz Jobs\JobExecutionParametersBuilder.cs" />
+    <Compile Include="Quartz Jobs\LoyaltyClientUpdatesJob.cs" />
+    <Compile Include="Quartz Jobs\NotifyExecutedOrdersJob.cs" />
+    <Compile Include="Quartz Jobs\NotifyIncompleteOrdersJob.cs" />
+    <Compile Include="Quartz Jobs\RegisterBankOffersJob.cs" />
+    <Compile Include="Quartz Jobs\ResetClientsPasswordsJob.cs" />
+    <Compile Include="Quartz Jobs\RetryErrorPaymentsJob.cs" />
+    <Compile Include="Quartz Jobs\SendBankSmsJob.cs" />
+    <Compile Include="Quartz Jobs\SendInteractionReportsJob.cs" />
+    <Compile Include="Quartz Jobs\WishListNotificationsJob.cs" />
+    <Compile Include="Quartz Jobs\ReceiveAccrualsJob.cs" />
+    <Compile Include="Quartz Jobs\ReceiveDetachCountJob.cs" />
+    <Compile Include="Quartz Jobs\SendDetachListJob.cs" />
+    <Compile Include="Quartz Jobs\PersonalMessagesJob.cs" />
+    <Compile Include="Quartz Jobs\PromoActionReceiveJob.cs" />
+    <Compile Include="Quartz Jobs\PromoActionSendJob.cs" />
+    <Compile Include="Quartz Jobs\ReceiveOrdersJob.cs" />
+    <Compile Include="Quartz Jobs\RegisterBankClientsJob.cs" />
+    <Compile Include="Quartz Jobs\SendOrdersJob.cs" />
+    <Compile Include="Quartz Jobs\SendRegistrationClientsJob.cs" />
+    <Compile Include="Quartz Jobs\ReceiveRegistrationClientsJob.cs" />
+    <Compile Include="Quartz Jobs\ActivateClientsJob.cs" />
+    <Compile Include="Quartz Jobs\DataKeys.cs" />
+    <Compile Include="Quartz Jobs\JobDataMapExtensions.cs" />
+    <Compile Include="Extension\RuleExtensions.cs" />
+    <Compile Include="Processors\ClientRegistrator.cs" />
+    <Compile Include="Processors\ActivateClientsService.cs" />
+    <Compile Include="Service\AdminBankConnectorService.cs" />
+    <Compile Include="Service\AdminClientManagementService.cs" />
+    <Compile Include="Service\BankConnectorService.cs" />
+    <Compile Include="Service\BankOffersService.cs" />
+    <Compile Include="Service\BankSmsService.cs" />
+    <Compile Include="Service\OrderPaymentService.cs" />
+    <Compile Include="Processors\PersonalMessageProcessor.cs" />
+    <Compile Include="Service\PaymentService.cs" />
+    <Compile Include="Service\ProcessorBase.cs" />
+    <Compile Include="Service\ClientManagementService.cs" />
+    <Compile Include="Extension\OrderExtension.cs" />
+    <Compile Include="Stubs\UnitellerProviderStub.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Processors\WishListTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>WishListTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\Unity.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\Unity.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\Quartz\Quartz.2010.csproj">
+      <Project>{aef8823b-e45b-4b35-a4d0-c08c1196d017}</Project>
+      <Name>Quartz.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.Etl.Logging\RapidSoft.Etl.Logging.csproj">
+      <Project>{DC9A13A8-98A5-4460-B499-C8972944C764}</Project>
+      <Name>RapidSoft.Etl.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.Etl.Runtime\RapidSoft.Etl.Runtime.csproj">
+      <Project>{276395a6-28ff-46af-accc-14f2f175e25d}</Project>
+      <Name>RapidSoft.Etl.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\S22.Imap\S22.Imap.csproj">
+      <Project>{369c32a5-e099-4bd5-bbbf-51713947ca99}</Project>
+      <Name>S22.Imap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63DF64B8-C9F3-4A51-841D-58D6D1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.BonusGateway\RapidSoft.Loaylty.BonusGateway.csproj">
+      <Project>{a130d3dc-72ea-4e07-ae64-caa194245b6e}</Project>
+      <Name>RapidSoft.Loaylty.BonusGateway</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ClientProfile\RapidSoft.Loaylty.ClientProfile.csproj">
+      <Project>{fbd2e6da-8492-4e71-b227-c1bb7d517dbd}</Project>
+      <Name>RapidSoft.Loaylty.ClientProfile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6b6e5793-b048-473d-8707-23031cc227cd}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj">
+      <Project>{E10328E0-16F8-448C-8F26-E754D9A1FE83}</Project>
+      <Name>RapidSoft.Loaylty.Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Processing\RapidSoft.Loaylty.Processing.csproj">
+      <Project>{21ea3da9-98cc-4681-9561-5c87b5d6803d}</Project>
+      <Name>RapidSoft.Loaylty.Processing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ProductCatalog.WsClients\RapidSoft.Loaylty.ProductCatalog.WsClients.csproj">
+      <Project>{fa8260e1-3e5b-4be8-9c65-5c6554310ef6}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PromoAction.WsClients\RapidSoft.Loaylty.PromoAction.WsClients.csproj">
+      <Project>{8533aa36-8d8a-4215-94b7-c8a4989c6f32}</Project>
+      <Name>RapidSoft.Loaylty.PromoAction.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\Rapidsoft.Loyalty.NotificationSystem.WsClients\Rapidsoft.Loyalty.NotificationSystem.WsClients.csproj">
+      <Project>{014608c5-660e-4ddd-b219-b38278ac86aa}</Project>
+      <Name>Rapidsoft.Loyalty.NotificationSystem.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.ArmSecurity\RapidSoft.VTB24.ArmSecurity.csproj">
+      <Project>{87f9069d-e59f-4195-97f4-9309e6a764df}</Project>
+      <Name>RapidSoft.VTB24.ArmSecurity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.Site\RapidSoft.VTB24.Site.csproj">
+      <Project>{bef9525f-6493-469f-bd15-acbbb7b011a8}</Project>
+      <Name>RapidSoft.VTB24.Site</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.Acquiring\RapidSoft.VTB24.BankConnector.Acquiring.csproj">
+      <Project>{b2d3f688-1ae7-4718-a1d3-e48a220c6b2f}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.Acquiring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.DataModels\RapidSoft.VTB24.BankConnector.DataModels.csproj">
+      <Project>{A197184A-8429-4DC1-8541-37F57A802F61}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.DataSource\RapidSoft.VTB24.BankConnector.DataSource.csproj">
+      <Project>{fd8442fe-fe00-4d13-b454-34728f9fdd77}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.DataSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.Infrastructure\RapidSoft.VTB24.BankConnector.Infrastructure.csproj">
+      <Project>{5bf06308-29f4-4e47-ab46-76214c953b7f}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.API\RapidSoft.VTB24.BankConnector.API.csproj">
+      <Project>{C56B7759-9AA7-4A12-8472-046B3228DE96}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.WsClients\RapidSoft.VTB24.BankConnector.WsClients.csproj">
+      <Project>{40BDD6B9-BCFE-4364-BB9E-4890F966EBBC}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.WsClients</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WsClientExtensions\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\Thirdparty\Tools\StyleCop\v4.7\StyleCop.Targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

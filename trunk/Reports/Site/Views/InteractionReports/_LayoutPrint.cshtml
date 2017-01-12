@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPrint.cshtml";
+}
+@Html.Partial("_HeaderPrint", (object)Model)
+<h4>Статистика</h4>
+<table style="border: 1px solid black; border-collapse: collapse;">
+    <tbody>
+        @if (Model.Summary.ShowReplyDelayed)
+        {
+            <tr>
+                <td style="border: 1px solid black; background-color: ghostwhite; padding: 5px;">Все ответные файлы отправлены/получены</td>
+                <td style="border: 1px solid black; padding: 5px; @(Model.Summary.HasAnyReplyDelayed ? "color:red;" : "color:green;")">@(Model.Summary.HasAnyReplyDelayed ? "Нет" : "Да")</td>
+            </tr>
+        }
+        @if (Model.Summary.ShowRowCountDiscrepancy)
+        {
+            <tr>
+                <td style="border: 1px solid black; background-color: ghostwhite; padding: 5px;">Расхождения в количестве записей отсутствуют</td>
+                <td style="border: 1px solid black; padding: 5px; @(Model.Summary.HasAnyRowCountDiscrepancy ? "color:red;" : "color:green;")">@(Model.Summary.HasAnyRowCountDiscrepancy ? "Нет" : "Да")</td>
+            </tr>
+        }
+        @if (Model.Summary.ShowSizeExceeded)
+        {
+            <tr>
+                <td style="border: 1px solid black; background-color: ghostwhite; padding: 5px;">Файлы Коллекции размером более 4MB отсутствуют</td>
+                <td style="border: 1px solid black; padding: 5px; @(Model.Summary.HasAnySizeExceeded ? "color:red;" : "color:green;")">@(Model.Summary.HasAnySizeExceeded ? "Нет" : "Да")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h4>Детализация по файлам</h4>
+@RenderBody()

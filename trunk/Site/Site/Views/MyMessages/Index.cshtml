@@ -1,0 +1,111 @@
+﻿@using Vtb24.Site.Models.MyMessages
+@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@model ThreadsModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Просмотр личныx сообщений";
+    ViewBag.Menu = "Messages";
+}
+
+@Html.AddScriptBlock(
+    @<script>
+        require(['MyMessages/index'], function (module) {
+            module({
+                el: '#messages-list',
+                setReadUrl: '@Url.Action("SetRead", "MyMessages")'
+            });
+        });
+    </script>
+)
+
+@helper Notification(ThreadModel thread)
+{
+    <tr class="@(thread.IsRead ? "read" : "not-read") cursor-pointer" data-x="notification">
+        <td class="align-center message-datetime">
+            <a class="message-delete-button" title="удалить" href="#" data-x="message/delete" data-thread-id="@thread.Id"></a>
+            @thread.Date.ToShortDateString()
+        </td>
+        <td class="text-left">@thread.Subject</td>
+        <td><span class="move">&nbsp;</span></td>
+    </tr>
+    <tr class="sub-table none" data-x="message-body">
+        <td>
+            <div class="message-detail-container">
+                <div class="message-detail">@Html.HighlightLinks(thread.Text.Trim())</div>
+            </div>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+}
+
+@helper Thread(ThreadModel thread)
+{
+    <tr class="@(thread.IsRead ? "read" : "not-read") cursor-pointer" data-x="thread">
+        <td class="align-center message-datetime">
+            <a class="message-delete-button" title="удалить" href="#" data-x="message/delete" data-thread-id="@thread.Id"></a>
+            @thread.Date.ToShortDateString()
+        </td>
+        <td class="text-left">@thread.Subject</td>
+        <td><i class="fdbck-mmsgs_icon"></i></td>
+    </tr>
+}
+
+@section secondary
+{
+    @Html.Action("ClientMenu", "Layout", new { activeMenu = ViewBag.Menu })
+}
+
+<div class="mnl16">
+    <div class="middle-line bgr">
+        <div class="ml-text"><span class="size28">Просмотр личныx сообщений</span></div>
+    </div>
+    @if (Model.Threads != null && Model.Threads.Length > 0)
+    {
+        <div class="wrap-table">
+            <table cellspacing="0" cellpadding="0" class="table-style messages" id="messages-list">
+                <col width="140">
+                <col>
+                <col align="center" width="60">
+                <thead>
+                    <tr>
+                        <td width="140" class="align-center">Дата</td>
+                        <td class="align-center">Тема</td>
+                        <td width="60">
+                            &nbsp;
+                        </td>
+                    </tr>
+                </thead>
+
+                @foreach (var thread in Model.Threads)
+                {
+                    var url = thread.IsConversation
+                        ? Url.Action("ClientThread", "Feedback", new { id = thread.Id, page = thread.Pages })
+                        : "#";
+                    <tbody class="title" data-thread-id="@(thread.Id)" data-url="@url">
+                        @(thread.IsConversation ? Thread(thread) : Notification(thread))
+                    </tbody>
+                }
+            </table>
+
+
+        </div>
+    }
+    else
+    {
+        <p>У вас нет сообщений</p>
+    }
+</div>
+
+@if (Model.TotalPages > 1)
+{
+    @Html.Pager(Model.TotalPages, Model.Page)
+}
+
+@using (Html.BeginForm("Delete", "MyMessages", FormMethod.Post, new { data_x = "message/delete_form", style = "visibility:hidden;" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="threadId" value=""/>
+    <input type="hidden" name="redirectToPage" value="@(Model.Threads != null && Model.Threads.Length <= 1 && Model.Page > 1 ? Model.Page - 1 : Model.Page)"/>
+}

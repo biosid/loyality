@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fb23501e-5456-4d38-8687-3ea6a558f63b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>true</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:8101/WishListService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WishListService.xsd" MetadataType="Schema" ID="6d348369-6f5b-41c0-9b20-46c261b39a2a" SourceId="1" SourceUrl="http://rphqbuild1:8101/WishListService.svc?xsd=xsd1" />
+    <MetadataFile FileName="WishListService1.xsd" MetadataType="Schema" ID="287112e6-7d06-44d0-8e0a-e382f1dba9bc" SourceId="1" SourceUrl="http://rphqbuild1:8101/WishListService.svc?xsd=xsd3" />
+    <MetadataFile FileName="WishListService.wsdl" MetadataType="Wsdl" ID="03b3cf7c-e1ae-4bec-82e4-1799d44bf3c7" SourceId="1" SourceUrl="http://rphqbuild1:8101/WishListService.svc?wsdl" />
+    <MetadataFile FileName="WishListService2.xsd" MetadataType="Schema" ID="7cd8ddd3-af8f-4c6f-904c-ce5a09309cee" SourceId="1" SourceUrl="http://rphqbuild1:8101/WishListService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WishListService3.xsd" MetadataType="Schema" ID="3ee6373a-3b7e-4d74-a625-90412c30ac45" SourceId="1" SourceUrl="http://rphqbuild1:8101/WishListService.svc?xsd=xsd2" />
+    <MetadataFile FileName="WishListService4.xsd" MetadataType="Schema" ID="2e6598a8-194a-4c00-9b00-b862ce645f9c" SourceId="1" SourceUrl="http://rphqbuild1:8101/WishListService.svc?xsd=xsd5" />
+    <MetadataFile FileName="WishListService.disco" MetadataType="Disco" ID="2bfa30fa-b34a-4a55-b9a3-6fb8bfcdaaa9" SourceId="1" SourceUrl="http://rphqbuild1:8101/WishListService.svc?disco" />
+    <MetadataFile FileName="WishListService5.xsd" MetadataType="Schema" ID="824ca8af-771d-4c73-98ec-4f3900eb8086" SourceId="1" SourceUrl="http://rphqbuild1:8101/WishListService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

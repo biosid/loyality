@@ -1,0 +1,39 @@
+﻿@model Vtb24.Arms.Models.LoginModel
+@{
+    ViewBag.Title = "Система Управления Бонусной Программой";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<div class="container main-wrapper">
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin" }))
+    {
+        @Html.HiddenFor(m => m.ReturnUrl)
+        <h3 class="form-signin-heading">Система Управления Бонусной Программой</h3>
+        <div class="row">
+            <div class="span1 text-right">
+                <span class="line-height-30">Логин</span>
+            </div>
+            <div class="span4">
+                @Html.TextBoxFor(m => m.Login, new { placeholder="Логин", @class="input-block-level", tabindex="1", maxlength = "30" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="span1 text-right">
+                <span class="line-height-30">Пароль</span>
+            </div>
+            <div class="span4">
+                @Html.PasswordFor(m => m.Password, new { placeholder="Пароль", @class="input-block-level", tabindex="2", maxlength = "30" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="span1"></div>
+            <div class="span1">
+                <button type="submit" class="btn" tabindex="3">Войти</button>
+            </div>
+            <div class="span3">
+                <div class="text-error">
+                    @Html.ValidationSummary()
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs\BankConnector</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- ConnectionString -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBHOST@</string>
+          </Patterns>
+          <ReplaceTo>LOYALTY-WIN0</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SMTPHOST@</string>
+          </Patterns>
+          <ReplaceTo>192.168.62.157</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TERADATAIMAPHOST@</string>
+          </Patterns>
+          <ReplaceTo>192.168.62.157</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@LOYALTYIMAPHOST@</string>
+          </Patterns>
+          <ReplaceTo>192.168.62.157</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Настройки рассылки напоминаний о неоформленных заказах -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ClientSiteBasketUrl@</string>
+          </Patterns>
+          <ReplaceTo>http://loyalty-win0:3139/basket</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Настройки рассылки предложений оценить сервис -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ClientSiteOrderUrlTemplate@</string>
+          </Patterns>
+          <ReplaceTo>http://loyalty-win0:3139/myorders/order/{0}</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Настройки отправки отчетов по файлообмену -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@InteractionReportsUrl@</string>
+          </Patterns>
+          <ReplaceTo>http://loyalty-win0:61284/interactionreports/report</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@InteractionReportsSendTo@</string>
+          </Patterns>
+          <ReplaceTo></ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Stubs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@VtbEncryption@</string>
+          </Patterns>
+          <ReplaceTo>VtbEncryptionStub</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@UnitellerProvider@</string>
+          </Patterns>
+          <ReplaceTo>UnitellerProvider</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Настройки эквайринга Uniteller -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PaymentUnitellerUsePreauth@</string>
+          </Patterns>
+          <ReplaceTo>true</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerLogin@</string>
+          </Patterns>
+          <ReplaceTo>828</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerPassword@</string>
+          </Patterns>
+          <ReplaceTo>u2mZZXNgLEdx1wnmTrYh7xypqihcFlMnmXN65rTOHF69peZPfZrnfLwcTQkZex7CGySeohS6jL8LNSc7</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerPayFormUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://wpay.uniteller.ru/pay/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerResultsUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://wpay.uniteller.ru/results/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerConfirmUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://wpay.uniteller.ru/confirm/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@AcquiringUnitellerCancelUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://wpay.uniteller.ru/unblock/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BankProductsPartnerId@</string>
+          </Patterns>
+          <ReplaceTo>101</ReplaceTo>
+        </ConfigFileTransformation>
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\loyalty-win0_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

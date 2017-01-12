@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<connectionStrings>
+	<add name="BankConnectorDBContext" connectionString="metadata=res://*/BankConnectorDBModel.csdl|res://*/BankConnectorDBModel.ssdl|res://*/BankConnectorDBModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=@DBHOST@;initial catalog=@DBNAME@;integrated security=False;User=@DBUSER@;Password=@DBPASS@;Connect Timeout=@DBTIMEOUT@;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+	<add name="BankConnectorDB" connectionString="data source=@DBHOST@;initial catalog=@DBNAME@;integrated security=False;User=@DBUSER@;Password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"/>
+</connectionStrings>

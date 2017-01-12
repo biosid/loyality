@@ -1,0 +1,64 @@
+Certificate:
+    Data:
+        Version: 1 (0x0)
+        Serial Number:
+            01:4e:03:09:e2:07:01:0b:03:09:67:1c
+        Signature Algorithm: ecr3410WithR3411 (1.3.6.1.4.1.5849.1.3.2)
+        Issuer: C=RU, L=МОСКВА, O=ВТБ 24 (ЗАО), CN=Удостоверяющий Центр, Email=cacenter@vtb24.ru
+        Validity
+            Not Before: Jun 27 11:05:01 2013 GMT
+            Not After : Jun 27 11:05:01 2015 GMT
+        Subject: C=RU, SP=для РапидСофт Девелопмент, L=Москва, O=ВТБ 24 (ЗАО), OU=Отдел развития программ лояльности, T=Начальник отдела, CN=Захарова Анастасия Игоревна, Email=Zaharova.AI@vtb24.ru
+        Subject Public Key Info:
+            Public Key Algorithm: ecr3410 (1.3.6.1.4.1.5849.1.6.2)
+            ECGOST Public Key:
+                pub: 
+                    04:5a:b4:45:27:4c:ef:aa:29:75:1d:ef:86:71:91:
+                    b8:37:c6:f4:fa:f3:ec:f0:0a:ec:01:93:e5:3c:5a:
+                    84:17:f4:67:b4:88:da:db:43:38:29:3f:e0:35:5d:
+                    9e:0c:ac:4b:24:85:a7:b9:b0:44:31:ed:15:9e:bf:
+                    0d:f9:c0:49:6b
+                prime:  (256 bits)
+                    00:ff:ff:ff:ff:00:00:00:01:00:00:00:00:00:00:
+                    00:00:00:00:00:00:ff:ff:ff:ff:ff:ff:ff:ff:ff:
+                    ff:ff:ff
+                a:  (256 bits)
+                    00:ff:ff:ff:ff:00:00:00:01:00:00:00:00:00:00:
+                    00:00:00:00:00:00:ff:ff:ff:ff:ff:ff:ff:ff:ff:
+                    ff:ff:fc
+                b:  (255 bits)
+                    5a:c6:35:d8:aa:3a:93:e7:b3:eb:bd:55:76:98:86:
+                    bc:65:1d:06:b0:cc:53:b0:f6:3b:ce:3c:3e:27:d2:
+                    60:4b
+                base: 
+                    04:6b:17:d1:f2:e1:2c:42:47:f8:bc:e6:e5:63:a4:
+                    40:f2:77:03:7d:81:2d:eb:33:a0:f4:a1:39:45:d8:
+                    98:c2:96:4f:e3:42:e2:fe:1a:7f:9b:8e:e7:eb:4a:
+                    7c:0f:9e:16:2b:ce:33:57:6b:31:5e:ce:cb:b6:40:
+                    68:37:bf:51:f5
+                order:  (256 bits)
+                    00:ff:ff:ff:ff:00:00:00:00:ff:ff:ff:ff:ff:ff:
+                    ff:ff:bc:e6:fa:ad:a7:17:9e:84:f3:b9:ca:c2:fc:
+                    63:25:51
+                cofactor:  (1 bit)
+                    01
+    Signature Algorithm: ecr3410WithR3411 (1.3.6.1.4.1.5849.1.3.2)
+        30:44:02:20:53:aa:14:0d:59:7d:9c:33:3f:9c:f2:8a:08:52:
+        6e:39:69:a1:4e:27:47:76:30:d5:62:3c:2d:56:72:04:52:d8:
+        02:20:10:c2:8e:5f:60:fe:f1:b1:36:9f:55:4f:8d:99:64:7b:
+        61:05:d4:20:65:57:57:98:2d:74:24:62:3d:24:1b:7b
+-----BEGIN CERTIFICATE-----
+MIICZzCCAgqgAwIBAAIMAU4DCeIHAQsDCWccMA4GCisGAQQBrVkBAwIFADB2MQsw
+CQYDVQQGEwJSVTEPMA0GA1UEBxQGzM7RysLAMRUwEwYDVQQKFAzC0sEgMjQgKMfA
+zikxHTAbBgNVBAMUFNPk7vHy7uLl8P/++ejpINbl7fLwMSAwHgYJKoZIhvcNAQkB
+FhFjYWNlbnRlckB2dGIyNC5ydTAeFw0xMzA2MjcxMTA1MDFaFw0xNTA2MjcxMTA1
+MDFaMIHsMQswCQYDVQQGEwJSVTEiMCAGA1UECBQZ5Ov/INDg7+jk0e708iDE5eLl
+6+7v7OXt8jEPMA0GA1UEBxQGzO7x6uLgMRUwEwYDVQQKFAzC0sEgMjQgKMfAzikx
+KzApBgNVBAsUIs7y5OXrIPDg5+Lo8uj/IO/w7uPw4OzsIOvu/+v87e7x8ugxGTAX
+BgNVBAwUEM3g9+Dr/O3o6iDu8uTl6+AxJDAiBgNVBAMUG8fg9eDw7uLgIMDt4PHy
+4PHo/yDI4+7w5eLt4DEjMCEGCSqGSIb3DQEJARYUWmFoYXJvdmEuQUlAdnRiMjQu
+cnUwXjAWBgorBgEEAa1ZAQYCBggqhkjOPQMBBwNEAARBBFq0RSdM76opdR3vhnGR
+uDfG9Prz7PAK7AGT5TxahBf0Z7SI2ttDOCk/4DVdngysSySFp7mwRDHtFZ6/DfnA
+SWswDgYKKwYBBAGtWQEDAgUAA0cAMEQCIFOqFA1ZfZwzP5zyighSbjlpoU4nR3Yw
+1WI8LVZyBFLYAiAQwo5fYP7xsTafVU+NmWR7YQXUIGVXV5gtdCRiPSQbew==
+-----END CERTIFICATE-----

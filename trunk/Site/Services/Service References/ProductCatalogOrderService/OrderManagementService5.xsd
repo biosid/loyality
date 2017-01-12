@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.OutputResults" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.OutputResults" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:8101/OrderManagementService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" />
+  <xs:complexType name="CreateOrderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Order" nillable="true" type="q1:Order" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateOrderResult" nillable="true" type="tns:CreateOrderResult" />
+  <xs:complexType name="ResultBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+  <xs:complexType name="ClientCommitOrderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Order" nillable="true" type="q2:Order" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClientCommitOrderResult" nillable="true" type="tns:ClientCommitOrderResult" />
+  <xs:complexType name="GetOrdersHistoryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Orders" nillable="true" type="q3:ArrayOfOrder" />
+          <xs:element minOccurs="0" name="TotalCount" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetOrdersHistoryResult" nillable="true" type="tns:GetOrdersHistoryResult" />
+  <xs:complexType name="HasNonterminatedOrdersResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HasOrders" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HasNonterminatedOrdersResult" nillable="true" type="tns:HasNonterminatedOrdersResult" />
+  <xs:complexType name="GetOrderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="NextOrderStatuses" nillable="true" type="q4:ArrayOfOrderStatuses" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Order" nillable="true" type="q5:Order" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetOrderResult" nillable="true" type="tns:GetOrderResult" />
+  <xs:complexType name="GetOrderPaymentStatusesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderPaymentStatuses" nillable="true" type="tns:ArrayOfOrderPayments" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetOrderPaymentStatusesResult" nillable="true" type="tns:GetOrderPaymentStatusesResult" />
+  <xs:complexType name="ArrayOfOrderPayments">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderPayments" nillable="true" type="tns:OrderPayments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderPayments" nillable="true" type="tns:ArrayOfOrderPayments" />
+  <xs:complexType name="OrderPayments">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="DeliveryPaymentStatus" type="q6:OrderDeliveryPaymentStatus" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="PaymentStatus" type="q7:OrderPaymentStatuses" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderPayments" nillable="true" type="tns:OrderPayments" />
+  <xs:complexType name="GetLastDeliveryAddressesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Addresses" nillable="true" type="tns:ArrayOfLastDeliveryAddress" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetLastDeliveryAddressesResult" nillable="true" type="tns:GetLastDeliveryAddressesResult" />
+  <xs:complexType name="ArrayOfLastDeliveryAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LastDeliveryAddress" nillable="true" type="tns:LastDeliveryAddress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLastDeliveryAddress" nillable="true" type="tns:ArrayOfLastDeliveryAddress" />
+  <xs:complexType name="LastDeliveryAddress">
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="DeliveryAddress" nillable="true" type="q8:DeliveryAddress" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="DeliveryVariantsLocation" nillable="true" type="q9:VariantsLocation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LastDeliveryAddress" nillable="true" type="tns:LastDeliveryAddress" />
+  <xs:complexType name="ChangeExternalOrdersStatusesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeExternalOrderStatusResults" nillable="true" type="tns:ArrayOfChangeExternalOrderStatusResult" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChangeExternalOrdersStatusesResult" nillable="true" type="tns:ChangeExternalOrdersStatusesResult" />
+  <xs:complexType name="ArrayOfChangeExternalOrderStatusResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChangeExternalOrderStatusResult" nillable="true" type="tns:ChangeExternalOrderStatusResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChangeExternalOrderStatusResult" nillable="true" type="tns:ArrayOfChangeExternalOrderStatusResult" />
+  <xs:complexType name="ChangeExternalOrderStatusResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ChangeOrderStatusResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExternalOrderId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChangeExternalOrderStatusResult" nillable="true" type="tns:ChangeExternalOrderStatusResult" />
+  <xs:complexType name="ChangeOrderStatusResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:int" />
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="OriginalStatus" nillable="true" type="q10:OrderStatuses" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChangeOrderStatusResult" nillable="true" type="tns:ChangeOrderStatusResult" />
+  <xs:complexType name="ChangeOrdersStatusesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeOrderStatusResults" nillable="true" type="tns:ArrayOfChangeOrderStatusResult" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChangeOrdersStatusesResult" nillable="true" type="tns:ChangeOrdersStatusesResult" />
+  <xs:complexType name="ArrayOfChangeOrderStatusResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChangeOrderStatusResult" nillable="true" type="tns:ChangeOrderStatusResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChangeOrderStatusResult" nillable="true" type="tns:ArrayOfChangeOrderStatusResult" />
+  <xs:complexType name="GetDeliveryVariantsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="DeliveryGroups" nillable="true" type="q11:ArrayOfDeliveryGroup" />
+          <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Location" nillable="true" type="q12:VariantsLocation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDeliveryVariantsResult" nillable="true" type="tns:GetDeliveryVariantsResult" />
+</xs:schema>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EtlMailReportConfiguration>
+  <Subscriptions>
+		<Subscription>
+			<From>etlmonitor@rapidsoft.ru</From>
+			<Subject>Отчет по загрузкам</Subject>
+			<MailTemplatePath>MailTemplates\DefaultReport.xslt</MailTemplatePath>
+      <EnableSsl>false</EnableSsl>
+      <AllowEmptyMail>false</AllowEmptyMail>
+      <OnLastSeconds>86400</OnLastSeconds>
+      <EtlStatuses>
+        <EtlStatus>Started</EtlStatus>
+        <EtlStatus>Succeeded</EtlStatus>
+        <EtlStatus>FinishedWithLosses</EtlStatus>
+        <EtlStatus>FinishedWithWarnings</EtlStatus>
+        <EtlStatus>Failed</EtlStatus>
+      </EtlStatuses>
+      <EtlAgents>
+        <EtlAgent>
+          <EtlAgentType>RapidSoft.Etl.Runtime.Agents.Sql.SqlEtlAgent, RapidSoft.Etl.Runtime</EtlAgentType>
+          <ConnectionString>Data Source=(local);Initial Catalog=EtlDemoDb;Integrated Security = true</ConnectionString>
+          <SchemaName>dbo</SchemaName>
+        </EtlAgent>
+      </EtlAgents>
+			<Subscribers>
+				<Subscriber>
+					<Email>amorevsky@rapidsoft.ru</Email>
+				</Subscriber>
+			</Subscribers>
+		</Subscription>
+  </Subscriptions>
+</EtlMailReportConfiguration>

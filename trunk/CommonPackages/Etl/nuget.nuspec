@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>RapidSoft.Etl</id>
+    <version>1.0.0</version>
+    <authors>egoncharov</authors>
+    <owners>egoncharov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>VTB24 common packages: RapidSoft.Etl</description>
+    <dependencies>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" />
+      <frameworkAssembly assemblyName="System.Configuration" />
+      <frameworkAssembly assemblyName="System.Core" />
+      <frameworkAssembly assemblyName="System.Data" />
+      <frameworkAssembly assemblyName="System.Numerics" />
+      <frameworkAssembly assemblyName="System.Xml" />
+    </frameworkAssemblies>
+    </metadata>
+  <files>
+    <file src="RapidSoft.Etl.Logging\bin\Release\RapidSoft.Etl.Logging.*" target="lib" />
+    <file src="RapidSoft.Etl.LogSender\bin\Release\RapidSoft.Etl.LogSender.*" target="lib" />
+    <file src="RapidSoft.Etl.Runtime\bin\Release\RapidSoft.Etl.Runtime.*" target="lib" />
+    <file src="RapidSoft.VTB24.VtbEncryption\bin\Release\RapidSoft.VTB24.VtbEncryption.*" target="lib" />
+    <file src="RapidSoft.VTB24.VtbEncryption\bin\Release\Security\**\*.*" target="content\Security" />
+    <file src="S22.Imap\bin\Release\S22.Imap.*" target="lib" />
+  </files>
+</package>

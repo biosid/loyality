@@ -1,0 +1,14 @@
+﻿@model OnlinePartnerStub.Models.Main.ConfirmOrderModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Онлайн-партнер \"Заглушка\"";
+}
+<h2>Онлайн-партнер "Заглушка"</h2>
+<h4>Подтверждение заказа товара</h4>
+<a href="@Model.PaymentFormUrl">Перейти к оплате</a>
+<br/>
+<a href="@Url.Action("Index", "Main", new { userTicket = Model.Order.UserTicket })">Отменить</a>
+<br/>
+<a href="@Url.Action("NotifyOrder", "Main", Model.Order)" target="_blank">Открыть форму смены статуса заказа</a>
+<br>
+<a href="@Url.Action("GetPaymentStatus", "Main", Model.Order)" target="_blank">Запросить статус оплаты заказа</a>

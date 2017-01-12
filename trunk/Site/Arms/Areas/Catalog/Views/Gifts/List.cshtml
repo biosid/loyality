@@ -1,0 +1,440 @@
+﻿@{
+    ViewBag.Title = "Вознаграждения";
+    ViewBag.MenuId = "gifts";
+    ViewBag.Query = Model.Query;
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.Catalog.Models.Gifts
+@using Vtb24.Arms.Catalog.Models.Shared.Helpers
+@model GiftsModel
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(['Catalog/Gifts/index'], function(index) {
+             index();
+         });
+     </script>
+    )
+@if (Model.Permissions.MassActions)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(['Catalog/Gifts/mass-actions'], function(massActions) {
+                 var list = $('#gifts-list');
+                 massActions({ list: list });
+             });
+         </script>
+         )
+    if (Model.Permissions.Moderate)
+    {
+        @Html.AddScriptBlock(
+            @<script>
+                 require(['Catalog/Gifts/moderation'], function(moderation) {
+                     var giftSelector = $('#gifts-list').data('massActions');
+                     moderation({
+                         selector: giftSelector,
+                         url: '@Url.Action("Moderate", "Gifts")'
+                     });
+                 });
+             </script>
+             )
+    }
+    if (Model.Permissions.SetSegments)
+    {
+        @Html.AddScriptBlock(
+            @<script>
+                 require(['Catalog/Gifts/segments'], function(segments) {
+                     var giftSelector = $('#gifts-list').data('massActions');
+                     segments({ selector: giftSelector });
+                 });
+             </script>
+             )
+    }
+    if (Model.Permissions.Recommend)
+    {
+        @Html.AddScriptBlock(
+            @<script>
+                 require(['Catalog/Gifts/recommend'], function(recommend) {
+                     var selector = $('#gifts-list').data('massActions');
+                     recommend({ selector: selector, url: '@Url.Action("Recommend", "Gifts")' });
+                 });
+             </script>
+        )
+    }
+    if (Model.Permissions.Move)
+    {
+        @Html.AddScriptBlock(
+            @<script>
+                 require(
+                     [
+                         'Catalog/Gifts/move'
+                     ],
+                     function (move) {
+                         var giftSelector = $('#gifts-list').data('massActions');
+                         move({ selector: giftSelector });
+                     });
+             </script>
+             )
+    }
+    if (Model.Permissions.Activate)
+    {
+        @Html.AddScriptBlock(
+            @<script>
+                 require(
+                     [
+                         'Catalog/Gifts/activation'
+                     ],
+                     function(activation) {
+                         var giftSelector = $('#gifts-list').data('massActions');
+                         activation({
+                             selector: giftSelector,
+                             url: '@Url.Action("Activate", "Gifts")'
+                         });
+                     });
+             </script>
+             )
+    }
+    if (Model.Permissions.Delete)
+    {
+        @Html.AddScriptBlock(
+            @<script>
+                 require(
+                     [
+                         'Catalog/Gifts/delete'
+                     ],
+                     function(del) {
+                         var giftSelector = $('#gifts-list').data('massActions');
+                         del({ selector: giftSelector });
+                     });
+             </script>
+        )
+    }
+}
+
+@if (Model.Suppliers.Length != 0)
+{
+    <div class="tab-pane active">
+        @* --------------------- Шапка --------------------- *@
+        <div class="mar-left-20 mar-right-20">
+            @* --------------------- Поиск --------------------- *@
+            @using (Html.BeginForm("List", "Gifts", FormMethod.Get))
+            {
+                @Html.Hidden("supplier", Model.Query.supplier)
+                @Html.Hidden("category", Model.Query.category)
+                @Html.TextBox("term", Model.Query.term, new {@class = "pull-right mar-bottom-0", placeholder = "Найти вознаграждение", maxlength = 50})
+            }
+            @* --------------------- Выбор поставщика --------------------- *@
+            <select class="pull-left span5 pad-left-1" data-urlselect="">
+                <option value="@Url.Action("List", "Gifts")" selected="@(!Model.Query.supplier.HasValue ? "selected" : "")">- все поставщики -</option>
+                @foreach (var supplier in Model.Suppliers)
+                {
+                    var url = Url.Action("List", "Gifts", new {supplier = supplier.Id});
+                    var selected = Model.Query.supplier == supplier.Id ? "selected" : null;
+                    <option value="@url" selected="@selected">@supplier.Name</option>
+                }
+            </select>
+            @if (Model.Permissions.Import)
+            {
+                @* --------------------- Импорт каталога --------------------- *@
+                <span class="help-inline line-height-30 for-inline-height-30 mar-left-10">
+                    @if (Model.Query.supplier.HasValue)
+                    {
+                        <a href="@Url.Action("Import", "Gifts", new {supplierId = Model.Query.supplier, query = Model.Query.ToQuery()})">Загрузить вознаграждения</a>
+                    }
+                    else
+                    {
+                        <a class="muted" title="Выберите поставщика, чтобы загрузить вознаграждения">
+                            <i class="icon icon-ban-circle"></i>
+                            Загрузить вознаграждения
+                        </a>
+                    }
+                </span>
+            }
+        </div>
+        @if (Model.Permissions.Edit || Model.Permissions.MassActions)
+        {
+            @* --------------------- Панель действий --------------------- *@
+            <div class="relative" style="z-index: 2;">
+                <div class="sticky-save" data-x="gifts/navbar">
+                    <div class="navbar" style="width: 940px;">
+                        <div class="navbar-inner mar-bottom-10 no-border pad-left-0 pad-right-0">
+                            @if (Model.Permissions.Edit)
+                            {
+                            @* --------------------- Создание --------------------- *@
+                                if (!Model.DisallowCreate)
+                                {
+                                    var url = Url.Action("Create", "Gifts", new { supplierId = Model.Query.supplier, categoryId = Model.Query.category });
+                                    <a href="@url" class="btn btn-success mar-left-20 pull-left">
+                                        <i class="icon-plus icon-white"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-success mar-left-20 pull-left disabled" title="@Model.DisallowCreateMessage">
+                                        <i class="icon-plus icon-white"></i>
+                                    </a>
+                                }
+                            }
+                            @if (Model.Permissions.MassActions)
+                            {
+                                <div data-x="gifts/actions_panel" style="display: none" class="pull-right mar-right-20">
+                                    <div class="span3 line-height-30 pad-top-5 mar-left-10 pad-left-0 text-right mar-right-10" data-x="gifts/selected_counter"></div>
+                                    @if (Model.Permissions.Moderate)
+                                    {
+                                    @* --------------------- Модерация --------------------- *@
+                                        <div class="btn-group mar-top-5 mar-left-20">
+                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                Модерация
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="#@ModerateModel.ModerationStatus.Approve" data-x="gifts/moderation" data-loading-text="Подождите...">Принять</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#@ModerateModel.ModerationStatus.Deny" data-x="gifts/moderation">Отклонить</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                    @if (Model.Permissions.SetSegments || Model.Permissions.Recommend)
+                                    {
+                                    @* --------------------- Маркетинг --------------------- *@
+                                        <div class="btn-group mar-top-5 mar-left-20">
+                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                Маркетинг
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                @if (Model.Permissions.SetSegments)
+                                                {
+                                                    <li>
+                                                        <a href="#" data-x="gifts/edit_segments">Сегменты</a>
+                                                    </li>
+                                                }
+                                                @if (Model.Permissions.Recommend)
+                                                {
+                                                    <li>
+                                                        <a href="#True" data-x="gifts/recommend">Добавить в рекомендуемые</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#False" data-x="gifts/recommend">Убрать из рекомендуемых</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+                                    @if (Model.Permissions.Move || Model.Permissions.Activate || Model.Permissions.Delete)
+                                    {
+                                    @* --------------------- Управление --------------------- *@
+                                        <div class="btn-group mar-top-5 mar-left-20">
+                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                Управление
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                @if (Model.Permissions.Activate)
+                                                {
+                                                    <li>
+                                                        <a href="#@ActivateModel.ActivationStatus.Activate" data-x="catalog/gifts/activation">Активировать</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#@ActivateModel.ActivationStatus.Deactivate" data-x="catalog/gifts/activation">Деактивировать</a>
+                                                    </li>
+                                                }
+                                                @if (Model.Permissions.Delete)
+                                                {
+                                                    <li>
+                                                        <a href="#" data-x="gifts/delete">Удалить</a>
+                                                    </li>
+                                                }
+                                                @if (Model.Permissions.Move)
+                                                {
+                                                    <li>
+                                                        <a href="#" data-x="gifts/move/trigger">Перенести</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @* --------------------- Навигация --------------------- *@
+        <div class="bcrumb mar-bottom-20">
+            <div class="btn-group">
+                <a class="btn btn-link dropdown-toggle breadcrumbs-title" data-toggle="dropdown" href="#">
+                    <span class="bc-t">Все категории</span>
+                    @if (Model.BreadCrumbs.BreadCrumbs.Length > 0)
+                    {
+                        <span class="caret">/</span>
+                    }
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <ul class="rootCat" data-x="gifts/categories">
+                            <li><a href="@Url.Action("List", "Gifts", new { Model.Query.supplier })">Все категории</a></li>
+                            <li class="divider"></li>
+                            @Html.Partial("_GiftsCategoriesLevel", Model.CategoryItems.GetRootCategoriesModel(cat => Url.Action("List", "Gifts", new GiftsQueryModel { supplier = Model.Query.supplier, category = cat.Id })))
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            @if (Model.BreadCrumbs.BreadCrumbs.Length == 0)
+            {
+                @:  <small class="muted">( Выберите категорию... )</small>
+            }
+            else
+            {
+                @Html.Partial("_BreadCrumbs", Model.BreadCrumbs)
+            }
+        </div>
+        @* --------------------- Фильтры --------------------- *@
+        <div class="row mar-left-0 mar-bottom-10">
+            <div class="span3 mar-left-0">
+                @* --------------------- Фильтр по статусу модерации --------------------- *@
+                @Html.EnumDropDownListFor(m => m.Query.moderation, new { data_filter = @"{""name"":""moderation""}" })
+            </div>
+            <div class="span4 mar-top-5">
+                @* --------------------- Фильтр по рекомендованным --------------------- *@
+                <label class="checkbox">
+                    @Html.CheckBoxFor(m => m.Query.recommended_only, new { data_filter = @"{""name"":""recommended_only""}" })
+                    Показывать только рекомендуемые
+                </label>
+            </div>
+@*            <div class="pull-left line-height-30 mar-left-0">
+            </div>*@
+        </div>
+        @*  --------------------- Список вознаграждений *@
+        @if (Model.Gifts.Length > 0)
+        {
+            <div class="row relative" style="z-index: 1;">
+                <div class="span12">
+                    <table class="table table-bordered" id="gifts-list">
+                        <thead>
+                            <tr>
+                                @if (Model.Permissions.MassActions)
+                                {
+                                    <th><input type="checkbox" data-x="gifts/selectAll" autocomplete="off"></th>
+                                }
+                                <th style="width: 100px;">ID</th>
+                                <th colspan="2">Вознаграждение</th>
+                                <th style="width: 100px; text-align: center;">Активность</th>
+                                <th style="width: 100px; text-align: center;">Mодерация</th>
+                                <th style="width: 100px;">
+                                    @{
+                                        var ask = !Model.Query.sort.HasValue || Model.Query.sort.Value == Sortings.price_asc_name_asc;
+                                        var className = ask ? "btn btn-link sort-asc-desc" : "btn btn-link sort-asc-desc active";
+                                        var url = Url.Action("List", "Gifts", new GiftsQueryModel { supplier = Model.Query.supplier, category = Model.Query.category, sort = ask ? Sortings.price_desc_name_asc : Sortings.price_asc_name_asc });
+                                        <a class="@className" href="@url"><i class="asc-desc-icon"></i>Цена</a>
+                                    }
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var gift in Model.Gifts)
+                            {
+                                var rowClassName = gift.Status == Statuses.active ? "middled rowcheck" : "middled rowcheck muted";
+
+                                <tr class="@rowClassName" id="gift-@gift.Id">
+                                    @if (Model.Permissions.MassActions)
+                                    {
+                                        <td><input type="checkbox" name="gift" value="@gift.Id" autocomplete="off"></td>
+                                    }
+                                    <td>
+                                        <div class="short-to-long-ellipsis-container" style="width: 100px;">
+                                            <div class="short-to-long-ellipsis-plashka">
+                                                @gift.Id
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="gift-table-first-image-cell">
+                                        <img alt="" src="@(!string.IsNullOrEmpty(gift.PictureUrl) ? gift.PictureUrl : "/Content/images/no-image.png")" class="gift-table-first-image">
+                                    </td>
+                                    <td>
+                                        @if (Model.Permissions.Edit)
+                                        {
+                                            <a href="@Url.Action("Edit", "Gifts", new { gift.Id, query = Url.ToQuery(Model.Query) })">@gift.Name</a>
+                                        }
+                                        else
+                                        {
+                                            <span>@gift.Name</span>
+                                        }
+                                        @if (gift.IsRecommended)
+                                        {
+                                            <span class="label">Рекомендовано</span>
+                                        }
+                                        <div class="string-ellipsis-container">
+                                            <div class="string-ellipsis-plashka prod-id">@gift.ProductId</div>
+                                        </div>
+                                        <div class="string-ellipsis-container">
+                                            <div class="string-ellipsis-plashka category-in">@gift.CategoryPath</div>
+                                        </div>
+                                        @if (gift.Segments != null && gift.Segments.Any())
+                                        {
+                                            <div class="string-ellipsis-container">
+                                                <div class="string-ellipsis-plashka segments-in">
+                                                    @string.Join(", ", gift.Segments)
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="text-center">@Html.DescriptionFor(gift.Status)</div>
+                                    </td>
+                                    <td>
+                                        <div class="text-center">@gift.ModerationStatus</div>
+                                    </td>
+                                    <td>@gift.Price.ToString("N2")&nbsp;руб.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row" style="min-height: 400px;">
+                <div class="span12">
+                    <h4 class="font-normal mar-left-10">
+                        Вознаграждения не найдены
+                    </h4>
+                </div>
+            </div>
+        }
+        @* --------------------- Пейджинг *@
+        @if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+        }
+    </div>
+
+    @* --------------------- Привязка сегментов *@
+        if (Model.Permissions.SetSegments)
+        {
+        @Html.Partial("_Segments", Model.Segments)
+        }
+    @* --------------------- Перенос *@
+        if (Model.Permissions.Move)
+        {
+        @Html.Partial("_Move", Model.CategoryItems.GetRootCategoriesModel(m => "#" + m.Id))
+        }
+    @* --------------------- Удаление *@
+        if (Model.Permissions.Delete)
+        {
+        @Html.Partial("_Delete")
+        }
+}
+else
+{
+    <div class="tab-pane active">
+        <p>Нет доступных поставщиков</p>
+    </div>
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2fe325740eed4ba2a048072c63863dc4" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientCardRegStatus" Width="1.5" PointX="0.75" PointY="3.75" FillColor="Red" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.OrderPaymentResponse" Width="1.5" PointX="2.75" PointY="3.75" FillColor="0, 192, 0" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.PromoAction" Width="1.625" PointX="4.75" PointY="3.75" FillColor="Blue" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.PromoActionResponse" Width="2.375" PointX="5.75" PointY="0.75" FillColor="Blue" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.StepsBuffer" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientPersonalMessage" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientPersonalMessageResponse" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.Accrual" Width="1.5" PointX="4.75" PointY="7.75" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientAudienceRelation" Width="1.5" PointX="7.75" PointY="6.75" FillColor="255, 128, 255" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForBankRegistration" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForBankRegistrationResponse" Width="2.125" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForRegistration" Width="2.125" PointX="6.75" PointY="9.75" FillColor="Red" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForDeletion" Width="1.5" PointX="9.75" PointY="7.75" FillColor="Black" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForDeletionResponse" Width="2.375" PointX="9.75" PointY="10.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForRegistrationResponse" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientUpdate" Width="1.875" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForActivation" Width="1.5" PointX="3.75" PointY="11.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.OrderForPayment" Width="1.875" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.OrderPaymentResponse2" Width="3.125" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ProfileCustomField" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ProfileCustomFieldsValue" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="RapidSoft.VTB24.BankConnectorModel.FK_ProfileCustomFieldsValues_ProfileCustomFields" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientLoginBankUpdate" Width="2.625" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientLoginBankUpdatesResponse" Width="1.5" PointX="5.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.LoyaltyClientUpdate" Width="1.5" PointX="7.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForBankPwdReset" Width="1.5" PointX="9.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForBankPwdResetResponse" Width="1.5" PointX="11.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.OrderItemsForPayment" Width="2" PointX="13.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.UnitellerPayment" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.OrderAttempt" Width="1.5" PointX="15.75" PointY="7.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.BankOffer" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.RegisterBankOffer" Width="1.5" PointX="2.75" PointY="16.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.RegisterBankOffersResponse" Width="1.5" PointX="16.75" PointY="10.75" />
+        <EntityTypeShape EntityType="RapidSoft.VTB24.BankConnectorModel.BankSms" Width="1.5" PointX="16.75" PointY="13.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

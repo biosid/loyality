@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:63910/AdminBankConnectorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" />
+  <xs:import schemaLocation="http://localhost:63910/AdminBankConnectorService.svc?xsd=xsd3" namespace="RapidSoft.VTB24.BankConnector" />
+  <xs:element name="GetAllProfileCustomFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProfileCustomFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="GetAllProfileCustomFieldsResult" nillable="true" type="q1:GenericBankConnectorResponseOfArrayOfClientProfileCustomFieldGVwQv096" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientPhoneNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="RapidSoft.VTB24.BankConnector" minOccurs="0" name="request" nillable="true" type="q2:UpdateClientPhoneNumberRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientPhoneNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="UpdateClientPhoneNumberResult" nillable="true" type="q3:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="RapidSoft.VTB24.BankConnector" minOccurs="0" name="request" nillable="true" type="q4:UpdateClientEmailRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="UpdateClientEmailResult" nillable="true" type="q5:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AppendProfileCustomField">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AppendProfileCustomFieldResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="AppendProfileCustomFieldResult" nillable="true" type="q6:GenericBankConnectorResponseOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveProfileCustomField">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveProfileCustomFieldResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="RemoveProfileCustomFieldResult" nillable="true" type="q7:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RenameProfileCustomField">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RenameProfileCustomFieldResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="RenameProfileCustomFieldResult" nillable="true" type="q8:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Echo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EchoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EchoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,8 @@
+ClientId;Status;Segment;
+TestClientId0;1;-1
+TestClientId1;0;0
+TestClientId2;1;1
+TestClientId3;1;1;Этот клиент создан для проверки логики при существующем клиенте
+RequestNotFound;1;0
+RejectedClient;4;0
+NonFoundedClient;5;0

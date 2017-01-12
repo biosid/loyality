@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:57451/MechanicsService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://rphqbuild1:57451/MechanicsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="CalculateResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BaseResult" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PromoResult" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RuleApplyStatus" type="tns:RuleApplyStatuses" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TraceMessages" nillable="true" type="q1:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CalculateResult" nillable="true" type="tns:CalculateResult" />
+  <xs:complexType name="ResultBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+  <xs:simpleType name="RuleApplyStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BaseOnlyRulesExecuted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RulesExecuted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RulesNotExecuted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RuleApplyStatuses" nillable="true" type="tns:RuleApplyStatuses" />
+  <xs:complexType name="FactorsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionFactor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="BaseAdditionFactor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="BaseMultiplicationFactor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="IsBaseApplied" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsNotBaseApplied" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MultiplicationFactor" type="xs:decimal" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TraceMessages" nillable="true" type="q2:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FactorsResult" nillable="true" type="tns:FactorsResult" />
+  <xs:complexType name="GenerateResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActionSql" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BaseSql" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RuleApplyStatus" type="tns:RuleApplyStatuses" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GenerateResult" nillable="true" type="tns:GenerateResult" />
+</xs:schema>

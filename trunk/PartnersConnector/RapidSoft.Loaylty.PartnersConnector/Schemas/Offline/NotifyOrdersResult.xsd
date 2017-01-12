@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd"
+		elementFormDefault="qualified"
+		xmlns="http://tempuri.org/XMLSchema.xsd"
+		xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+	<xs:element name="NotifyOrdersResult">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Orders" minOccurs="1" maxOccurs="1" nillable="false">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Order" minOccurs="1" maxOccurs="1000" nillable="false">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="OrderId" minOccurs="1" maxOccurs="1" nillable="false">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="36" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="InternalOrderId" minOccurs="1" maxOccurs="1" nillable="false">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="36" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ResultCode" minOccurs="1" maxOccurs="1" nillable="false">
+											<xs:simpleType>
+												<xs:restriction base="xs:int">
+													<xs:enumeration id="Ok" value="0" />
+													<xs:enumeration id="Error" value="1" />
+													<xs:enumeration id="NotFound" value="2" />
+													<xs:enumeration id="WrongWorkflow" value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Reason" minOccurs="0" maxOccurs="1" nillable="true">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="1000" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

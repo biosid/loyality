@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5657/ClientMessageService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" />
+  <xs:import schemaLocation="http://localhost:5657/ClientMessageService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" />
+  <xs:element name="Echo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EchoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EchoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetThreads">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q1:ClientGetThreadsParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetThreadsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" minOccurs="0" name="GetThreadsResult" nillable="true" type="q2:ClientGetThreadsResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatistics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q3:GetStatisticsParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatisticsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" minOccurs="0" name="GetStatisticsResult" nillable="true" type="q4:GetStatisticsResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetThreadById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q5:ClientGetThreadByIdParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetThreadByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" minOccurs="0" name="GetThreadByIdResult" nillable="true" type="q6:GetThreadByIdResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetThreadMessages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q7:ClientGetThreadMessagesParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetThreadMessagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" minOccurs="0" name="GetThreadMessagesResult" nillable="true" type="q8:GetThreadMessagesResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Reply">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q9:ClientReplyParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReplyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" minOccurs="0" name="ReplyResult" nillable="true" type="q10:ReplyResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MarkThreadAsRead">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q11:MarkThreadAsReadParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MarkThreadAsReadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" minOccurs="0" name="MarkThreadAsReadResult" nillable="true" type="q12:MarkThreadAsReadResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Notify">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" minOccurs="0" name="parameters" nillable="true" type="q13:NotifyClientsParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" minOccurs="0" name="NotifyResult" nillable="true" type="q14:NotifyClientsResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,176 @@
+﻿@using Vtb24.Arms.Actions.Models
+@model ActionsModel
+@{
+    ViewBag.Title = Model.OperationMode.GetTitle();
+    Layout = "~/Areas/Actions/Views/Shared/_Layout.cshtml";
+}
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(['Actions/index'],
+             function(index) { index(); });
+    </script>
+    )
+@if (Model.Permissions.Edit)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(['Actions/delete'],
+                 function(del) { del({ deleteUrl: "@Url.Action("Delete", "Actions")" }); });
+         </script>
+         )
+}
+<div class="tab-pane active">
+    <div class="container">
+@*
+--------------------- Шапка
+*@
+        <div>
+            
+            <select class="pull-left span5" data-urlselect="">
+                @foreach (var mechanic in Model.Mechanics)
+                {
+                    var url = Url.Action("List", "Actions", new { mechanic = mechanic.Id });
+                    var selected = Model.Query.mechanic == mechanic.Id ? "selected" : null;
+                    <option value="@url" selected="@selected">@mechanic.Name</option>
+                }
+            </select>
+@*
+--------------------- Фильтры
+*@
+            @if (Model.OperationMode == ActionsOperationMode.Search)
+            {
+                using (Html.BeginForm("List", "Actions", FormMethod.Get, new { @class = "well", data_x = "actions/filter_form" }))
+                {
+                    @Html.Hidden("mechanic", Model.MechanicId)
+                    <div class="row">
+                        <div class="span2">
+                            <input type="text" class="input-block-level" placeholder="Действует с" id="from" name="from" value="@(Model.Query.from.HasValue ? Model.Query.from.Value.ToString("dd.MM.yyyy") : "")">
+                        </div>
+                        <div class="span2">
+                            <input type="text" class="input-block-level" placeholder="по" id="to" name="to" value="@(Model.Query.to.HasValue ? Model.Query.to.Value.ToString("dd.MM.yyyy") : "")">
+                        </div>                
+                        <div class="span6">
+                            <input type="text" class="input-block-level" placeholder="введите часть наименования" id="term" name="term" value="@Model.Query.term">
+                        </div>
+                    
+                        <button class="btn mar-left-20" type="submit">Найти <i class="icon-search"></i></button>
+                    </div>
+                }
+            }
+        </div>
+@*
+--------------------- Панель действий
+*@
+        @if (Model.OperationMode == ActionsOperationMode.Actual && Model.Permissions.Edit)
+        {
+            <div class="navbar" style="width: 940px;">
+                <div class="navbar-inner mar-bottom-10 no-border pad-left-0">
+                    <a class="btn btn-success mar-left-20 pull-left" href="@Url.Action("Create", "Actions", new { mechanic = Model.MechanicId, query = Model.Query.ToQuery() })">
+                        <i class="icon-plus icon-white"></i>
+                    </a>
+                </div>
+            </div>
+        }
+@*
+--------------------- Механики
+*@
+        @if (Model.Actions.Any())
+        {
+            <div class="row">
+                <div class="span12">
+                    <table class="table table-bordered font-size-13">
+                        <thead>
+                            <tr>
+                                <th><div class="nowrap">ID</div></th>
+                                <th><div class="nowrap">Наименование</div></th>
+                                <th><div class="nowrap">Приоритет</div></th>
+                                <th><div class="nowrap">Особенности</div></th>
+                                <th><div class="nowrap">Модерация</div></th>
+                                <th><div class="nowrap">Дата с</div></th>
+                                <th><div class="nowrap">Дата по</div></th>
+                                <th><div class="nowrap">Кто</div></th>
+                                <th><div class="nowrap">Дата изм.</div></th>
+                                @if (Model.Permissions.Edit)
+                                {
+                                    <th></th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var action in Model.Actions)
+                            {
+                                var data = Html.Json(new { id = action.Id, name = action.Name }).ToString();
+                                <tr data-actiondata="@data">
+                                    <td>@action.Id</td>
+                                    <td>
+                                        @if (Model.Permissions.Edit)
+                                        {
+                                            <a href="@Url.Action("Edit", "Actions", new { id = action.Id, query = Url.ToQuery(Model.Query) })">@action.Name</a>
+                                        }
+                                        else
+                                        {
+                                            @action.Name
+                                        }
+                                    </td>
+                                    <td>@action.Priority</td>
+                                    <td>@action.Traits</td>
+                                    <td>
+                                        @{
+                                            string className = null;
+                                            switch (action.ApproveStatus)
+                                            {
+                                                case ApproveStatuses.not_approved:
+                                                    className = "label-important";
+                                                    break;
+                                                case ApproveStatuses.approved:
+                                                    className = "label-success";
+                                                    break;
+                                                case ApproveStatuses.correction:
+                                                    className = "label-warning";
+                                                    break;
+                                            }
+                                            <div class="label @className">
+                                                @Html.DescriptionFor(action.ApproveStatus)
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>@(action.From.HasValue ? action.From.Value.ToString("dd.MM.yyyy") : "-")</td>
+                                    <td>@(action.To.HasValue ? action.To.Value.ToString("dd.MM.yyyy") : "-")</td>
+                                    <td>@action.UpdatedBy</td>
+                                    <td>@action.Updated.ToString("dd.MM.yyyy")</td>
+                                    @if (Model.Permissions.Edit)
+                                    {
+                                        <td><a href="#" class="btn" data-x="actions/actual/delete"><i class="icon-remove"></i></a></td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h4 class="font-normal mar-left-10">
+                Механики не найдены
+            </h4>
+        }
+@*
+--------------------- Пейджинг
+*@
+        @if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+        }
+    </div>
+</div>
+@*
+--------------------- Удаление
+*@
+@if (Model.Permissions.Edit)
+{
+    @Html.Partial("_Delete")
+}

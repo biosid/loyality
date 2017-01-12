@@ -1,0 +1,34 @@
+User-agent: *
+
+Clean-param: returnUrl card/register*
+
+Allow: /
+
+Disallow: /news/maintenance_time
+Disallow: /account/registered 
+Disallow: /activationrequired
+Disallow: /advance/pay
+Disallow: /advance/success
+Disallow: /advance/fail
+Disallow: /buy/onlineorder
+Disallow: /captcha/rendercaptcha
+Disallow: /card/register
+Disallow: /card/success
+Disallow: /card/showerror
+Disallow: /card/reloadparent
+Disallow: /card/registrationerror
+Disallow: /catalog/dummyonlinecategory
+Disallow: /feedback/thankyou
+Disallow: /files/uploads
+Disallow: /geo/searchcity
+Disallow: /geo/searchcityortown
+Disallow: /layout/throwexception
+Disallow: /otp/confirm
+Disallow: /otp/renew
+Disallow: /smsballance
+Disallow: /unsubscribe
+
+
+
+Host: bonus.vtb24.ru
+Sitemap: https://bonus.vtb24.ru/sitemap.xml

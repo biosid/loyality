@@ -1,0 +1,1 @@
+alter table [prod].[ProductsHistory] alter column [Description] nvarchar(2000)

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OrderManagementService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8101/OrderManagementService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8101/OrderManagementService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8101/OrderManagementService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" />
+      <xsd:import schemaLocation="http://localhost:8101/OrderManagementService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8101/OrderManagementService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" />
+      <xsd:import schemaLocation="http://localhost:8101/OrderManagementService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.OutputResults" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOrderManagementService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_CreateOrderFromBasketItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrderFromBasketItems" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_CreateOrderFromBasketItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrderFromBasketItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_CreateOnlinePartnerOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOnlinePartnerOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_CreateOnlinePartnerOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOnlinePartnerOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ClientCommitOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientCommitOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ClientCommitOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientCommitOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrdersHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersHistory" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrdersHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_HasNonterminatedOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:HasNonterminatedOrders" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_HasNonterminatedOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HasNonterminatedOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrdersForPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersForPayment" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrdersForPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersForPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrderById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderById" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrderById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrderByExternalId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderByExternalId" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrderByExternalId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderByExternalIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrderPaymentStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderPaymentStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetOrderPaymentStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderPaymentStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetLastDeliveryAddresses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastDeliveryAddresses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetLastDeliveryAddresses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastDeliveryAddressesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeExternalOrdersStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeExternalOrdersStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeExternalOrdersStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeExternalOrdersStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrdersStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrdersStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrderStatusDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrderStatusDescription" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrderStatusDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrderStatusDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrdersStatusesBeforePayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersStatusesBeforePayment" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrdersStatusesBeforePayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersStatusesBeforePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrdersPaymentStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersPaymentStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrdersPaymentStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersPaymentStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrdersDeliveryStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersDeliveryStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ChangeOrdersDeliveryStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersDeliveryStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetDeliveryVariants_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryVariants" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetDeliveryVariants_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryVariantsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IOrderManagementService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:IOrderManagementService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:IOrderManagementService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderFromBasketItems">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/CreateOrderFromBasketItems" message="tns:IOrderManagementService_CreateOrderFromBasketItems_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/CreateOrderFromBasketItemsResponse" message="tns:IOrderManagementService_CreateOrderFromBasketItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOnlinePartnerOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/CreateOnlinePartnerOrder" message="tns:IOrderManagementService_CreateOnlinePartnerOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/CreateOnlinePartnerOrderResponse" message="tns:IOrderManagementService_CreateOnlinePartnerOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientCommitOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/ClientCommitOrder" message="tns:IOrderManagementService_ClientCommitOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/ClientCommitOrderResponse" message="tns:IOrderManagementService_ClientCommitOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrdersHistory" message="tns:IOrderManagementService_GetOrdersHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrdersHistoryResponse" message="tns:IOrderManagementService_GetOrdersHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HasNonterminatedOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/HasNonterminatedOrders" message="tns:IOrderManagementService_HasNonterminatedOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/HasNonterminatedOrdersResponse" message="tns:IOrderManagementService_HasNonterminatedOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersForPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrdersForPayment" message="tns:IOrderManagementService_GetOrdersForPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrdersForPaymentResponse" message="tns:IOrderManagementService_GetOrdersForPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderById" message="tns:IOrderManagementService_GetOrderById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderByIdResponse" message="tns:IOrderManagementService_GetOrderById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderByExternalId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderByExternalId" message="tns:IOrderManagementService_GetOrderByExternalId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderByExternalIdResponse" message="tns:IOrderManagementService_GetOrderByExternalId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderPaymentStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderPaymentStatuses" message="tns:IOrderManagementService_GetOrderPaymentStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderPaymentStatusesResponse" message="tns:IOrderManagementService_GetOrderPaymentStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastDeliveryAddresses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetLastDeliveryAddresses" message="tns:IOrderManagementService_GetLastDeliveryAddresses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetLastDeliveryAddressesResponse" message="tns:IOrderManagementService_GetLastDeliveryAddresses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeExternalOrdersStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeExternalOrdersStatuses" message="tns:IOrderManagementService_ChangeExternalOrdersStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeExternalOrdersStatusesResponse" message="tns:IOrderManagementService_ChangeExternalOrdersStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrdersStatuses" message="tns:IOrderManagementService_ChangeOrdersStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrdersStatusesResponse" message="tns:IOrderManagementService_ChangeOrdersStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrderStatusDescription">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrderStatusDescription" message="tns:IOrderManagementService_ChangeOrderStatusDescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrderStatusDescriptionResponse" message="tns:IOrderManagementService_ChangeOrderStatusDescription_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersStatusesBeforePayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrdersStatusesBeforePayment" message="tns:IOrderManagementService_ChangeOrdersStatusesBeforePayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrdersStatusesBeforePaymentResponse" message="tns:IOrderManagementService_ChangeOrdersStatusesBeforePayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersPaymentStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrdersPaymentStatuses" message="tns:IOrderManagementService_ChangeOrdersPaymentStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrdersPaymentStatusesResponse" message="tns:IOrderManagementService_ChangeOrdersPaymentStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersDeliveryStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrdersDeliveryStatuses" message="tns:IOrderManagementService_ChangeOrdersDeliveryStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/ChangeOrdersDeliveryStatusesResponse" message="tns:IOrderManagementService_ChangeOrdersDeliveryStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryVariants">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetDeliveryVariants" message="tns:IOrderManagementService_GetDeliveryVariants_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetDeliveryVariantsResponse" message="tns:IOrderManagementService_GetDeliveryVariants_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IOrderManagementService" type="tns:IOrderManagementService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISupportService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderFromBasketItems">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/CreateOrderFromBasketItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOnlinePartnerOrder">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/CreateOnlinePartnerOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientCommitOrder">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/ClientCommitOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersHistory">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetOrdersHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasNonterminatedOrders">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/HasNonterminatedOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersForPayment">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetOrdersForPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetOrderById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderByExternalId">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetOrderByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderPaymentStatuses">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetOrderPaymentStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastDeliveryAddresses">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetLastDeliveryAddresses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeExternalOrdersStatuses">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/ChangeExternalOrdersStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersStatuses">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/ChangeOrdersStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrderStatusDescription">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/ChangeOrderStatusDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersStatusesBeforePayment">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/ChangeOrdersStatusesBeforePayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersPaymentStatuses">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/ChangeOrdersPaymentStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersDeliveryStatuses">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/ChangeOrdersDeliveryStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryVariants">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetDeliveryVariants" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderManagementService">
+    <wsdl:port name="BasicHttpBinding_IOrderManagementService" binding="tns:BasicHttpBinding_IOrderManagementService">
+      <soap:address location="http://localhost:8101/OrderManagementService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

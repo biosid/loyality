@@ -1,0 +1,19 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="RapidSoft.Loaylty.ProductCatalog.WsClients.WishListService" #>
+<#@ import namespace="RapidSoft.VTB24.BankConnector.Extension" #>
+<#@ import namespace="System.Globalization" #>
+
+<#var NotificationList = (List<Notification>)Session["NotificationList"];#>
+<#= NotificationList[0].FirstName #> <#= NotificationList[0].MiddleName ?? "" #>! 
+
+Вы накопили достаточно, чтобы получить желаемое!
+Зайдите в раздел «Мои желания» и добавьте подарки в корзину:
+
+<# foreach (var n in NotificationList) { #>
+<#=n.ProductName#>. Стоимость в бонусах: <#=BonusPluralizeExtension.GetPlural(n.ItemBonusCost)#>. Количество: <#=n.ProductQuantity#> шт., Итого: <#=BonusPluralizeExtension.GetPlural(n.TotalBonusCost)#>.
+
+<# } #>

@@ -1,0 +1,57 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+
+//SELECT ('"' + t.TABLE_NAME + CASE WHEN ROW_NUMBER() OVER (ORDER BY t.TABLE_NAME ASC) = ROWCOUNT_BIG() THEN '"' ELSE '",' END
+//) FROM INFORMATION_SCHEMA.COLUMNS t WHERE t.COLUMN_NAME = 'InsertedDate' ORDER BY t.TABLE_NAME
+
+	var tables = new List<string> { 
+			"Accrual",
+			"ClientAudienceRelation",
+			"ClientCardRegStatus",
+			"ClientForActivation",
+			"ClientForBankRegistration",
+			"ClientForBankRegistrationResponse",
+			"ClientForDeletion",
+			"ClientForDeletionResponse",
+			"ClientForRegistration",
+			"ClientForRegistrationResponse",
+			"ClientPersonalMessage",
+			"ClientPersonalMessageResponse",
+			"OrderForPayment",
+			"OrderItemsForPayment",
+			"OrderPaymentResponse",
+			"PromoAction",
+			"PromoActionResponse",
+			"LoyaltyClientUpdate",
+            "UnitellerPayment",
+            "BankOffer",
+            "RegisterBankOffer",
+            "RegisterBankOffersResponse",
+		};
+#>
+
+<#			
+	foreach (var table in tables)
+	{
+#>
+namespace RapidSoft.VTB24.BankConnector.DataModels
+{
+	using System;
+
+	public partial class <#= table #>
+	{
+		public <#= table #>()
+		{
+			InsertedDate = DateTime.Now;
+		}
+	}
+}
+
+<#
+	}
+#>

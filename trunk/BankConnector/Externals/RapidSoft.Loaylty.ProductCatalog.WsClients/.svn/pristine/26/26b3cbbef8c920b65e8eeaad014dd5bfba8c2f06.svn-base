@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA8260E1-3E5B-4BE8-9C65-5C6554310EF6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.ProductCatalog.WsClients</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.ProductCatalog.WsClients</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\BasketService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CatalogAdminService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CatalogSearcherService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OrderManagementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WishListService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="WebClientCaller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\BasketService\BasketService.wsdl" />
+    <None Include="Service References\BasketService\BasketService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketService\BasketService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketService\BasketService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketService\BasketService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketService\BasketService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketService\BasketService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketService\RapidSoft.Loaylty.ProductCatalog.WsClients.BasketService.BasketManageResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BasketService\RapidSoft.Loaylty.ProductCatalog.WsClients.BasketService.BasketResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BasketService\RapidSoft.Loaylty.ProductCatalog.WsClients.BasketService.GetBasketItemResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BasketService\RapidSoft.Loaylty.ProductCatalog.WsClients.BasketService.GetBasketItemsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService.wsdl" />
+    <None Include="Service References\CatalogAdminService\CatalogAdminService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.AdminGetProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.ChangeOrdersStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.CreateCategoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.CreatePartnerProductCategoryLinkResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.CreatePartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.CreateProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.DeliveryLocationHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.DeliveryLocationsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetCategoriesPermissionsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetDeliveryRateImportTasksHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetOrderStatusesHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetPartnerByIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetPartnerInfoByIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetPartnerProductCategoryLinksResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetPartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetPartnersInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetProductCatalogImportTasksHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.GetSubCategoriesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.ImportDeliveryRatesFromHttpResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.ImportProductsFromYmlResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.PartnerCommitOrdersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.PartnersSettignsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.SearchOrdersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.SearchProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.UpdateCategoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService.UpdatePartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\CatalogSearcher.wsdl" />
+    <None Include="Service References\CatalogSearcherService\CatalogSearcherService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogSearcherService\CatalogSearcherService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogSearcherService\CatalogSearcherService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogSearcherService\CatalogSearcherService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogSearcherService\CatalogSearcherService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogSearcherService\CatalogSearcherService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.CategoryProductParamsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.GetAllPartnersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.GetCategoryInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.GetFilterMetaDataResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.GetPopularProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.GetProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.GetRecomendedProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.GetSubCategoriesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogSearcherService\RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService.SearchProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\OrderManagementService.wsdl" />
+    <None Include="Service References\OrderManagementService\OrderManagementService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderManagementService\OrderManagementService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderManagementService\OrderManagementService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderManagementService\OrderManagementService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderManagementService\OrderManagementService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderManagementService\OrderManagementService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.ChangeExternalOrdersStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.ChangeOrdersStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.ClientCommitOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.CreateOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.GetDeliveryVariantsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.GetLastDeliveryAddressesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.GetOrderPaymentStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.GetOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.GetOrdersHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.HasNonterminatedOrdersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OrderManagementService\RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WishListService\RapidSoft.Loaylty.ProductCatalog.WsClients.WishListService.GetWishListItemResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WishListService\RapidSoft.Loaylty.ProductCatalog.WsClients.WishListService.GetWishListNotificationsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WishListService\RapidSoft.Loaylty.ProductCatalog.WsClients.WishListService.GetWishListResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WishListService\RapidSoft.Loaylty.ProductCatalog.WsClients.WishListService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WishListService\RapidSoft.Loaylty.ProductCatalog.WsClients.WishListService.WishListResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WishListService\WishListService.wsdl" />
+    <None Include="Service References\WishListService\WishListService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WishListService\WishListService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WishListService\WishListService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WishListService\WishListService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WishListService\WishListService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WishListService\WishListService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BasketService\" />
+    <WCFMetadataStorage Include="Service References\CatalogAdminService\" />
+    <WCFMetadataStorage Include="Service References\CatalogSearcherService\" />
+    <WCFMetadataStorage Include="Service References\OrderManagementService\" />
+    <WCFMetadataStorage Include="Service References\WishListService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdminService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdminService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdminService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BasketService\BasketService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BasketService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BasketService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BasketService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogSearcherService\CatalogSearcherService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogSearcherService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogSearcherService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogSearcherService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrderManagementService\OrderManagementService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrderManagementService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrderManagementService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrderManagementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WishListService\WishListService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WishListService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WishListService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WishListService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

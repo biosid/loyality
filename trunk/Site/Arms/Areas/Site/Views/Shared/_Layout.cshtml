@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        @Styles.Render("~/content/themes/base/css")
+        @Styles.Render("~/content/style")
+    </head>
+    <body>
+        @Html.AntiForgeryToken()
+        <div class="container main-wrapper">
+            <div class="container">
+                @Html.Partial("_Header", "АРМ Контент-редактора")
+                <div class="tabbable">
+                    @Html.Action("Tabs", "Layout", new { menuId = ViewBag.MenuId })
+                    <div class="tab-content">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Scripts.Render("~/bundles/global")
+        @Html.RenderScripts()
+    </body>
+</html>

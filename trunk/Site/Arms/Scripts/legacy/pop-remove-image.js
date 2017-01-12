@@ -1,0 +1,1 @@
+popover({selector:'.object-images .remove', placement:'top', title:'Удалить изображение ?'});

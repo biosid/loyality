@@ -1,0 +1,64 @@
+﻿@using Rapidsoft.VTB24.Reports.Site.Models.PixelReports
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Генератор отчетов по пикселям";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-success" href="@Url.Action("NewQuery", "PixelReports")">Новый отчет</a>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Список отчетов</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-condensed" id="reports">
+            <thead>
+                <tr>
+                    <th>Дата запроса</th>
+                    <th>Статус</th>
+                    <th>Период</th>
+                    <th>Пиксель</th>
+                    <th>Кол-во записей</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.Action("GetList", "PixelReports", new { skip = 0, take = ReportsListModel.PAGE_SIZE })
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.AddScriptBlock(
+     @<script>
+          $('table#reports').on('click', 'a#load-reports', function () {
+              var $this = $(this),
+                  $tr = $this.closest('tr'),
+                  $loading = $('<span>загрузка...<span>');
+
+              $this.hide();
+              $this.after($loading);
+
+              $.get('/pixelreports/getlist?skip=' + $this.data('skip') + '&take=@ReportsListModel.PAGE_SIZE')
+                  .done(function(data) {
+                      $tr.hide();
+                      $tr.after($.parseHTML(data));
+                      $tr.remove();
+                  })
+                  .fail(function() {
+                      $loading.remove();
+                      $this.show();
+                  });
+          });
+      </script>
+)

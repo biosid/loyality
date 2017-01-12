@@ -1,0 +1,18 @@
+﻿@model string
+@Html.AddScriptBlock(
+    @<script>
+         require(['Shared/process-command'], function(processCommand) {
+             processCommand({
+                 iframe: '@Model',
+                 cardRegisterUrl: '@Url.Action("Register", "Card")',
+                 cardSuccessUrl: '@Url.Action("Success", "Card")',
+                 cardRegistrationErrorUrl: '@Url.Action("RegistrationError", "Card")',
+                 buyFailedUrl: '@Url.Action("Failed", "Buy")',
+                 onlineOrderUrl: '@Url.Action("OnlineOrder", "Buy")',
+                 payAdvanceUrl: '@Url.Action("Pay", "Advance")',
+                 buyConfirmUrl: '@Url.Action("ConfirmOrder", "Buy")',
+                 activationRequiredUrl: '@Url.Action("Index", "ActivationRequired")'
+             });
+         });
+     </script>
+)

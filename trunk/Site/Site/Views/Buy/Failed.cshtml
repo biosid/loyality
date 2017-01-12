@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Заказ не принят";
+}
+
+<div class="full-content shdw">
+    <div class="fc-padding">
+
+        <div class="middle-line white">
+            <div class="ml-text"><span class="size28">Приносим свои извинения.</span></div>
+        </div>
+        
+        <p>
+            Заказ этого вознаграждения в данный момент невозможен.
+            Чтобы продолжить покупки, пожалуйста, вернитесь в <a href="@Url.Action("Index", "Catalog")">каталог</a>.
+        </p>
+        <div class="space280"></div>
+    </div>
+</div>

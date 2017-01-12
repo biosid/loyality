@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:63910/PaymentService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" />
+  <xs:element name="GetPaymentFormParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="request" nillable="true" type="q1:PaymentFormRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentFormParametersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="GetPaymentFormParametersResult" nillable="true" type="q2:GenericBankConnectorResponseOfPaymentFormParametersXZrH00sf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsPaymentAuthorized">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="orderId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsPaymentAuthorizedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="IsPaymentAuthorizedResult" nillable="true" type="q3:GenericBankConnectorResponseOfboolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmPayment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="orderId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="ConfirmPaymentResult" nillable="true" type="q4:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelPayment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="orderId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="CancelPaymentResult" nillable="true" type="q5:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentByOrderId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="orderId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentByOrderIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="GetPaymentByOrderIdResult" nillable="true" type="q6:GenericBankConnectorResponseOfPaymentInfoXZrH00sf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

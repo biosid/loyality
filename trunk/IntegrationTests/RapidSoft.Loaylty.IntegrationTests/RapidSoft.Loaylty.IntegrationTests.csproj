@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6FC560F8-5B60-4DA6-AB3C-6BD9ACE15823}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.IntegrationTests</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.IntegrationTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="BiletixWorkflowTests.cs" />
+    <Compile Include="EchoTest.cs" />
+    <Compile Include="MirorTest.cs" />
+    <Compile Include="PartnersConnector\CheckOrderResult.cs" />
+    <Compile Include="PartnersConnector\PartnersConnectorOrderManagementServiceTests.cs" />
+    <Compile Include="PartnersConnector\NotifyOrderStatusTest.cs" />
+    <Compile Include="ProductCatalog\BasketListTest.cs" />
+    <Compile Include="ProductCatalog\CatalogAdminServiceTest.cs" />
+    <Compile Include="ProductCatalog\CatalogSearcherTest.cs" />
+    <Compile Include="ProductCatalog\OrderManagementServiceTest.cs" />
+    <Compile Include="ProductCatalog\WishListTest.cs" />
+    <Compile Include="PromoAction\Admins\RuleDomainManageServiceTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PromoAction\Admins\RuleManageServiceTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PromoAction\Demo2Tests.cs" />
+    <Compile Include="WebClientCaller.cs" />
+    <Compile Include="ProductCatalog\OrderTest.cs" />
+    <Compile Include="ProductCatalog\ProductCatalogWSClientTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="TestUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.config-TEMPLATE">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63DF64B8-C9F3-4A51-841D-58D6D1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.GeoPoints.WsClients\RapidSoft.GeoPoints.WsClients.csproj">
+      <Project>{F28368F0-044B-44E2-AB6E-23ABEE277342}</Project>
+      <Name>RapidSoft.GeoPoints.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ClientProfile\RapidSoft.Loaylty.ClientProfile.csproj">
+      <Project>{FBD2E6DA-8492-4E71-B227-C1BB7D517DBD}</Project>
+      <Name>RapidSoft.Loaylty.ClientProfile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6B6E5793-B048-473D-8707-23031CC227CD}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PartnersConnector.WsClients\RapidSoft.Loaylty.PartnersConnector.WsClients.csproj">
+      <Project>{dd738ef3-d84f-4c70-a19d-45335a11dc8a}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Processing\RapidSoft.Loaylty.Processing.csproj">
+      <Project>{21EA3DA9-98CC-4681-9561-5C87B5D6803D}</Project>
+      <Name>RapidSoft.Loaylty.Processing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ProductCatalog.WsClients\RapidSoft.Loaylty.ProductCatalog.WsClients.csproj">
+      <Project>{FA8260E1-3E5B-4BE8-9C65-5C6554310EF6}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PromoAction.WsClients\RapidSoft.Loaylty.PromoAction.WsClients.csproj">
+      <Project>{8533AA36-8D8A-4215-94B7-C8A4989C6F32}</Project>
+      <Name>RapidSoft.Loaylty.PromoAction.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\Rapidsoft.Loyalty.NotificationSystem.WsClients\Rapidsoft.Loyalty.NotificationSystem.WsClients.csproj">
+      <Project>{014608C5-660E-4DDD-B219-B38278AC86AA}</Project>
+      <Name>Rapidsoft.Loyalty.NotificationSystem.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loyalty.Security\RapidSoft.Loyalty.Security.csproj">
+      <Project>{58F9D3DE-B234-483C-9674-CC838206524E}</Project>
+      <Name>RapidSoft.Loyalty.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.BankConnector.WsClients\RapidSoft.VTB24.BankConnector.WsClients.csproj">
+      <Project>{40BDD6B9-BCFE-4364-BB9E-4890F966EBBC}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.Site\RapidSoft.VTB24.Site.csproj">
+      <Project>{BEF9525F-6493-469F-BD15-ACBBB7B011A8}</Project>
+      <Name>RapidSoft.VTB24.Site</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

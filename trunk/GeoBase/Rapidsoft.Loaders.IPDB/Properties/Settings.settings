@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RapidSoft.Loaders.IPDB.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="IpDbLink" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://ipgeobase.ru/files/db/Main/db_files.zip</Value>
+    </Setting>
+    <Setting Name="PackID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FE90901C-4CD8-4367-BFE9-5E6D076309E8</Value>
+    </Setting>
+    <Setting Name="TempFolderPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Temp</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

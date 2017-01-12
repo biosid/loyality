@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" />
+  <xs:import schemaLocation="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd3" namespace="RapidSoft.VTB24.BankConnector" />
+  <xs:element name="IsCardRegistered">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsCardRegisteredResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="IsCardRegisteredResult" nillable="true" type="q1:GenericBankConnectorResponseOfNullableOfboolean5F2dSckg" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="RegisterCardResult" nillable="true" type="q2:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnregisterCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnregisterCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="UnregisterCardResult" nillable="true" type="q3:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterNewClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="RapidSoft.VTB24.BankConnector" minOccurs="0" name="request" nillable="true" type="q4:RegisterClientRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterNewClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="RegisterNewClientResult" nillable="true" type="q5:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BlockClientToDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BlockClientToDeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="BlockClientToDeleteResult" nillable="true" type="q6:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsClientAddedToDetachList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsClientAddedToDetachListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="IsClientAddedToDetachListResult" nillable="true" type="q7:GenericBankConnectorResponseOfboolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCardRegistrationParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCardRegistrationParametersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="GetCardRegistrationParametersResult" nillable="true" type="q8:GenericBankConnectorResponseOfCardRegistrationParametersXZrH00sf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyCardRegistration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="orderId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyCardRegistrationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="VerifyCardRegistrationResult" nillable="true" type="q9:GenericBankConnectorResponseOfboolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="RapidSoft.VTB24.BankConnector" minOccurs="0" name="request" nillable="true" type="q10:UpdateClientRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="UpdateClientResult" nillable="true" type="q11:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="GetClientProfileResult" nillable="true" type="q12:GenericBankConnectorResponseOfClientProfileGVwQv096" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveOrderAttempt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveOrderAttemptResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="SaveOrderAttemptResult" nillable="true" type="q13:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClearOrderAttempt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClearOrderAttemptResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="ClearOrderAttemptResult" nillable="true" type="q14:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBankOffers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="parameter" nillable="true" type="q15:BankOffersServiceParameter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBankOffersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="GetBankOffersResult" nillable="true" type="q16:GenericBankConnectorResponseOfBankOffersServiceResponseXZrH00sf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisableOffer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="offerId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisableOfferResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="DisableOfferResult" nillable="true" type="q17:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnqueueSms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="type" type="q18:BankSmsType" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnqueueSmsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" minOccurs="0" name="EnqueueSmsResult" nillable="true" type="q19:SimpleBankConnectorResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Echo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EchoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EchoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

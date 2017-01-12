@@ -1,0 +1,23 @@
+﻿@model Vtb24.Arms.Security.Models.Users.ChangeEmailModel
+@using (Html.BeginForm("ChangeEmail", "Users", FormMethod.Post, new { @class = "modal hide", data_x = "security/users/change_email_modal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Login)
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Смена E-mail</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="span3 line-height-30">Новый E-mail:</div>
+            <div class="span4">
+                @Html.TextBoxFor(m=>m.Email, new { @class="input-block-level" })
+                @Html.ValidationMessageFor(m=>m.Email)
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Сменить</button>
+        <button class="btn" data-dismiss="modal">Отменить</button>
+    </div>
+}

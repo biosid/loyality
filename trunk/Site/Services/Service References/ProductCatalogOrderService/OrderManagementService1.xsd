@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:8101/OrderManagementService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://rphqbuild1:8101/OrderManagementService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" />
+  <xs:complexType name="CreateOrderFromBasketItemsParameters">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BasketItems" nillable="true" type="q1:ArrayOfguid" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ClientContext" nillable="true" type="q2:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Delivery" nillable="true" type="tns:DeliveryDto" />
+      <xs:element minOccurs="0" name="TotalAdvance" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateOrderFromBasketItemsParameters" nillable="true" type="tns:CreateOrderFromBasketItemsParameters" />
+  <xs:complexType name="DeliveryDto">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Address" nillable="true" type="q3:DeliveryAddress" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Contact" nillable="true" type="q4:Contact" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="DeliveryType" type="q5:DeliveryTypes" />
+      <xs:element minOccurs="0" name="DeliveryVariantLocation" nillable="true" type="tns:Location" />
+      <xs:element minOccurs="0" name="ExternalDeliveryVariantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PickupPoint" nillable="true" type="tns:PickupPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeliveryDto" nillable="true" type="tns:DeliveryDto" />
+  <xs:complexType name="Location">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="KladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="PickupPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExternalPickupPointId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PickupPoint" nillable="true" type="tns:PickupPoint" />
+  <xs:complexType name="CreateOrderFromOnlinePartnerParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalOrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfCreateOrderFromOnlinePartnerItem" />
+      <xs:element minOccurs="0" name="PartnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateOrderFromOnlinePartnerParameters" nillable="true" type="tns:CreateOrderFromOnlinePartnerParameters" />
+  <xs:complexType name="ArrayOfCreateOrderFromOnlinePartnerItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreateOrderFromOnlinePartnerItem" nillable="true" type="tns:CreateOrderFromOnlinePartnerItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCreateOrderFromOnlinePartnerItem" nillable="true" type="tns:ArrayOfCreateOrderFromOnlinePartnerItem" />
+  <xs:complexType name="CreateOrderFromOnlinePartnerItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:int" />
+      <xs:element minOccurs="0" name="ArticleId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArticleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BonusPrice" type="xs:int" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Weight" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateOrderFromOnlinePartnerItem" nillable="true" type="tns:CreateOrderFromOnlinePartnerItem" />
+  <xs:complexType name="CreateCustomOrderParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalOrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfCustomOrderItem" />
+      <xs:element minOccurs="0" name="PartnerId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateCustomOrderParameters" nillable="true" type="tns:CreateCustomOrderParameters" />
+  <xs:complexType name="ArrayOfCustomOrderItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomOrderItem" nillable="true" type="tns:CustomOrderItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomOrderItem" nillable="true" type="tns:ArrayOfCustomOrderItem" />
+  <xs:complexType name="CustomOrderItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:int" />
+      <xs:element minOccurs="0" name="ArticleId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArticleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceBonus" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PriceRur" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomOrderItem" nillable="true" type="tns:CustomOrderItem" />
+  <xs:complexType name="GetOrdersHistoryParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CalcTotalCount" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountToSkip" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CountToTake" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Statuses" nillable="true" type="q6:ArrayOfPublicOrderStatuses" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetOrdersHistoryParameters" nillable="true" type="tns:GetOrdersHistoryParameters" />
+  <xs:complexType name="GetOrdersForPaymentParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountToSkip" type="xs:int" />
+      <xs:element minOccurs="0" name="CountToTake" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetOrdersForPaymentParameters" nillable="true" type="tns:GetOrdersForPaymentParameters" />
+  <xs:complexType name="GetOrderByExternalIdParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalOrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetOrderByExternalIdParameters" nillable="true" type="tns:GetOrderByExternalIdParameters" />
+  <xs:complexType name="ArrayOfExternalOrdersStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExternalOrdersStatus" nillable="true" type="tns:ExternalOrdersStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExternalOrdersStatus" nillable="true" type="tns:ArrayOfExternalOrdersStatus" />
+  <xs:complexType name="ExternalOrdersStatus">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OrdersStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExternalOrderId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalOrderStatusCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalOrderStatusDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PartnerId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExternalOrdersStatus" nillable="true" type="tns:ExternalOrdersStatus" />
+  <xs:complexType name="OrdersStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="OrderStatus" nillable="true" type="q7:OrderStatuses" />
+      <xs:element minOccurs="0" name="OrderStatusDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdersStatus" nillable="true" type="tns:OrdersStatus" />
+  <xs:complexType name="ArrayOfOrdersStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdersStatus" nillable="true" type="tns:OrdersStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrdersStatus" nillable="true" type="tns:ArrayOfOrdersStatus" />
+  <xs:complexType name="ArrayOfOrdersPaymentStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdersPaymentStatus" nillable="true" type="tns:OrdersPaymentStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrdersPaymentStatus" nillable="true" type="tns:ArrayOfOrdersPaymentStatus" />
+  <xs:complexType name="OrdersPaymentStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="PaymentStatus" type="q8:OrderPaymentStatuses" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdersPaymentStatus" nillable="true" type="tns:OrdersPaymentStatus" />
+  <xs:complexType name="ArrayOfOrdersDeliveryStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdersDeliveryStatus" nillable="true" type="tns:OrdersDeliveryStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrdersDeliveryStatus" nillable="true" type="tns:ArrayOfOrdersDeliveryStatus" />
+  <xs:complexType name="OrdersDeliveryStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="DeliveryStatus" type="q9:OrderDeliveryPaymentStatus" />
+      <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdersDeliveryStatus" nillable="true" type="tns:OrdersDeliveryStatus" />
+  <xs:complexType name="GetDeliveryVariantsParameters">
+    <xs:sequence>
+      <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BasketItems" nillable="true" type="q10:ArrayOfguid" />
+      <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ClientContext" nillable="true" type="q11:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="tns:Location" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDeliveryVariantsParameters" nillable="true" type="tns:GetDeliveryVariantsParameters" />
+</xs:schema>

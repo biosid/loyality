@@ -1,0 +1,65 @@
+﻿@model OnlinePartnerStub.Models.Main.OrderModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Онлайн-партнер \"Заглушка\"";
+}
+<h2>Онлайн-партнер "Заглушка"</h2>
+<h4>Уведомление о статусе заказа</h4>
+@using (Html.BeginForm("NotifyOrder", "Main", FormMethod.Post, new { target = "notify-order-result" }))
+{
+    @Html.Hidden("UserTicket", Model.UserTicket)
+    @Html.Hidden("OrderId", Model.OrderId)
+    @Html.Hidden("TotalCost", Model.TotalCost)
+
+    <ul>
+        <li>
+            Статус:
+            @Html.DropDownList("Status", new[]
+            {
+                new SelectListItem
+                {
+                    Text = "Аннулирован партнёром",
+                    Value = "CanceledByPartner"
+                },
+                new SelectListItem
+                {
+                    Text = "Ожидает доставки",
+                    Value = "DeliveryWaiting"
+                },
+                new SelectListItem
+                {
+                    Text = "Доставка",
+                    Value = "Delivery"
+                },
+                new SelectListItem
+                {
+                    Text = "Доставлен",
+                    Value = "Delivered"
+                },
+                new SelectListItem
+                {
+                    Text = "Не доставлен",
+                    Value = "DeliveredWithDelay"
+                },
+                new SelectListItem
+                {
+                    Text = "Не доставлен",
+                    Value = "NotDelivered"
+                }
+            })
+        </li>
+        <li>
+            Описание статуса:
+            @Html.TextBox("StatusDescription")
+        </li>
+        <li>
+            Внутренний статус:
+            @Html.TextBox("InternalStatus")
+        </li>
+    </ul>
+    <br/>
+    <button type="submit">Уведомить</button>
+}
+<hr/>
+<h4>Результат уведомления:</h4>
+<iframe name="notify-order-result"></iframe>

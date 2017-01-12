@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<configuration>
+    <connectionStrings>
+        <add name="InformationServicesDB" connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;Integrated Security=true;Connect Timeout=600000" providerName="System.Data.SqlClient"/>
+    </connectionStrings>
+    <appSettings>
+        <add key="ConnectionTimeout" value="600000"/>
+        <add key="EtlPackageId" value="F94F1BC5-3D1E-4239-ADA1-68DC082A62E5"/>
+        <add key="HttpFilePath" value="http://gnivc.ru/html/gnivcsoft/KLADR/BASE.7z"/>
+        <add key="TempFolderPath" value="C:\Temp\"/>
+        <add key="TempFolderTemplateName" value="KLADR_{0}"/>
+<!--        <add key="DownloadAttemptCount" value="10"/>-->
+      <add key="7ZipFilePath" value="7z.exe"/>
+
+    </appSettings>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup></configuration>

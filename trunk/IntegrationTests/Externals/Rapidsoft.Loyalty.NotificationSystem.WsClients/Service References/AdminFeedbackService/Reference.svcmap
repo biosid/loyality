@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ef6bf431-6b5d-4601-89d6-e0b8b7f7a922" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:5657/AdminFeedbackService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AdminFeedbackService.xsd" MetadataType="Schema" ID="de0e8dc5-1ff4-463f-a23d-1501e265ca1f" SourceId="1" SourceUrl="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AdminFeedbackService1.xsd" MetadataType="Schema" ID="ae29363a-9202-4ee1-9179-65378b02e2dc" SourceId="1" SourceUrl="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd4" />
+    <MetadataFile FileName="AdminFeedbackService.disco" MetadataType="Disco" ID="2e9dfdbb-1d1f-42d9-b769-fbb8d8cbdaae" SourceId="1" SourceUrl="http://localhost:5657/AdminFeedbackService.svc?disco" />
+    <MetadataFile FileName="AdminFeedbackService2.xsd" MetadataType="Schema" ID="a523a88c-6ff1-419a-b9cc-846d1ba7b3d4" SourceId="1" SourceUrl="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdminFeedbackService3.xsd" MetadataType="Schema" ID="bf975a7e-d659-408e-b435-d355b60dcda2" SourceId="1" SourceUrl="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AdminFeedbackService4.xsd" MetadataType="Schema" ID="45589032-359c-4097-8526-d878828b5f5d" SourceId="1" SourceUrl="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd5" />
+    <MetadataFile FileName="AdminFeedbackService5.xsd" MetadataType="Schema" ID="1ad6fa70-0d5b-4ce1-a893-3ff59163913f" SourceId="1" SourceUrl="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AdminFeedbackService.wsdl" MetadataType="Wsdl" ID="c1e70f4f-dc66-4b19-870f-a5fd6f56cfca" SourceId="1" SourceUrl="http://localhost:5657/AdminFeedbackService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

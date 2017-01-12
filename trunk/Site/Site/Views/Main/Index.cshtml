@@ -1,0 +1,331 @@
+﻿@using Vtb24.Site.Infrastructure
+@using Vtb24.Site.Models.Catalog
+@using Vtb24.Site.Models.Main
+@model MainModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Главная";
+    ViewBag.WrapClass = "two-col";
+}
+
+@Html.AddScriptBlock(
+    @<script>
+        require([
+            'Main/index',
+            'Main/hiw_intro',
+            'Main/banner_carousel',
+            'Shared/video-button'
+        ], function(main, hiwIntro, bannerCarousel, videoButton) {
+            main({ newsBlock: '#slider-news', popularBlock: '#tabs' });
+            hiwIntro({ howItWorks: '#how-itw-block' });
+            bannerCarousel({ selector: '#banner-carousel' });
+            videoButton({ trigger: '.shared-video_btn' });
+        });
+     </script>
+    )
+
+@section promoblock
+{
+    <div class="banner-carousel" id="banner-carousel">
+        <div class="banner-carousel__content">
+            @Html.Partial("_BannerPicnic", new { IsActive = true, IsAuthenticated = Model.IsAuthenticated })
+            @Html.Partial("_BannerMagazines", new { IsActive = false, IsAuthenticated = Model.IsAuthenticated })
+            @Html.Partial("_BannerKinohod", new { IsActive = false, IsAuthenticated = Model.IsAuthenticated })
+            @Html.Partial("_BannerShelves", new { IsActive = false, IsAuthenticated = Model.IsAuthenticated })
+            @Html.Partial("_BannerKitchen", new { IsActive = false, IsAuthenticated = Model.IsAuthenticated })
+        </div>
+        <div class="banner-carousel__prev"></div>
+        <div class="banner-carousel__next"></div>
+        <div class="banner-carousel__pager">
+            <span class="banner-carousel__page" style="display:none;"></span>
+        </div>
+    </div>
+}
+<div class="pdr16 pdl16">
+    @if (Model.IsAuthenticated)
+    {
+        if (Model.Balance.HasValue && Model.RecomendedProducts != null && Model.RecomendedProducts.Count >= MainModel.RECOMENDED_PRODUCTS_COUNT)
+        {
+            var balance = Model.Balance.Value;
+            var lastProduct = Model.RecomendedProducts[(MainModel.RECOMENDED_PRODUCTS_COUNT - 1)];
+
+            <div class="middle-line bgr">
+                <div class="ml-text"><span class="size28">Заказывайте прямо сейчас</span></div>
+            </div>
+            <div class="our-recom shdw clearfix">
+                <div class="appeal-box fl-left parent">
+                    <div class="appeal">@Model.PoliteName!</div>
+                </div>
+                <div class="balance-box fl-right">
+                    <div class="title">
+                        У Вас на счете
+                        @Html.RawPluralize(balance,
+                                           "<span class=\"red\">{1:N0}</span> бонус",
+                                           "<span class=\"red\">{2:N0}</span> бонуса",
+                                           "<span class=\"red\">{5:N0}</span> бонусов")
+
+                    </div>
+                    <div class="text">Мы с удовольствием представляем вам рекомендации по вознаграждениям.</div>
+                </div>
+                <div class="rewards-box fl-left">
+                    <ul class="rewards reset">
+                        @foreach (var product in Enumerable.Range(0, MainModel.RECOMENDED_PRODUCTS_COUNT - 1).Select(i => Model.RecomendedProducts[i]))
+                        {
+                            @RecommendedProduct(product, false)
+                        }
+                        @RecommendedProduct(lastProduct, true)
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="middle-line bgr how-itw-header">
+            <div class="ml-text">
+                <span class="size28">Как это работает</span>
+                <a href="http://www.youtube.com/watch?v=yWa8r_1ioD8" target="_blank" class="shared-video_btn" id="hiw-video-trigger"></a>
+            </div>
+        </div>
+        <a href="/howitworks" class="how-itw-block" id="how-itw-block">
+            <div class="sub-way">
+                <div class="way"></div>
+                <div class="red-way"></div>
+                <div class="heart"></div>
+                <div class="cart"></div>
+                <div class="prize"></div>
+                <span class="btn red-shape-min">
+                    <span>Подробнее...</span>
+                </span>
+            </div>
+            <div class="info-text clearfix">
+                <div class="width-third fl-left">
+                    <div class="in">
+                        <h3 class="size19">Присоединяйтесь к программе</h3>
+                        <p>
+                            Зарегистрируйтесь прямо сейчас! Это бесплатно и не займет много времени!
+                        </p>
+                    </div>
+                </div>
+                <div class="width-third fl-left">
+                    <div class="in">
+                        <h3 class="size23">Получайте бонусы </h3>
+                        <p>
+                            Получайте бонусы за каждую покупку, оплаченную картой ВТБ24!
+                        </p>
+                    </div>
+                </div>
+                <div class="width-third fl-left">
+                    <div class="in">
+                        <h3>Заказывайте вознаграждения</h3>
+                        <p>
+                            Выбирайте вознаграждения из каталога и обменивайте их на бонусы!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+    @if (Model.News.Any())
+    {
+        <div class="middle-line bgr">
+            <div class="ml-text"><span class="size28">Новости программы</span></div>
+        </div>
+        <div id="slider-news" class="slider-news">
+            <div class="viewport">
+                <ul class="overview clearfix" style="width: 2000px; left: 0;">
+                    @foreach (var row in Model.News)
+                    {
+                        <li class="item">
+                            <div class="img-in shdw">
+                                <ul class="table reset">
+                                    <li class="cell">
+                                        <a href="@row.Url">
+                                            <img src="@Url.Image("news_thumb", row.PictureUrl)" />
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pdl16 pdr16">
+                                <div class="date">
+                                    @row.Date.ToShortDateString()
+                                </div>
+                                <h5>
+                                    <a href="@row.Url">
+                                        @row.Title
+                                    </a>
+                                </h5>
+                                <p>
+                                    <a href="@row.Url">
+                                        @row.Description
+                                    </a>
+                                </p>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <span class="btn spprev"></span>
+            <span class="btn spnext"></span>
+            <a class="btn next" href="#"></a>
+            <a class="btn prev" href="#"></a>
+        </div>
+    }
+	@if (Model.ShowBonusBackBanner)
+ {
+		<div class="img-in" style="width: 941px; height: 196px; margin-top: -60px; background: url(/Content/images/banner_action_buy.png)">
+			<a href="/bback" style="display: block; width: 100%; height: 108px; padding-top: 54px;"></a>
+		</div>
+ }
+    @if ((Model.PopularProductsByOrder != null && Model.PopularProductsByOrder.Any()) ||
+         (Model.PopularProductsByView != null && Model.PopularProductsByView.Any()) ||
+         (Model.PopularProductsByWish != null && Model.PopularProductsByWish.Any()))
+    {
+        <div class="tabs" id="tabs">
+            <ul class="content-menu size14 fl-right cmain pager-tabs">
+                <li class="item ">
+                    <a href="#" rel="0" class="pagenum">
+                        По заказам
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" rel="1" class="pagenum">
+                        По просмотрам
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" rel="2" class="pagenum">
+                        По желаниям
+                    </a>
+                </li>
+            </ul>
+            <div class="middle-line bgr">
+                <div class="ml-text"><span class="size28">Популярные вознаграждения</span></div>
+            </div>
+            <div class="viewport">
+                <ul class="overview reset clearfix" style="width: 5000px; left: 0;">
+                    <li class="item">
+                        @if (Model.PopularProductsByOrder != null && Model.PopularProductsByOrder.Any())
+                        {
+                            <ul class="catalog clearfix cat-main">
+                                @foreach (var product in Model.PopularProductsByOrder)
+                                {
+                                    @PopularProduct(product)
+                                }
+                            </ul>
+                        }
+                    </li>
+                    <li class="item">
+                        @if (Model.PopularProductsByView != null && Model.PopularProductsByView.Any())
+                        {
+                            <ul class="catalog clearfix cat-main">
+                                @foreach (var product in Model.PopularProductsByView)
+                                {
+                                    @PopularProduct(product)
+                                }
+                            </ul>
+                        }
+                    </li>
+                    <li class="item">
+                        @if (Model.PopularProductsByWish != null && Model.PopularProductsByWish.Any())
+                        {
+                            <ul class="catalog clearfix cat-main">
+                                @foreach (var product in Model.PopularProductsByWish)
+                                {
+                                    @PopularProduct(product)
+                                }
+                            </ul>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+
+@helper PopularProduct(object model)
+{
+    if (model is ListProductModel)
+    {
+        @Html.Partial("Catalog/_ListProduct", model)
+    }
+    else if (model is CustomProductModel)
+    {
+        @Html.Partial("_CustomPopularProduct", model)
+    }
+}
+
+@helper RecommendedProduct(object model, bool isLast)
+{
+    var catalogProduct = model as RecomendedProductModel;
+
+    if (catalogProduct != null)
+    {
+        <li class="item">
+            <span class="as-img" style="background-image: url('@Url.ImageProcessor("product_recommend", catalogProduct.Thumbnail)');"></span>
+            @if (!isLast)
+            {
+                <a href="@Url.Action("Product", "Catalog", new { id = catalogProduct.Id })" class="hover">
+                    <span class="parent">
+                        <strong class="table">
+                            <span class="cell">
+                                @catalogProduct.Title.Truncate(MainModel.RECOMMENDED_PRODUCT_TITLE, TruncateOptions.IncludeEllipsis | TruncateOptions.FinishWord)
+                            </span>
+                        </strong>
+                        <em>@(catalogProduct.Price.HasValue ? Html.Pluralize(catalogProduct.Price.Value, "{1:N0} бонус", "{2:N0} бонуса", "{5:N0} бонусов") : "-")</em>
+                    </span>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("Index", "Catalog")" class="more-rewards hover">
+                    <span class="parent" style="visibility: visible">
+                        <strong class="table">
+                            <span class="cell">
+                                Посмотреть еще
+                            </span>
+                        </strong>
+                    </span>
+                </a>
+            }
+        </li>
+
+        return;
+    }
+
+    var customProduct = model as CustomProductModel;
+
+    if (customProduct != null)
+    {
+        <li class="item">
+            <span class="as-img" style="background-image: url('@customProduct.Thumbnail');"></span>
+            @if (!isLast)
+            {
+                <a href="@customProduct.Url" class="hover">
+                    <span class="parent">
+                        <strong class="table">
+                            <span class="cell">
+                                @customProduct.Title
+                            </span>
+                        </strong>
+                        <em>@customProduct.PriceText</em>
+                    </span>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("Index", "Catalog")" class="more-rewards hover">
+                    <span class="parent" style="visibility: visible">
+                        <strong class="table">
+                            <span class="cell">
+                                Посмотреть еще
+                            </span>
+                        </strong>
+                    </span>
+                </a>
+            }
+        </li>
+
+        return;
+    }
+}

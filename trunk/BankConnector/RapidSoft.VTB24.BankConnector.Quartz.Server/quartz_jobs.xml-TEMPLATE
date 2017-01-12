@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains job definitions in schema version 2.0 format -->
+
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+
+  <schedule>
+
+    <!-- START настройки рассылки отчетов по файлообмену "Лояльность"<->"Терадата" -->
+    <job>
+      <name>Рассылка отчетов по файлообмену</name>
+      <group>Периодические задачи</group>
+      <description>Задача по рассылке отчетов по файлообмену</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.SendInteractionReportsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>reports_base_url</key>
+          <value>@InteractionReportsUrl@</value>
+        </entry>
+        <entry>
+          <key>reports_http_login</key>
+          <value>@InteractionReportsLogin@</value>
+        </entry>
+        <entry>
+          <key>reports_http_password</key>
+          <value>@InteractionReportsPwd@</value>
+        </entry>
+        <entry>
+          <key>smtp_host</key>
+          <value>@SMTPHOST@</value>
+        </entry>
+        <entry>
+          <key>smtp_port</key>
+          <value>25</value>
+        </entry>
+        <entry>
+          <key>smtp_enable_ssl</key>
+          <value>false</value>
+        </entry>
+        <entry>
+          <key>smtp_login</key>
+          <value>@SmtpUserName@</value>
+        </entry>
+        <entry>
+          <key>smtp_password</key>
+          <value>mail</value>
+        </entry>
+        <entry>
+          <key>reports_send_from</key>
+          <value>@LoyaltyEmail@</value>
+        </entry>
+        <entry>
+          <key>reports_send_to</key>
+          <value>@InteractionReportsSendTo@</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <trigger>
+      <cron>
+        <name>Триггер для вызова рассылки отчетов по файлообмену по понедельникам</name>
+        <group>DEFAULT</group>
+        <job-name>Рассылка отчетов по файлообмену</job-name>
+        <job-group>Периодические задачи</job-group>
+        <job-data-map>
+          <entry>
+            <key>reports_days_number</key>
+            <value>4</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>5 0 0 ? * MON</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Триггер для вызова рассылки отчетов по файлообмену по четвергам</name>
+        <group>DEFAULT</group>
+        <job-name>Рассылка отчетов по файлообмену</job-name>
+        <job-group>Периодические задачи</job-group>
+        <job-data-map>
+          <entry>
+            <key>reports_days_number</key>
+            <value>3</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>5 0 0 ? * THU</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END настройки рассылки отчетов по файлообмену "Лояльность"<->"Терадата" -->
+
+    <!-- START Повторная оплата в Uniteller -->
+    <job>
+      <name>Повторная оплата заказов в Uniteller</name>
+      <group>Периодические задачи</group>
+      <description>Задача для повторного проведения платы в Uniteller по заказам, у которых предыдущая оплата не прошла</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.RetryErrorPaymentsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>6E3E0808-96B1-4773-81E4-173CEC318BE8</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова повторной оплаты заказов в Uniteller</name>
+        <group>DEFAULT</group>
+        <job-name>Повторная оплата заказов в Uniteller</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!-- ежедневно в 12:00 -->
+        <cron-expression>0 0 12 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END Повторная оплата в Uniteller -->
+
+    <!-- START Напоминания о незавершенных заказах -->
+    <job>
+      <name>Рассылка напоминаний о незавершенных заказах</name>
+      <group>Периодические задачи</group>
+      <description>Рассылка клиентам личных сообщений о незавершенных заказах (положили товар в корзину, но не совершили заказ)</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.NotifyIncompleteOrdersJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>AAFAB588-3868-495C-8C23-930D90583097</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <!-- ежедневно в 21:00 -->
+    <trigger>
+      <cron>
+        <name>Триггер для вызова рассылки напоминаний о незавершенных заказах</name>
+        <group>DEFAULT</group>
+        <job-name>Рассылка напоминаний о незавершенных заказах</job-name>
+        <job-group>Периодические задачи</job-group>
+        <cron-expression>0 0 21 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END Напоминания о незавершенных заказах -->
+
+    <!-- START Предложения оценить сервис (после успешно совершенных заказов) -->
+    <job>
+      <name>Рассылка предложений оценить сервис</name>
+      <group>Периодические задачи</group>
+      <description>Рассылка клиентам личных сообщений с предложением оценить сервис (по каждому совершенному заказу)</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.NotifyExecutedOrdersJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>F11DEE9C-4AC6-41DF-BF3D-E2B9A5D93E0B</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <!--
+    <trigger>
+      <cron>
+        <name>Триггер для вызова рассылки предложений оценить сервис</name>
+        <group>DEFAULT</group>
+        <job-name>Рассылка предложений оценить сервис</job-name>
+        <job-group>Периодические задачи</job-group>
+        <job-data-map>
+          <entry>
+            <key>FromDate</key>
+            <value>2015-04-01</value>
+          </entry>
+          <entry>
+            <key>ToDate</key>
+            <value>2015-04-30</value>
+          </entry>
+          <entry>
+            <key>SurveyUrl</key>
+            <value>https://ru.research.net/r/6CZ3V8P</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 0 14 16 3 ? 2015</cron-expression>
+      </cron>
+    </trigger>
+    -->
+    <!-- END Предложения оценить сервис (после успешно совершенных заказов) -->
+
+    <!-- START Настройки активации участников -->
+    <job>
+      <name>Вызов активации участников</name>
+      <group>Периодические задачи</group>
+      <description>Задача для активации участников по присланным реестрам</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.ActivateClientsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>LoyaltyProgramId</key>
+          <value>@LOYALTYPROGRAMID@</value>
+        </entry>
+        <entry>
+          <key>PackageId</key>
+          <value>E23D8AF7-5916-4907-9D99-D69ED8E7D542</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>activPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова активации участников</name>
+        <group>DEFAULT</group>
+        <job-name>Вызов активации участников</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!-- Каждые 30 секунд -->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!--Периодичность выгрузки исходного файла: ежедневно, в 24:00/ Периодичность выгрузки ответного файла: не позднее 12 часов после обработки файла-->
+        <cron-expression>@ActivateClientsChron@</cron-expression>
+      <!--Каждый час в 0, 10, 20, 30, 40, 50 минут-->
+      <!--<cron-expression>0 0/10 * * * ?</cron-expression>-->
+    </cron>
+    </trigger>
+	  <!-- END Настройки активации участников -->
+
+	  <!-- START Настройки отправки запросов на регистрацию -->
+    <job>
+      <name>Вызов отправки запросов на регистрацию</name>
+      <group>Периодические задачи</group>
+      <description>Задача для отправки списка запросов на регистрацию в программе лояльности в банк</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.SendRegistrationClientsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>9517516a-ee80-4963-b326-7ef56efd9691</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова отправки запросов на регистрацию</name>
+        <group>DEFAULT</group>
+        <job-name>Вызов отправки запросов на регистрацию</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!-- Каждый год первого января в 00:00:00-->
+        <!--<cron-expression>0 0 0 1 1 ?</cron-expression>-->
+        <!--Периодичность выгрузки исходного файла: два раза в день, в 10:00 для зарегистрировавшихся с 19:00 прошлого дня до 10:00 текущего дня; в 19:00 для зарегистрировавшихся с 10:00 до 19:00 текущего дня-->
+        <cron-expression>@SendRegistrationClientsChron@</cron-expression>
+      <!--Каждый час в 2, 12, 22, 32, 42, 52 минут-->
+      <!--<cron-expression>0 2/10 * * * ?</cron-expression>-->
+    </cron>
+    </trigger>
+	  <!-- END Настройки отправки запросов на регистрацию -->
+
+	  <!-- START Настройки получения результата регистрации от банка -->
+    <job>
+      <name>Вызов получения результата регистрации от банка</name>
+      <group>Периодические задачи</group>
+      <description>Задача для получения результатов выполнения регистрации на стороне банка и вызова сервисов, необходимых для завершения регистрации в программе лояльности</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.ReceiveRegistrationClientsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>LoyaltyProgramId</key>
+          <value>@LOYALTYPROGRAMID@</value>
+        </entry>
+        <entry>
+          <key>PackageId</key>
+          <value>1560ecaf-7420-4c34-8eea-d6caee64acbc</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>regPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+    
+    <trigger>
+      <cron>
+        <name>Триггер для вызова получения результата регистрации от банка</name>
+        <group>DEFAULT</group>
+        <job-name>Вызов получения результата регистрации от банка</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!-- Каждый год первого января в 00:00:00-->
+        <!--<cron-expression>0 0 0 1 1 ?</cron-expression>-->
+        <!--Периодичность выгрузки ответного файла: не позднее 12 часов после выгрузки файла из Системы лояльности-->
+        <cron-expression>@ReceiveRegistrationClientsChron@</cron-expression>
+      <!--Каждый час в 4, 14, 24, 34, 44, 54 минут-->
+      <!--<cron-expression>0 4/10 * * * ?</cron-expression>-->
+    </cron>
+    </trigger>
+	  <!-- END Настройки получения результата регистрации от банка -->
+
+	  <!-- START Настройки отправки и получения заказов -->
+    <job>
+      <name>Вызов отправки заказов</name>
+      <group>Периодические задачи</group>
+      <description>Задача для отправки списка заказов в банк</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.SendOrdersJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>6dd71e6c-0fd6-4f27-bc3e-abb94921b7cf</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова отправки заказов</name>
+        <group>DEFAULT</group>
+        <job-name>Вызов отправки заказов</job-name>
+        <job-group>Периодические задачи</job-group>
+        <cron-expression>@SendOrdersChron@</cron-expression>
+    </cron>
+    </trigger>
+
+    <job>
+      <name>Вызов получения результата подтверждения заказов</name>
+      <group>Периодические задачи</group>
+      <description>Задача для получения результатов подтверждения возможности выполнения заказов</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.ReceiveOrdersJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>LoyaltyProgramId</key>
+          <value>@LOYALTYPROGRAMID@</value>
+        </entry>
+        <entry>
+          <key>PackageId</key>
+          <value>b8c07e39-37e9-45f1-8a79-2a99d86b9641</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>orderPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+    
+    <trigger>
+      <cron>
+        <name>Триггер для вызова получения результата подтверждения заказов</name>
+        <group>DEFAULT</group>
+        <job-name>Вызов получения результата подтверждения заказов</job-name>
+        <job-group>Периодические задачи</job-group>
+        <cron-expression>@ReceiveOrdersChron@</cron-expression>
+    </cron>
+    </trigger>
+	  <!-- END Настройки отправки и получения заказов -->
+
+	  <!-- START Настройки задачи отправки списка промоакций -->
+    <job>
+      <name>Отправка списка промоакций</name>
+      <group>Отправка списка промоакций</group>
+      <description>Задача загружает список актуальных промоакций (правил из компонента "Акции") и отправляет  файл с полученым списком по SMTP</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.PromoActionSendJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>7772648e-708f-43d6-8153-c4caa3e2fb05</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова отправки списка промоакций</name>
+        <group>DEFAULT</group>
+        <job-name>Отправка списка промоакций</job-name>
+        <job-group>Отправка списка промоакций</job-group>
+        <!-- Каждые 30 секунд -->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!-- Периодичность выгрузки исходного файла: ежедневно, в 24:00 -->
+        <cron-expression>@PromoActionSendChron@</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END Настройки задачи отправки списка промоакций -->
+
+    <!-- START Настройки задачи получения ответа по списку промоакций -->
+    <job>
+      <name>Получение ответа по списку промоакций</name>
+      <group>Получение ответа по списку промоакций</group>
+      <description>
+        Задача получает файлы из писем, загружат в буфферную таблицу, выполняет проверку полученного и отправленого, деактивирует необходимые акции, помечает отправленные как обработанные
+      </description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.PromoActionReceiveJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>77500805-8169-4ae6-87a5-7fcae0fbf398</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>promoPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова получения ответа по списку промоакций</name>
+        <group>DEFAULT</group>
+        <job-name>Получение ответа по списку промоакций</job-name>
+        <job-group>Получение ответа по списку промоакций</job-group>
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!-- Каждые 30 секунд -->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!-- Каждый день в 12:00:00, то есть через 12 часов после "Отправка списка промоакций" -->
+        <cron-expression>@PromoActionReceiveChron@</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END Настройки задачи получения ответа по списку промоакций -->
+	
+	 <!-- START Настройки задачи загрузка сообщений для ЛК клиентов -->
+    <job>
+      <name>Загрузка сообщений для ЛК клиентов</name>
+      <group>Загрузка сообщений для ЛК клиентов</group>
+      <description>
+        Задача получает файлы из писем, загружат в буфферную таблицу, выполняет регистрацию сообщений в системе оповещений, отправляет на почту результат регистрации
+      </description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.PersonalMessagesJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>D83D02DF-98E0-4714-B06A-9F967930D051</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>messagePL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+	
+	<trigger>
+      <cron>
+        <name>Триггер для вызова загрузки сообщений для ЛК клиентов</name>
+        <group>DEFAULT</group>
+        <job-name>Загрузка сообщений для ЛК клиентов</job-name>
+        <job-group>Загрузка сообщений для ЛК клиентов</job-group>
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!--Периодичность выгрузки исходного файла: ежедневно (точное время будет оговорено позднее).-->
+        <cron-expression>@PersonalMessagesChron@</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END Настройки задачи загрузка сообщений для ЛК клиентов -->
+
+	  <!-- START Настройки отключения участников -->
+	  <job>
+		  <name>Вызов отправки реестра на отключение</name>
+		  <group>Периодические задачи</group>
+		  <description>Задача для отправки реестра на удаление в банк</description>
+		  <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.SendDetachListJob, RapidSoft.VTB24.BankConnector</job-type>
+		  <durable>true</durable>
+		  <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>A8FBDF89-C705-4A35-A706-A23DD5ABADB0</value>
+        </entry>
+      </job-data-map>
+	  </job>
+
+	  <trigger>
+		  <cron>
+			  <name>Триггер для вызова отправки реестра на отключение</name>
+			  <group>DEFAULT</group>
+			  <job-name>Вызов отправки реестра на отключение</job-name>
+			  <job-group>Периодические задачи</job-group>
+			  <!-- Каждые 30 минут -->
+			  <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+			  <!-- Каждые 30 секунд -->
+			  <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+			  <!--Периодичность выгрузки исходного файла: ежедневно, в 19:00-->
+			  <cron-expression>@SendDetachListChron@</cron-expression>
+			  <!--Каждую минуту-->
+			  <!--<cron-expression>30 * * * * ?</cron-expression>-->
+		  </cron>
+	  </trigger>
+
+    <job>
+      <name>Получение списка отключенных клиентов</name>
+      <group>Периодические задачи</group>
+      <description>Задача для получения из банка информации об отключенных клиентах</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.ReceiveDetachCountJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>F2C56EAB-2B60-4AF2-8712-90F533EE095E</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>cancelPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для получения списка отключенных клиентов</name>
+        <group>DEFAULT</group>
+        <job-name>Получение списка отключенных клиентов</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!-- Каждые 30 минут -->
+			  <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+			  <!-- Каждые 30 секунд -->
+			  <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+			  <!--Периодичность выгрузки ответного файла: не позднее 12 часов после обработки файла-->
+			  <cron-expression>@ReceiveDetachCountChron@</cron-expression>
+			  <!--Каждую минуту-->
+			  <!--<cron-expression>30 * * * * ?</cron-expression>-->
+		  </cron>
+	  </trigger>
+	  <!-- END Настройки отключения участников -->
+
+	  <!-- START Настройки задачи Регистрации клиентов банка -->
+    <job>
+      <name>Регистрация клиентов банка</name>
+      <group>Регистрация клиентов банка</group>
+      <description>
+        Задача получает файлы из писем, по данным из файлов вызывает сервисы регистрации клиентов в системе лояльность и с системе безопасности, по окончании отсылает письмо с результатами выполнения.
+      </description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.RegisterBankClientsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>64e1e608-c27f-43bb-88fa-4865e7178109</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>regB</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова регистрации клиентов банка</name>
+        <group>DEFAULT</group>
+        <job-name>Регистрация клиентов банка</job-name>
+        <job-group>Регистрация клиентов банка</job-group>
+        <!-- Каждые 30 секунд -->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!-- Периодичность выгрузки исходного файла: ежедневно, в 09:00. Периодичность выгрузки ответного файла: не позднее 12 часов после выгрузки файла из Системы лояльности -->
+        <cron-expression>@RegisterBankClientsChron@</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END Настройки задачи Регистрации клиентов банка -->
+
+    <!-- START Привязка клиентов к целевым аудиториям -->
+    <job>
+      <name>Привязка клиентов к целевым аудиториям</name>
+      <group>Привязка клиентов к целевым аудиториям</group>
+      <description>
+        Задача получает файлы из писем, по данным из файлов вызывает сервис привязки, по окончании отсылает письмо с результатами выполнения.
+      </description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.AssignClientTargetAudienceJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>a50fdfdb-92bd-4b27-a9cb-4f80be7c5295</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>campaignPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для привязки клиентов к целевым аудиториям</name>
+        <group>DEFAULT</group>
+        <job-name>Привязка клиентов к целевым аудиториям</job-name>
+        <job-group>Привязка клиентов к целевым аудиториям</job-group>
+        <!-- Каждые 30 секунд -->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!-- Периодичность выгрузки исходного файла: ежедневно (точное время будет оговорено позднее/ Периодичность выгрузки ответного файла: не позднее 12 часов после обработки файла -->
+        <cron-expression>@AssignClientTargetAudienceChron@</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END Привязка клиентов к целевым аудиториям -->
+
+	  <!-- START Настройки начисления баллов -->
+	  <job>
+		  <name>Вызов начисления баллов</name>
+		  <group>Периодические задачи</group>
+		  <description>Задача для обработки транзакций начисления баллов, пришедших из банка</description>
+		  <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.ReceiveAccrualsJob, RapidSoft.VTB24.BankConnector</job-type>
+		  <durable>true</durable>
+		  <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>c137a6c9-059e-4323-bbd5-000fc754457a</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>nachislPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+	  </job>
+
+	  <trigger>
+		  <cron>
+			  <name>Триггер для вызова начисления баллов</name>
+			  <group>DEFAULT</group>
+			  <job-name>Вызов начисления баллов</job-name>
+			  <job-group>Периодические задачи</job-group>
+			  <!-- Каждые 30 минут -->
+			  <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+			  <!-- Каждые 30 секунд -->
+			  <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+			  <!--Периодичность выгрузки исходного файла: ежедневно (точное время будет оговорено позднее). -->
+			  <cron-expression>@ReceiveAccrualsChron@</cron-expression>
+			  <!--Каждую минуту-->
+			  <!--<cron-expression>0 * * * * ?</cron-expression>-->
+		  </cron>
+	  </trigger>
+
+	  <!-- END Настройки начисления баллов -->
+
+    <!-- START Настройки рассылки оппвещений WishList -->
+    <job>
+      <name>Вызов рассылки уведомлений WishList</name>
+      <group>Периодические задачи</group>
+      <description>Задача для запроса новых оповещений из WishListService и отправки их через сервис уведомлений</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.WishListNotificationsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова рассылки уведомлений WishList</name>
+        <group>DEFAULT</group>
+        <job-name>Вызов рассылки уведомлений WishList</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!-- Каждые 30 секунд -->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!--Каждую полночь -->
+        <cron-expression>@WishListNotificationsChron@</cron-expression>
+        <!--Каждую минуту-->
+        <!--<cron-expression>0 * * * * ?</cron-expression>-->
+      </cron>
+    </trigger>
+    <!-- END Настройки рассылки оппвещений WishList-->
+
+    <!-- START Обновление клиентов со стороны банка-->
+    <job>
+      <name>ClientUpdatesJob</name>
+      <group>Периодические задачи</group>
+      <description>Обновление клиентов в соответствии с файлами присланными от банка</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.ClientUpdatesJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>0CE83A24-44AC-4D1E-81C2-80D2D7A3B124</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>anketaPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>ClientUpdatesTrigger</name>
+        <group>DEFAULT</group>
+        <job-name>ClientUpdatesJob</job-name>
+        <job-group>Периодические задачи</job-group>
+        <cron-expression>0 0/30 * * * ?</cron-expression>
+      </cron>
+    </trigger>
+
+    <!-- START Обновление клиентов на стороне лояльности -->
+    <job>
+      <name>LoyaltyClientUpdatesJob</name>
+      <group>Периодические задачи</group>
+      <description>Обновление клиентов в соответствии с файлами присланными от банка</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.LoyaltyClientUpdatesJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+      <entry>
+        <key>PackageId</key>
+        <value>777be283-09f1-4528-bd59-3ba5622fc3ad</value>
+      </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>LoyaltyClientUpdatesJob</name>
+        <group>DEFAULT</group>
+        <job-name>LoyaltyClientUpdatesJob</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!-- Каждый год первого января в 00:00:00-->
+        <cron-expression>0 0 11 * * ?</cron-expression>
+      </cron>
+    </trigger>
+
+    <!-- START Обновление логинов присланных банком -->
+    <job>
+      <name>ClientLoginBankUpdatesJob</name>
+      <group>Периодические задачи</group>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.ClientLoginBankUpdatesJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>9F101EDA-53E3-40BA-9ECE-9106A093ECB1</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>mobilePhonePL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>ClientLoginBankUpdatesJob</name>
+        <group>DEFAULT</group>
+        <job-name>ClientLoginBankUpdatesJob</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!--<cron-expression>0/2 * * * * ?</cron-expression>-->
+        <cron-expression>0 0/1 * * * ?</cron-expression>
+      </cron>
+    </trigger>
+
+    <!-- START Сброс паролей пользователей по запросу банка -->
+    <job>
+      <name>ResetClientsPasswordsJob</name>
+      <group>Периодические задачи</group>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.ResetClientsPasswordsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>9C12E0C1-9B0B-45A8-AE07-3BC490756F37</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>resetPassPL</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>ResetClientsPasswordsJob</name>
+        <group>DEFAULT</group>
+        <job-name>ResetClientsPasswordsJob</job-name>
+        <job-group>Периодические задачи</job-group>
+        <!-- Каждые 5 минут -->
+        <cron-expression>0 0/5 * * * ?</cron-expression>
+      </cron>
+    </trigger>
+
+    <!-- START Настройки задачи Загрузки продуктов банка -->
+    <job>
+      <name>Загрузка продуктов банка</name>
+      <group>Загрузка продуктов банка</group>
+      <description>
+        Задача получает файлы из писем, по данным из файлов обновляет список продуктов банка, по окончании отсылает письмо с результатами выполнения.
+      </description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.RegisterBankOffersJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>3E505BA0-59A6-4093-8286-55501C61AE09</value>
+        </entry>
+        <entry>
+          <key>SubjectTerm</key>
+          <value>orderRegB</value>
+        </entry>
+        <entry>
+          <key>CheckNewEmails</key>
+          <value>true</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для вызова загрузки продуктов банка</name>
+        <group>DEFAULT</group>
+        <job-name>Загрузка продуктов банка</job-name>
+        <job-group>Загрузка продуктов банка</job-group>
+        <!-- Каждые 30 секунд -->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!-- Периодичность выгрузки исходного файла: ежедневно, в 09:00. Периодичность выгрузки ответного файла: не позднее 12 часов после выгрузки файла из Системы лояльности -->
+        <cron-expression>@RegisterBankOffersChron@</cron-expression>
+      </cron>
+    </trigger>
+    <!-- END Настройки задачи Загрузки продуктов банка -->
+
+    <!-- START настройка отправки реестра с СМС -->
+    <job>
+      <name>Отправка реестра СМС в банк</name>
+      <group>Периодические задачи</group>
+      <description>Задача для формирования и отправки реестра СМС в банк</description>
+      <job-type>RapidSoft.VTB24.BankConnector.Quartz_Jobs.SendBankSmsJob, RapidSoft.VTB24.BankConnector</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PackageId</key>
+          <value>E1992DBF-5AC3-44B6-829E-684D0348DCB4</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для отправки СМС типа 1</name>
+        <group>DEFAULT</group>
+        <job-name>Отправка реестра СМС в банк</job-name>
+        <job-group>Периодические задачи</job-group>
+        <job-data-map>
+          <entry>
+            <key>TypeCodeInDB</key>
+            <value>1</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInFileName</key>
+            <value>01</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInMail</key>
+            <value>Регистрация на стороне сайта «Коллекция» успешная</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 0 13 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Триггер для отправки СМС типа 2</name>
+        <group>DEFAULT</group>
+        <job-name>Отправка реестра СМС в банк</job-name>
+        <job-group>Периодические задачи</job-group>
+        <job-data-map>
+          <entry>
+            <key>TypeCodeInDB</key>
+            <value>2</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInFileName</key>
+            <value>02</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInMail</key>
+            <value>Регистрация на стороне Банка успешная</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 0 13 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Триггер для отправки СМС типа 3</name>
+        <group>DEFAULT</group>
+        <job-name>Отправка реестра СМС в банк</job-name>
+        <job-group>Периодические задачи</job-group>
+        <job-data-map>
+          <entry>
+            <key>TypeCodeInDB</key>
+            <value>3</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInFileName</key>
+            <value>03</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInMail</key>
+            <value>Регистрация в Программе неуспешная</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 0 13 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Триггер для отправки СМС типа 4</name>
+        <group>DEFAULT</group>
+        <job-name>Отправка реестра СМС в банк</job-name>
+        <job-group>Периодические задачи</job-group>
+        <job-data-map>
+          <entry>
+            <key>TypeCodeInDB</key>
+            <value>4</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInFileName</key>
+            <value>04</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInMail</key>
+            <value>Регистрация в Программе неуспешная (у клиента нет карт)</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 0 13 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Триггер для отправки СМС типа 5</name>
+        <group>DEFAULT</group>
+        <job-name>Отправка реестра СМС в банк</job-name>
+        <job-group>Периодические задачи</job-group>
+        <job-data-map>
+          <entry>
+            <key>TypeCodeInDB</key>
+            <value>5</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInFileName</key>
+            <value>05</value>
+          </entry>
+          <entry>
+            <key>TypeCodeInMail</key>
+            <value>Регистрация в Программе неуспешная (клиент уже зарегистрирован)</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 0 13 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <!-- START настройка отправки реестра с СМС -->
+
+  </schedule>
+</job-scheduling-data>

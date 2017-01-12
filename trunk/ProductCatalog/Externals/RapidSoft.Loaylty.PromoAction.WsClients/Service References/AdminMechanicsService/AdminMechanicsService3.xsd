@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:57451/AdminMechanicsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" />
+  <xs:import schemaLocation="http://localhost:57451/AdminMechanicsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities.History" />
+  <xs:complexType name="GetMetadataByDomainIdResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="Entities" nillable="true" type="q1:ArrayOfEntityMetadata" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMetadataByDomainIdResult" nillable="true" type="tns:GetMetadataByDomainIdResult" />
+  <xs:complexType name="ResultBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+  <xs:complexType name="RuleDomainResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="RuleDomain" nillable="true" type="q2:RuleDomain" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RuleDomainResult" nillable="true" type="tns:RuleDomainResult" />
+  <xs:complexType name="RuleDomainsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="RuleDomains" nillable="true" type="q3:ArrayOfRuleDomain" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RuleDomainsResult" nillable="true" type="tns:RuleDomainsResult" />
+  <xs:complexType name="RuleResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="Rule" nillable="true" type="q4:Rule" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RuleResult" nillable="true" type="tns:RuleResult" />
+  <xs:complexType name="RulesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaxCountToTake" type="xs:int" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="Rules" nillable="true" type="q5:ArrayOfRule" />
+          <xs:element minOccurs="0" name="TotalCount" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RulesResult" nillable="true" type="tns:RulesResult" />
+  <xs:complexType name="GetRuleHistoryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaxCountToTake" type="xs:int" />
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities.History" minOccurs="0" name="RuleHistories" nillable="true" type="q6:ArrayOfRuleHistory" />
+          <xs:element minOccurs="0" name="TotalCount" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRuleHistoryResult" nillable="true" type="tns:GetRuleHistoryResult" />
+</xs:schema>

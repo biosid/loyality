@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://rapidsoft.ru/processing/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="ProcessingService" targetNamespace="http://rapidsoft.ru/processing/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://192.168.62.160:19092/processing?xsd=1" namespace="http://rapidsoft.ru/processing/" />
+    </xsd:schema>
+  </types>
+  <message name="BatchDepositByCard">
+    <part name="parameters" element="tns:BatchDepositByCardRequest" />
+  </message>
+  <message name="BatchDepositByCardResponse">
+    <part name="parameters" element="tns:BatchDepositByCardResponse" />
+  </message>
+  <message name="BatchActivateClients">
+    <part name="parameters" element="tns:BatchActivateClientsRequest" />
+  </message>
+  <message name="BatchActivateClientsResponse">
+    <part name="parameters" element="tns:BatchActivateClientsResponse" />
+  </message>
+  <message name="BatchCreateCards">
+    <part name="parameters" element="tns:BatchCreateCardsRequest" />
+  </message>
+  <message name="BatchCreateCardsResponse">
+    <part name="parameters" element="tns:BatchCreateCardsResponse" />
+  </message>
+  <message name="BatchCreateClients">
+    <part name="parameters" element="tns:BatchCreateClientsRequest" />
+  </message>
+  <message name="BatchCreateClientsResponse">
+    <part name="parameters" element="tns:BatchCreateClientsResponse" />
+  </message>
+  <message name="AuthorizeDiscountByCheque">
+    <part name="parameters" element="tns:AuthorizeDiscountByChequeRequest" />
+  </message>
+  <message name="AuthorizeDiscountByChequeResponse">
+    <part name="parameters" element="tns:AuthorizeDiscountByChequeResponse" />
+  </message>
+  <message name="RollbackTransactionById">
+    <part name="parameters" element="tns:RollbackTransactionByIdRequest" />
+  </message>
+  <message name="RollbackTransactionByIdResponse">
+    <part name="parameters" element="tns:RollbackTransactionByIdResponse" />
+  </message>
+  <message name="RefundByCheque">
+    <part name="parameters" element="tns:RefundByChequeRequest" />
+  </message>
+  <message name="RefundByChequeResponse">
+    <part name="parameters" element="tns:RefundByChequeResponse" />
+  </message>
+  <message name="RefundByTransactionExternalId">
+    <part name="parameters" element="tns:RefundByTransactionExternalIdRequest" />
+  </message>
+  <message name="RefundByTransactionExternalIdResponse">
+    <part name="parameters" element="tns:RefundByTransactionExternalIdResponse" />
+  </message>
+  <message name="GetBalanceByCard">
+    <part name="parameters" element="tns:GetBalanceByCardRequest" />
+  </message>
+  <message name="GetBalanceByCardResponse">
+    <part name="parameters" element="tns:GetBalanceByCardResponse" />
+  </message>
+  <message name="BatchDeactivateClients">
+    <part name="parameters" element="tns:BatchDeactivateClientsRequest" />
+  </message>
+  <message name="BatchDeactivateClientsResponse">
+    <part name="parameters" element="tns:BatchDeactivateClientsResponse" />
+  </message>
+  <message name="BatchLockClients">
+    <part name="parameters" element="tns:BatchLockClientsRequest" />
+  </message>
+  <message name="BatchLockClientsResponse">
+    <part name="parameters" element="tns:BatchLockClientsResponse" />
+  </message>
+  <message name="BatchDeleteClients">
+    <part name="parameters" element="tns:BatchDeleteClientsRequest" />
+  </message>
+  <message name="BatchDeleteClientsResponse">
+    <part name="parameters" element="tns:BatchDeleteClientsResponse" />
+  </message>
+  <message name="BatchDepositByClients">
+    <part name="parameters" element="tns:BatchDepositByClientsRequest" />
+  </message>
+  <message name="BatchDepositByClientsResponse">
+    <part name="parameters" element="tns:BatchDepositByClientsResponse" />
+  </message>
+  <message name="GetAccountsByClient">
+    <part name="parameters" element="tns:GetAccountsByClientRequest" />
+  </message>
+  <message name="GetAccountsByClientResponse">
+    <part name="parameters" element="tns:GetAccountsByClientResponse" />
+  </message>
+  <message name="AuthorizeWithdrawByAccount">
+    <part name="parameters" element="tns:AuthorizeWithdrawByAccountRequest" />
+  </message>
+  <message name="AuthorizeWithdrawByAccountResponse">
+    <part name="parameters" element="tns:AuthorizeWithdrawByAccountResponse" />
+  </message>
+  <message name="GetOperationHistory">
+    <part name="parameters" element="tns:GetOperationHistoryRequest" />
+  </message>
+  <message name="GetOperationHistoryResponse">
+    <part name="parameters" element="tns:GetOperationHistoryResponse" />
+  </message>
+  <message name="GetCurrenciesByLoyaltyProgram">
+    <part name="parameters" element="tns:GetCurrenciesByLoyaltyProgramRequest" />
+  </message>
+  <message name="GetCurrenciesByLoyaltyProgramResponse">
+    <part name="parameters" element="tns:GetCurrenciesByLoyaltyProgramResponse" />
+  </message>
+  <message name="BatchConfirmTransactions">
+    <part name="parameters" element="tns:BatchConfirmTransactionsRequest" />
+  </message>
+  <message name="BatchConfirmTransactionsResponse">
+    <part name="parameters" element="tns:BatchConfirmTransactionsResponse" />
+  </message>
+  <message name="BatchAddMaskedCardNumbers">
+    <part name="parameters" element="tns:BatchAddMaskedCardNumbersRequest" />
+  </message>
+  <message name="BatchAddMaskedCardNumbersResponse">
+    <part name="parameters" element="tns:BatchAddMaskedCardNumbersResponse" />
+  </message>
+  <message name="GetCardsByClient">
+    <part name="parameters" element="tns:GetCardsByClientRequest" />
+  </message>
+  <message name="GetCardsByClientResponse">
+    <part name="parameters" element="tns:GetCardsByClientResponse" />
+  </message>
+  <portType name="ProcessingService">
+    <operation name="BatchDepositByCard">
+      <input wsam:Action="BatchDepositByCard" message="tns:BatchDepositByCard" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchDepositByCardResponse" message="tns:BatchDepositByCardResponse" />
+    </operation>
+    <operation name="BatchActivateClients">
+      <input wsam:Action="BatchActivateClients" message="tns:BatchActivateClients" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchActivateClientsResponse" message="tns:BatchActivateClientsResponse" />
+    </operation>
+    <operation name="BatchCreateCards">
+      <input wsam:Action="BatchCreateCards" message="tns:BatchCreateCards" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchCreateCardsResponse" message="tns:BatchCreateCardsResponse" />
+    </operation>
+    <operation name="BatchCreateClients">
+      <input wsam:Action="BatchCreateClients" message="tns:BatchCreateClients" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchCreateClientsResponse" message="tns:BatchCreateClientsResponse" />
+    </operation>
+    <operation name="AuthorizeDiscountByCheque">
+      <input wsam:Action="AuthorizeDiscountByCheque" message="tns:AuthorizeDiscountByCheque" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/AuthorizeDiscountByChequeResponse" message="tns:AuthorizeDiscountByChequeResponse" />
+    </operation>
+    <operation name="RollbackTransactionById">
+      <input wsam:Action="RollbackTransactionById" message="tns:RollbackTransactionById" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/RollbackTransactionByIdResponse" message="tns:RollbackTransactionByIdResponse" />
+    </operation>
+    <operation name="RefundByCheque">
+      <input wsam:Action="RefundByCheque" message="tns:RefundByCheque" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/RefundByChequeResponse" message="tns:RefundByChequeResponse" />
+    </operation>
+    <operation name="RefundByTransactionExternalId">
+      <input wsam:Action="RefundByTransactionExternalId" message="tns:RefundByTransactionExternalId" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/RefundByTransactionExternalIdResponse" message="tns:RefundByTransactionExternalIdResponse" />
+    </operation>
+    <operation name="GetBalanceByCard">
+      <input wsam:Action="GetBalanceByCard" message="tns:GetBalanceByCard" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/GetBalanceByCardResponse" message="tns:GetBalanceByCardResponse" />
+    </operation>
+    <operation name="BatchDeactivateClients">
+      <input wsam:Action="BatchDeactivateClients" message="tns:BatchDeactivateClients" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchDeactivateClientsResponse" message="tns:BatchDeactivateClientsResponse" />
+    </operation>
+    <operation name="BatchLockClients">
+      <input wsam:Action="BatchLockClients" message="tns:BatchLockClients" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchLockClientsResponse" message="tns:BatchLockClientsResponse" />
+    </operation>
+    <operation name="BatchDeleteClients">
+      <input wsam:Action="BatchDeleteClients" message="tns:BatchDeleteClients" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchDeleteClientsResponse" message="tns:BatchDeleteClientsResponse" />
+    </operation>
+    <operation name="BatchDepositByClients">
+      <input wsam:Action="BatchDepositByClients" message="tns:BatchDepositByClients" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchDepositByClientsResponse" message="tns:BatchDepositByClientsResponse" />
+    </operation>
+    <operation name="GetAccountsByClient">
+      <input wsam:Action="GetAccountsByClient" message="tns:GetAccountsByClient" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/GetAccountsByClientResponse" message="tns:GetAccountsByClientResponse" />
+    </operation>
+    <operation name="AuthorizeWithdrawByAccount">
+      <input wsam:Action="AuthorizeWithdrawByAccount" message="tns:AuthorizeWithdrawByAccount" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/AuthorizeWithdrawByAccountResponse" message="tns:AuthorizeWithdrawByAccountResponse" />
+    </operation>
+    <operation name="GetOperationHistory">
+      <input wsam:Action="GetOperationHistory" message="tns:GetOperationHistory" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/GetOperationHistoryResponse" message="tns:GetOperationHistoryResponse" />
+    </operation>
+    <operation name="GetCurrenciesByLoyaltyProgram">
+      <input wsam:Action="GetCurrenciesByLoyaltyProgram" message="tns:GetCurrenciesByLoyaltyProgram" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/GetCurrenciesByLoyaltyProgramResponse" message="tns:GetCurrenciesByLoyaltyProgramResponse" />
+    </operation>
+    <operation name="BatchConfirmTransactions">
+      <input wsam:Action="BatchConfirmTransactions" message="tns:BatchConfirmTransactions" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchConfirmTransactionsResponse" message="tns:BatchConfirmTransactionsResponse" />
+    </operation>
+    <operation name="BatchAddMaskedCardNumbers">
+      <input wsam:Action="BatchAddMaskedCardNumbers" message="tns:BatchAddMaskedCardNumbers" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/BatchAddMaskedCardNumbersResponse" message="tns:BatchAddMaskedCardNumbersResponse" />
+    </operation>
+    <operation name="GetCardsByClient">
+      <input wsam:Action="GetCardsByClient" message="tns:GetCardsByClient" />
+      <output wsam:Action="http://rapidsoft.ru/processing/ProcessingService/GetCardsByClientResponse" message="tns:GetCardsByClientResponse" />
+    </operation>
+  </portType>
+  <binding name="ProcessingServicePortBinding" type="tns:ProcessingService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="BatchDepositByCard">
+      <soap:operation soapAction="BatchDepositByCard" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchActivateClients">
+      <soap:operation soapAction="BatchActivateClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchCreateCards">
+      <soap:operation soapAction="BatchCreateCards" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchCreateClients">
+      <soap:operation soapAction="BatchCreateClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AuthorizeDiscountByCheque">
+      <soap:operation soapAction="AuthorizeDiscountByCheque" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RollbackTransactionById">
+      <soap:operation soapAction="RollbackTransactionById" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RefundByCheque">
+      <soap:operation soapAction="RefundByCheque" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RefundByTransactionExternalId">
+      <soap:operation soapAction="RefundByTransactionExternalId" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetBalanceByCard">
+      <soap:operation soapAction="GetBalanceByCard" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchDeactivateClients">
+      <soap:operation soapAction="BatchDeactivateClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchLockClients">
+      <soap:operation soapAction="BatchLockClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchDeleteClients">
+      <soap:operation soapAction="BatchDeleteClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchDepositByClients">
+      <soap:operation soapAction="BatchDepositByClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAccountsByClient">
+      <soap:operation soapAction="GetAccountsByClient" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AuthorizeWithdrawByAccount">
+      <soap:operation soapAction="AuthorizeWithdrawByAccount" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetOperationHistory">
+      <soap:operation soapAction="GetOperationHistory" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCurrenciesByLoyaltyProgram">
+      <soap:operation soapAction="GetCurrenciesByLoyaltyProgram" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchConfirmTransactions">
+      <soap:operation soapAction="BatchConfirmTransactions" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchAddMaskedCardNumbers">
+      <soap:operation soapAction="BatchAddMaskedCardNumbers" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCardsByClient">
+      <soap:operation soapAction="GetCardsByClient" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ProcessingService">
+    <port name="ProcessingServicePort" binding="tns:ProcessingServicePortBinding">
+      <soap:address location="http://192.168.62.160:19092/processing" />
+    </port>
+  </service>
+</definitions>

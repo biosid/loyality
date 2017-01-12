@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <sectionGroup name="common">
+      <section name="logging" type="Common.Logging.ConfigurationSectionHandler, Common.Logging" />
+    </sectionGroup>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+    <section name="quartz" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0,Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+    <section name="partnerConnections" type="RapidSoft.Loaylty.PartnersConnector.Interfaces.Settings.PartnerConnectionsSection, RapidSoft.Loaylty.PartnersConnector.Interfaces" />
+  </configSections>
+  
+  <common>
+    <logging>
+      <factoryAdapter type="Common.Logging.Log4Net.Log4NetLoggerFactoryAdapter, Common.Logging.Log4Net1211">
+        <arg key="configType" value="INLINE" />
+      </factoryAdapter>
+    </logging>
+  </common>
+
+  <log4net>
+    <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+    </appender>
+    
+    <root>
+      <level value="ALL" />
+      <appender-ref ref="ConsoleAppender" />
+    </root>
+  </log4net>
+  
+  <appSettings>
+    <add key="log4net.Internal.Debug" value="false" />
+  </appSettings>
+  
+  <quartz configSource="quartz.config" />
+  
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5"/>
+  </startup>
+</configuration>

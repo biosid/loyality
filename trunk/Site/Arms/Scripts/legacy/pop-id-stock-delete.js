@@ -1,0 +1,1 @@
+popover({selector:'#stockDelete', placement:'right', title:'Удалить акцию ?'});

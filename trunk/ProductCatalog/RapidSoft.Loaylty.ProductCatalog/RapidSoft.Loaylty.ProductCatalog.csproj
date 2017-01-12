@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{403EC8F3-437D-42DB-A0D5-5A8E1C116F49}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.ProductCatalog</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.ProductCatalog</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>48868</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Externals\RapidSoft.FeaturesConfiguration\FeaturesConfiguration.cs">
+      <Link>Configuration\FeaturesConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="Configuration\ConfigHelper.cs" />
+    <Compile Include="DataSources\BasketItemsCleaner.cs" />
+    <Compile Include="DataSources\ContextKeyProvider.cs" />
+    <Compile Include="DataSources\Interfaces\IDeliveryRatesRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IOrdersDataSource.cs" />
+    <Compile Include="DataSources\Interfaces\IOrdersHistoryRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IOrdersNotificationsRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IOrdersRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IPartnerProductCateroryLinkRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IPartnerRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IPopularProductsRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IProductAttributeRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IImportTaskRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IProductCategoriesDataSource.cs" />
+    <Compile Include="DataSources\Interfaces\IProductCategoriesRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IProductsDataSource.cs" />
+    <Compile Include="DataSources\Interfaces\IProductsFixBasePriceDatesRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IProductViewsByDayRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IWishListRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IProductViewStatisticRepository.cs" />
+    <Compile Include="DataSources\Interfaces\Page.cs" />
+    <Compile Include="DataSources\AdoMapComparer.cs" />
+    <Compile Include="DataSources\OrderHistoryPage.cs" />
+    <Compile Include="DataSources\ClientContextBuilder.cs" />
+    <Compile Include="DataSources\Repositories\BaseRepository.cs" />
+    <Compile Include="DataSources\Repositories\DeliveryRatesRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IProductsRepository.cs" />
+    <Compile Include="DataSources\Repositories\OrdersHistoryRepository.cs" />
+    <Compile Include="DataSources\Repositories\OrdersNotificationsRepository.cs" />
+    <Compile Include="DataSources\Repositories\PopularProductsRepository.cs" />
+    <Compile Include="DataSources\Repositories\ProductsFixBasePriceDatesRepository.cs" />
+    <Compile Include="DataSources\Repositories\ProductViewsByDayRepository.cs" />
+    <Compile Include="Entities\GetProductByIdItem.cs" />
+    <Compile Include="Entities\OrderNotificationItem.cs" />
+    <Compile Include="Entities\PartnerDeliveryRate.cs" />
+    <Compile Include="DataSources\Repositories\ImportTaskRepository.cs" />
+    <Compile Include="Entities\CategoryMappingProjection.cs" />
+    <Compile Include="DataSources\Repositories\CategoryPermissionRepository.cs" />
+    <Compile Include="DataSources\Interfaces\ICategoryPermissionRepository.cs" />
+    <Compile Include="DataSources\Repositories\OrdersRepository.cs" />
+    <Compile Include="DataSources\Repositories\PartnerProductCateroryLinkRepository.cs" />
+    <Compile Include="DataSources\Repositories\PartnerRepository.cs" />
+    <Compile Include="DataSources\Repositories\ProductCategoryRepository.cs" />
+    <Compile Include="DataSources\Repositories\ProductsRepository.cs" />
+    <Compile Include="DataSources\Repositories\ProductViewStatisticRepository.cs" />
+    <Compile Include="DataSources\Repositories\WishListRepository.cs" />
+    <Compile Include="Entities\DeactivatedCategory.cs" />
+    <Compile Include="Entities\DeliveryRate.cs" />
+    <Compile Include="Entities\OrderNotification.cs" />
+    <Compile Include="Entities\OrdersNotificationsEmail.cs" />
+    <Compile Include="Entities\OrdersNotificationsEmailStatus.cs" />
+    <Compile Include="Entities\ProductFixBasePriceDate.cs" />
+    <Compile Include="Entities\ProductImportErrorCodes.cs" />
+    <Compile Include="Entities\PartnerProductCategoryLink.cs" />
+    <Compile Include="Entities\ProductImportError.cs" />
+    <Compile Include="Entities\ProductViewsByDay.cs" />
+    <Compile Include="Entities\ProductViewStatistic.cs" />
+    <Compile Include="EtlExecutionWrapper\Configuration\EtlConfigHelper.cs" />
+    <Compile Include="EtlExecutionWrapper\Configuration\EtlConfigSection.cs" />
+    <Compile Include="EtlExecutionWrapper\Configuration\EtlVariableElement.cs" />
+    <Compile Include="EtlExecutionWrapper\Configuration\EtlVariablesCollection.cs" />
+    <Compile Include="EtlExecutionWrapper\EtlWrapper.cs" />
+    <Compile Include="Fake\FakeGeopoints.cs" />
+    <Compile Include="Fake\FakeCalcSingleValMechanic.cs" />
+    <Compile Include="Fake\FakeFixCheckOrderResult.cs" />
+    <Compile Include="Import\CatalogImporter.cs" />
+    <Compile Include="Import\DeliveryRatesImporter.cs" />
+    <Compile Include="Import\LogEmailSender.cs" />
+    <Compile Include="Import\IDeliveryRatesImporter.cs" />
+    <Compile Include="Import\KladrCodeChecker.cs" />
+    <Compile Include="Import\ProductCorrectingFilter\CategoryCorrectingFilter.cs" />
+    <Compile Include="Import\ProductCorrectingFilter\IProductCorrectingFilter.cs" />
+    <Compile Include="Import\ProductCorrectingFilter\ParamsCorrectingFilter.cs" />
+    <Compile Include="Import\ProductCorrectingFilter\ParamsHideFilter.cs" />
+    <Compile Include="Import\ProductCorrectingFilter\Result.cs" />
+    <Compile Include="Import\ProductCorrectingFilter\WeightCorrectingFilter.cs" />
+    <Compile Include="Import\ProductImportSteps.cs" />
+    <Compile Include="Fake\FakeCheckOrderResult.cs" />
+    <Compile Include="Fake\FakeCommitOrdersResult.cs" />
+    <Compile Include="Fake\FakeMechanic.cs" />
+    <Compile Include="Import\HighPartnerTrustCalculator.cs" />
+    <Compile Include="Import\IModerationStatusCalculator.cs" />
+    <Compile Include="Import\LowPartnerTrustCalculator.cs" />
+    <Compile Include="Import\MiddlePartnerTrustCalculator.cs" />
+    <Compile Include="Import\ModerationStatusCalculator.cs" />
+    <Compile Include="Import\ModerationStatusCalculatorFactory.cs" />
+    <Compile Include="Import\TestPartnerCalculator.cs" />
+    <Compile Include="Interfaces\IAdvancePaymentProvider.cs" />
+    <Compile Include="Interfaces\IClientProfileProvider.cs" />
+    <Compile Include="Interfaces\IDeliveryTypeSpec.cs" />
+    <Compile Include="Interfaces\IProductService.cs" />
+    <Compile Include="OrdersNotifications\Helpers\OrderNotificationHelpers.cs" />
+    <Compile Include="QuarzJobs\ClearProductsBasePriceJob.cs" />
+    <Compile Include="Services\AdvancePaymentProvider.cs" />
+    <Compile Include="Services\CalculatedPrice.cs" />
+    <Compile Include="Services\Delivery\Consts.cs" />
+    <Compile Include="Services\Delivery\DeliverySpecBase.cs" />
+    <Compile Include="Entities\OrderStatusChangeFact.cs" />
+    <Compile Include="Services\Delivery\DeliveryVariantsProviderExtensions.cs" />
+    <Compile Include="Services\Delivery\DeliveryVariantsProviderFactory.cs" />
+    <Compile Include="Services\Delivery\DeliveryVariantsProviderWithEmail.cs" />
+    <Compile Include="Services\Delivery\DeliveryVariantsResultMapper.cs" />
+    <Compile Include="Services\Delivery\EmailSpec.cs" />
+    <Compile Include="Services\OrdersStatusChanger.cs" />
+    <Compile Include="Services\Price.cs" />
+    <Compile Include="Services\Delivery\PickupSpec.cs" />
+    <Compile Include="Services\Delivery\DeliveryTypeSpecBase.cs" />
+    <Compile Include="Services\Delivery\PartnerDeliveryVariants.cs" />
+    <Compile Include="Services\CurrierDeliveryPrice.cs" />
+    <Compile Include="Services\IDeliveryVariantsProvider.cs" />
+    <Compile Include="Interfaces\IPartnerConnectorProvider.cs" />
+    <Compile Include="Interfaces\IProcessingProvider.cs" />
+    <Compile Include="OrdersNotifications\Helpers\ArmUrlHelper.cs" />
+    <Compile Include="OrdersNotifications\Helpers\DeliveryInfoHelper.cs" />
+    <Compile Include="OrdersNotifications\OrdersNotificationsSteps.cs" />
+    <Compile Include="OrdersNotifications\Templates\OrdersNotificationsEmailBodyFields.cs" />
+    <Compile Include="OrdersNotifications\Templates\OrdersNotificationsEmailBody.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdersNotificationsEmailBody.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuarzJobs\MakeWishListNotificationsJob.cs" />
+    <Compile Include="QuarzJobs\SendOrdersNotificationsJob.cs" />
+    <Compile Include="Interfaces\IBonusGatewayProvider.cs" />
+    <Compile Include="Services\BonusGatewayProvider.cs" />
+    <Compile Include="Services\CatalogSearcher.cs" />
+    <Compile Include="Services\Delivery\DeliveryVariantsProvider.cs" />
+    <Compile Include="Services\IMechanicServiceClient.cs" />
+    <Compile Include="Services\IPriceSpecification.cs" />
+    <Compile Include="Services\MechanicServiceClientAdapter.cs" />
+    <Compile Include="Services\PartnerSettingsExtension.cs" />
+    <Compile Include="QuarzJobs\ClearBasketItemsJob.cs" />
+    <Compile Include="QuarzJobs\Helper.cs" />
+    <Compile Include="QuarzJobs\ImportDeliveryRatesJob.cs" />
+    <Compile Include="QuarzJobs\DataKeys.cs" />
+    <Compile Include="QuarzJobs\ImportYmlJob.cs" />
+    <Compile Include="QuarzJobs\JobDataMapExtentions.cs" />
+    <Compile Include="Services\ArmSecurityChecker.cs" />
+    <Compile Include="Services\ClientProfileProvider.cs" />
+    <Compile Include="Services\Delivery\DeliverySpec.cs" />
+    <Compile Include="Services\PartnerConnectorProvider.cs" />
+    <Compile Include="OrderExtensions.cs" />
+    <Compile Include="Services\GeoPointProvider.cs" />
+    <Compile Include="Interfaces\ICountrySeacher.cs" />
+    <Compile Include="Interfaces\IGeoPointProvider.cs" />
+    <Compile Include="Services\OrderManagementService.cs" />
+    <Compile Include="DataSources\AdoMapper.cs" />
+    <Compile Include="DataSources\AdoMapperColumn.cs" />
+    <Compile Include="DataSources\Repositories\BasketItemRepository.cs" />
+    <Compile Include="DataSources\Interfaces\IBasketItemRepository.cs" />
+    <Compile Include="DataSources\OrdersDataSource.cs" />
+    <Compile Include="DataSources\Repositories\ProductAttributeRepository.cs" />
+    <Compile Include="DataSources\LoyaltyDBEntities.cs" />
+    <Compile Include="DataSources\LoyaltyDBSpecification.cs" />
+    <Compile Include="DataSources\ProductCatalogsDataSource.cs" />
+    <Compile Include="DataSources\SqlConnectionExtension.cs" />
+    <Compile Include="DataSources\ProductCategoriesDataSource.cs" />
+    <Compile Include="DataSources\ProductsDataSource.cs" />
+    <Compile Include="DataSources\DataSourceConfig.cs" />
+    <Compile Include="Entities\DeniedProductCategory.cs" />
+    <Compile Include="Entities\PartnerProductCategory.cs" />
+    <Compile Include="Entities\PartnerToCommonCategoryMap.cs" />
+    <Compile Include="Entities\ProductCategorySearchResult.cs" />
+    <Compile Include="Entities\ProductSortProjection.cs" />
+    <Compile Include="Import\EtlLogger.cs" />
+    <Compile Include="Interfaces\ICategoriesSearcher.cs" />
+    <Compile Include="Interfaces\IMechanicsProvider.cs" />
+    <Compile Include="Interfaces\IPartnersSearcher.cs" />
+    <Compile Include="Interfaces\IProductsSearcher.cs" />
+    <Compile Include="Import\Logger.cs" />
+    <Compile Include="Fake\FakeDataConfigSection.cs" />
+    <Compile Include="Services\CatalogAdminService.cs" />
+    <Compile Include="Services\OperationException.cs" />
+    <Compile Include="Services\CategoriesSearcher.cs" />
+    <Compile Include="Services\BasketService.cs" />
+    <Compile Include="Services\ClientContextParser.cs" />
+    <Compile Include="Services\MechanicsProvider.cs" />
+    <Compile Include="Services\ParameterUtilities.cs" />
+    <Compile Include="Services\PartnersSearcher.cs" />
+    <Compile Include="Services\PriceSpecification.cs" />
+    <Compile Include="Services\ProcessingProvider.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ProductsSearcher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataSources\SearchProductsParameters.cs" />
+    <Compile Include="DataSources\SearchProductsParametersBase.cs" />
+    <Compile Include="Services\ServiceOperationResult.cs" />
+    <Compile Include="Services\WishListNotificationsBuilder.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WebClientCaller.cs" />
+    <Compile Include="Services\WishListService.cs" />
+    <Compile Include="Settings\ApiSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="OrdersNotifications\Templates\OrdersNotificationsEmailBody.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>OrdersNotificationsEmailBody.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\Quartz\Quartz.2010.csproj">
+      <Project>{aef8823b-e45b-4b35-a4d0-c08c1196d017}</Project>
+      <Name>Quartz.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.Etl.Logging\RapidSoft.Etl.Logging.csproj">
+      <Project>{DC9A13A8-98A5-4460-B499-C8972944C764}</Project>
+      <Name>RapidSoft.Etl.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.Etl.LogSender\RapidSoft.Etl.LogSender.csproj">
+      <Project>{3B1B8941-6273-4E45-B8E2-FD5D0261402C}</Project>
+      <Name>RapidSoft.Etl.LogSender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.Etl.Runtime\RapidSoft.Etl.Runtime.csproj">
+      <Project>{276395A6-28FF-46AF-ACCC-14F2F175E25D}</Project>
+      <Name>RapidSoft.Etl.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63df64b8-c9f3-4a51-841d-58d6d1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.GeoPoints.WsClients\RapidSoft.GeoPoints.WsClients.csproj">
+      <Project>{F28368F0-044B-44E2-AB6E-23ABEE277342}</Project>
+      <Name>RapidSoft.GeoPoints.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.BonusGateway\RapidSoft.Loaylty.BonusGateway.csproj">
+      <Project>{a130d3dc-72ea-4e07-ae64-caa194245b6e}</Project>
+      <Name>RapidSoft.Loaylty.BonusGateway</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ClientProfile\RapidSoft.Loaylty.ClientProfile.csproj">
+      <Project>{FBD2E6DA-8492-4E71-B227-C1BB7D517DBD}</Project>
+      <Name>RapidSoft.Loaylty.ClientProfile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6b6e5793-b048-473d-8707-23031cc227cd}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj">
+      <Project>{E10328E0-16F8-448C-8F26-E754D9A1FE83}</Project>
+      <Name>RapidSoft.Loaylty.Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PartnersConnector.WsClients\RapidSoft.Loaylty.PartnersConnector.WsClients.csproj">
+      <Project>{DD738EF3-D84F-4C70-A19D-45335A11DC8A}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Processing\RapidSoft.Loaylty.Processing.csproj">
+      <Project>{21EA3DA9-98CC-4681-9561-5C87B5D6803D}</Project>
+      <Name>RapidSoft.Loaylty.Processing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PromoAction.WsClients\RapidSoft.Loaylty.PromoAction.WsClients.csproj">
+      <Project>{8533AA36-8D8A-4215-94B7-C8A4989C6F32}</Project>
+      <Name>RapidSoft.Loaylty.PromoAction.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.ArmSecurity\RapidSoft.VTB24.ArmSecurity.csproj">
+      <Project>{87f9069d-e59f-4195-97f4-9309e6a764df}</Project>
+      <Name>RapidSoft.VTB24.ArmSecurity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.BankConnector.WsClients\RapidSoft.VTB24.BankConnector.WsClients.csproj">
+      <Project>{40bdd6b9-bcfe-4364-bb9e-4890f966ebbc}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Kladr.Model\RapidSoft.Kladr.Model.csproj">
+      <Project>{064e46f3-99cf-46af-bccf-f30f40b5435c}</Project>
+      <Name>RapidSoft.Kladr.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.ProductCatalog.API\RapidSoft.Loaylty.ProductCatalog.API.csproj">
+      <Project>{35363bec-901f-4796-bff5-33f43203727b}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Yml\RapidSoft.YML.csproj">
+      <Project>{A51241B4-5064-491C-B2F1-26764DFE0E50}</Project>
+      <Name>RapidSoft.YML</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Import Project="..\Lib\StyleCop\v4.7\StyleCop.Targets" />
+  <ProjectExtensions />
+  <Import Project="..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2059E012-64BB-4E1F-ABAF-C4E2EB0A5F81}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vtb24.Site.Services</RootNamespace>
+    <AssemblyName>Vtb24.Site.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|AnyCPU'">
+    <OutputPath>bin\LoadTesting\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.4.0.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Externals\RapidSoft.FeaturesConfiguration\FeaturesConfiguration.cs">
+      <Link>FeaturesConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="AdvancePayment\AdvancePaymentService.cs" />
+    <Compile Include="AdvancePayment\MappingsFromService.cs" />
+    <Compile Include="AdvancePayment\Models\Exceptions\AdvancePaymentServiceException.cs" />
+    <Compile Include="AdvancePayment\Models\Outputs\PaymentFormParameters.cs" />
+    <Compile Include="BankProducts\BankProductsService.cs" />
+    <Compile Include="BankProducts\MappingsFromService.cs" />
+    <Compile Include="BankProducts\Models\BankProduct.cs" />
+    <Compile Include="BankProducts\Models\Exceptions\BankProductsServiceException.cs" />
+    <Compile Include="BankProducts\Models\Outputs\BankProductsResult.cs" />
+    <Compile Include="BankProducts\Stubs\BankProductsServiceStub.cs" />
+    <Compile Include="BankSmsService\Models\Exceptions\BankSmsException.cs" />
+    <Compile Include="BankSmsService\MappingsToService.cs" />
+    <Compile Include="Buy\Models\Exceptions\NotEnoughPointsException.cs" />
+    <Compile Include="Buy\Models\Exceptions\OrderPriceChangedException.cs" />
+    <Compile Include="Buy\Models\Exceptions\PaymentNotAuthorizedException.cs" />
+    <Compile Include="Buy\Models\Inputs\BeginOnlineOrderConfirmationParams.cs" />
+    <Compile Include="Buy\BuyService.cs" />
+    <Compile Include="Buy\Models\Outputs\BeginConfirmationOtp.cs" />
+    <Compile Include="BonusPayments\Models\ChequeItem.cs" />
+    <Compile Include="BonusPayments\Models\Exceptions\BonusPointsException.cs" />
+    <Compile Include="CardRegistration\CardRegistrationService.cs" />
+    <Compile Include="CardRegistration\Models\Outputs\RegistrationParameters.cs" />
+    <Compile Include="CardRegistration\Stubs\CardRegistrationServiceStub.cs" />
+    <Compile Include="ClientFeedback\ClientFeedbackService.cs" />
+    <Compile Include="ClientFeedback\Models\Inputs\BecomeAPartnerRequest.cs" />
+    <Compile Include="ClientFeedback\Models\Inputs\FeedbackConfigSection.cs" />
+    <Compile Include="ClientFeedback\Models\Inputs\FeedbackTypeElement.cs" />
+    <Compile Include="ClientFeedback\Models\Inputs\FeedbackTypesCollection.cs" />
+    <Compile Include="ClientMessage\ClientMessageService.cs" />
+    <Compile Include="ClientMessage\Models\Exceptions\ClientMessageServiceException.cs" />
+    <Compile Include="ClientMessage\Models\Exceptions\ThreadNotFoundException.cs" />
+    <Compile Include="ClientMessage\Models\Exceptions\ThreadSecurityException.cs" />
+    <Compile Include="GiftShop\Catalog\Models\AdvancePaymentSupportMode.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CatalogPartner.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CatalogPartnerSettings.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CustomProduct.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CustomRecommendation.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CustomRecommendationKind.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryLocationInfo.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryVariant.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryVariants.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryVariantsGroup.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryVariantsLocation.cs" />
+    <Compile Include="GiftShop\Orders\Models\LastDeliveryAddress.cs" />
+    <Compile Include="GiftShop\Orders\Models\OrderDelivery.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryAddress.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryContact.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryPickupPoint.cs" />
+    <Compile Include="GiftShop\Orders\Models\DeliveryType.cs" />
+    <Compile Include="GiftShop\Orders\Models\PickupVariant.cs" />
+    <Compile Include="IAdvancePaymentService.cs" />
+    <Compile Include="IBankProductsService.cs" />
+    <Compile Include="IClientFeedbackService.cs" />
+    <Compile Include="ClientFeedback\Models\Exceptions\ClientFeedbackException.cs" />
+    <Compile Include="ClientFeedback\Models\FeedbackType.cs" />
+    <Compile Include="ClientFeedback\Models\Inputs\SendFeedbackOptions.cs" />
+    <Compile Include="ClientTargeting\Models\ClientGroup.cs" />
+    <Compile Include="GeoService\Models\GeoLocation.cs" />
+    <Compile Include="GeoService\Models\GeoLocationType.cs" />
+    <Compile Include="GeoService\Models\Inputs\GeoLocationQuery.cs" />
+    <Compile Include="GeoService\Models\Inputs\GetLocationByIpParams.cs" />
+    <Compile Include="GeoService\Models\Outputs\GeoLocationsResult.cs" />
+    <Compile Include="GiftShop\Basket\Models\Exceptions\BasketItemNotFoundException.cs" />
+    <Compile Include="GiftShop\Basket\Models\Exceptions\BasketItemPriceNotFixedException.cs" />
+    <Compile Include="GiftShop\Basket\Models\Exceptions\BasketItemQuantityOverflowException.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CatalogParameterDefinition.cs" />
+    <Compile Include="GiftShop\Catalog\Models\Exceptions\CategoryNotFoundException.cs" />
+    <Compile Include="GiftShop\Catalog\Models\Inputs\CatalogParameterCriteria.cs" />
+    <Compile Include="GiftShop\IGiftShopOrders.cs" />
+    <Compile Include="GiftShop\Orders\Models\Exceptions\OrderCancelledByPartnerException.cs" />
+    <Compile Include="GiftShop\Wishlist\Models\Exceptions\WishListItemNotFoundException.cs" />
+    <Compile Include="GiftShop\Wishlist\Models\Exceptions\WishListItemQuantityOverflowException.cs" />
+    <Compile Include="ICardRegistration.cs" />
+    <Compile Include="Buy\Models\Inputs\ConfirmOrderParams.cs" />
+    <Compile Include="IBuy.cs" />
+    <Compile Include="IClientMessageService.cs" />
+    <Compile Include="IMyInfoService.cs" />
+    <Compile Include="Infrastructure\CustomRecommedationsConfig\CustomRecommendationElement.cs" />
+    <Compile Include="Infrastructure\CustomRecommedationsConfig\CustomRecommendationsCollection.cs" />
+    <Compile Include="Infrastructure\CustomRecommedationsConfig\CustomRecommendationsConfigSection.cs" />
+    <Compile Include="Infrastructure\HtmlSanitizer.cs" />
+    <Compile Include="Infrastructure\HtmlSanitizerPresets.cs" />
+    <Compile Include="Infrastructure\MvcHelpers\HighlightUrlsHelper.cs" />
+    <Compile Include="Infrastructure\MvcHelpers\HtmlSanitizerHelper.cs" />
+    <Compile Include="Infrastructure\MvcHelpers\SiteUploadExtensions.cs" />
+    <Compile Include="Infrastructure\PhoneFormatter.cs" />
+    <Compile Include="Infrastructure\SiteUploadsHelper.cs" />
+    <Compile Include="IOnlineCategoryService.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CatalogParameter.cs" />
+    <Compile Include="Infrastructure\CatalogParametersConfig\CatalogParameterElement.cs" />
+    <Compile Include="Infrastructure\CatalogParametersConfig\CatalogParametersCollection.cs" />
+    <Compile Include="Infrastructure\CatalogParametersConfig\CatalogParametersConfigSection.cs" />
+    <Compile Include="IRegistration.cs" />
+    <Compile Include="Buy\Models\Inputs\BeginOrderConfirmationParams.cs" />
+    <Compile Include="MyInfoService\IMyInfoServiceInternal.cs" />
+    <Compile Include="MyInfoService\MappingsFromService.cs" />
+    <Compile Include="MyInfoService\Models\CustomField.cs" />
+    <Compile Include="MyInfoService\Models\Exceptions\MyInfoException.cs" />
+    <Compile Include="MyInfoService\Models\MyInfo.cs" />
+    <Compile Include="MyInfoService\MyInfoService.cs" />
+    <Compile Include="MyInfoService\MyInfoServiceInternal.cs" />
+    <Compile Include="MyPointImagesService\IMyPointImagesService.cs" />
+    <Compile Include="OnlineCategory\OnlineCategoryService.cs" />
+    <Compile Include="Processing\Models\ProcessingCheque.cs" />
+    <Compile Include="Processing\Models\ProcessingChequeItem.cs" />
+    <Compile Include="Profile\Profile.cs" />
+    <Compile Include="Profile\IClientProfileService.cs" />
+    <Compile Include="Profile\Infrastructure\ClientProfileRequestInfo.cs" />
+    <Compile Include="Profile\MappingsFromService.cs" />
+    <Compile Include="Profile\Models\ClientProfile.cs" />
+    <Compile Include="Profile\Models\ClientProfileDocument.cs" />
+    <Compile Include="Profile\Models\ClientProfileDocumentType.cs" />
+    <Compile Include="Profile\Models\ClientProfileGender.cs" />
+    <Compile Include="Profile\Models\ClientProfilePhone.cs" />
+    <Compile Include="Profile\Models\ClientProfilePhoneType.cs" />
+    <Compile Include="Profile\Models\ClientStatus.cs" />
+    <Compile Include="Profile\Models\Exceptions\ClientProfileException.cs" />
+    <Compile Include="Profile\Models\Inputs\GetProfileParameters.cs" />
+    <Compile Include="Profile\Models\Inputs\SetLocationParameters.cs" />
+    <Compile Include="Profile\Stubs\ProfileStub.cs" />
+    <Compile Include="ClientTargeting\IClientTargeting.cs" />
+    <Compile Include="ClientService\CookieSessionStorage.cs" />
+    <Compile Include="ClientService\Models\MechanicsContext.cs" />
+    <Compile Include="Models\UserLocation.cs" />
+    <Compile Include="ClientTargeting\Models\Exceptions\PromoActionServiceException.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CategoryType.cs" />
+    <Compile Include="GiftShop\Orders\Models\Exceptions\OrderNotFoundException.cs" />
+    <Compile Include="GeoService\Models\Exceptions\GeoServiceException.cs" />
+    <Compile Include="GeoService\MappingsFromService.cs" />
+    <Compile Include="GiftShop\Basket\Models\Exceptions\BasketServiceException.cs" />
+    <Compile Include="GiftShop\Catalog\Models\Exceptions\CatalogServiceException.cs" />
+    <Compile Include="GiftShop\Catalog\MappingsToService.cs" />
+    <Compile Include="GiftShop\Catalog\Models\Exceptions\ProductNotFoundException.cs" />
+    <Compile Include="GiftShop\Orders\MappingsToService.cs" />
+    <Compile Include="GiftShop\Orders\Models\Exceptions\OrderCannotBeDeliveredException.cs" />
+    <Compile Include="GiftShop\Orders\Models\Exceptions\OrderItemNotAvailableException.cs" />
+    <Compile Include="GiftShop\Orders\Models\Exceptions\OrdersServiceException.cs" />
+    <Compile Include="GiftShop\Stubs\GiftShopStub.cs" />
+    <Compile Include="GiftShop\Wishlist\Models\Exceptions\WishListServiceException.cs" />
+    <Compile Include="IFeedbackService.cs" />
+    <Compile Include="ClientService\ClientService.cs" />
+    <Compile Include="ClientTargeting\ClientTargeting.cs" />
+    <Compile Include="ClientTargeting\Stubs\ClientTargetingStub.cs" />
+    <Compile Include="GeoService\GeoService.cs" />
+    <Compile Include="GeoService\Stubs\GeoServiceStub.cs" />
+    <Compile Include="GeoService\Stubs\GeoServiceStubData.cs" />
+    <Compile Include="IClientService.cs" />
+    <Compile Include="IGeoService.cs" />
+    <Compile Include="Infrastructure\AppSettingsHelper.cs" />
+    <Compile Include="Infrastructure\Pluralizer.cs" />
+    <Compile Include="Infrastructure\PluralizerFormatter.cs" />
+    <Compile Include="Infrastructure\SoapInterceptor.cs" />
+    <Compile Include="Infrastructure\DateTimeRange.cs" />
+    <Compile Include="BonusPayments\IBonusPayments.cs" />
+    <Compile Include="Registration\RegistrationService.cs" />
+    <Compile Include="OnlineCategory\Models\Inputs\ReturnUrlParameters.cs" />
+    <Compile Include="Service References\BankConnectorPaymentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ClientFeedbackServiceEndpoint\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ClientMessageService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PartnerSecurityService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SmsBallance\ISmsBallanceService.cs" />
+    <Compile Include="SmsBallance\SmsBallanceException.cs" />
+    <Compile Include="SmsBallance\SmsBallanceService.cs" />
+    <Compile Include="BankSmsService\BankSmsService.cs" />
+    <Compile Include="SmsService\Stubs\SmsServiceStub.cs" />
+    <Compile Include="MyInfoService\Models\Inputs\UpdateMyInfoParams.cs" />
+    <Compile Include="ClientMessage\Stubs\ClientMessageServiceStub.cs" />
+    <Compile Include="VtbBankConnector\IVtbBankConnectorService.cs" />
+    <Compile Include="Models\Exceptions\ComponentException.cs" />
+    <Compile Include="Infrastructure\MaybeLinqExtensions.cs" />
+    <Compile Include="Models\PagedResult.cs" />
+    <Compile Include="GiftShop\Basket\MappingsFromService.cs" />
+    <Compile Include="GiftShop\Catalog\MappingsFromService.cs" />
+    <Compile Include="GiftShop\Model\Product.cs" />
+    <Compile Include="GiftShop\Model\ReservedProductItem.cs" />
+    <Compile Include="GiftShop\Orders\MappingsFromService.cs" />
+    <Compile Include="GiftShop\Orders\Models\Outputs\GiftShopOrdersResult.cs" />
+    <Compile Include="GiftShop\Orders\Models\GiftShopOrderItem.cs" />
+    <Compile Include="GiftShop\Orders\Models\GiftShopOrder.cs" />
+    <Compile Include="GiftShop\Orders\Models\Outputs\DeliveryAddressesResult.cs" />
+    <Compile Include="GiftShop\Catalog\Models\Inputs\ProductPopularityType.cs" />
+    <Compile Include="GiftShop\Model\ProductStatus.cs" />
+    <Compile Include="GiftShop\GiftShop.cs" />
+    <Compile Include="GiftShop\Wishlist\MappingsFromService.cs" />
+    <Compile Include="GiftShop\Orders\Models\OrderStatus.cs" />
+    <Compile Include="GiftShop\Orders\Models\Inputs\OrderDeliveryParameters.cs" />
+    <Compile Include="GiftShop\Basket\GiftShopBasket.cs" />
+    <Compile Include="GiftShop\Basket\Models\Outputs\BasketResult.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CatalogCategory.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CatalogSort.cs" />
+    <Compile Include="IGiftShop.cs" />
+    <Compile Include="Models\PagingSettings.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CatalogProduct.cs" />
+    <Compile Include="GiftShop\Catalog\Models\Outputs\CategoriesResult.cs" />
+    <Compile Include="GiftShop\Catalog\Models\CatalogCategoryInfo.cs" />
+    <Compile Include="GiftShop\Catalog\Models\SubCatalogInfo.cs" />
+    <Compile Include="Infrastructure\ParsingExtensions.cs" />
+    <Compile Include="GiftShop\Wishlist\Models\Outputs\WishListResult.cs" />
+    <Compile Include="GiftShop\Catalog\ProductCatalog.cs" />
+    <Compile Include="GiftShop\Stubs\CategoriesGenerator.cs" />
+    <Compile Include="GiftShop\Stubs\GiftShopStubData.cs" />
+    <Compile Include="GiftShop\Wishlist\GiftShopWishList.cs" />
+    <Compile Include="BonusPayments\BonusPayments.cs" />
+    <Compile Include="BonusPayments\Models\Inputs\ChargeParameters.cs" />
+    <Compile Include="BonusPayments\Stubs\BonusPaymentsStub.cs" />
+    <Compile Include="Models\Exceptions\ServiceException.cs" />
+    <Compile Include="Processing\Infrastructure\ProcessingRequestInfo.cs" />
+    <Compile Include="Processing\IProcessing.cs" />
+    <Compile Include="Processing\MappingsFromService.cs" />
+    <Compile Include="Processing\Models\Exceptions\ProcessingException.cs" />
+    <Compile Include="Processing\Models\Inputs\GetBalanceParameters.cs" />
+    <Compile Include="Processing\Models\Inputs\GetOperationHistoryParameters.cs" />
+    <Compile Include="Processing\Models\ProcessingOperationInfo.cs" />
+    <Compile Include="Processing\Models\ProcessingOperationsHistoryResult.cs" />
+    <Compile Include="Processing\Models\ProcessingOperationType.cs" />
+    <Compile Include="Processing\Processing.cs" />
+    <Compile Include="Processing\Stubs\ProcessingOperationsGenerator.cs" />
+    <Compile Include="Processing\Stubs\ProcessingStub.cs" />
+    <Compile Include="Processing\Stubs\ProcessingStubData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GiftShop\Catalog\Models\Outputs\SearchResult.cs" />
+    <Compile Include="GiftShop\Catalog\Models\Inputs\SearchCriteria.cs" />
+    <Compile Include="Service References\MechanicsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BankConnectorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BonusPaymentGatewayService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ClientProfileService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EmailSenderService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\GeoPointsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProcessingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductCatalogBasketService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductCatalogOrderService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductCatalogSearcherService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductCatalogWishListService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TargetAudienceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SmsService\Models\Exceptions\SmsServiceException.cs" />
+    <Compile Include="SmsService\SmsService.cs" />
+    <Compile Include="VtbBankConnector\MappingsFromService.cs" />
+    <Compile Include="VtbBankConnector\MappingsToService.cs" />
+    <Compile Include="VtbBankConnector\Models\Exceptions\VtbBankConnectorServiceException.cs" />
+    <Compile Include="VtbBankConnector\Models\Exceptions\VtbBankConnectorClientAlreadyExistsException.cs" />
+    <Compile Include="VtbBankConnector\Models\Gender.cs" />
+    <Compile Include="VtbBankConnector\Models\Inputs\RegisterClientParams.cs" />
+    <Compile Include="VtbBankConnector\Models\Outputs\CardRegistrationParameters.cs" />
+    <Compile Include="VtbBankConnector\Stubs\VtbBankConnectorStub.cs" />
+    <Compile Include="VtbBankConnector\VtbBankConnector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GiftShop\Stubs\ProductGenerator.cs" />
+    <Compile Include="GiftShop\Orders\GiftShopOrders.cs" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Service References\BankConnectorPaymentService\PaymentService.wsdl" />
+    <None Include="Service References\BankConnectorPaymentService\PaymentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorPaymentService\PaymentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorPaymentService\PaymentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorPaymentService\PaymentService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorPaymentService\Vtb24.Site.Services.BankConnectorPaymentService.GenericBankConnectorResponseOfboolean.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorPaymentService\Vtb24.Site.Services.BankConnectorPaymentService.GenericBankConnectorResponseOfPaymentFormParametersXZrH00sf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorPaymentService\Vtb24.Site.Services.BankConnectorPaymentService.GenericBankConnectorResponseOfPaymentInfoXZrH00sf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorPaymentService\Vtb24.Site.Services.BankConnectorPaymentService.SimpleBankConnectorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService.wsdl" />
+    <None Include="Service References\BankConnectorService\BankConnectorService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService1.wsdl" />
+    <None Include="Service References\BankConnectorService\BankConnectorService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\BankConnectorService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.BlockClientToDeleteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.ClearOrderAttemptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.DisableOfferResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.EchoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.EnqueueSmsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.GenericBankConnectorResponseOfBankOffersServiceResponseXZrH00sf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.GenericBankConnectorResponseOfboolean.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.GenericBankConnectorResponseOfCardRegistrationParametersXZrH00sf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.GenericBankConnectorResponseOfClientProfileGVwQv096.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.GenericBankConnectorResponseOfNullableOfboolean5F2dSckg.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.GetBankOffersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.GetCardRegistrationParametersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.GetClientProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.IsCardRegisteredResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.IsClientAddedToDetachListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.RegisterCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.RegisterNewClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.SaveOrderAttemptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.SimpleBankConnectorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.UnregisterCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.UpdateClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BankConnectorService\Vtb24.Site.Services.BankConnectorService.VerifyCardRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\BonusGateway.wsdl" />
+    <None Include="Service References\BonusPaymentGatewayService\BonusGateway.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\BonusGateway1.wsdl" />
+    <None Include="Service References\BonusPaymentGatewayService\BonusGateway1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\BonusGateway2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\BonusGateway3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.ApplyDiscountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.ApplyWithdrawByAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.ConfirmPointsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.GetAccountsByClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.GetBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.GetCurrenciesByLoyaltyProgramResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.RefundPointsByChequeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.RefundPointsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BonusPaymentGatewayService\Vtb24.Site.Services.BonusPaymentGatewayService.RollbackPointsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\ClientFeedbackService.wsdl" />
+    <None Include="Service References\ClientFeedbackServiceEndpoint\ClientFeedbackService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\ClientFeedbackService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\ClientFeedbackService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\ClientFeedbackService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\ClientFeedbackService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\Vtb24.Site.Services.ClientFeedbackServiceEndpoint.SendFeedbackResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientMessageService\ClientMessageService1.wsdl" />
+    <None Include="Service References\ClientMessageService\ClientMessageService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientMessageService\ClientMessageService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientMessageService\ClientMessageService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientMessageService\ClientMessageService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientMessageService\ClientMessageService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientMessageService\Vtb24.Site.Services.ClientMessageService.ClientGetThreadsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientMessageService\Vtb24.Site.Services.ClientMessageService.GetStatisticsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientMessageService\Vtb24.Site.Services.ClientMessageService.GetThreadByIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientMessageService\Vtb24.Site.Services.ClientMessageService.GetThreadMessagesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientMessageService\Vtb24.Site.Services.ClientMessageService.MarkThreadAsReadResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientMessageService\Vtb24.Site.Services.ClientMessageService.NotifyClientsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientMessageService\Vtb24.Site.Services.ClientMessageService.ReplyResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientMessageService\Vtb24.Site.Services.ClientMessageService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\clientprofile.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientProfileService\ClientProfileService.wsdl" />
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.AddClientDeliveryAddressResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.AddClientDeliveryAddressResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchActivateClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchActivateClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchCreateClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchCreateClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchDeactivateClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchDeactivateClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchDeleteClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchDeleteClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchGetClientsByExternalIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchGetClientsByExternalIdResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchLockClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.BatchLockClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.GetClientDeliveryAddressesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.GetClientDeliveryAddressesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.GetClientProfileFullResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.GetClientProfileFullResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.SetClientLocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.SetClientLocationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.UpdateClientProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientProfileService\Vtb24.Site.Services.ClientProfileService.UpdateClientProfileResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EmailSenderService\EmailSender.wsdl" />
+    <None Include="Service References\EmailSenderService\EmailSender.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmailSenderService\EmailSender1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmailSenderService\EmailSender2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmailSenderService\EmailSender3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmailSenderService\Vtb24.Site.Services.EmailSenderService.SendEmailResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GeoPointsService\GeoPointService.wsdl" />
+    <None Include="Service References\GeoPointsService\GeoPointService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeoPointsService\GeoPointService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeoPointsService\GeoPointService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeoPointsService\GeoPointService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeoPointsService\GeoPointService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeoPointsService\GeoPointService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeoPointsService\GeoPointService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeoPointsService\Vtb24.Site.Services.GeoPointsService.CheckKladrCodeResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GeoPointsService\Vtb24.Site.Services.GeoPointsService.CountryListResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GeoPointsService\Vtb24.Site.Services.GeoPointsService.GetLocationsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GeoPointsService\Vtb24.Site.Services.GeoPointsService.KladrAddressResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GeoPointsService\Vtb24.Site.Services.GeoPointsService.Location.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GeoPointsService\Vtb24.Site.Services.GeoPointsService.Version.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService.wsdl" />
+    <None Include="Service References\MechanicsService\MechanicsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\Vtb24.Site.Services.MechanicsService.CalculateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MechanicsService\Vtb24.Site.Services.MechanicsService.FactorsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MechanicsService\Vtb24.Site.Services.MechanicsService.GenerateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PartnerSecurityService\PartnerSecurityService1.wsdl" />
+    <None Include="Service References\PartnerSecurityService\PartnerSecurityService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PartnerSecurityService\PartnerSecurityService31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PartnerSecurityService\PartnerSecurityService32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PartnerSecurityService\Vtb24.Site.Services.PartnerSecurityService.SignatureResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PartnerSecurityService\Vtb24.Site.Services.PartnerSecurityService.VerifyResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\processing1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessingService\ProcessingService.wsdl" />
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.AuthorizeDiscountByChequeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.AuthorizeDiscountByChequeResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.AuthorizeWithdrawByAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.AuthorizeWithdrawByAccountResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchActivateClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchActivateClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchAddMaskedCardNumbersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchAddMaskedCardNumbersResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchConfirmTransactionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchConfirmTransactionsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchCreateCardsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchCreateCardsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchCreateClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchCreateClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchDeactivateClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchDeactivateClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchDeleteClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchDeleteClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchDepositByCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchDepositByCardResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchDepositByClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchDepositByClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchLockClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.BatchLockClientsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetAccountsByClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetAccountsByClientResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetBalanceByCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetBalanceByCardResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetCardsByClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetCardsByClientResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetCurrenciesByLoyaltyProgramResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetCurrenciesByLoyaltyProgramResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetOperationHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.GetOperationHistoryResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.RefundByChequeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.RefundByChequeResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.RefundByTransactionExternalIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.RefundByTransactionExternalIdResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.RollbackTransactionByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessingService\Vtb24.Site.Services.ProcessingService.RollbackTransactionByIdResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\BasketService.wsdl" />
+    <None Include="Service References\ProductCatalogBasketService\BasketService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\BasketService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\BasketService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\BasketService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\BasketService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\BasketService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\Vtb24.Site.Services.ProductCatalogBasketService.BasketManageResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\Vtb24.Site.Services.ProductCatalogBasketService.BasketResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\Vtb24.Site.Services.ProductCatalogBasketService.GetBasketItemResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogBasketService\Vtb24.Site.Services.ProductCatalogBasketService.GetBasketItemsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\OrderManagementService.wsdl" />
+    <None Include="Service References\ProductCatalogOrderService\OrderManagementService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\OrderManagementService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\OrderManagementService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\OrderManagementService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\OrderManagementService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\OrderManagementService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.ChangeExternalOrdersStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.ChangeOrdersStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.ClientCommitOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.CreateOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.GetDeliveryVariantsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.GetLastDeliveryAddressesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.GetOrderPaymentStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.GetOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.GetOrdersHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.HasNonterminatedOrdersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogOrderService\Vtb24.Site.Services.ProductCatalogOrderService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcher1.wsdl" />
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService61.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService62.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService63.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService64.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService65.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.CategoryProductParamsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.GetAllPartnersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.GetCategoryInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.GetFilterMetaDataResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.GetPopularProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.GetProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.GetRecomendedProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.GetSubCategoriesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogSearcherService\Vtb24.Site.Services.ProductCatalogSearcherService.SearchProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\Vtb24.Site.Services.ProductCatalogWishListService.GetWishListItemResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\Vtb24.Site.Services.ProductCatalogWishListService.GetWishListNotificationsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\Vtb24.Site.Services.ProductCatalogWishListService.GetWishListResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\Vtb24.Site.Services.ProductCatalogWishListService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\Vtb24.Site.Services.ProductCatalogWishListService.WishListResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\WishListService.wsdl" />
+    <None Include="Service References\ProductCatalogWishListService\WishListService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\WishListService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\WishListService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\WishListService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\WishListService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductCatalogWishListService\WishListService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.wsdl" />
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Site.Services.TargetAudienceService.AssignClientAudienceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Site.Services.TargetAudienceService.GetClientTargetAudiencesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Site.Services.TargetAudienceService.GetTargetAudiencesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Site.Services.TargetAudienceService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Site.Services.TargetAudienceService.Version.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BankConnectorPaymentService\" />
+    <WCFMetadataStorage Include="Service References\ClientFeedbackServiceEndpoint\" />
+    <WCFMetadataStorage Include="Service References\ClientMessageService\" />
+    <WCFMetadataStorage Include="Service References\MechanicsService\" />
+    <WCFMetadataStorage Include="Service References\BankConnectorService\" />
+    <WCFMetadataStorage Include="Service References\BonusPaymentGatewayService\" />
+    <WCFMetadataStorage Include="Service References\ClientProfileService\" />
+    <WCFMetadataStorage Include="Service References\EmailSenderService\" />
+    <WCFMetadataStorage Include="Service References\GeoPointsService\" />
+    <WCFMetadataStorage Include="Service References\PartnerSecurityService\" />
+    <WCFMetadataStorage Include="Service References\ProcessingService\" />
+    <WCFMetadataStorage Include="Service References\ProductCatalogBasketService\" />
+    <WCFMetadataStorage Include="Service References\ProductCatalogOrderService\" />
+    <WCFMetadataStorage Include="Service References\ProductCatalogSearcherService\" />
+    <WCFMetadataStorage Include="Service References\ProductCatalogWishListService\" />
+    <WCFMetadataStorage Include="Service References\TargetAudienceService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogSearcherService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogSearcherService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogSearcherService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessingService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessingService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessingService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogBasketService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogBasketService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogBasketService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogWishListService\WishListService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogWishListService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogWishListService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogWishListService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientProfileService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientProfileService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientProfileService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeoPointsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeoPointsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeoPointsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogOrderService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogOrderService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogOrderService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmailSenderService\EmailSender.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmailSenderService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmailSenderService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmailSenderService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PartnerSecurityService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BonusPaymentGatewayService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BonusPaymentGatewayService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BonusPaymentGatewayService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{9EB5135E-C8CF-480C-B2E1-BEF4D06A04F7}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServicesExtensions\ServicesExtensions.csproj">
+      <Project>{15f6d3fd-d986-4fd2-9259-872986f73ec2}</Project>
+      <Name>ServicesExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MechanicsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MechanicsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MechanicsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MechanicsService\MechanicsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PartnerSecurityService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PartnerSecurityService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientMessageService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientMessageService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientMessageService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeoPointsService\GeoPointService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorPaymentService\PaymentService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorPaymentService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorPaymentService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorPaymentService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientFeedbackServiceEndpoint\ClientFeedbackService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientMessageService\ClientMessageService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogSearcherService\CatalogSearcherService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BankConnectorService\BankConnectorService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogOrderService\OrderManagementService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductCatalogBasketService\BasketService.disco" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

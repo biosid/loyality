@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8d9cfe97-6f65-4bd4-8bd8-26852642351c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>true</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:49210/GeoPointService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GeoPointService.xsd" MetadataType="Schema" ID="d6979ce2-5dd6-4ced-bf97-f439570ddc5c" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GeoPointService1.xsd" MetadataType="Schema" ID="0ff39508-a282-4a7e-a416-d4725bc6fbfd" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GeoPointService2.xsd" MetadataType="Schema" ID="83c6fc44-e931-48c5-a4c5-7286b9d865b2" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd4" />
+    <MetadataFile FileName="GeoPointService3.xsd" MetadataType="Schema" ID="3543fba4-3802-4a96-a637-004d80252dcd" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd3" />
+    <MetadataFile FileName="GeoPointService4.xsd" MetadataType="Schema" ID="b6d77e85-6a35-47ab-bcb5-94bcdba9bbcc" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd6" />
+    <MetadataFile FileName="GeoPointService5.xsd" MetadataType="Schema" ID="6931bba0-621f-4ef4-94bc-44d0851e4eb3" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd5" />
+    <MetadataFile FileName="GeoPointService.disco" MetadataType="Disco" ID="5db558e8-daf0-440f-819e-b27255882273" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?disco" />
+    <MetadataFile FileName="GeoPointService6.xsd" MetadataType="Schema" ID="1b8627b8-81c1-485e-a814-4cf892d33835" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd2" />
+    <MetadataFile FileName="GeoPointService.wsdl" MetadataType="Wsdl" ID="2eb21529-99a6-4773-9847-835bb7768897" SourceId="1" SourceUrl="http://rphqbuild1:49210/GeoPointService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+  </configSections>
+
+  <appSettings>
+    <!-- Коннектор к партнёрам -->
+    <add key="PartnersConnectorThumbprint" value="‎‎@PartnersConnectorThumbprint@"/>
+    <add key="ValidateUserUrlFormat" value="https://@HOST@:543/ValidateUser.ashx?ShopId={0}&amp;UserTicket={1}&amp;Signature={2}"/>
+    <add key="NotifyOrderUrl" value="https://@HOST@:543/NotifyOrder.ashx"/>
+    <add key="NotifyOrderStatusURL" value="@NotifyOrderStatusURL@"/>
+    <!-- Тестовый партнёр -->
+    <add key="TestPartnerThumbprint" value="‎‎@TestPartnerThumbprint@"/>
+    <add key="TestPartnerHomeURL" value="@TestPartnerHomeURL@"/>
+  </appSettings>
+
+  <log4net />
+  
+	<system.serviceModel>
+		<bindings>
+			<basicHttpBinding>
+				<binding  name="bindingConfig" closeTimeout="00:05:00"
+								openTimeout="00:05:00" receiveTimeout="00:10:00" sendTimeout="00:05:00"
+								maxBufferSize="1073741824" maxBufferPoolSize="1073741824"
+								maxReceivedMessageSize="1073741824">
+					<readerQuotas maxStringContentLength="1073741824" maxArrayLength="100000"
+												maxBytesPerRead="1073741824" maxDepth="32" maxNameTableCharCount="1073741824"/>
+					<security mode="None" />
+				</binding>
+			</basicHttpBinding>
+		</bindings>
+		<client>
+			<endpoint address="@MechanicsAdminURL@"
+								binding="basicHttpBinding"
+								bindingConfiguration="bindingConfig"
+								contract="AdminMechanicsService.IAdminMechanicsService"
+								name="BasicHttpBinding_IAdminMechanicsService" />
+			<endpoint address="@MechanicsURL@"
+								binding="basicHttpBinding"
+								contract="MechanicsService.IMechanicsService"
+								name="BasicHttpBinding_IMechanicsService" />
+			<endpoint address="@MechanicsURL@"
+								binding="basicHttpBinding"
+								contract="MechanicsService.IServiceInfo" 
+								name="BasicHttpBinding_IServiceInfo" />
+			<endpoint address="@TargetAudienceURL@"
+								binding="basicHttpBinding" 
+								contract="TargetAudienceService.ITargetAudienceService" 
+								name="BasicHttpBinding_ITargetAudienceService" />
+			<endpoint address="@TargetAudienceURL@"
+								binding="basicHttpBinding"
+								contract="TargetAudienceService.IServiceInfo" 
+								name="BasicHttpBinding_IServiceInfo1" />
+			<endpoint address="@PRODCATBASKETURL@"
+								binding="basicHttpBinding"
+								contract="BasketService.IBasketService"
+								name="BasicHttpBinding_IBasketService" />
+			<endpoint address="@CatalogAdminService@"
+								binding="basicHttpBinding"
+                bindingConfiguration="bindingConfig"
+								contract="CatalogAdminService.ICatalogAdminService"
+								name="BasicHttpBinding_ICatalogAdminService" />
+			<endpoint address="@PRODCATSEARCHURL@"
+								binding="basicHttpBinding"
+                bindingConfiguration="bindingConfig"
+								contract="CatalogSearcherService.ICatalogSearcher"
+								name="BasicHttpBinding_ICatalogSearcher" />
+			<endpoint address="@PRODCATOrderManagementURL@"
+								binding="basicHttpBinding"
+                bindingConfiguration="bindingConfig"
+								contract="OrderManagementService.IOrderManagementService"
+								name="BasicHttpBinding_IOrderManagementService" />
+			<endpoint address="@PRODCATWLURL@"
+								binding="basicHttpBinding"
+                bindingConfiguration="bindingConfig"
+								contract="WishListService.IWishListService"
+								name="BasicHttpBinding_IWishListService" />
+			<endpoint address="@NotificationSystemService@"
+								binding="basicHttpBinding"
+								contract="ClientMessageService.IClientMessageService"
+								name="BasicHttpBinding_IClientMessageService" />
+      <endpoint address="@AdminFeedbackService@"
+          binding="basicHttpBinding"
+          contract="AdminFeedbackService.IAdminFeedbackService"
+          name="BasicHttpBinding_IAdminFeedbackService" />
+      <endpoint address="@ClientFeedbackService@"
+          binding="basicHttpBinding"
+          contract="ClientFeedbackService.IClientFeedbackService"
+          name="BasicHttpBinding_IClientFeedbackService" />
+      <endpoint address="@EmailSenderService@"
+								binding="basicHttpBinding"
+								contract="EmailSenderService.IEmailSender"
+								name="BasicHttpBinding_IEmailSender" />
+			<endpoint address="@GEOSERVICEURL@"
+								binding="basicHttpBinding"
+								contract="GeoPointService.IGeoPointService"
+								name="BasicHttpBinding_IGeoPointService" />
+      <!--Partners connector-->
+      <endpoint address="@PartnersConnectorPartnerSecurityURL@"
+								binding="basicHttpBinding"
+                bindingConfiguration="bindingConfig"
+								contract="PartnerSecurityService.IPartnerSecurityService"
+								name="BasicHttpBinding_IPartnerSecurityService" />			
+      <endpoint address="@PartnersConnectorOrderManagementURL@"
+								binding="basicHttpBinding"
+                bindingConfiguration="bindingConfig"
+								contract="PartnersOrderManagementService.IOrderManagementService"
+								name="BasicHttpBinding_IOrderManagementService1" />
+
+      <endpoint address="@BankConnectorService@"
+								binding="basicHttpBinding" 
+								contract="BankConnectorService.BankConnector" 
+								name="BasicHttpBinding_BankConnector" />           
+      
+      <endpoint address="@PROFILEURL@"
+                binding="basicHttpBinding" 
+                contract="ClientProfileService.ClientProfileService" 
+                name="ClientProfileServicePort" />
+      <endpoint address="@PROCESSINGURL@"                 
+                binding="basicHttpBinding"
+                contract="ProcessingService.ProcessingService"
+                name="ProcessingServicePort" />
+      
+      <endpoint address="@PublicProfileWebApi@"
+          binding="basicHttpBinding"
+          contract="PublicProfileWebApi.IPublicProfileWebApi" name="BasicHttpBinding_IPublicProfileWebApi" />
+      <endpoint address="@SecurityTokenWebApiService@"
+          binding="basicHttpBinding"
+          contract="SecurityTokenWebApi.ISecurityTokenWebApi" name="BasicHttpBinding_ISecurityTokenWebApi" />
+      <endpoint address="@SecurityService@"
+          binding="basicHttpBinding"
+          contract="SecurityWebApi.ISecurityWebApi" name="BasicHttpBinding_ISecurityWebApi" />
+
+    </client>
+	</system.serviceModel>
+</configuration>

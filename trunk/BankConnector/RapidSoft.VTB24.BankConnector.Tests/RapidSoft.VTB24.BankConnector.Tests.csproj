@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{85A5E5FE-C6E1-436F-A339-371D7F79EF83}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.VTB24.BankConnector.Tests</RootNamespace>
+    <AssemblyName>RapidSoft.VTB24.BankConnector.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>True</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' Or '$(VisualStudioVersion)' == '11.0'">
+      <ItemGroup>
+        <Reference Include="UIAutomationTypes" />
+      </ItemGroup>
+    </When>
+  </Choose>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Faker.NET4">
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\Faker.Net.1.0.3\lib\net40\Faker.NET4.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\Moq.4.2.1312.1622\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="EtlConfigSectionTest.cs" />
+    <Compile Include="Helpers\DataSourceHelper.cs" />
+    <Compile Include="Helpers\FileReaderHelper.cs" />
+    <Compile Include="InvokeTests\AssignClientTargetAudienceTests.cs" />
+    <Compile Include="InvokeTests\ClientActivationTest.cs" />
+    <Compile Include="InvokeTests\ClientForBankRegistrationTest.cs" />
+    <Compile Include="InvokeTests\ClientRegistrationTest.cs" />
+    <Compile Include="InvokeTests\AccrualTest.cs" />
+    <Compile Include="InvokeTests\ClientLoginBankUpdatesTest.cs" />
+    <Compile Include="InvokeTests\ClientUpdaterTest.cs" />
+    <Compile Include="InvokeTests\EtlPackageIds.cs" />
+    <Compile Include="InvokeTests\PersonalMessagesTest.cs" />
+    <Compile Include="InvokeTests\LoyaltyClientUpdatesTest.cs" />
+    <Compile Include="InvokeTests\ResetClientsPasswordsTest.cs" />
+    <Compile Include="ProcessorTest\SendOrdersProcessorTests.cs" />
+    <Compile Include="ProcessorTest\SendWeeklyInteractionReportsTest.cs" />
+    <Compile Include="ProcessorTest\BankOffersProcessorTest.cs" />
+    <Compile Include="RepositoryTests\OrderAttemptsRepositoryTests.cs" />
+    <Compile Include="RepositoryTests\BankOfferRepositoryTest.cs" />
+    <Compile Include="StubJobExecutionContext.cs" />
+    <Compile Include="PackageRunnerTest.cs" />
+    <Compile Include="ProcessorTest\BankPwdResetProcessorTests.cs" />
+    <Compile Include="ProcessorTest\PersonalMessageProcessorTests.cs" />
+    <Compile Include="ProcessorTest\LoyaltyClientUpdateProcessorTests.cs" />
+    <Compile Include="ProcessorTest\WishListProcessorTest.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\EmailHelper.cs" />
+    <Compile Include="InvokeTests\PromoActionTests.cs" />
+    <Compile Include="QuartzCronTest.cs" />
+    <Compile Include="RepositoryTests\ClientPersonalMessageResponseTests.cs" />
+    <Compile Include="RepositoryTests\ClientPersonalMessageTests.cs" />
+    <Compile Include="RepositoryTests\PromoActionRepositoryTests.cs" />
+    <Compile Include="RepositoryTests\ClientForActivationTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryTests\ClientForRegistrationTests.cs" />
+    <Compile Include="RepositoryTests\OrderPaymentResponseTests.cs" />
+    <Compile Include="RepositoryTests\OrderForPaymentTests.cs" />
+    <Compile Include="ServiceTests\ActivateClientsServiceTests.cs" />
+    <Compile Include="ProcessorTest\PromoActionEtlInvokeHelperTests.cs" />
+    <Compile Include="ServiceTests\ProfileCustomFieldsTests.cs" />
+    <Compile Include="ServiceTests\RegisterClientsServiceTests.cs" />
+    <Compile Include="ServiceTests\ProfileCustomFieldsValuesTests.cs" />
+    <Compile Include="ServiceTests\UpdateClientPhoneTests.cs" />
+    <Compile Include="StubServices\AdminMechanicsServiceStub.cs" />
+    <Compile Include="StubServices\ArmSecurityStub.cs" />
+    <Compile Include="StubServices\BonusGatewayStub.cs" />
+    <Compile Include="StubServices\CatalogAdminServiceStub.cs" />
+    <Compile Include="StubServices\ClientMessageServiceStub.cs" />
+    <Compile Include="StubServices\ClientProfileServiceStub.cs" />
+    <Compile Include="StubServices\TargetAudienceServiceStub.cs" />
+    <Compile Include="StubServices\ProcessingServiceStub.cs" />
+    <Compile Include="StubServices\OrderManagementServiceStub.cs" />
+    <Compile Include="StubServices\SecurityWebApiStub.cs" />
+    <Compile Include="StubServices\StubBase.cs" />
+    <Compile Include="StubServices\WishListServiceStub.cs" />
+    <Compile Include="TestBase.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="InvokeTests\SendOrdersTest.cs" />
+    <Compile Include="InvokeTests\ClientDetachTest.cs" />
+    <Compile Include="CryptTests.cs" />
+    <Compile Include="WrapperExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\Quartz\Quartz.2010.csproj">
+      <Project>{AEF8823B-E45B-4B35-A4D0-C08C1196D017}</Project>
+      <Name>Quartz.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.Etl.Logging\RapidSoft.Etl.Logging.csproj">
+      <Project>{DC9A13A8-98A5-4460-B499-C8972944C764}</Project>
+      <Name>RapidSoft.Etl.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.Etl.Runtime\RapidSoft.Etl.Runtime.csproj">
+      <Project>{276395A6-28FF-46AF-ACCC-14F2F175E25D}</Project>
+      <Name>RapidSoft.Etl.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.VTB24.VtbEncryption\RapidSoft.VTB24.VtbEncryption.csproj">
+      <Project>{176C5B9A-C1A3-45EB-9DBC-42888A1AB09A}</Project>
+      <Name>RapidSoft.VTB24.VtbEncryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\S22.Imap\S22.Imap.csproj">
+      <Project>{369C32A5-E099-4BD5-BBBF-51713947CA99}</Project>
+      <Name>S22.Imap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.BonusGateway\RapidSoft.Loaylty.BonusGateway.csproj">
+      <Project>{a130d3dc-72ea-4e07-ae64-caa194245b6e}</Project>
+      <Name>RapidSoft.Loaylty.BonusGateway</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ClientProfile\RapidSoft.Loaylty.ClientProfile.csproj">
+      <Project>{fbd2e6da-8492-4e71-b227-c1bb7d517dbd}</Project>
+      <Name>RapidSoft.Loaylty.ClientProfile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6b6e5793-b048-473d-8707-23031cc227cd}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj">
+      <Project>{e10328e0-16f8-448c-8f26-e754d9a1fe83}</Project>
+      <Name>RapidSoft.Loaylty.Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Processing\RapidSoft.Loaylty.Processing.csproj">
+      <Project>{21ea3da9-98cc-4681-9561-5c87b5d6803d}</Project>
+      <Name>RapidSoft.Loaylty.Processing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ProductCatalog.WsClients\RapidSoft.Loaylty.ProductCatalog.WsClients.csproj">
+      <Project>{fa8260e1-3e5b-4be8-9c65-5c6554310ef6}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PromoAction.WsClients\RapidSoft.Loaylty.PromoAction.WsClients.csproj">
+      <Project>{8533aa36-8d8a-4215-94b7-c8a4989c6f32}</Project>
+      <Name>RapidSoft.Loaylty.PromoAction.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\Rapidsoft.Loyalty.NotificationSystem.WsClients\Rapidsoft.Loyalty.NotificationSystem.WsClients.csproj">
+      <Project>{014608c5-660e-4ddd-b219-b38278ac86aa}</Project>
+      <Name>Rapidsoft.Loyalty.NotificationSystem.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.ArmSecurity\RapidSoft.VTB24.ArmSecurity.csproj">
+      <Project>{87f9069d-e59f-4195-97f4-9309e6a764df}</Project>
+      <Name>RapidSoft.VTB24.ArmSecurity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.Site\RapidSoft.VTB24.Site.csproj">
+      <Project>{BEF9525F-6493-469F-BD15-ACBBB7B011A8}</Project>
+      <Name>RapidSoft.VTB24.Site</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.DataModels\RapidSoft.VTB24.BankConnector.DataModels.csproj">
+      <Project>{A197184A-8429-4DC1-8541-37F57A802F61}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.DataSource\RapidSoft.VTB24.BankConnector.DataSource.csproj">
+      <Project>{FD8442FE-FE00-4D13-B454-34728F9FDD77}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.DataSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.Infrastructure\RapidSoft.VTB24.BankConnector.Infrastructure.csproj">
+      <Project>{5bf06308-29f4-4e47-ab46-76214c953b7f}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector.API\RapidSoft.VTB24.BankConnector.API.csproj">
+      <Project>{C56B7759-9AA7-4A12-8472-046B3228DE96}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.BankConnector\RapidSoft.VTB24.BankConnector.csproj">
+      <Project>{81967F37-3DFB-45F0-B8EF-E515B765082B}</Project>
+      <Name>RapidSoft.VTB24.BankConnector</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Security\filepro.exe" />
+    <Content Include="Security\mespro.dll" />
+    <None Include="..\RapidSoft.VTB24.BankConnector.Solution\Configuration\bindings.config">
+      <Link>Configuration\bindings.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\RapidSoft.VTB24.BankConnector.Solution\Configuration\connectionStrings.config">
+      <Link>Configuration\connectionStrings.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\RapidSoft.VTB24.BankConnector.Solution\Configuration\endpoints.config">
+      <Link>Configuration\endpoints.config</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config-TEMPLATE">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Configuration\appSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Configuration\appSettings.config-TEMPLATE">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Configuration\etlConfig.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configuration\etlConfig.config-TEMPLATE" />
+    <None Include="Configuration\log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configuration\unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configuration\unity.config-TEMPLATE" />
+    <Content Include="Configuration\log4net.config-TEMPLATE" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Security\decrypt\ca\vtb24.pem" />
+    <None Include="Security\decrypt\cert\receiver.pem" />
+    <None Include="Security\decrypt\cert\signer.pem" />
+    <None Include="Security\decrypt\kek.opq" />
+    <None Include="Security\decrypt\keys\00000001.key" />
+    <None Include="Security\decrypt\masks.db3" />
+    <None Include="Security\decrypt\mk.db3" />
+    <None Include="Security\decrypt\rand.opq" />
+    <None Include="Security\decrypt\request.pem" />
+    <None Include="Security\encrypt\ca\vtb24.pem" />
+    <None Include="Security\encrypt\cert\receiver.pem" />
+    <None Include="Security\encrypt\cert\signer.pem" />
+    <None Include="Security\encrypt\kek.opq" />
+    <None Include="Security\encrypt\keys\00000001.key" />
+    <None Include="Security\encrypt\masks.db3" />
+    <None Include="Security\encrypt\mk.db3" />
+    <None Include="Security\encrypt\rand.opq" />
+    <None Include="Security\encrypt\request.pem" />
+    <None Include="TestFiles\fileToDecryptExpected">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\fileToEncrypt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\fileToEncryptExpected">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20120531_3.mobilePhonePL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20120531_3.anketaPL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20130000_1.regPL.RESPONSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20120531_1.regB">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20120531_2.regB">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20130331_1.resetPassPL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20130527_1.promoPL.response" />
+    <None Include="TestFiles\VTB_20130531_8.regPL.RESPONSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20130606_5.activPL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20130610_1.cancelPL.response">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20130610_5.messagePL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20130610_5.Nachislpl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\VTB_20130710_5.regPL.response">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\fileToDecrypt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Security\decrypt\crl\" />
+    <Folder Include="Security\encrypt\crl\" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

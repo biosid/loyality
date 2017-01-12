@@ -1,0 +1,151 @@
+﻿@model Vtb24.Site.Models.Basket.BasketModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Корзина";
+}
+
+@if (TempData.ContainsKey("error")) {
+    @Html.AddScriptBlock(
+        @<script>
+            require(['Catalog/exception'], function (module) {
+                module('@(TempData["error"])');
+            });
+        </script>
+    )
+}
+
+<div style="text-align: right;"><div class="dostavka-basket"><a href="/dostavka" target="_blank">Правила доставки</a></div></div>
+
+@Html.Partial("_CatalogTabs", "Basket")
+
+@if (Model.Items.Any())
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(['Basket/basket'], function (basket) {
+                
+                basket({
+                    removeUrl: '@Url.Action("Remove", "Basket")',
+                    updateUrl: '@Url.Action("Update", "Basket")',
+                    balance: @Model.Balance.ToString("F0"),
+                    maxOrderCost: @Model.MaxOrderCost.ToString("F0")
+                });
+            });
+        </script>
+    )
+
+    <p class="shared__attention-text" data-hide-on="empty-list" style="margin: 30px 0;">
+        Обратите внимание, что рассчитанная сумма заказа в бонусах указана БЕЗ стоимости доставки. Полную стоимость заказа Вы сможете узнать, оформив заказ и указав адрес и способ доставки.
+    </p>
+
+    using (Html.BeginForm("Buy", "Basket"))
+    {
+        var total = (Model.TotalPrice ?? 0).ToString("N0");
+        @Html.AntiForgeryToken()
+        <table class="gifts-grid" data-hide-on="empty-list" cellspacing="0" cellpadding="0">
+            <colgroup>
+                <col width="526" />
+                <col width="110" />
+                <col width="140" />
+                <col width="142" />
+                <col width="58" />
+            </colgroup>
+            <thead class="gifts-grid__head">
+                <tr>
+                    <th class="gifts-grid__head__col">Вознаграждения</th>
+                    <th class="gifts-grid__head__col">Количество</th>
+                    <th class="gifts-grid__head__col">Цена в бонусах</th>
+                    <th class="gifts-grid__head__col">Итого</th>
+                    <th class="gifts-grid__head__col"></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model.Items)
+            {
+                var productUrl = Url.Action("Product", "Catalog", new {id = item.ProductId});
+                var imageUrl = string.IsNullOrWhiteSpace(item.Thumbnail) ? "/content/images/gift144.png" : Url.ImageProcessor("product_recommend", item.Thumbnail);
+                var itemPrice = item.ProductPrice.ToString("N0");
+                var quantityStatus = item.IsAvailable ? "" : "disabled";
+                var itemTotalPrice = item.BasketItemPrice.ToString("N0");
+                <tbody data-price="@item.BasketItemPrice" data-itemPrice="@item.ProductPrice" data-available="@(item.IsAvailable ? "true" : "false")">
+                    <tr class="gifts-grid__margin"><td colspan="5"></td></tr>
+                    <tr class="gifts-grid__row">
+                        <td class="gifts-grid__cell">
+                            <figure class="gift-figure">
+                                <a href="@productUrl" class="gift-figure__picture">
+                                    @if (!item.IsAvailable)
+                                    {
+                                        <div class="gift-figure__picture-not-available">
+                                            <p>@item.ProductNotification</p>
+                                        </div>
+                                    }
+                                    <img src="@imageUrl" width="145" height="145" onerror="this.src='/content/images/gift144.png'" />
+                                </a>
+                                <figcaption>
+                                    <a class="gift-figure__title" href="@productUrl">@item.Title</a>
+                                </figcaption>
+                            </figure>
+                        </td>
+                        <td class="gifts-grid__cell">
+                            <input type="hidden" name="id" value="@item.ProductId"/>
+                            <fieldset class="gift-quantity">
+                                <input type="text" class="gift-quantity__count" name="quantity" autocomplete="off" value="@item.Quantity" data-disable-on="loading" data-numeric maxlength="1" @quantityStatus/>
+                                <button class="gift-quantity__update" type="button" data-disable-on="loading" @quantityStatus></button>
+                            </fieldset>
+                        </td>
+                        <td class="gifts-grid__cell gifts-grid__itemprice">
+                            @itemPrice
+                        </td>
+                        <td class="gifts-grid__cell gifts-grid__itemtotal">
+                            @itemTotalPrice
+                        </td>
+                        <td class="gifts-grid__cell gifts-grid__delete">
+                            <button class="gifts-grid__delete-btn" type="button"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+            <tfoot class="gifts-grid__foot">
+                <tr class="gifts-grid__margin"><td colspan="5"></td></tr>
+                <tr>
+                    <td colspan="5" class="gifts-grid__cell gifts-grid__foot-cell">
+                        <div class="gifts-grid__total" style="margin-bottom: 30px">
+                            Итого бонусов:
+                            <div class="gifts-grid__total-text">
+                                @total
+                            </div>
+                        </div>
+                        <div class="shared__well-red" data-show-on="not-enouth-money" style="display:none;">
+                            <p class="shared__warning-text">
+                                <b>Внимание!</b><br/>
+                                У Вас не хватает бонусов для совершения заказа на все выбранные вознаграждения. Пожалуйста, уменьшите количество вознаграждений в корзине.
+                            </p>
+                        </div>
+                        <div class="shared__well-red" data-show-on="no-available-gifts" style="display:none;">
+                            <p class="shared__warning-text">
+                                <b>Внимание!</b><br/>
+                                Нет вознаграждений, доступных для заказа.
+                            </p>
+                        </div>
+                        <div class="shared__well">
+                            <button class="btn-red large" type="submit" data-disable-on="not-enouth-money">
+                                <span>Оформить заказ</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+}
+
+<div class="full-content shdw mnt16" data-show-on="empty-list" style="display:@(Model.Items.Any() ? "none" : "block")">
+    <div class="fc-padding">
+        <div class="middle-line white">
+            <div class="ml-text"><span class="size28">Корзина пуста</span></div>
+        </div>
+        <p>
+            Для того чтобы добавить товар в корзину, для начала перейдите, пожалуйста, в <a href="@Url.Action("Index", "Catalog")">каталог</a>
+        </p>
+        <div class="space280"></div>
+    </div>
+</div>

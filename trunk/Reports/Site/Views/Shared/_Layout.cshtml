@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        @Styles.Render("~/bundles/styles")
+    </head>
+    <body>
+        @Html.AntiForgeryToken()
+        <div class="container">
+            @RenderBody()
+        </div>
+        @Scripts.Render("~/bundles/scripts")
+        @Html.RenderScripts()
+    </body>
+</html>

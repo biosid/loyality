@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "Заказ клиента " + Model.Login;
+    ViewBag.MenuId = "users";
+    Layout = "~/Areas/Security/Views/Shared/_Layout.cshtml";
+}
+@using Microsoft.Practices.ObjectBuilder2
+@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@model Vtb24.Arms.Security.Models.Users.UserOrderDetailsModel
+<div class="tab-pane active">
+    @*
+    --------------------- Навигация
+    *@
+    <ul class="nav nav-pills mar-left-0 mar-bottom-10">
+        <li><a href="@Url.Action("Edit", "Users", new { Model.Login })"><span>Профиль</span></a></li>
+        <li><a href="@Url.Action("Messages", "Users", new { Model.Login })">Личные сообщения</a></li>
+        <li class="disabled"><a href="@Url.Action("Orders", "Users", new { Model.Login })">Заказы</a></li>
+    </ul>
+    @*
+    --------------------- Шапка
+    *@
+    <div class="sticky-save">
+        <div class="navbar" style="width: 940px;">
+            <div class="navbar-inner mar-bottom-10 no-border pad-left-12 mar-left-0 pad-top-5">
+                <a href="@Url.Action("Orders", "Users", Model.UserOrdersQueryModel)" class="btn pull-right" style="margin-top: 0;">Назад</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+        @*
+        --------------------- Заказ
+        *@
+        <div class="row">
+            <div class="span12">
+                <ul class="unstyled">
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Номер заказа:</div>
+                        <div class="span8">@Model.Order.Id</div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Дата и время оформления:</div>
+                        <div class="span8">@Model.Order.OrderTime.ToString("f")</div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Статус заказа:</div>
+                        <div class="span8">@Model.Order.Status</div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Описание статуса заказа:</div>
+                        <div class="span8">@(string.IsNullOrEmpty(Model.Order.StatusDescription) ? "-" : Model.Order.StatusDescription)</div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Дата и время смены статуса заказа:</div>
+                        <div class="span8">@Model.Order.StatusChangeTime.ToString("f")</div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Вознаграждения:</div>
+                        <div class="span8">
+                            <table class="table table-bordered table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Артикул</th>
+                                        <th>Наименование</th>
+                                        <th>Количество</th>
+                                        @if (!Model.Order.HasAdvance)
+                                        {
+                                            <th>Цена</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Order.Items)
+                                    {
+                                        <tr>
+                                            <td>@item.SupplierProductId</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.Quantity</td>
+                                            @if (!Model.Order.HasAdvance)
+                                            {
+                                                <td>@item.QuantityBonusPrice.ToString("N0")&nbsp;бонусов</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>                            
+                        </div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Итого@(Model.Order.HasDelivery && !Model.Order.HasAdvance ? " (с доставкой)" : null) :</div>
+                        <div class="span8"> @Model.Order.TotalPrice.ToString("N0")&nbsp;бонусов</div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Контактное лицо:</div>
+                        <div class="span8">@(string.IsNullOrEmpty(Model.Order.RecipientName) ? "-" : Model.Order.RecipientName)</div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Доставка:</div>
+                        <div class="span8">
+                            @if (!Model.Order.HasDelivery)
+                            {
+                                @:-
+                            }
+                            else if (Model.Order.IsPickup)
+                            {
+                                var point = Model.Order.PickupPoint;
+                                <p>@(Model.Order.DeliveryVariantName ?? "Пункт выдачи заказов.")</p>
+                                <p><b>Адрес:</b> @Html.SanitizeHtml(point.Address)</p>
+                                if (point.Phones != null && point.Phones.Any())
+                                {
+                                    <p><b>Тел.:</b> @point.Phones.JoinStrings(", ")</p>
+                                }
+                                if (point.OperatingHours != null && point.OperatingHours.Any())
+                                {
+                                    <p><b>Часы работы:</b> @Html.SanitizeHtml(point.OperatingHours.Select(h => h.TrimEnd(new[] {';'})).JoinStrings(", "))</p>
+                                }
+
+                                if (!string.IsNullOrEmpty(point.Description))
+                                {
+                                    <p>@Html.SanitizeHtml(point.Description)</p>
+                                }
+                            }
+                            else if (Model.Order.IsEmail)
+                            {
+                                <p>Доставка по e-mail. @Model.Order.RecipientEmail</p>
+                            }
+                            else
+                            {
+                                <p>@(Model.Order.DeliveryVariantName ?? "Курьерская доставка")</p>
+                                <p><b>Адрес:</b> @Model.Order.DeliveryAddress</p>
+                                if (!string.IsNullOrEmpty(Model.Order.DeliveryVariantDescription))
+                                {
+                                    <p>@Html.SanitizeHtml(Model.Order.DeliveryVariantDescription)</p>
+                                }
+                            }
+                        </div>
+                    </li>
+                    <li class="row pad-bottom-10">
+                        <div class="span4 text-right nowrap">Телефон:</div>
+                        <div class="span8">
+                            @(string.IsNullOrEmpty(Model.Order.RecipientPhone)
+                                                 ? "-"
+                                                 : "+" + Model.Order.RecipientPhone.Substring(0, 1) + " (" + Model.Order.RecipientPhone.Substring(1, 3) + ") " + Model.Order.RecipientPhone.Substring(4))
+                    </div>
+                </li>
+                <li class="row pad-bottom-10">
+                    <div class="span4 text-right nowrap">Email:</div>
+                    <div class="span8">@(string.IsNullOrEmpty(Model.Order.RecipientEmail) ? "-" : Model.Order.RecipientEmail)</div>
+                </li>
+                <li class="row pad-bottom-10">
+                    <div class="span4 text-right nowrap">Комментарий:</div>
+                    <div class="span8" style="white-space: pre-wrap;">@(string.IsNullOrEmpty(Model.Order.Comment) ? "-" : Model.Order.Comment)</div>
+                </li>
+            </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

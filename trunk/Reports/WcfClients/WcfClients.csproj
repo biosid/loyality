@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C638D865-54BD-4BF4-80CC-A3BC720061C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rapidsoft.VTB24.Reports.WcfClients</RootNamespace>
+    <AssemblyName>Rapidsoft.VTB24.Reports.WcfClients</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\CatalogAdmin\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SecurityApi\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\CatalogAdmin\CatalogAdminService.wsdl" />
+    <None Include="Service References\CatalogAdmin\CatalogAdminService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdmin\CatalogAdminService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdmin\CatalogAdminService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdmin\CatalogAdminService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdmin\CatalogAdminService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdmin\CatalogAdminService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdmin\CatalogAdminService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.AdminGetProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.ChangeOrdersStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.CreateCategoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.CreatePartnerProductCategoryLinkResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.CreatePartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.CreateProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.DeliveryLocationHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.DeliveryLocationsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetCategoriesPermissionsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetDeliveryRateImportTasksHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetOrderStatusesHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetPartnerByIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetPartnerInfoByIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetPartnerProductCategoryLinksResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetPartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetPartnersInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetProductCatalogImportTasksHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.GetSubCategoriesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.ImportDeliveryRatesFromHttpResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.ImportProductsFromYmlResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.PartnerCommitOrdersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.PartnersSettignsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.SearchOrdersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.SearchProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.UpdateCategoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdmin\Rapidsoft.VTB24.Reports.WcfClients.CatalogAdmin.UpdatePartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SecurityApi\Rapidsoft.VTB24.Reports.WcfClients.SecurityApi.ChangeUserPhoneNumberResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SecurityApi\Rapidsoft.VTB24.Reports.WcfClients.SecurityApi.ResetUserPasswordResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SecurityApi\Rapidsoft.VTB24.Reports.WcfClients.SecurityApi.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SecurityApi\SecurityWebApi.wsdl" />
+    <None Include="Service References\SecurityApi\SecurityWebApi.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecurityApi\SecurityWebApi1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecurityApi\SecurityWebApi2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecurityApi\SecurityWebApi3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecurityApi\SecurityWebApi4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecurityApi\SecurityWebApi5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecurityApi\SecurityWebApi6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecurityApi\SecurityWebApi7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CatalogAdmin\" />
+    <WCFMetadataStorage Include="Service References\SecurityApi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdmin\CatalogAdminService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdmin\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdmin\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdmin\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SecurityApi\SecurityWebApi.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SecurityApi\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SecurityApi\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SecurityApi\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

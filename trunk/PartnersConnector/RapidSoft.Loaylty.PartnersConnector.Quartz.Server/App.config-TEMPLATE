@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <sectionGroup name="common">
+      <section name="logging" type="Common.Logging.ConfigurationSectionHandler, Common.Logging" />
+    </sectionGroup>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+    <section name="quartz" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0,Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+    <section name="partnerConnections" type="RapidSoft.Loaylty.PartnersConnector.Interfaces.Settings.PartnerConnectionsSection, RapidSoft.Loaylty.PartnersConnector.Interfaces" />
+  </configSections>
+
+  <common>
+    <logging>
+      <factoryAdapter type="Common.Logging.Log4Net.Log4NetLoggerFactoryAdapter, Common.Logging.Log4Net1211">
+        <arg key="configType" value="INLINE" />
+      </factoryAdapter>
+    </logging>
+  </common>
+
+  <connectionStrings>
+    <add name="Queue"
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"
+         providerName="System.Data.SqlClient" />
+    <add name="Litres"
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <appSettings>
+    <add key="PartnersConnectorThumbprint" value="@PartnersConnectorThumbprint@"/>
+    <add key="VtbSystemUserName" value="vtbSystemUser" />
+    <add key="MaxTaskRefire" value="2" />
+    <add key="RefireCountToMilisecFactor" value="500" />
+    <add key="GiftFilesPath" value="@GiftFilesPath@" />
+    <!-- Настройки для партнера Литрес -->
+    <add key="LitresPartnerId" value="@LitresPartnerId@" />
+    <add key="LitresMinRemainingCodesCount" value="@LitresMinRemainingCodesCount@" />
+    <add key="LitresLowCodesCountWarningTo" value="@LitresLowCodesCountWarningTo@" />
+    <add key="LitresRemainingCodesCountReportTo" value="@LitresRemainingCodesCountReportTo@" />
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="PartnersConnector" />
+    <add key="LogSubsystemName" value="Quartz" />
+    <add key="EventLogSourceName" value="RapidSoft.Loyalty.PartnersConnector.Quartz.Server" />
+    <add key="LogsElasticSearchNodes" value="@elasticsearchCluster@" />
+  </appSettings>
+
+  <system.net>
+    <mailSettings>
+      <smtp deliveryMethod="Network" from="@SmtpFrom@">
+        <network host="@SmtpHost@"
+                 port="@SmtpPort@"
+                 userName="@SmtpUserName@"
+                 password="@SmtpPassword@"
+                 enableSsl="@SmtpEnableSsl@" />
+      </smtp>
+    </mailSettings>
+  </system.net>
+
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="" />
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="@PRODCATORDERMGMTURL@"
+          binding="basicHttpBinding"
+          contract="OrderManagementService.IOrderManagementService"
+          name="BasicHttpBinding_IOrderManagementService" />
+      <endpoint address="@CatalogAdminService@"
+                binding="basicHttpBinding"
+                contract="CatalogAdminService.ICatalogAdminService"
+                name="BasicHttpBinding_ICatalogAdminService" />
+    </client>
+  </system.serviceModel>
+
+  <log4net configSource="log4net.config" />
+
+  <partnerConnections configSource="partnerConnections.config" />
+
+  <quartz configSource="quartz.config" />
+
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5"/>
+  </startup>
+</configuration>

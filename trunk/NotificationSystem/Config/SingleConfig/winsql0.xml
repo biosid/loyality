@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs\NotificationSystem</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@elasticsearchCluster@</string>
+          </Patterns>
+          <ReplaceTo>http://10.14.14.180:9200;http://10.14.14.185:9200</ReplaceTo>
+        </ConfigFileTransformation>
+	<!-- Database settings -->
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@DBHOST@</string>
+	  </Patterns>
+	  <ReplaceTo>winsql1;Failover Partner=winsql0</ReplaceTo>
+	</ConfigFileTransformation>
+	
+	<!-- Email send settings -->
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@MAILUSERNAME@</string>
+	  </Patterns>
+	  <ReplaceTo>loyalty@bonus.vtb24.ru</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@MAILPASSWORD@</string>
+	  </Patterns>
+	  <ReplaceTo>mail</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@MAILSMTPHOST@</string>
+	  </Patterns>
+	  <ReplaceTo>winfe0</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@MAILSMTPPORT@</string>
+	  </Patterns>
+	  <ReplaceTo>25</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@MailEnableSsl@</string>
+	  </Patterns>
+	  <ReplaceTo>false</ReplaceTo>
+	</ConfigFileTransformation>
+
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@ErrorMessageTo@</string>
+	  </Patterns>
+	  <ReplaceTo>vtb-team-errors@rapidsoft.ru</ReplaceTo>
+	</ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ClientSiteUrl@</string>
+      </Patterns>
+      <ReplaceTo>https://bonus.vtb24.ru</ReplaceTo>
+    </ConfigFileTransformation>
+
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\winsql0_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

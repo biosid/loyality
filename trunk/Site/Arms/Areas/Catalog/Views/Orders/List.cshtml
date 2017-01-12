@@ -1,0 +1,261 @@
+﻿@using Vtb24.Arms.Catalog.Models.Orders
+@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@model OrdersModel
+@{
+    ViewBag.Title = "Заказы";
+    ViewBag.MenuId = "orders";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/Orders/index',
+                'Catalog/Orders/export'
+            ],
+            function (index, exportModule) {
+                index();
+                exportModule({
+                    startUrl: '@Html.Raw(Url.Action("StartExport", "Orders", Model.Query.ToRouteValue()))',
+                    batchUrl: '@Url.Action("ExportBatch", "Orders")',
+                    resultUrl: '@Url.Action("ExportResults", "Orders")'
+                });
+            });
+    </script>
+)
+<div class="tab-pane active">
+@*
+--------------------- Поиск
+*@
+    @using (Html.BeginForm("List", "Orders", FormMethod.Get))
+    {
+        @Html.Hidden("partner", Model.Query.partner)
+        @Html.Hidden("issupplier", Model.Query.issupplier)
+        @Html.TextBox("id", Model.Query.id, new { @class = "pull-right mar-bottom-0", placeholder = "Введите номер заказа", data_numeric = "True" })
+    }
+    @*
+--------------------- Выбор партнёра
+*@
+    <div class="row">
+        <table>
+            <tr>
+                <td style="vertical-align: top;" class="pad-right-20">
+                    <div class="span5">
+                        <select class="input-block-level" data-urlselect="">
+                            @if (Model.Suppliers.Length > 0)
+                            {
+                                <optgroup label="Поставщики">
+                                    @foreach (var item in Model.Suppliers)
+                                    {
+                                        <option selected="@(item.Selected ? "selected" : null)" value="@item.Value">@item.Text</option>
+                                    }
+                                </optgroup>
+                            }
+                            @if (Model.Carriers.Length > 0)
+                            {
+                                <optgroup label="Курьеры">
+                                    @foreach (var item in Model.Carriers)
+                                    {
+                                        <option selected="@(item.Selected ? "selected" : null)" value="@item.Value">@item.Text</option>
+                                    }
+                                </optgroup>
+                            }
+                        </select>
+                    </div>
+                    <a class="btn pull-right mar-left-20" href="#" data-x="orders/export">
+                        <i class="icon-download-alt"></i>
+                        <span>Выгрузить заказы</span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @*
+--------------------- Фильтры
+*@       
+    @using (Html.BeginForm("List", "Orders", FormMethod.Get))
+    {
+        @Html.Hidden("partner", Model.Query.partner)
+        @Html.Hidden("issupplier", Model.Query.issupplier)
+        <fieldset class="well the-fieldset">
+            <div class="row">
+                <div class="span8 mar-left-0">
+                    <div class="span2 mar-left-10">
+                        <input type="text" id="from" name="from" placeholder="Дата с" value="@(Model.Query.from.HasValue ? Model.Query.from.Value.ToShortDateString() : "")" class="input-block-level">
+                    </div>
+                    <div class="span2 mar-left-10">
+                        <input type="text" id="to" name="to" placeholder="по" value="@(Model.Query.to.HasValue ? Model.Query.to.Value.ToShortDateString() : "")" class="input-block-level">
+                    </div>
+                </div>
+                <div class="span2 line-height-30 mar-left-0">Оплата заказа</div>
+                <div class="span2 line-height-30 mar-left-0">Оплата&nbsp;доставки</div>
+            </div>
+            <div class="row">
+                <div class="span8 mar-top-10">
+                    @helper StatusCheckbox(OrderStatuses status)
+                    {
+                        var selected = Model.Query.status != null && Model.Query.status.Contains(status) ? "checked" : null;
+                        <label class="checkbox">
+                            <input type="checkbox" name="status" value="@status" checked="@selected">
+                            @Html.DescriptionFor(status)
+                        </label>
+                    }
+                    <ul class="unstyled clearfix triple pad-left-12">
+                        <li>
+                            @StatusCheckbox(OrderStatuses.processing)
+                        </li>
+                        <li>
+                            @StatusCheckbox(OrderStatuses.cancelled_by_partner)
+                        </li>
+                        <li>
+                            @StatusCheckbox(OrderStatuses.delivery_waiting)
+                        </li>
+                        <li>
+                            @StatusCheckbox(OrderStatuses.delivery)
+                        </li>
+                        <li>
+                            @StatusCheckbox(OrderStatuses.delivered)
+                        </li>
+                        <li>
+                            @StatusCheckbox(OrderStatuses.delivered_with_delay)
+                        </li>
+                        <li>
+                            @StatusCheckbox(OrderStatuses.not_delivered)
+                        </li>
+                    </ul>
+                </div>
+                @helper PaymentCheckbox(string name, OrderPaymentStatuses status, OrderPaymentStatuses[] model)
+                {
+                    var selected = model != null && model.Contains(status) ? "checked" : null;
+                    <label class="checkbox">
+                        <input type="checkbox" name="@name" checked="@selected" value="@status">
+                        <span class="label @status.GetLabelClass()">@Html.DescriptionFor(status)</span>
+                    </label>
+                }
+                <div class="span2 mar-top-10 mar-bottom-10 mar-left-0">
+                    @PaymentCheckbox("productpayment", OrderPaymentStatuses.done, Model.Query.productpayment)
+                    @PaymentCheckbox("productpayment", OrderPaymentStatuses.pending, Model.Query.productpayment)
+                    @PaymentCheckbox("productpayment", OrderPaymentStatuses.error, Model.Query.productpayment)
+                    @PaymentCheckbox("productpayment", OrderPaymentStatuses.bank_cancelled, Model.Query.productpayment)
+                </div>
+                <div class="span2 mar-top-10 mar-bottom-10 mar-left-0">
+                    @PaymentCheckbox("deliverypayment", OrderPaymentStatuses.done, Model.Query.deliverypayment)
+                    @PaymentCheckbox("deliverypayment", OrderPaymentStatuses.pending, Model.Query.deliverypayment)
+                    @PaymentCheckbox("deliverypayment", OrderPaymentStatuses.error, Model.Query.deliverypayment)
+                    @PaymentCheckbox("deliverypayment", OrderPaymentStatuses.bank_cancelled, Model.Query.deliverypayment)
+                </div>
+            </div>
+            <button class="btn pull-right" type="submit"><i class="icon-search"></i> Найти</button>
+        </fieldset>
+    }                             
+    @*
+--------------------- Заказы
+*@
+    @if (Model.Orders.Any())
+    {
+        <table class="table info-table table-bordered font-size-13 table-row-select" data-x="Orders/list">
+            <thead>
+                <tr>
+                    <th rowspan="2"><span class="nowrap">Дата&nbsp;/&nbsp;Время</span></th>
+                    <th rowspan="2">№&nbsp;заказа</th>
+                    <th rowspan="2">Статус</th>
+                    <th colspan="2">Оплата</th>
+                    <th rowspan="2">Артикул</th>
+                    <th rowspan="2">Наименование</th>
+                    <th rowspan="2">К&#8209;во</th>
+                    <th rowspan="2">Цена</th>
+                    <th rowspan="2">Доставка</th>
+                </tr>
+                <tr>
+                    <th>
+                        товара
+                    </th>
+                    <th>
+                        доставки
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="middled">
+                @foreach (var order in Model.Orders)
+                {
+                    <tr data-x="Orders/order-row">
+                        <td rowspan="@order.Items.Length">@order.OrderTime.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td rowspan="@order.Items.Length"><a href="@Url.Action("Edit", "Orders", new { id = order.Id, query = Url.ToQuery(Model.Query) })">@order.Id</a></td>
+                        <td rowspan="@order.Items.Length">
+                            @if (order.Status.HasValue)
+                            {
+                                @Html.DescriptionFor(order.Status)
+                            }
+                            else
+                            {
+                                <span class="line-height-30">Неизвестен</span> @*REVIEW: что выводить?*@
+                            }
+                        </td>
+                        <td rowspan="@order.Items.Length">
+                            @if (order.ProductPaymentStatus.HasValue)
+                            {
+                                <div class="label @order.ProductPaymentStatus.Value.GetLabelClass()">
+                                    @Html.DescriptionFor(order.ProductPaymentStatus)
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="line-height-30">Неизвестно</span> @*REVIEW: что выводить?*@
+                            }
+                        </td>
+                        <td rowspan="@order.Items.Length">
+                            @if (order.DeliveryPaymentStatus.HasValue)
+                            {
+                                <div class="label @order.DeliveryPaymentStatus.Value.GetLabelClass()">
+                                    @Html.DescriptionFor(order.DeliveryPaymentStatus)
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="line-height-30">Неизвестно</span> @*REVIEW: что выводить?*@
+                            }
+                        </td>
+                        @if (order.Items.Length > 0)
+                        {
+                            <td>@order.Items[0].ProductId</td>
+                            <td class="text-left">@order.Items[0].Title</td>
+                            <td>@order.Items[0].Quantity</td>
+                        }
+                        else
+                        {
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        }
+                        <td rowspan="@order.Items.Length">@order.TotalPrice.ToString("N2")</td>
+                        <td rowspan="@order.Items.Length">@Html.SanitizeHtml(order.Delivery)</td>
+                    </tr>
+                    foreach (var item in order.Items.Skip(1))
+                    {
+                        <tr data-x="Orders/order-item-row">
+                            <td>@item.ProductId</td>
+                            <td class="text-left">@item.Title</td>
+                            <td class="text-center">@item.Quantity</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h4 class="font-normal mar-left-10">
+            Заказы не найдены
+        </h4>
+    }
+    @*
+--------------------- Пейджинг
+*@
+    @if (Model.TotalPages > 1)
+    {
+        @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+    }
+</div>

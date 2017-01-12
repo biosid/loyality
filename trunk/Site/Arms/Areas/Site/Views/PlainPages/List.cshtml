@@ -1,0 +1,137 @@
+﻿@using Vtb24.Arms.Site.Models.Pages
+@using Vtb24.Site.Content.Pages.Models
+@model PlainPagesModel
+@{
+    ViewBag.Title = "Страницы";
+    ViewBag.MenuId = "pages";
+    Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
+}
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Content/PlainPages/index',
+                'Content/PlainPages/mass-actions',
+                'Content/PlainPages/change-status',
+                'Content/PlainPages/delete'
+            ],
+            function (index, massActions, changeStatus, del) {
+                index({
+                    hideBuiltinUrl: '@Url.Action("List", "PlainPages", new PlainPagesQueryModel { hide_builtin = true })',
+                    showBuiltinUrl: '@Url.Action("List", "PlainPages", new PlainPagesQueryModel())'
+                });
+                var list = $('#pages-list'),
+                    selector = massActions({ list: list });
+                changeStatus({
+                    selector: selector,
+                    url: '@Url.Action("ChangeStatus", "PlainPages")'
+                });
+                del({
+                    selector: selector,
+                    url: '@Url.Action("Delete", "PlainPages")'
+                });
+            });
+    </script>
+)
+<div class="tab-pane active">
+    <div style="width: 940px; height: 40px; padding-bottom: 1em; position: relative; z-index: 2;" data-x="content/plainpages/navbar">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                <div class="row mar-left-0">
+                    <div class="span1">
+                        <a href="@Url.Action("Create", "PlainPages", new { query = Model.Query.ToQuery() })" role="button" class="btn btn-success"><i class="icon-plus icon-white"></i></a>
+                    </div>
+                    <div class="pull-left mar-top-5 mar-left-10 pad-top-5">
+                        <label class="checkbox">
+                            @Html.CheckBoxFor(m => m.Query.hide_builtin, new { @class="mar-top-0", @autocomplete="off", @data_x="content/plainpages/hide_builtin" })
+                            Скрыть встроенные
+                        </label>
+                    </div>
+                    <div class="pull-right mar-right-20 none" data-x="content/plainpages/actions_panel">
+                        <div class="span3 line-height-30 mar-top-5 mar-right-20 text-right" data-x="content/plainpages/counter_node"></div>
+                        <a href="#@PageStatus.Active" class="btn btn-primary" data-x="content/plainpages/changestatus_btn">Активировать</a>
+                        <a href="#@PageStatus.NotActive" class="btn" data-x="content/plainpages/changestatus_btn">Деактивировать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Model.Pages.Length > 0)
+    {
+        <table id="pages-list" class="table table-bordered page-list" style="position: relative; z-index: 1;">
+            <thead>
+                <tr>
+                    <th style="width: 1px;">
+                        <input type="checkbox" data-x="content/plainpages/select_all" />
+                    </th>
+                    <th>Страница</th>
+                    <th>Статус</th>
+                    <th>Автор изменений</th>
+                    <th style="width: 1px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var page in Model.Pages)
+                {
+                    var data = Html.Json(new { id = page.Id, title = page.Title }).ToString();
+                    var sitePageUrl = SitePagesHelper.SiteRoot + (page.Status == PageStatus.Active
+                                                                      ? page.Url
+                                                                      : Html.SitePlainPagePreviewUrl(page.Id));
+
+                    <tr data-pagedata="@data" class="@(page.Status == PageStatus.Active ? "" : "muted")">
+                        <td>
+                            @if (page.IsBuiltIn)
+                            {
+                                <a class="disabled" title="Встроенная страница"><i class="icon-ban-circle"></i></a>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="page" value="@page.Id"/>
+                            }
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "PlainPages", new { id = page.Id, query = Model.Query.ToQuery() })">@page.Title</a>
+                            <br/>
+                            <a href="@sitePageUrl" target="_blank" class="font-size-11"><span class="site-domain">@SitePagesHelper.SiteRoot</span>@page.Url</a>
+                        </td>
+                        <td>@Html.DescriptionFor(page.Status)</td>
+                        <td>@page.Author<div class="modified">@page.WhenModified.ToString("f")</div></td>
+                        <td>
+                            @if (page.IsBuiltIn)
+                            {
+                                <a class="btn disabled" title="Запрещено удалять встроенные страницы"><i class="icon-remove disabled"></i></a>
+                            }
+                            else
+                            {
+                                <a href="#" class="btn" data-x="content/plainpages/delete"><i class="icon-remove"></i></a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h4 class="font-normal mar-left-10">
+            Страницы не найдены
+        </h4>
+    }
+@*
+--------------------- Пейджинг
+*@
+    @if (Model.TotalPages > 1)
+    {
+        @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+    }
+</div>
+@*
+--------------------- Удаление
+*@
+@Html.Partial("_Delete")
+
+<style>
+    .item-context {position: relative; width: 0px; height: 0px; top: -15px;}
+    .modified {font-size: 11px; color:#777;}
+    .CodeMirror {height: 21em;}
+</style>

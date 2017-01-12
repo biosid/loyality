@@ -1,0 +1,31 @@
+﻿@using Vtb24.Arms.Catalog.Models.Gifts
+@model BreadCrumbsModel
+
+@for (var i = 0; i<Model.BreadCrumbs.Length; i++)
+{
+    var crumb = Model.BreadCrumbs[i];
+    var isLast = i == Model.BreadCrumbs.Length - 1;
+    <div class="btn-group">
+        <a class="btn btn-link dropdown-toggle breadcrumbs-title" data-toggle="dropdown" href="#">
+            <span class="bc-t@(!crumb.IsPermissinsGranted ? " disabled" : null)">@crumb.Title</span>
+            @if (!isLast)
+            {
+                <span class="caret">/</span>
+            }
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <ul class="notRootCat" data-x="gifts/bread_crumb">
+                    @foreach (var crumbSibling in crumb.Parent.Children)
+                    {
+                        var className = crumbSibling.Id == crumb.Id ? "dropcatitem expandedcat" : "dropcatitem";
+                        var url = Url.Action("List", "Gifts", new GiftsQueryModel { supplier = Model.Query.supplier, category = crumbSibling.Id });
+                        <li class ="@className">
+                            <a class="@(crumbSibling.IsPermissinsGranted ? null : "disabled")" href="@url">@crumbSibling.Title</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+}

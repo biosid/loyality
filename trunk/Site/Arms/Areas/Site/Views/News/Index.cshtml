@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Новости";
+    ViewBag.MenuId = "news";
+    Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
+}
+@model Vtb24.Arms.Site.Models.News.NewsModel
+
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Content/News/Index',
+                'Content/News/Mass-actions',
+                'Content/News/publish',
+                'Content/News/delete'
+            ],
+            function (index, massActions, publish, del) {
+                var list = $('#news-list'),
+                    newsSelector = massActions({ list: list });
+                index({
+                    showUnpublishedUrl: '@Url.Action("Index", "News", new { hideunpublished=false })',
+                    hideUnpublishedUrl: '@Url.Action("Index", "News", new { hideunpublished=true })'
+                });
+                publish({
+                    selector: newsSelector,
+                    url: '@Url.Action("Publish", "News")'
+                });
+                del({
+                    selector: newsSelector,
+                    deleteUrl: '@Url.Action("Delete", "News")'
+                });
+            });
+    </script>
+)
+
+<div class="tab-pane active" id="tab1">    
+    @using (Html.BeginForm("Index", "News", FormMethod.Get))
+    {
+        <div>
+            <div>
+                <div class="well the-fieldset mar-bottom-5 pad-top-10"> 
+                    
+                        <button type="submit" class="btn mar-top-1 pull-right"><i class="icon-search"></i> Найти</button>
+                        <div class="span3 mar-top-5 pull-right mar-right-20">
+                            @Html.TextBoxFor(m => m.QueryModel.keyword, new { @placeholder="Ключевое слово", @class="input-block-level mar-top--05ex", @maxlength = "100" })
+                        </div>
+                        <div class="span4 mar-left-0">
+                            <div class="span2 mar-left-0 mar-top-5">
+                                @Html.TextBoxFor(m => m.QueryModel.from, "{0:dd.MM.yyyy}", new { @placeholder="дата с", @class="input-block-level mar-top--05ex", @data_x="news/dateFrom" })
+                            </div>                                    
+                            <div class="span2 mar-left-10 mar-top-5">
+                                @Html.TextBoxFor(m => m.QueryModel.to, "{0:dd.MM.yyyy}", new { @placeholder="по", @class="input-block-level mar-top--05ex", @data_x="news/dateTo" })
+                            </div>
+                        </div>
+                </div>
+                <div class="navbar">
+                <div class="navbar-inner no-border pad-bottom-5 pad-right-0 mar-right-0 pad-left-0" data-x="news/navbar" style="width: 940px;">
+                    <div style="width: 940px;">
+                    <div class="span1"><a href="@Url.Action("Create", "News")" class="btn btn-success"><i class="icon-plus icon-white"></i></a></div>
+                    
+                    <div class="pull-left mar-top-5 mar-left-10 pad-top-5">
+                        <label class="checkbox">
+                            @Html.CheckBoxFor(m => m.QueryModel.hideunpublished, new { @class="mar-top-0", @autocomplete="off", @data_x="news/hideUnpublished" })
+                            Скрыть неопубликованные
+                        </label>
+                    </div>
+                     
+                    <div data-x="news/actions_panel" class="mar-left-14 pull-right mar-right-0 sticky-filter none">
+                        <div class="pull-left mar-top-5">
+                            <div class="line-height-30 mar-right-20 text-right" data-x="news/selected_counter"></div>
+                        </div>
+                        <div class="pull-left mar-right-20">
+                            <a class="btn btn-primary" data-x="news/publish">Опубликовать</a>
+                            <a class="btn" data-x="news/hide">Скрыть</a>
+                        </div>                                                    
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+                                                    
+@if (Model.NewsMessages.Any())
+{
+    <table class="table table-bordered newstable" id="news-list">
+        <thead>
+            <tr>
+                <th><input type="checkbox" data-x="news/selectAll" autocomplete="off" /></th>
+                <th style="width: 50px;">Период с</th>
+                <th style="width: 50px;">Период по</th>
+                <th>Название</th>
+                <th style="width: 50px;">Приоритет</th>
+                <th style="width: 1px;">Опубликована</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+                
+            @foreach (var row in Model.NewsMessages)
+            {
+                <tr class="rowcheck" data-news="@row.Id">
+                    <td><input type="checkbox" name="news" value="@row.Id" autocomplete="off"/></td>
+                    <td class="nowrap text-center">@row.StartDate.ToShortDateString()</td>
+                    <td class="nowrap text-center">@(row.EndDate.HasValue ? row.EndDate.Value.ToShortDateString() : "")</td>
+                    <td><a href="@Url.Action("Edit", "News", new { @id = row.Id })">@row.Title</a></td>
+                    <td class="nowrap">@row.Priority</td>
+                    <td class="for-button">
+                        @(row.IsActive ? "Да" : "Нет")
+                    </td>
+                    
+                    <td>
+                        <a class="btn remove" data-x="news/delete"><i class="icon-remove"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Новостей пока нет</p>
+}
+
+@*
+--------------------- Предупреждение об удалении
+*@
+@Html.Partial("_Delete")

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="RapidSoft.Loyalty.BonusGateway" elementFormDefault="qualified" targetNamespace="RapidSoft.Loyalty.BonusGateway" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loyalty.BonusGateway.API.Entity" />
+  <xs:complexType name="GetBalanceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ChannelId" type="xs:int" />
+          <xs:element minOccurs="0" name="Cheque" nillable="true" type="tns:Cheque" />
+          <xs:element minOccurs="0" name="LoyaltyProgramId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBalanceRequest" nillable="true" type="tns:GetBalanceRequest" />
+  <xs:complexType name="RequestBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PointRequest">
+        <xs:sequence>
+          <xs:element name="RequestDateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RequestId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestBase" nillable="true" type="tns:RequestBase" />
+  <xs:complexType name="PointRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PartnerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PosId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TerminalId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PointRequest" nillable="true" type="tns:PointRequest" />
+  <xs:complexType name="Cheque">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChequeDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChequeDiscount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ChequeNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeSum" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFields" nillable="true" type="tns:ArrayOfAdditionalField" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfChequeItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cheque" nillable="true" type="tns:Cheque" />
+  <xs:complexType name="ArrayOfAdditionalField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalField" nillable="true" type="tns:AdditionalField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdditionalField" nillable="true" type="tns:ArrayOfAdditionalField" />
+  <xs:complexType name="AdditionalField">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" type="tns:AdditionalFieldType" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdditionalField" nillable="true" type="tns:AdditionalField" />
+  <xs:simpleType name="AdditionalFieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Byte" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="Double" />
+      <xs:enumeration value="Float" />
+      <xs:enumeration value="Int32" />
+      <xs:enumeration value="Int64" />
+      <xs:enumeration value="String" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AdditionalFieldType" nillable="true" type="tns:AdditionalFieldType" />
+  <xs:complexType name="ArrayOfChequeItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChequeItem" nillable="true" type="tns:ChequeItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChequeItem" nillable="true" type="tns:ArrayOfChequeItem" />
+  <xs:complexType name="ChequeItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ArticleId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArticleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFields" nillable="true" type="tns:ArrayOfAdditionalField" />
+      <xs:element minOccurs="0" name="ItemSum" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChequeItem" nillable="true" type="tns:ChequeItem" />
+  <xs:complexType name="GetBalanceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFields" nillable="true" type="tns:ArrayOfAdditionalField" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MinSum" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MoneyAuthLimit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MoneyBalance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MoneyCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PointsAuthLimit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PointsBalance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PointsCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessingStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetBalanceResponse" nillable="true" type="tns:GetBalanceResponse" />
+  <xs:complexType name="GetAccountsByClientRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LoyaltyProgramId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAccountsByClientRequest" nillable="true" type="tns:GetAccountsByClientRequest" />
+  <xs:complexType name="GetAccountsByClientResponse">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loyalty.BonusGateway.API.Entity" minOccurs="0" name="Accounts" nillable="true" type="q1:ArrayOfAccount" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessingStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetAccountsByClientResponse" nillable="true" type="tns:GetAccountsByClientResponse" />
+  <xs:complexType name="ApplyDiscountRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ChannelId" type="xs:int" />
+          <xs:element minOccurs="0" name="Cheque" nillable="true" type="tns:Cheque" />
+          <xs:element minOccurs="0" name="LoyaltyProgramId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ApplyDiscountRequest" nillable="true" type="tns:ApplyDiscountRequest" />
+  <xs:complexType name="ApplyDiscountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardStatus" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.Loyalty.BonusGateway.API.Entity" minOccurs="0" name="Cheque" nillable="true" type="q2:ChequeDiscountInfo" />
+      <xs:element minOccurs="0" name="ChequeMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessingStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApplyDiscountResponse" nillable="true" type="tns:ApplyDiscountResponse" />
+  <xs:complexType name="ApplyWithdrawByAccountRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountId" type="xs:long" />
+          <xs:element minOccurs="0" name="ChannelId" type="xs:int" />
+          <xs:element minOccurs="0" name="Cheque" nillable="true" type="tns:Cheque" />
+          <xs:element minOccurs="0" name="LoyaltyProgramId" type="xs:int" />
+          <xs:element minOccurs="0" name="PointSum" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ApplyWithdrawByAccountRequest" nillable="true" type="tns:ApplyWithdrawByAccountRequest" />
+  <xs:complexType name="ApplyWithdrawByAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoneyCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoneySum" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProcessingStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApplyWithdrawByAccountResponse" nillable="true" type="tns:ApplyWithdrawByAccountResponse" />
+  <xs:complexType name="RefundPointsByChequeRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ChannelId" type="xs:int" />
+          <xs:element minOccurs="0" name="Cheque" nillable="true" type="tns:ChequeRefundInfoFull" />
+          <xs:element minOccurs="0" name="LoyaltyProgramId" type="xs:int" />
+          <xs:element minOccurs="0" name="RefundSum" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RefundPointsByChequeRequest" nillable="true" type="tns:RefundPointsByChequeRequest" />
+  <xs:complexType name="ChequeRefundInfoFull">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ChequeRefundInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChequeDateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ChequeNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ChequeSum" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChequeRefundInfoFull" nillable="true" type="tns:ChequeRefundInfoFull" />
+  <xs:complexType name="ChequeRefundInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfChequeItemRefundInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChequeRefundInfo" nillable="true" type="tns:ChequeRefundInfo" />
+  <xs:complexType name="ArrayOfChequeItemRefundInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChequeItemRefundInfo" nillable="true" type="tns:ChequeItemRefundInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChequeItemRefundInfo" nillable="true" type="tns:ArrayOfChequeItemRefundInfo" />
+  <xs:complexType name="ChequeItemRefundInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ArticleId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChequeItemRefundInfo" nillable="true" type="tns:ChequeItemRefundInfo" />
+  <xs:complexType name="RefundPointsByChequeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChequeMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessingStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RefundPointsByChequeResponse" nillable="true" type="tns:RefundPointsByChequeResponse" />
+  <xs:complexType name="RefundPointsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ChannelId" type="xs:int" />
+          <xs:element minOccurs="0" name="Cheque" nillable="true" type="tns:ChequeRefundInfo" />
+          <xs:element minOccurs="0" name="LoyaltyProgramId" type="xs:int" />
+          <xs:element minOccurs="0" name="OriginalRequestId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RefundSum" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RefundPointsRequest" nillable="true" type="tns:RefundPointsRequest" />
+  <xs:complexType name="RefundPointsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChequeMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessingStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RefundPointsResponse" nillable="true" type="tns:RefundPointsResponse" />
+  <xs:complexType name="RollbackPointsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OriginalRequestId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RollbackPointsRequest" nillable="true" type="tns:RollbackPointsRequest" />
+  <xs:complexType name="RollbackPointsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessingStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RollbackPointsResponse" nillable="true" type="tns:RollbackPointsResponse" />
+  <xs:complexType name="ConfirmPointsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OriginalRequestId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConfirmPointsRequest" nillable="true" type="tns:ConfirmPointsRequest" />
+  <xs:complexType name="ConfirmPointsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UtcDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfirmPointsResponse" nillable="true" type="tns:ConfirmPointsResponse" />
+  <xs:complexType name="GetCurrenciesByLoyaltyProgramRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LoyaltyProgramId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCurrenciesByLoyaltyProgramRequest" nillable="true" type="tns:GetCurrenciesByLoyaltyProgramRequest" />
+  <xs:complexType name="GetCurrenciesByLoyaltyProgramResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Currencies" nillable="true" type="tns:ArrayOfCurrency" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCurrenciesByLoyaltyProgramResponse" nillable="true" type="tns:GetCurrenciesByLoyaltyProgramResponse" />
+  <xs:complexType name="ArrayOfCurrency">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Currency" nillable="true" type="tns:Currency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurrency" nillable="true" type="tns:ArrayOfCurrency" />
+  <xs:complexType name="Currency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyType" type="xs:int" />
+      <xs:element minOccurs="0" name="Precision" type="xs:long" />
+      <xs:element minOccurs="0" name="RateFromAccountingCurrency" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RateToAccountingCurrency" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Currency" nillable="true" type="tns:Currency" />
+</xs:schema>

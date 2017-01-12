@@ -1,0 +1,11 @@
+﻿@model Vtb24.Site.Models.PersonalVideo.PersonalVideoModel
+@{
+    ViewBag.Title = "Видео";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="full-content full-content shdw mnt16">
+    <div class="personal-video-wrapper">
+        <iframe class="centered" src="@Model.Url" width="853" height="480" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+    </div>
+</div>

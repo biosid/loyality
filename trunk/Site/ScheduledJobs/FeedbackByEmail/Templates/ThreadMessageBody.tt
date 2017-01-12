@@ -1,0 +1,39 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<!DOCTYPE html>
+<html style="height:100%;min-height:100%;">
+<body marginheight="0" topmargin="0" marginwidth="0" leftmargin="0" style="height:100%;min-height:100%;color:#474747;font-family:arial;" >
+<table width="100%" height="100%" cellpadding="0" cellspacing="0" class="feedback-mail__wrapper" style="width:100%;height:100%;background-color:#e3e8ed;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;" ><tr><td valign="top" style="color:#474747;font-family:arial;">
+<table width="640" height="100%" align="center" cellpadding="0" cellspacing="0" class="feedback-mail__content-block" style="width:640px;height:100%;background-color:#fff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;" ><tr><td width="20"></td><td valign="top" style="color:#474747;font-family:arial;">
+	<h3 style="font-size:23px;color:#2d4780;"><#= Title #></h3>
+	<table width="600" cellspacing="0" cellpadding="5" class="feedback-mail__conversation-grid" style="font-size:13px;width:600px;border-collapse:collapse;" >
+		<# foreach (var message in Messages) { #>
+		<tr>
+			<td class="feedback-mail__col-author" style="font-family:arial;width:120px;vertical-align:top;background-color:#b2bcce;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;color:#fff;border-width:1px;border-style:solid;border-color:#fff;" >
+				<font class="feedback-mail__author" style="font-weight:bold;color: #ffffff;"><#= message.IsOperator ? "Оператор" : "Клиент" #></font><br>
+				<font class="feedback-mail__time" style="font-size:10px; color: #ffffff;"><#= message.Time.ToString("dd.MM.yyyy HH:mm:ss") #></font>
+			</td>
+			<td class="feedback-mail__col-message" valign="top" style="color:#474747;font-family:arial;background-color:#e3e8ed;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;border-width:1px;border-style:solid;border-color:#fff;" >
+<pre wrap="" class="feedback-mail__message" style="white-space:pre-wrap;color: #474747;"><#= message.Text #></pre>
+				<# if (message.Attachments.Length > 0) { #>
+				<ul class="feedback-mail__attach-list" style="list-style-type:disc;margin-top:20px;">
+					<# foreach (var attach in message.Attachments) { #>
+					<li style="color: #474747;"><a href="<#= attach.Url #>"><#= attach.Title #></a></li>
+					<# } #>
+				</ul>
+				<# } #>
+			</td>
+		</tr>
+		<# } #>
+	</table>
+
+	<p style="margin-top:20px;margin-bottom:20px;margin-right:5px;margin-left:5px;font-size:11px;color:#aaaaaa;" >
+		<b>Ответьте</b> на данное письмо для добавления сообщения в переписку. <b>Cотрите</b> лишнее содержимое из письма перед написанием ответа!
+	</p>
+<td width="20"></td></td></tr></table>
+</td></tr></table>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://rapidsoft.ru/clientprofile/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="ClientProfileServicePort" targetNamespace="http://rapidsoft.ru/clientprofile/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://192.168.62.160:9092/clientprofile?xsd=1" namespace="http://rapidsoft.ru/clientprofile/" />
+    </xsd:schema>
+  </types>
+  <message name="BatchActivateClients">
+    <part name="parameters" element="tns:BatchActivateClientsRequest" />
+  </message>
+  <message name="BatchActivateClientsResponse">
+    <part name="parameters" element="tns:BatchActivateClientsResponse" />
+  </message>
+  <message name="BatchCreateClients">
+    <part name="parameters" element="tns:BatchCreateClientsRequest" />
+  </message>
+  <message name="BatchCreateClientsResponse">
+    <part name="parameters" element="tns:BatchCreateClientsResponse" />
+  </message>
+  <message name="BatchDeactivateClients">
+    <part name="parameters" element="tns:BatchDeactivateClientsRequest" />
+  </message>
+  <message name="BatchDeactivateClientsResponse">
+    <part name="parameters" element="tns:BatchDeactivateClientsResponse" />
+  </message>
+  <message name="BatchLockClients">
+    <part name="parameters" element="tns:BatchLockClientsRequest" />
+  </message>
+  <message name="BatchLockClientsResponse">
+    <part name="parameters" element="tns:BatchLockClientsResponse" />
+  </message>
+  <message name="BatchDeleteClients">
+    <part name="parameters" element="tns:BatchDeleteClientsRequest" />
+  </message>
+  <message name="BatchDeleteClientsResponse">
+    <part name="parameters" element="tns:BatchDeleteClientsResponse" />
+  </message>
+  <message name="GetClientProfileFull">
+    <part name="parameters" element="tns:GetClientProfileFullRequest" />
+  </message>
+  <message name="GetClientProfileFullResponse">
+    <part name="parameters" element="tns:GetClientProfileFullResponse" />
+  </message>
+  <message name="UpdateClientProfile">
+    <part name="parameters" element="tns:UpdateClientProfileRequest" />
+  </message>
+  <message name="UpdateClientProfileResponse">
+    <part name="parameters" element="tns:UpdateClientProfileResponse" />
+  </message>
+  <message name="GetClientDeliveryAddresses">
+    <part name="parameters" element="tns:GetClientDeliveryAddressesRequest" />
+  </message>
+  <message name="GetClientDeliveryAddressesResponse">
+    <part name="parameters" element="tns:GetClientDeliveryAddressesResponse" />
+  </message>
+  <message name="AddClientDeliveryAddress">
+    <part name="parameters" element="tns:AddClientDeliveryAddressRequest" />
+  </message>
+  <message name="AddClientDeliveryAddressResponse">
+    <part name="parameters" element="tns:AddClientDeliveryAddressResponse" />
+  </message>
+  <message name="SetClientLocation">
+    <part name="parameters" element="tns:SetClientLocationRequest" />
+  </message>
+  <message name="SetClientLocationResponse">
+    <part name="parameters" element="tns:SetClientLocationResponse" />
+  </message>
+  <message name="BatchGetClientsByExternalId">
+    <part name="parameters" element="tns:BatchGetClientsByExternalIdRequest" />
+  </message>
+  <message name="BatchGetClientsByExternalIdResponse">
+    <part name="parameters" element="tns:BatchGetClientsByExternalIdResponse" />
+  </message>
+  <portType name="ClientProfileService">
+    <operation name="BatchActivateClients">
+      <input wsam:Action="BatchActivateClients" message="tns:BatchActivateClients" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/BatchActivateClientsResponse" message="tns:BatchActivateClientsResponse" />
+    </operation>
+    <operation name="BatchCreateClients">
+      <input wsam:Action="BatchCreateClients" message="tns:BatchCreateClients" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/BatchCreateClientsResponse" message="tns:BatchCreateClientsResponse" />
+    </operation>
+    <operation name="BatchDeactivateClients">
+      <input wsam:Action="BatchDeactivateClients" message="tns:BatchDeactivateClients" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/BatchDeactivateClientsResponse" message="tns:BatchDeactivateClientsResponse" />
+    </operation>
+    <operation name="BatchLockClients">
+      <input wsam:Action="BatchLockClients" message="tns:BatchLockClients" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/BatchLockClientsResponse" message="tns:BatchLockClientsResponse" />
+    </operation>
+    <operation name="BatchDeleteClients">
+      <input wsam:Action="BatchDeleteClients" message="tns:BatchDeleteClients" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/BatchDeleteClientsResponse" message="tns:BatchDeleteClientsResponse" />
+    </operation>
+    <operation name="GetClientProfileFull">
+      <input wsam:Action="GetClientProfileFull" message="tns:GetClientProfileFull" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/GetClientProfileFullResponse" message="tns:GetClientProfileFullResponse" />
+    </operation>
+    <operation name="UpdateClientProfile">
+      <input wsam:Action="UpdateClientProfile" message="tns:UpdateClientProfile" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/UpdateClientProfileResponse" message="tns:UpdateClientProfileResponse" />
+    </operation>
+    <operation name="GetClientDeliveryAddresses">
+      <input wsam:Action="GetClientDeliveryAddresses" message="tns:GetClientDeliveryAddresses" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/GetClientDeliveryAddressesResponse" message="tns:GetClientDeliveryAddressesResponse" />
+    </operation>
+    <operation name="AddClientDeliveryAddress">
+      <input wsam:Action="AddClientDeliveryAddress" message="tns:AddClientDeliveryAddress" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/AddClientDeliveryAddressResponse" message="tns:AddClientDeliveryAddressResponse" />
+    </operation>
+    <operation name="SetClientLocation">
+      <input wsam:Action="SetClientLocation" message="tns:SetClientLocation" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/SetClientLocationResponse" message="tns:SetClientLocationResponse" />
+    </operation>
+    <operation name="BatchGetClientsByExternalId">
+      <input wsam:Action="BatchGetClientsByExternalId" message="tns:BatchGetClientsByExternalId" />
+      <output wsam:Action="http://rapidsoft.ru/clientprofile/ClientProfileService/BatchGetClientsByExternalIdResponse" message="tns:BatchGetClientsByExternalIdResponse" />
+    </operation>
+  </portType>
+  <binding name="ClientProfileServicePortBinding" type="tns:ClientProfileService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="BatchActivateClients">
+      <soap:operation soapAction="BatchActivateClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchCreateClients">
+      <soap:operation soapAction="BatchCreateClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchDeactivateClients">
+      <soap:operation soapAction="BatchDeactivateClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchLockClients">
+      <soap:operation soapAction="BatchLockClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchDeleteClients">
+      <soap:operation soapAction="BatchDeleteClients" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetClientProfileFull">
+      <soap:operation soapAction="GetClientProfileFull" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="UpdateClientProfile">
+      <soap:operation soapAction="UpdateClientProfile" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetClientDeliveryAddresses">
+      <soap:operation soapAction="GetClientDeliveryAddresses" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddClientDeliveryAddress">
+      <soap:operation soapAction="AddClientDeliveryAddress" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetClientLocation">
+      <soap:operation soapAction="SetClientLocation" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BatchGetClientsByExternalId">
+      <soap:operation soapAction="BatchGetClientsByExternalId" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ClientProfileServicePort">
+    <port name="ClientProfileServicePort" binding="tns:ClientProfileServicePortBinding">
+      <soap:address location="http://192.168.62.160:9092/clientprofile" />
+    </port>
+  </service>
+</definitions>

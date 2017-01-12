@@ -1,0 +1,41 @@
+﻿@model Vtb24.Arms.Catalog.Models.Categories.UpdateOnlineCategoryModel 
+@using (Html.BeginForm("UpdateOnline", "Categories", FormMethod.Post, new { @class = "modal hide", data_x = "categories/online/modal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.Id)
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" tabindex="6">&times;</button>
+        <h3>Редактирование online категории</h3>
+    </div>
+    <div class="modal-body">
+
+        <h4></h4>
+        
+        <div class="row">
+            <div class="span2 line-height-30">URL:</div>
+            <div class="span5">
+                @Html.TextBoxFor(m=>m.OnlineCategoryUrl, new { @class="input-block-level", maxlength=512 })
+                @Html.ValidationMessageFor(m=>m.OnlineCategoryUrl)
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 line-height-30">URL возврата:</div>
+            <div class="span5">
+                @Html.TextBoxFor(m=>m.NotifyOrderStatusUrl, new { @class="input-block-level", maxlength=512 })
+                @Html.ValidationMessageFor(m=>m.NotifyOrderStatusUrl)
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 line-height-30">Online-партнер:</div>
+            <div class="span5">
+                @Html.DropDownListFor(m=>m.OnlineCategoryPartnerId, Model.OnlinePartners, new { @class="input-block-level" })
+                @Html.ValidationMessageFor(m=>m.OnlineCategoryPartnerId)
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <button class="btn" data-dismiss="modal">Отменить</button>
+    </div>
+}

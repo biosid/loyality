@@ -1,0 +1,114 @@
+﻿@using System.Globalization
+@using Vtb24.Arms.Catalog.Models.Shared
+@model Vtb24.Arms.Catalog.Models.Delivery.PartnerMatrixImportModel
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.MenuId = Model.MenuId;
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/Partners/MatrixImport/index'
+            ],
+            function (index) {
+                index();
+            });
+    </script>
+)
+<div class="tab-pane active">
+    <div class="sticky-save">
+        <div class="navbar navbar-inner no-border">
+            <a href="@Model.BackUrl" class="btn btn-primary pull-right">Готово</a>
+        </div>        
+    </div>
+
+    <div class="row">        
+        <div class="span10 line-height-30 pad-left-12 mar-top-5">
+            <h4 class="font-normal">@ViewBag.Title</h4>
+        </div>
+    </div>
+    <style>.active a {cursor: pointer !important;}</style>
+    <div class="row">
+        <div class="span10 pad-left-12 mar-top-5">
+            @using (Html.BeginForm(Model.PostAction, Model.PostController, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="input-append">
+                        <div class="uneditable-input span3">
+                            <i class="icon-file fileupload-exists"></i> 
+                            <span class="fileupload-preview">Файл не выбран</span>
+                        </div>
+                        <span class="btn btn-file">
+                            <span class="fileupload-new">Выберите файл</span>
+                            <span class="fileupload-exists">Другой файл</span>
+                            <input type="file" name="file" />
+                        </span>
+                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Отмена</a>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" data-loading-text="Загружается" class="btn btn-success" data-x="partners/import/upload">Загрузить</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (Model.ImportTasks != null && Model.ImportTasks.Length > 0)
+    {
+        <h4 class="font-normal">История загрузок матриц стоимости доставки</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><div class="nowrap">Дата загрузки</div></th>
+                    <th><div class="nowrap">Начало обработки</div></th>
+                    <th><div class="nowrap">Конец обработки</div> </th>
+                    <th><div class="nowrap">Источник</div></th>
+                    <th><div class="nowrap">Статус</div></th>
+                    <th><div class="nowrap">Загружено</div></th>
+                    <th><div class="nowrap">Не загружено</div></th>
+                    <th><div class="nowrap">Загрузил</div></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model.ImportTasks)
+                {
+                    string labelClass;
+                    switch (task.Status)
+                    {
+                        case ImportTaskStatuses.completed:
+                            labelClass = "label-success";
+                            break;
+                        case ImportTaskStatuses.error:
+                            labelClass = "label-important";
+                            break;
+                        default:
+                            labelClass = "label-warning";
+                            break;
+                    }
+                    <tr>
+                        <td>@task.Created</td>
+                        <td>@(task.Start.HasValue ? task.Start.Value.ToString(CultureInfo.CurrentCulture) : "-")</td>
+                        <td>@(task.End.HasValue ? task.End.Value.ToString(CultureInfo.CurrentCulture) : "-")</td>
+                        <td>@task.SourceUrl</td>
+                        <td class="nowrap">
+                            <span class="label @labelClass">@Html.DescriptionFor(task.Status)</span>
+                        </td>
+                        <td>@task.SuccessCount</td>
+                        <td>@task.FailCount</td>
+                        <td>@task.UserId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.page ?? 1)
+        }
+    }
+</div>

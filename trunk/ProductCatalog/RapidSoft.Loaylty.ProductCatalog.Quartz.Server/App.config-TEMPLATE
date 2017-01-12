@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<configSections>
+		<section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+		<section name="quartz" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0,Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+		<section name="partnerConnections" type="RapidSoft.Loaylty.PartnersConnector.Interfaces.Settings.PartnerConnectionsSection, RapidSoft.Loaylty.PartnersConnector.Interfaces" />
+		<section name="fakeData" type="RapidSoft.Loaylty.ProductCatalog.Fake.FakeDataConfigSection, RapidSoft.Loaylty.ProductCatalog"/>
+    <section name="etl_config" type="RapidSoft.Loaylty.ProductCatalog.EtlExecutionWrapper.Configuration.EtlConfigSection, RapidSoft.Loaylty.ProductCatalog" />
+	</configSections>
+
+	<log4net configSource="log4net.config" />
+	
+	<appSettings>
+		<add key="log4net.Internal.Debug" value="false" />
+		<!-- Список email адресов через ";", на которые необходимо отправлять отчеты импорта. -->
+		<add key="reportRecipients" value="@MAILTO@" />
+    <add key="LoyaltyProgramId" value="5"/>
+    <add key="OrdersNotificationsRecipientsSettingName" value="OrdersNotificationsRecipients" />
+    <add key="ArmOrderUrlTemplate" value="@ArmOrderUrlTemplate@" />
+    <!-- Настройки для рассчета скидок. -->
+    <add key="ProductPriceDropThresholdPercent" value="90" />
+    <add key="ProductPriceRiseThresholdPercent" value="95" />
+    <add key="ProductPriceDiscountPeriod" value="14" />
+    <!-- Настройка продуктов банка -->
+    <add key="BankProductsPartnerId" value="@BankProductsPartnerId@" />
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="ProductCatalog" />
+    <add key="LogSubsystemName" value="Quartz" />
+    <add key="EventLogSourceName" value="RapidSoft.Loyalty.ProductCatalog" />
+    <add key="LogsElasticSearchNodes" value="@elasticsearchCluster@" />
+  </appSettings>
+	
+	<connectionStrings>
+		<add name="LoyaltyProductCatalogDB"
+				 connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"
+				 providerName="System.Data.SqlClient"/>
+	</connectionStrings>
+
+	<system.net>
+		<mailSettings>
+			<smtp 
+					deliveryMethod="Network" 
+					from="@MAILFROM@">
+				<network 
+						host="@MAILSMTPHOST@" 
+						port="@MAILSMTPPORT@" 
+						enableSsl="@MailEnableSsl@" 
+						userName="@MAILUSERNAME@"
+						password="@MAILPASSWORD@"
+						/>
+			</smtp>
+		</mailSettings>
+	</system.net>
+
+	<system.serviceModel>
+		<behaviors>
+			<serviceBehaviors>
+				<behavior name="">
+					<serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+					<serviceDebug includeExceptionDetailInFaults="true" />
+				</behavior>
+			</serviceBehaviors>
+		</behaviors>
+		<serviceHostingEnvironment aspNetCompatibilityEnabled="true"
+			multipleSiteBindingsEnabled="true" />
+		<bindings>
+			<basicHttpBinding>
+				<binding name="" maxReceivedMessageSize = "1000000"/>
+				<binding name="ClientProfileServicePortBinding" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_IGeoPointService" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_IOrderManagementService" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_IPartnerSecurityService" maxReceivedMessageSize = "1000000"/>
+				<binding name="ProcessingServicePortBinding" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_IAdminMechanicsService" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_IMechanicsService" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_IServiceInfo" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_ITargetAudienceService" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_IServiceInfo1" maxReceivedMessageSize = "1000000"/>
+				<binding name="BasicHttpBinding_ICatalogSearcher" maxReceivedMessageSize = "1000000"/>
+			</basicHttpBinding>
+		</bindings>
+		<client>
+			<endpoint address="@ClientProfileAddress@"
+				binding="basicHttpBinding" bindingConfiguration="ClientProfileServicePortBinding"
+				contract="ClientProfileService.ClientProfileService" name="ClientProfileServicePort" />
+			<endpoint address="@GEOSERVICEURL@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IGeoPointService"
+				contract="GeoPointService.IGeoPointService" name="BasicHttpBinding_IGeoPointService" />
+			<endpoint address="@PartnersConnectorOrderManagementURL@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOrderManagementService"
+				contract="OrderManagementService.IOrderManagementService"
+				name="BasicHttpBinding_IOrderManagementService" />
+			<endpoint address="@PartnersConnectorPartnerSecurityURL@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IPartnerSecurityService"
+				contract="PartnerSecurityService.IPartnerSecurityService"
+				name="BasicHttpBinding_IPartnerSecurityService" />
+			<endpoint address="@ProcessingAddress@" binding="basicHttpBinding"
+				bindingConfiguration="ProcessingServicePortBinding" contract="ProcessingService.ProcessingService"
+				name="ProcessingServicePort" />
+			<endpoint address="@AdminMechanicsService@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IAdminMechanicsService"
+				contract="AdminMechanicsService.IAdminMechanicsService" name="BasicHttpBinding_IAdminMechanicsService" />
+			<endpoint address="@MechanicsService@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IMechanicsService"
+				contract="MechanicsService.IMechanicsService" name="BasicHttpBinding_IMechanicsService" />
+			<endpoint address="@MechanicsService@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceInfo"
+				contract="MechanicsService.IServiceInfo" name="BasicHttpBinding_IServiceInfo" />
+			<endpoint address="@TargetAudienceService@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ITargetAudienceService"
+				contract="TargetAudienceService.ITargetAudienceService" name="BasicHttpBinding_ITargetAudienceService" />
+			<endpoint address="@TargetAudienceService@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceInfo1"
+				contract="TargetAudienceService.IServiceInfo" name="BasicHttpBinding_IServiceInfo1" />
+			<endpoint address="@CatalogSearcherService@"
+				binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICatalogSearcher"
+				contract="CatalogSearcherService.ICatalogSearcher" name="BasicHttpBinding_ICatalogSearcher" />
+		</client>
+	</system.serviceModel>
+	
+	<quartz configSource="quartz.config" />
+
+  <etl_config configSource="etl.config" />
+	
+	<startup>
+		<supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5"/>
+	</startup>
+	
+	<fakeData>
+		<fakeGeopoints useFake="@STUBFOREXTERNALSERVICE@" />
+	</fakeData>
+	
+</configuration>

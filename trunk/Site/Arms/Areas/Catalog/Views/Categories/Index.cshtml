@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "Редактор категорий";
+    ViewBag.MenuId = "categories";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.Catalog.Models.Categories
+@model CategoriesModel
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/Categories/index',
+                'Catalog/Shared/Categories/folding'
+         ],
+            function (index, folding) {
+                var tree = $('#categories-tree');
+                index({ tree: tree });
+                folding({ tree: tree });
+            });
+    </script>
+)
+@if (Model.Permissions.Manage)
+{
+    @Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/Categories/create',
+                'Catalog/Categories/change-status',
+                'Catalog/Categories/delete',
+                'Catalog/Categories/rename',
+                'Catalog/Categories/update-online',
+                'Catalog/Categories/move'
+            ],
+            function (create, status, del, rename, online, move) {
+                var tree = $('#categories-tree'),
+                    catTreeForMove = $('[data-x="categories/move/categories"]'),
+                    catTreeForCreate = $('[data-x="categories/create/categories"]');
+                create({
+                    tree: tree,
+                    catTree: catTreeForCreate
+                });
+                status({
+                    tree: tree,
+                    statusUrl: '@Url.Action("Status", "Categories")',
+                });
+                del({
+                    tree: tree,
+                    deleteUrl: '@Url.Action("Delete", "Categories")',
+                });
+                rename({
+                    tree: tree,
+                    renameUrl: '@Url.Action("Rename", "Categories")'
+                });
+                online({ tree: tree });
+                move({
+                    tree: tree,
+                    catTree: catTreeForMove,
+                    reorderUrl: '@Url.Action("Reorder", "Categories")'
+                });
+            });
+    </script>
+    )
+}
+<div class="tab-pane active" id="tab1">
+    @*
+--------------------- Шапка
+*@
+    <div class="sticky-save">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                <div class="row" style="width: 940px; margin-left: 0;">
+                    @if (Model.Permissions.Manage)
+                    {
+                        <div class="span6 pull-right">
+                            <div class="pull-right" data-x="categories/actions_panel" style="display: none">
+                                <button class="btn btn-primary" data-x="categories/activate">Активировать</button>
+                                <button class="btn" data-x="categories/deactivate">Деактивировать</button>
+                            </div>
+                            <div class="line-height-30 mar-top-5 pull-right mar-right-10" data-x="categories/selected_counter"></div>
+                        </div>
+                        <div class="pull-left line-height-30 mar-right-20 mar-left-20">
+                            <a href="#" class="btn btn-success" data-x="categories/create/add">
+                                <i class="icon-plus icon-white"></i>
+                            </a>
+                        </div>
+                    }
+                    <div class="span4">
+                        <label class="checkbox mar-top-9">
+                            <input type="checkbox" autocomplete="off" checked="checked" data-x="categories/unavailable_toggler"> Показывать неактивные категории
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*
+--------------------- Список категорий
+*@              
+    <table class="table table-bordered table-category" id="categories-tree">
+        @*<colgroup>
+            <col style="width: 1em;">
+            <col style="width: 1em;">
+            <col>
+            <col style="width: 4.5em;">
+            <col style="width: 6em;">
+            <col style="width: 1em;">
+        </colgroup>*@
+        <thead>
+            <tr>
+                <th style="width: 1em;">&nbsp;</th>
+                @if (Model.Permissions.Manage)
+                {
+                    <th style="width: 1em;">&nbsp;</th>
+                }
+                <th>Категории вознаграждений Бонусной Программы</th>
+                <th style="width: 4.5em;">Вознаграждений</th>
+                <th style="width: 6em;">Статус</th>
+                @if (Model.Permissions.Manage)
+                {
+                    <th style="width: 1em;">&nbsp;</th>
+                }
+            </tr>
+        </thead>
+        @foreach (var cat in Model.Categories)
+        {
+            @Html.Partial("_CategoryRow", cat)
+        }
+    </table>
+</div>
+@if (Model.Permissions.Manage)
+{
+    @*
+    --------------------- Предупреждение об удалении
+    *@
+    @Html.Partial("_Delete")
+    @*
+    --------------------- Создание категории
+    *@
+    @Html.Partial("_Create", Model.Create)
+    @*
+    --------------------- Редактирование онлайн-категории
+    *@
+    @Html.Partial("_UpdateOnline", Model.UpdateOnline)
+    @*
+    --------------------- Перенос категории
+    *@
+    @Html.Partial("_Move", Model.Create.RootCategoryItem)
+}

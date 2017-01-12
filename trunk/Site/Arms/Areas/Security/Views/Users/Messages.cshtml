@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Личные сообщения клиента " + Model.Login;
+    ViewBag.MenuId = "users";
+    Layout = "~/Areas/Security/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.Security.Models.Users
+@model UserMessagesModel
+@Html.AddScriptBlock(
+    @<script>
+         require(['Security/Users/messages'], function(messages) {
+             messages();
+         });
+     </script>
+    )
+
+@helper Notification(UserMessageModel message)
+{
+    <tr>
+        <td data-x="security/messages/expand" style="cursor: pointer;"><i class="icon-chevron-right" data-x="security/messages/chevron"></i></td>
+        <td class="nowrap">@message.CreateDateTime</td>
+        <td>@message.Subject</td>
+        <td class="nowrap">@(message.IsRead ? "прочитано" : "не прочитано")</td>
+    </tr>
+    <tr style="display: none;">
+        <td colspan="3" style="white-space: pre-wrap;">@message.Text.Trim()</td>
+    </tr>
+}
+
+@helper Thread(UserMessageModel message)
+{
+    <tr>
+        <td ><i class="icon-envelope"></i></td>
+        <td class="nowrap">@message.CreateDateTime</td>
+        <td>@message.Subject</td>
+        <td class="nowrap">@(message.IsRead ? "прочитано" : "не прочитано")</td>
+    </tr>
+}
+
+@*
+    --------------------- Навигация
+*@
+<ul class="nav nav-pills mar-left-0 mar-bottom-10">
+    <li><a href="@Url.Action("Edit", "Users", new { Model.Login })"><span>Профиль</span></a></li>
+    <li class="disabled"><a href="@Url.Action("Messages", "Users", new { Model.Login })">Личные сообщения</a></li>
+    <li><a href="@Url.Action("Orders", "Users", new { Model.Login })">Заказы</a></li>
+    <li><a href="@Url.Action("Points", "Users", new { Model.Login })">Выписка</a></li>
+</ul>
+@*
+--------------------- Шапка
+*@ 
+<div class="sticky-save" data-x="security/users/messgaes/navbar">
+    <div class="navbar" style="width: 940px;">
+        <div class="navbar-inner mar-bottom-10 no-border pad-left-12 mar-left-0 pad-top-5">
+            <div class="span1 pull-right text-right">
+                <a href="@Url.Action("Index", "Users")" class="btn" style="margin-top: 0;">Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>@ViewBag.Title</h3>
+@*
+--------------------- Сообщения
+*@
+@if (Model.Messages.Length > 0)
+{
+    <div class="row">
+        <div class="span12">
+            <table class="table table-fix-affect table-bordered">
+                <colgroup>
+                    <col/>
+                    <col/>
+                    <col width="100%"/>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="text-left">Дата</th>
+                        <th>Тема</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var message in Model.Messages)
+                    {
+                        switch (message.Type)
+                        {
+                            case UserMessageType.Notification:
+                                @Notification(message)
+                                break;
+                            case UserMessageType.Suggestion:
+                            case UserMessageType.Issue:
+                            case UserMessageType.OrderIncident:
+                                @Thread(message)
+                                break;
+                        }
+                    }
+                </tbody>
+            </table>
+            @if (Model.TotalPages > 1)
+            {
+                @Html.Pager(Model.TotalPages, Model.Page)
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="row mar-left-0">
+        <div class="span12">
+            Сообщения не найдены
+        </div>
+    </div>
+}

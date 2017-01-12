@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Kladr.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Kladr.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="KladrAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressLevel" type="tns:AddressLevel" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="tns:AddressElement" />
+      <xs:element minOccurs="0" name="District" nillable="true" type="tns:AddressElement" />
+      <xs:element minOccurs="0" name="FullText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="tns:AddressElement" />
+      <xs:element minOccurs="0" name="Town" nillable="true" type="tns:AddressElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KladrAddress" nillable="true" type="tns:KladrAddress" />
+  <xs:simpleType name="AddressLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Region" />
+      <xs:enumeration value="District" />
+      <xs:enumeration value="City" />
+      <xs:enumeration value="Town" />
+      <xs:enumeration value="Street" />
+      <xs:enumeration value="House" />
+      <xs:enumeration value="Flat" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AddressLevel" nillable="true" type="tns:AddressLevel" />
+  <xs:complexType name="AddressElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Level" type="tns:AddressLevel" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Prefix" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressElement" nillable="true" type="tns:AddressElement" />
+</xs:schema>

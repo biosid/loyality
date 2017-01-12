@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CatalogSearcher" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogSearcherService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogSearcherService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogSearcherService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.OutputResults" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogSearcherService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogSearcherService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogSearcherService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICatalogSearcher_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetAllPartners_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPartners" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetAllPartners_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPartnersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetPublicSubCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPublicSubCategories" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetPublicSubCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPublicSubCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetCategoryInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetCategoryInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_SearchPublicProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchPublicProducts" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_SearchPublicProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchPublicProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetProductById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductById" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetProductById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetFilterMetaData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilterMetaData" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetFilterMetaData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilterMetaDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetPopularProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPopularProducts" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetPopularProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPopularProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetCategoryProductParams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryProductParams" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetCategoryProductParams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryProductParamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetRecomendedProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecomendedProducts" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetRecomendedProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecomendedProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetRecomendedProductsByPriceRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecomendedProductsByPriceRange" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetRecomendedProductsByPriceRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecomendedProductsByPriceRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetRecomendedProductsByCategoryId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecomendedProductsByCategoryId" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogSearcher_GetRecomendedProductsByCategoryId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecomendedProductsByCategoryIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICatalogSearcher">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:ICatalogSearcher_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:ICatalogSearcher_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPartners">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetAllPartners" message="tns:ICatalogSearcher_GetAllPartners_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetAllPartnersResponse" message="tns:ICatalogSearcher_GetAllPartners_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicSubCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetPublicSubCategories" message="tns:ICatalogSearcher_GetPublicSubCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetPublicSubCategoriesResponse" message="tns:ICatalogSearcher_GetPublicSubCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetCategoryInfo" message="tns:ICatalogSearcher_GetCategoryInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetCategoryInfoResponse" message="tns:ICatalogSearcher_GetCategoryInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchPublicProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/SearchPublicProducts" message="tns:ICatalogSearcher_SearchPublicProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/SearchPublicProductsResponse" message="tns:ICatalogSearcher_SearchPublicProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetProductById" message="tns:ICatalogSearcher_GetProductById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetProductByIdResponse" message="tns:ICatalogSearcher_GetProductById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilterMetaData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetFilterMetaData" message="tns:ICatalogSearcher_GetFilterMetaData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetFilterMetaDataResponse" message="tns:ICatalogSearcher_GetFilterMetaData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPopularProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetPopularProducts" message="tns:ICatalogSearcher_GetPopularProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetPopularProductsResponse" message="tns:ICatalogSearcher_GetPopularProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryProductParams">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetCategoryProductParams" message="tns:ICatalogSearcher_GetCategoryProductParams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetCategoryProductParamsResponse" message="tns:ICatalogSearcher_GetCategoryProductParams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecomendedProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetRecomendedProducts" message="tns:ICatalogSearcher_GetRecomendedProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetRecomendedProductsResponse" message="tns:ICatalogSearcher_GetRecomendedProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecomendedProductsByPriceRange">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetRecomendedProductsByPriceRange" message="tns:ICatalogSearcher_GetRecomendedProductsByPriceRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetRecomendedProductsByPriceRangeResponse" message="tns:ICatalogSearcher_GetRecomendedProductsByPriceRange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecomendedProductsByCategoryId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogSearcher/GetRecomendedProductsByCategoryId" message="tns:ICatalogSearcher_GetRecomendedProductsByCategoryId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogSearcher/GetRecomendedProductsByCategoryIdResponse" message="tns:ICatalogSearcher_GetRecomendedProductsByCategoryId_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICatalogSearcher" type="tns:ICatalogSearcher">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISupportService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPartners">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetAllPartners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicSubCategories">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetPublicSubCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryInfo">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetCategoryInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPublicProducts">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/SearchPublicProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductById">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetProductById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilterMetaData">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetFilterMetaData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPopularProducts">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetPopularProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryProductParams">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetCategoryProductParams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecomendedProducts">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetRecomendedProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecomendedProductsByPriceRange">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetRecomendedProductsByPriceRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecomendedProductsByCategoryId">
+      <soap:operation soapAction="http://tempuri.org/ICatalogSearcher/GetRecomendedProductsByCategoryId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CatalogSearcher">
+    <wsdl:port name="BasicHttpBinding_ICatalogSearcher" binding="tns:BasicHttpBinding_ICatalogSearcher">
+      <soap:address location="http://rphqbuild1:8101/CatalogSearcherService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.OutputResults" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.OutputResults" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" />
+  <xs:import schemaLocation="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="GetAllPartnersResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Partners" nillable="true" type="q1:ArrayOfPartner" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAllPartnersResult" nillable="true" type="tns:GetAllPartnersResult" />
+  <xs:complexType name="ResultBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+  <xs:complexType name="GetSubCategoriesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Categories" nillable="true" type="q2:ArrayOfProductCategory" />
+          <xs:element minOccurs="0" name="ChildrenCount" type="xs:int" />
+          <xs:element minOccurs="0" name="MaxCountToTake" type="xs:int" />
+          <xs:element minOccurs="0" name="TotalCount" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSubCategoriesResult" nillable="true" type="tns:GetSubCategoriesResult" />
+  <xs:complexType name="GetCategoryInfoResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Category" nillable="true" type="q3:ProductCategory" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="CategoryPath" nillable="true" type="q4:ArrayOfProductCategory" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCategoryInfoResult" nillable="true" type="tns:GetCategoryInfoResult" />
+  <xs:complexType name="SearchProductsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaxCountToTake" type="xs:int" />
+          <xs:element minOccurs="0" name="MaxPrice" nillable="true" type="xs:decimal" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Products" nillable="true" type="q5:ArrayOfProduct" />
+          <xs:element minOccurs="0" name="TotalCount" nillable="true" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchProductsResult" nillable="true" type="tns:SearchProductsResult" />
+  <xs:complexType name="GetProductResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="AvailabilityStatus" type="q6:ProductAvailabilityStatuses" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Product" nillable="true" type="q7:Product" />
+          <xs:element minOccurs="0" name="ViewsCount" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProductResult" nillable="true" type="tns:GetProductResult" />
+  <xs:complexType name="GetFilterMetaDataResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Attributes" nillable="true" type="q8:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFilterMetaDataResult" nillable="true" type="tns:GetFilterMetaDataResult" />
+  <xs:complexType name="GetPopularProductsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PopularProducts" nillable="true" type="tns:ArrayOfPopularProduct" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPopularProductsResult" nillable="true" type="tns:GetPopularProductsResult" />
+  <xs:complexType name="ArrayOfPopularProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PopularProduct" nillable="true" type="tns:PopularProduct" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPopularProduct" nillable="true" type="tns:ArrayOfPopularProduct" />
+  <xs:complexType name="PopularProduct">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="PopularType" type="q9:PopularProductTypes" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Product" nillable="true" type="q10:Product" />
+      <xs:element minOccurs="0" name="ProductId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductRate" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PopularProduct" nillable="true" type="tns:PopularProduct" />
+  <xs:complexType name="CategoryProductParamsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="ProductParamResult" nillable="true" type="q11:ArrayOfProductParamResult" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategoryProductParamsResult" nillable="true" type="tns:CategoryProductParamsResult" />
+  <xs:complexType name="GetRecomendedProductsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Products" nillable="true" type="q12:ArrayOfProduct" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRecomendedProductsResult" nillable="true" type="tns:GetRecomendedProductsResult" />
+</xs:schema>

@@ -1,0 +1,5 @@
+﻿@model Vtb24.Arms.Catalog.Models.Categories.CategoryModel[]
+@foreach (var cat in Model)
+{
+    @Html.Partial("_CategoryRow", cat)
+}

@@ -1,0 +1,3 @@
+net stop QuartzServer$ProductCatalog
+net start QuartzServer$ProductCatalog
+pause

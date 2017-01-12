@@ -1,0 +1,21 @@
+﻿<div class="pagination pagination-large pagination-centered">
+    <ul>
+        <li class="@(Model.Prev == null ? "disabled" : null)">
+            <a href="@(Model.Prev == null ? null : Model.Prev.Url)">&laquo;</a>
+        </li>
+        @foreach (var page in Model.Pages)
+        {
+            if (page.IsPlaceholder)
+            {
+                <li class="disabled"><a>...</a></li>
+            }
+            else
+            {
+                <li class="@(page.IsActive ? "active" : null)"><a href="@page.Url">@page.Number</a></li>
+            }
+        }
+        <li class="@(Model.Next == null ? "disabled" : null)">
+            <a href="@(Model.Next == null ? null : Model.Next.Url)">&raquo;</a>
+        </li>
+    </ul>
+</div>

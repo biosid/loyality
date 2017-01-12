@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<configuration>
+  
+  <connectionStrings>
+    <add name="InformationServicesDB" connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;User ID=@DBUSER@;Password=@DBPASS@;Connect Timeout=600000" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+  
+  <appSettings>
+    <add key="YandexKey" value="ALENiUsBAAAAC6SXZAUAZqremCAtB9B6jIOAnqppmhj4f-8AAAAAAAAAAAAaGXOdY2yTKzIklOUeUB5-MgD6tw=="/>
+    <add key="EtlPackageId" value="8247c354-ebdd-4886-8e7a-8da38a1a612e"/>
+    <add key="DataSource" value="BankServicePointsExcel"/>
+    <add key="GeoCodingService" value="Yandex"/>
+    <add key="SourceFile" value="C:\data\data\1\20120524.xlsx"/>
+    <!--<add key ="RequestInterval" value ="1500"/>-->
+  </appSettings>
+  
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup></configuration>

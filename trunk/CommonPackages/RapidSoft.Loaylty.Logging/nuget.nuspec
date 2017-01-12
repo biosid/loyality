@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>RapidSoft.Loaylty.Logging</id>
+    <version>1.0.0</version>
+    <authors>egoncharov</authors>
+    <owners>egoncharov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>VTB24 common packages: RapidSoft.Loaylty.Logging</description>
+    <dependencies>
+      <dependency id="log4net" version="2.0.3" />
+      <dependency id="RapidSoft.Extensions" version="1.3.0.1" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" />
+      <frameworkAssembly assemblyName="System.Configuration" />
+      <frameworkAssembly assemblyName="System.Core" />
+      <frameworkAssembly assemblyName="System.ServiceModel" />
+    </frameworkAssemblies>
+    </metadata>
+  <files>
+    <file src="bin\Release\RapidSoft.Loaylty.Logging.*" target="lib" />
+  </files>
+</package>

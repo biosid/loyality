@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{35363BEC-901F-4796-BFF5-33F43203727B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.ProductCatalog.API</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.ProductCatalog.API</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="InputParameters\ChangeStatusByPartnerParameters.cs" />
+    <Compile Include="InputParameters\CreateCustomOrderParameters.cs" />
+    <Compile Include="InputParameters\CustomOrderItem.cs" />
+    <Compile Include="InputParameters\DeliveryDto.cs" />
+    <Compile Include="Entities\DeliveryGroup.cs" />
+    <Compile Include="Entities\DeliveryLocation.cs" />
+    <Compile Include="Entities\DeliveryLocationStatus.cs" />
+    <Compile Include="Entities\DeliveryTypes.cs" />
+    <Compile Include="Entities\DeliveryVariant.cs" />
+    <Compile Include="Entities\NotAvailableCause.cs" />
+    <Compile Include="Entities\ParamsProcessTypes.cs" />
+    <Compile Include="Entities\DeliveryLocationHistory.cs" />
+    <Compile Include="Entities\PartnerInfo.cs" />
+    <Compile Include="Entities\PickupPoint.cs" />
+    <Compile Include="Entities\PickupVariant.cs" />
+    <Compile Include="Entities\PriceInfo.cs" />
+    <Compile Include="Entities\ProductAvailabilityStatuses.cs" />
+    <Compile Include="Entities\VariantsLocation.cs" />
+    <Compile Include="InputParameters\CreateOrderFromBasketItemsParameters.cs" />
+    <Compile Include="InputParameters\CreateOrderFromOnlinePartnerItem.cs" />
+    <Compile Include="InputParameters\GetBasketItemParameters.cs" />
+    <Compile Include="InputParameters\GetDeliveryVariantsParameters.cs" />
+    <Compile Include="InputParameters\Location.cs" />
+    <Compile Include="InputParameters\PaymentTypes.cs" />
+    <Compile Include="InputParameters\PickupPoint.cs" />
+    <Compile Include="InputParameters\RecommendParameters.cs" />
+    <Compile Include="OutputResults\AdminGetProductResult.cs" />
+    <Compile Include="OutputResults\CalculatedProductPrices.cs" />
+    <Compile Include="OutputResults\ChangeOrderStatusResult.cs" />
+    <Compile Include="OutputResults\GetBasketItemsResult.cs" />
+    <Compile Include="OutputResults\GetDeliveryVariantsResult.cs" />
+    <Compile Include="OutputResults\GetOrderHistoryResult.cs" />
+    <Compile Include="OutputResults\GetOrderStatusStatisticResult.cs" />
+    <Compile Include="OutputResults\GetPartnerInfoByIdResult.cs" />
+    <Compile Include="OutputResults\GetPartnersInfoResult.cs" />
+    <Compile Include="InputParameters\GetDeliveryLocationHistoryParameters.cs" />
+    <Compile Include="OutputResults\DeliveryLocationHistoryResult.cs" />
+    <Compile Include="OutputResults\DeliveryLocationsResult.cs" />
+    <Compile Include="Entities\SqlDeliveryPrice.cs" />
+    <Compile Include="Entities\BasketItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\CategoryPath.cs" />
+    <Compile Include="Entities\CategoryPermission.cs" />
+    <Compile Include="Entities\CategoryPositionTypes.cs" />
+    <Compile Include="Entities\OrderDeliveryPaymentStatus.cs" />
+    <Compile Include="Entities\OrderHistory.cs" />
+    <Compile Include="Entities\OrderHistoryStatus.cs" />
+    <Compile Include="Entities\OrderPaymentStatuses.cs" />
+    <Compile Include="Entities\OrderStatusWorkFlowItem.cs" />
+    <Compile Include="Entities\PartnerSettings.cs" />
+    <Compile Include="Entities\ProductImportTask.cs" />
+    <Compile Include="Entities\ImportTaskStatuses.cs" />
+    <Compile Include="Entities\PartnerProductCatalog.cs" />
+    <Compile Include="Entities\PartnerProductCategoryLink.cs" />
+    <Compile Include="Entities\PartnerStatus.cs" />
+    <Compile Include="Entities\PartnerThrustLevel.cs" />
+    <Compile Include="Entities\PartnerType.cs" />
+    <Compile Include="Entities\PopularProductTypes.cs" />
+    <Compile Include="Entities\ProductCategoryTypes.cs" />
+    <Compile Include="Entities\ProductModerationStatuses.cs" />
+    <Compile Include="Entities\ProductParamComparer.cs" />
+    <Compile Include="Entities\ProductParamResult.cs" />
+    <Compile Include="Entities\FixedPrice.cs" />
+    <Compile Include="Entities\OrderItemPrice.cs" />
+    <Compile Include="Entities\ProductTargetAudience.cs" />
+    <Compile Include="Entities\PublicOrderStatuses.cs" />
+    <Compile Include="Entities\Contact.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Country.cs" />
+    <Compile Include="Entities\DeliveryInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\OrderStatuses.cs" />
+    <Compile Include="Entities\Partner.cs" />
+    <Compile Include="Entities\PhoneNumber.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductCategory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\ProductCategoryStatuses.cs" />
+    <Compile Include="Entities\ProductParam.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\ProductStatuses.cs" />
+    <Compile Include="Entities\WishListItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\DeliveryRateImportTask.cs" />
+    <Compile Include="InputParameters\GetDeliveryLocationsParameters.cs" />
+    <Compile Include="InputParameters\AdminSearchProductsParameters.cs" />
+    <Compile Include="OutputResults\GetOrderPaymentStatusesResult.cs" />
+    <Compile Include="OutputResults\ImportProductsFromYAMLResult.cs" />
+    <Compile Include="OutputResults\LastDeliveryAddress.cs" />
+    <Compile Include="OutputResults\Notification.cs" />
+    <Compile Include="OutputResults\OrderPayments.cs" />
+    <Compile Include="OutputResults\GetDeliveryRateImportTasksHistoryResult.cs" />
+    <Compile Include="OutputResults\PartnerSettingsResult.cs" />
+    <Compile Include="InputParameters\GetWishListNotificationsParameters.cs" />
+    <Compile Include="OutputResults\GetWishListNotificationsResult.cs" />
+    <Compile Include="InputParameters\ArmGetProductByIdParameters.cs" />
+    <Compile Include="InputParameters\CategoryProductParamsParameter.cs" />
+    <Compile Include="InputParameters\CategoryProductParamsParameters.cs" />
+    <Compile Include="InputParameters\GetPopularProductParameters.cs" />
+    <Compile Include="OutputResults\HasNonterminatedOrdersResult.cs" />
+    <Compile Include="Entities\WishListItemNotification.cs" />
+    <Compile Include="InputParameters\CreateOrderFromOnlinePartnerParameters.cs" />
+    <Compile Include="InputParameters\GetOrderByExternalIdParameters.cs" />
+    <Compile Include="InputParameters\GetOrdersForPaymentParameters.cs" />
+    <Compile Include="InputParameters\GetOrderStatusesHistoryParameters.cs" />
+    <Compile Include="InputParameters\GetImportTasksHistoryParameters.cs" />
+    <Compile Include="InputParameters\OrdersDeliveryStatus.cs" />
+    <Compile Include="InputParameters\OrdersPaymentStatus.cs" />
+    <Compile Include="InputParameters\SearchPublicProductsParameters.cs" />
+    <Compile Include="InputParameters\SetProductsTargetAudiencesParameters.cs" />
+    <Compile Include="InputParameters\SetWishListNotificationParameters.cs" />
+    <Compile Include="InputParameters\WishListNotificationParameter.cs" />
+    <Compile Include="OutputResults\CategoryProductParamsResult.cs" />
+    <Compile Include="OutputResults\GetOrderStatusesHistoryResult.cs" />
+    <Compile Include="OutputResults\GetWishListNotificationResult.cs" />
+    <Compile Include="OutputResults\GetRecomendedProductsResult.cs" />
+    <Compile Include="OutputResults\ImportDeliveryRatesFromHttpResult.cs" />
+    <Compile Include="InputParameters\ImportProductsFromYmlHttpParameters.cs" />
+    <Compile Include="InputParameters\DeleteProductParameters.cs" />
+    <Compile Include="InputParameters\CreateProductParameters.cs" />
+    <Compile Include="InputParameters\OrdersStatus.cs" />
+    <Compile Include="InputParameters\ProductParameters.cs" />
+    <Compile Include="InputParameters\SearchOrdersParameters.cs" />
+    <Compile Include="Entities\WeightProcessTypes.cs" />
+    <Compile Include="InputParameters\UpdateProductParameters.cs" />
+    <Compile Include="OutputResults\ChangeOrdersStatusesResult.cs" />
+    <Compile Include="OutputResults\CreateProductResult.cs" />
+    <Compile Include="OutputResults\ResultBaseExtensions.cs" />
+    <Compile Include="OutputResults\SearchOrdersResult.cs" />
+    <Compile Include="OutputResults\GetProductCatalogImportTasksHistoryResult.cs" />
+    <Compile Include="OutputResults\GetPartnerByIdResult.cs" />
+    <Compile Include="InputParameters\MoveProductsParameters.cs" />
+    <Compile Include="OutputResults\ImportProductsFromYmlResult.cs" />
+    <Compile Include="InputParameters\ChangeModerationStatusParameters.cs" />
+    <Compile Include="InputParameters\ChangeStatusParameters.cs" />
+    <Compile Include="InputParameters\CreatePartnerParameters.cs" />
+    <Compile Include="InputParameters\UpdatePartnerParameters.cs" />
+    <Compile Include="OutputResults\CreatePartnerResult.cs" />
+    <Compile Include="OutputResults\GetPartnerProductCategoryLinksResult.cs" />
+    <Compile Include="OutputResults\GetCategoriesPermissionsResult.cs" />
+    <Compile Include="InputParameters\MoveCategoryParameters.cs" />
+    <Compile Include="InputParameters\CreatePartnerProductCateroryLinkParameters.cs" />
+    <Compile Include="InputParameters\GetAllSubCategoriesParameters.cs" />
+    <Compile Include="InputParameters\UpdateCategoryParameters.cs" />
+    <Compile Include="InputParameters\CreateCategoryParameters.cs" />
+    <Compile Include="OutputResults\ChangeExternalOrderStatusResult.cs" />
+    <Compile Include="OutputResults\CreatePartnerProductCategoryLinkResult.cs" />
+    <Compile Include="Entities\DeliveryAddress.cs" />
+    <Compile Include="OutputResults\GetPartnerResult.cs" />
+    <Compile Include="OutputResults\UpdateCategoryResult.cs" />
+    <Compile Include="OutputResults\CreateCategoryResult.cs" />
+    <Compile Include="OutputResults\GetLastDeliveryAddressesResult.cs" />
+    <Compile Include="OutputResults\GetOrderResult.cs" />
+    <Compile Include="InputParameters\GetWishListParameters.cs" />
+    <Compile Include="OutputResults\GetDeliveryCountriesResult.cs" />
+    <Compile Include="InputParameters\GetDeliveryCountriesParameters.cs" />
+    <Compile Include="IBasketService.cs" />
+    <Compile Include="ICatalogAdminService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ICatalogSearcher.cs" />
+    <Compile Include="InputParameters\GetCategoryInfoParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InputParameters\GetFilterMetaDataParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InputParameters\GetProductByIdParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InputParameters\GetPublicSubCategoriesParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InputParameters\ExternalOrdersStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InputParameters\PartnerOrderCommitment.cs" />
+    <Compile Include="InputParameters\ProductAttributes.cs" />
+    <Compile Include="InputParameters\SortDirections.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InputParameters\SortTypes.cs" />
+    <Compile Include="InputParameters\WishListSortTypes.cs" />
+    <Compile Include="IOrderManagementService.cs" />
+    <Compile Include="IWishListService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\ChangeExternalOrdersStatusesResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\ClientCommitOrderResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\CreateOrderResult.cs" />
+    <Compile Include="OutputResults\GetAllPartnersResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\GetBasketItemResult.cs" />
+    <Compile Include="InputParameters\GetBasketParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InputParameters\IClientContextParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InputParameters\IPagingParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\BasketManageResult.cs" />
+    <Compile Include="OutputResults\BasketResult.cs" />
+    <Compile Include="OutputResults\GetCategoryInfoResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\GetFilterMetaDataResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\GetPopularProductsResult.cs" />
+    <Compile Include="OutputResults\GetProductResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\GetSubCategoriesResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\GetWishListItemResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\GetWishListResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\DocumentError.cs" />
+    <Compile Include="OutputResults\PartnerCommitOrdersResult.cs" />
+    <Compile Include="OutputResults\PopularProduct.cs" />
+    <Compile Include="OutputResults\ResultBase.cs" />
+    <Compile Include="OutputResults\SearchProductsResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\ResultCodes.cs" />
+    <Compile Include="OutputResults\UpdatePartnerResult.cs" />
+    <Compile Include="OutputResults\WishListItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\WishListResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OutputResults\PartnersSettignsResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="OutputResults\GetOrdersHistoryResult.cs" />
+    <Compile Include="InputParameters\GetOrdersHistoryParameters.cs" />
+    <Compile Include="InputParameters\SetCategoriesPermissionsParameters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63df64b8-c9f3-4a51-841d-58d6d1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6B6E5793-B048-473D-8707-23031CC227CD}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj">
+      <Project>{E10328E0-16F8-448C-8F26-E754D9A1FE83}</Project>
+      <Name>RapidSoft.Loaylty.Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PromoAction.WsClients\RapidSoft.Loaylty.PromoAction.WsClients.csproj">
+      <Project>{8533AA36-8D8A-4215-94B7-C8A4989C6F32}</Project>
+      <Name>RapidSoft.Loaylty.PromoAction.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Kladr.Model\RapidSoft.Kladr.Model.csproj">
+      <Project>{064E46F3-99CF-46AF-BCCF-F30F40B5435C}</Project>
+      <Name>RapidSoft.Kladr.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

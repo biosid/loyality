@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestSettings name="TestSettings" id="d0e8ca4d-fb3f-4e70-88eb-9d8b63da531d" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Description>These are default test settings for a local test run.</Description>
+  <Deployment>
+    <DeploymentItem filename="..\RapidSoft.Loaylty.PartnersConnector.Schedule.Tests\partnerConnections.config" />
+    <DeploymentItem filename="..\RapidSoft.Loaylty.PartnersConnector.Schedule.Tests\quartz.config" />
+    <DeploymentItem filename="..\Quartz\Libs\Common.Logging.Log4Net1211.dll" />
+  </Deployment>
+  <Execution>
+    <Timeouts testTimeout="0" />
+    <TestTypeSpecific>
+      <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+        <AssemblyResolution>
+          <TestDirectory useLoadContext="true" />
+        </AssemblyResolution>
+      </UnitTestRunConfig>
+    </TestTypeSpecific>
+    <AgentRule name="LocalMachineDefaultRole">
+    </AgentRule>
+  </Execution>
+</TestSettings>

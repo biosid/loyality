@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE383FA8-39F2-44A2-BB37-B3CAF189F435}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vtb24.Site.Content</RootNamespace>
+    <AssemblyName>Vtb24.Site.Content</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|AnyCPU'">
+    <OutputPath>bin\LoadTesting\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Advertisements\AdvertisementsManagement.cs" />
+    <Compile Include="Advertisements\IAdvertisementsManagement.cs" />
+    <Compile Include="Advertisements\Models\ClientAdvertisement.cs" />
+    <Compile Include="Advertisements\Models\Output\GetActiveAdvertisementsResult.cs" />
+    <Compile Include="Advertisements\Models\Output\GetAllAdvertismentsResult.cs" />
+    <Compile Include="Migrations\201404040933310_MyPointImages.cs" />
+    <Compile Include="Migrations\201404040933310_MyPointImages.Designer.cs">
+      <DependentUpon>201404040933310_MyPointImages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502051437310_Advertisements.cs" />
+    <Compile Include="Migrations\201502051437310_Advertisements.Designer.cs">
+      <DependentUpon>201502051437310_Advertisements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504171106585_AdvertisementsShowUntil.cs" />
+    <Compile Include="Migrations\201504171106585_AdvertisementsShowUntil.Designer.cs">
+      <DependentUpon>201504171106585_AdvertisementsShowUntil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyPointImages\MyPointImagesService.cs" />
+    <Compile Include="MyPointImages\Models\MyPointImage.cs" />
+    <Compile Include="DataAccess\ContentServiceDbContext.cs" />
+    <Compile Include="Infrastructure\MaybeLinqExtensions.cs" />
+    <Compile Include="Infrastructure\ObjectExtensions.cs" />
+    <Compile Include="Infrastructure\UrlHelpers.cs" />
+    <Compile Include="Migrations\201306131318366_Initial.cs" />
+    <Compile Include="Migrations\201306131318366_Initial.Designer.cs">
+      <DependentUpon>201306131318366_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307111306445_PageScript.cs" />
+    <Compile Include="Migrations\201307111306445_PageScript.Designer.cs">
+      <DependentUpon>201307111306445_PageScript.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309031302548_PageType.cs" />
+    <Compile Include="Migrations\201309031302548_PageType.Designer.cs">
+      <DependentUpon>201309031302548_PageType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ComponentException.cs" />
+    <Compile Include="Models\Exceptions\ContentManagementServiceException.cs" />
+    <Compile Include="Models\PagedResult.cs" />
+    <Compile Include="Models\PagingSettings.cs" />
+    <Compile Include="Models\ServiceException.cs" />
+    <Compile Include="News\INewsManagement.cs" />
+    <Compile Include="Advertisements\Models\Advertisement.cs" />
+    <Compile Include="News\Management\Models\Inputs\GetNewsMessagesFilter.cs" />
+    <Compile Include="News\Management\Models\Inputs\UpdateNewsMessageOption.cs" />
+    <Compile Include="News\Management\NewsManagement.cs" />
+    <Compile Include="News\INews.cs" />
+    <Compile Include="Infrastructure\AppSettingsHelper.cs" />
+    <Compile Include="News\Models\Exceptions\NewsMessageNotFoundException.cs" />
+    <Compile Include="News\Models\NewsMessage.cs" />
+    <Compile Include="News\Models\Outputs\GetNewsMessagesResult.cs" />
+    <Compile Include="News\Site\News.cs" />
+    <Compile Include="History\Models\EntityHistory.cs" />
+    <Compile Include="History\Models\EntityWithHistory.cs" />
+    <Compile Include="History\Models\Snapshot.cs" />
+    <Compile Include="History\IEntityHistory.cs" />
+    <Compile Include="Pages\AdminPagesManagement.cs" />
+    <Compile Include="Pages\IAdminPagesManagement.cs" />
+    <Compile Include="Pages\Models\Configuration\BuiltinPageElement.cs" />
+    <Compile Include="Pages\Models\Configuration\BuiltinPagesCollection.cs" />
+    <Compile Include="Pages\Models\Configuration\BuiltinPagesConfigSection.cs" />
+    <Compile Include="Pages\Models\Exceptions\OfferPageExistsException.cs" />
+    <Compile Include="Pages\Models\Inputs\CreateOfferPageOptions.cs" />
+    <Compile Include="Pages\Models\Inputs\CreatePlainPageOptions.cs" />
+    <Compile Include="Pages\Models\Inputs\GetPlainPagesOptions.cs" />
+    <Compile Include="Pages\Models\Inputs\OptionsExtensions.cs" />
+    <Compile Include="Pages\Models\Inputs\PagesSortOrder.cs" />
+    <Compile Include="Pages\Models\Inputs\UpdateOfferPageOptions.cs" />
+    <Compile Include="Pages\Models\Inputs\UpdatePlainPageOptions.cs" />
+    <Compile Include="Pages\Models\Outputs\GetAllPagesResult.cs" />
+    <Compile Include="Pages\Models\Page.cs" />
+    <Compile Include="Pages\Models\PageExtensions.cs" />
+    <Compile Include="Pages\Models\PageLayoutType.cs" />
+    <Compile Include="Pages\Models\PageSnapshot.cs" />
+    <Compile Include="Pages\Models\PageStatus.cs" />
+    <Compile Include="Pages\Models\PageData.cs" />
+    <Compile Include="Pages\Models\PageHistory.cs" />
+    <Compile Include="Pages\Models\Exceptions\PageInvalidException.cs" />
+    <Compile Include="Pages\Models\Exceptions\PageNotFoundException.cs" />
+    <Compile Include="Pages\Models\Exceptions\PageUrlExistsException.cs" />
+    <Compile Include="Pages\IPagesManagement.cs" />
+    <Compile Include="Pages\Models\Exceptions\PageRemovalFailedException.cs" />
+    <Compile Include="Pages\Models\PageType.cs" />
+    <Compile Include="Pages\PagesManagement.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Snapshots\ISnapshots.cs" />
+    <Compile Include="Snapshots\Models\DbSnapshot.cs" />
+    <Compile Include="Snapshots\Models\Snapshot.cs" />
+    <Compile Include="Snapshots\Snapshots.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdminServices\AdminServices.csproj">
+      <Project>{50d4a8fd-6d52-48f2-bc61-36974c2d1997}</Project>
+      <Name>AdminServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{9eb5135e-c8cf-480c-b2e1-bef4d06a04f7}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{2059E012-64BB-4E1F-ABAF-C4E2EB0A5F81}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201306131318366_Initial.resx">
+      <DependentUpon>201306131318366_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307111306445_PageScript.resx">
+      <DependentUpon>201307111306445_PageScript.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309031302548_PageType.resx">
+      <DependentUpon>201309031302548_PageType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404040933310_MyPointImages.resx">
+      <DependentUpon>201404040933310_MyPointImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502051437310_Advertisements.resx">
+      <DependentUpon>201502051437310_Advertisements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504171106585_AdvertisementsShowUntil.resx">
+      <DependentUpon>201504171106585_AdvertisementsShowUntil.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

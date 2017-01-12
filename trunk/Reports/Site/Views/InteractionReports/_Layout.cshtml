@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_Header", (object)Model)
+<div class="row">
+    <div class="col-md-12">
+        <h4>Статистика</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+                @if (Model.Summary.ShowReplyDelayed)
+                {
+                    <tr class="@(Model.Summary.HasAnyReplyDelayed ? "danger" : "success")">
+                        <td>Все ответные файлы отправлены/получены</td>
+                        <td>@(Model.Summary.HasAnyReplyDelayed ? "Нет" : "Да")</td>
+                    </tr>
+                }
+                @if (Model.Summary.ShowRowCountDiscrepancy)
+                {
+                    <tr class="@(Model.Summary.HasAnyRowCountDiscrepancy ? "danger" : "success")">
+                        <td>Расхождения в количестве записей отсутствуют</td>
+                        <td>@(Model.Summary.HasAnyRowCountDiscrepancy ? "Нет" : "Да")</td>
+                    </tr>
+                }
+                @if (Model.Summary.ShowSizeExceeded)
+                {
+                    <tr class="@(Model.Summary.HasAnySizeExceeded ? "danger" : "success")">
+                        <td>Файлы Коллекции размером более 4MB отсутствуют</td>
+                        <td>@(Model.Summary.HasAnySizeExceeded ? "Нет" : "Да")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Детализация по файлам</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @RenderBody()
+    </div>
+</div>

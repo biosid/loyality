@@ -1,0 +1,169 @@
+﻿@using Microsoft.Practices.ObjectBuilder2
+@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@model Vtb24.Site.Models.MyOrders.OrderModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Информация о заказе";
+    ViewBag.Menu = "Orders";
+}
+
+
+@section secondary
+{
+    @Html.Action("ClientMenu", "Layout", new { activeMenu = ViewBag.Menu })
+}
+
+<div class="mnl16 white-shadowed">
+    <div class="middle-line white">
+        <div class="ml-text">
+            <span class="size28">@Model.PageTitle</span>
+        </div>
+    </div>
+    @Info()
+</div>
+@*
+
+
+
+
+*@
+@helper Info()
+{
+
+    <div class="table form-order myordrs-ordr__container">
+
+        @if (!string.IsNullOrWhiteSpace(Model.ExternalOrderId))
+        {
+            <ul class="row">
+                <li class="cell myordrs-ordr__label">Номер заказа в системе партнера</li>
+                <li class="cell">@Model.ExternalOrderId</li>
+            </ul>
+        }
+
+        <ul class="row">
+            @{
+                var isSingleItem = Model.Items.Length == 1;
+                var giftsLabel = isSingleItem ? "Вознаграждение" : "Вознаграждения";
+                var itemsClass = isSingleItem ? "myordrs-ordr__single-item" : "myordrs-ordr__items";
+            }
+            <li class="cell myordrs-ordr__label">@giftsLabel</li>
+            <li class="cell">
+                <ol class="@itemsClass">
+                    @foreach (var item in Model.Items)
+                    {
+                        <li class="myordrs-ordr__item">
+                            @if (string.IsNullOrEmpty(item.ProductId))
+                            {
+                                @item.ProductName
+
+                                if (item.Quantity > 1)
+                                {
+                                    @item.Quantity@:&nbsp;шт.
+                                }
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Product", "Catalog", new {id = item.ProductId})">
+                                    @item.ProductName
+                                </a>
+                                if (item.Quantity > 1)
+                                {
+                                    @item.Quantity@:&nbsp;шт.
+                                }
+                            }
+                            @if (!Model.HasAdvance)
+                            {
+                                @:(<nobr> @Html.Pluralize(item.TotalPrice, "{1:N0} бонус", "{2:N0} бонуса", "{5:N0} бонусов") </nobr>)
+                            }
+                        </li>
+                    }
+                </ol>
+            </li>
+        </ul>
+
+        <ul class="row">
+            <li class="cell myordrs-ordr__label">Итого 
+                @if (Model.HasDelivery && !Model.HasAdvance)
+                {
+                    <text>(с доставкой)</text>
+                }
+            </li>
+            <li class="cell myordrs-ordr__total">@Html.Pluralize(Model.TotalPrice, "{1:N0} бонус", "{2:N0} бонуса", "{5:N0} бонусов")</li>
+        </ul>
+
+        @if (Model.HasDelivery)
+        {
+            <ul class="row">
+                <li class="cell myordrs-ordr__label">Доставка</li>
+                <li class="cell">
+                    <p>@(Model.DeliveryVariantName ?? "Курьерская доставка")</p>
+                    @if (Model.IsPickup)
+                    {
+                        <p><b>Адрес:</b> @Html.SanitizeHtml(Model.PickupPoint.Address)</p>
+                        if (Model.PickupPoint.Phones != null && Model.PickupPoint.Phones.Any())
+                        {
+                            <p><b>Тел.:</b> @Model.PickupPoint.Phones.JoinStrings(", ")</p>
+                        }
+                        if (Model.PickupPoint.OperationHours != null && Model.PickupPoint.OperationHours.Any())
+                        {
+                            <p><b>Часы работы:</b> @Html.SanitizeHtml(Model.PickupPoint.OperationHours.Select(h => h.TrimEnd(new[] { ';' })).JoinStrings(", "))</p>
+                        }
+
+                        if (!string.IsNullOrEmpty(Model.PickupPoint.Description))
+                        {
+                            <p>@Html.SanitizeHtml(Model.PickupPoint.Description)</p>
+                        }
+                    }
+                    else if (Model.IsEmail)
+                    {
+                        <p>@Model.RecipientEmail</p>
+                    }
+                    else
+                    {
+                        <p><b>Адрес:</b> @Model.DeliveryPostCode, @Model.DeliveryCity, @Model.DeliveryAddress</p>
+                        if (!string.IsNullOrEmpty(Model.DeliveryVariantDescription))
+                        {
+                            <p>@Html.SanitizeHtml(Model.DeliveryVariantDescription)</p>
+                        }
+                    }
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="cell myordrs-ordr__label">Контактные данные</li>
+                <li class="cell">
+                    <p>@Model.RecipientName</p>
+                    <p><b>Тел.:</b> @Model.RecipientPhone</p>
+                    @if (!string.IsNullOrEmpty(Model.RecipientEmail))
+                    {
+                        <p><b>Email:</b> <a href="mailto:@Model.RecipientEmail">@Model.RecipientEmail</a></p>
+                    }
+                </li>
+            </ul>
+        }
+
+        <ul class="row">
+            <li class="cell myordrs-ordr__label">Статус заказа</li>
+            <li class="cell">
+                <p>@Model.Status (@Model.StatusChangeDate.Date.ToShortDateString())</p>
+                @if (!string.IsNullOrWhiteSpace(Model.StatusDescription))
+                {
+                    <p>@Model.StatusDescription</p>
+                }
+            </li>
+        </ul>
+        @if (!string.IsNullOrEmpty(Model.DeliveryInstructions))
+        {
+            <ul class="row">
+                <li class="cell myordrs-ordr__label">Информация по получению</li>
+                <li class="cell" style="white-space: pre-wrap">@Html.HighlightLinks(Model.DeliveryInstructions)</li>
+            </ul>
+        }
+        @if (!string.IsNullOrEmpty(Model.Comment))
+        {
+            <ul class="row">
+                <li class="cell myordrs-ordr__label">Дополнительная информация</li>
+                <li class="cell addcom italic" style="white-space: pre-wrap">@Model.Comment</li>
+            </ul>
+        }
+    </div>
+}

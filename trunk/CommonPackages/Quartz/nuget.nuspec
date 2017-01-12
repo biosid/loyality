@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Quartz.2010</id>
+    <version>1.0.0</version>
+    <authors>egoncharov</authors>
+    <owners>egoncharov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>VTB24 common packages: Quartz.2010</description>
+    <dependencies>
+      <dependency id="C5" version="2.2.5073.27396" />
+      <dependency id="RapidSoft.Loaylty.Logging" version="1.3.0.1" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" />
+      <frameworkAssembly assemblyName="System.Configuration" />
+      <frameworkAssembly assemblyName="System.Core" />
+      <frameworkAssembly assemblyName="System.Data" />
+      <frameworkAssembly assemblyName="System.Runtime.Remoting" />
+      <frameworkAssembly assemblyName="System.Web" />
+      <frameworkAssembly assemblyName="System.Xml" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Quartz.*" target="lib" />
+  </files>
+</package>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>RapidSoft.Extensions</id>
+    <version>1.0.0</version>
+    <authors>egoncharov</authors>
+    <owners>egoncharov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>VTB24 common packages: RapidSoft.Extensions</description>
+    <dependencies>
+      <dependency id="HtmlAgilityPack" version="1.4.6" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" />
+      <frameworkAssembly assemblyName="System.Core" />
+      <frameworkAssembly assemblyName="System.Data" />
+      <frameworkAssembly assemblyName="System.Web.Extensions" />
+      <frameworkAssembly assemblyName="System.Xml" />
+      <frameworkAssembly assemblyName="System.Xml.Linq" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Rapidsoft.Extensions.*" target="lib" />
+  </files>
+</package>

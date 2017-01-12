@@ -1,0 +1,396 @@
+﻿@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@{
+    ViewBag.Title = "Редактирование заказа";
+    ViewBag.MenuId = "orders";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+
+    var hideAllPrices = !Model.Permissions.Prices && Model.HideRurPrices;
+}
+@using Vtb24.Arms.Catalog.Models.Orders
+@model OrderEditModel
+@Html.AddScriptBlock(
+    @<script>
+         require(
+             [
+                 'Catalog/Orders/Edit/index'
+             ],
+             function(index) {
+                 index();
+             });
+     </script>
+    )
+@if (Model.Permissions.Status)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(
+                 [
+                     'Catalog/Orders/Edit/save'
+                 ],
+                 function(save) {
+                     save();
+                 });
+         </script>
+         )
+}
+<div class="tab-pane active">
+    <div class="sticky-save" data-x="orders/edit/navbar">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                <div class="row">
+                    <div class="span4"></div>
+                    <div class="span8">
+                        <div data-x="orders/edit/actions_panel">
+                            <div class="pull-right mar-right-20">
+                                <a href="@Url.Action("List", "Orders", Model.OrdersQueryModel)" role="button" data-toggle="modal" class="btn">
+                                    @(Model.Permissions.Status ? "Отменить" : "Назад")
+                                </a>
+                            </div>
+                            @if (Model.Permissions.Status && Model.OrderStatus.HasValue)
+                            {
+                                <div class="pull-right mar-right-20">
+                                    <a class="btn btn-primary" data-x="orders/edit/save" style="display: none;">Сохранить</a>
+                                </div>
+                                <div class="pull-right mar-top-5" data-x="orders/edit/save_message" style="display: none;">
+                                    <div class="line-height-30 mar-right-20 text-right">Есть несохраненные изменения.</div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        @using (Html.BeginForm("Edit", "Orders", FormMethod.Post, new { data_x = "orders/edit/form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.query)
+
+            <h3 class="font-normal">Заказ&nbsp;№&nbsp;@Model.Id</h3>
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="row">
+                <div class="span12">
+                    <ul class="unstyled">
+                        <li class="row  pad-bottom-10">
+                            <div class="span3 text-right nowrap">Поставщик:</div>
+                            <div class="span9">@Model.SupplierName</div>
+                        </li>
+                        <li class="row  pad-bottom-10">
+                            <div class="span3 text-right nowrap">Курьер:</div>
+                            <div class="span9">@Model.CarrierName</div>
+                        </li>
+                        @if (!string.IsNullOrEmpty(Model.ExternalId))
+                        {
+                            <li class="row  pad-bottom-10">
+                                <div class="span3 text-right nowrap">Внешний номер заказа:</div>
+                                <div class="span9">@Model.ExternalId</div>
+                            </li>
+                        }
+                        <li class="row  pad-bottom-10">
+                            <div class="span3 text-right nowrap">Дата и время оформления:</div>
+                            <div class="span9">@Model.CreateDate.ToString("f")</div>
+                        </li>
+                        <li class="row pad-bottom-10">
+                            <div class="span3 text-right nowrap"><span class="line-height-30">Статус заказа:</span></div>
+                            <div class="span4">
+                                @if (Model.OrderStatus.HasValue)
+                                {
+                                    if (Model.Permissions.Status)
+                                    {
+                                        @Html.DropDownListFor(m => m.OrderStatus, Model.OrderStatusesList, new { @class = "mar-bottom-0 input-xlarge", data_x = "orders/edit/status_select" })
+                                        @Html.ValidationMessageFor(m => m.OrderStatus)
+                                    }
+                                    else
+                                    {
+                                        <span class="line-height-30">@Html.DescriptionFor(Model.OrderStatus.Value)</span>
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="line-height-30">Неизвестен</span> @*REVIEW: что выводить?*@
+                                }
+                            </div>
+                        </li>
+                        <li class="row pad-bottom-10">
+                            <div class="span3 text-right nowrap"><span class="line-height-30">Описание статуса заказа:</span></div>
+                            <div class="span4">
+                                @if (Model.Permissions.Status)
+                                {
+                                    @Html.TextBoxFor(m => m.OrderStatusDescription, new { maxlength = 256, @class = "input-xlarge", data_x = "orders/edit/status_desc_text" })
+                                    @Html.ValidationMessageFor(m => m.OrderStatusDescription)
+                                }
+                                else
+                                {
+                                    <span class="line-height-30">@(string.IsNullOrEmpty(Model.OrderStatusDescription) ? "- нет -" : Model.OrderStatusDescription)</span>
+                                }
+                            </div>
+                        </li>
+                        <li class="row  pad-bottom-10">
+                            <div class="span3 text-right nowrap"><span class="line-height-30">Оплата вознаграждения:</span></div>
+                            <div class="span4 line-height-30">
+                                @if (Model.ProductPaymentStatus.HasValue)
+                                {
+                                    <div class="label @Model.ProductPaymentStatus.Value.GetLabelClass()">
+                                        @Html.DescriptionFor(Model.ProductPaymentStatus)
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="line-height-30">Неизвестно</span> @*REVIEW: что выводить?*@
+                                }
+                            </div>
+                        </li>
+                        <li class="row  pad-bottom-10">
+                            <div class="span3 text-right nowrap"><span class="line-height-30">Оплата доставки:</span></div>
+                            <div class="span4 line-height-30">
+                                @if (Model.DeliveryPaymentStatus.HasValue)
+                                {
+                                    <div class="label @Model.DeliveryPaymentStatus.Value.GetLabelClass()">
+                                        @Html.DescriptionFor(Model.DeliveryPaymentStatus)
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="line-height-30">Неизвестно</span> @*REVIEW: что выводить?*@
+                                }
+                            </div>
+                        </li>
+                        @helper PriceRur(decimal price)
+                        {
+                            @:@price.ToString("N2")&nbsp;руб.
+                        }
+                        @helper PriceBonus(decimal price)
+                        {
+                            @:@price.ToString("N0")&nbsp;бонусов
+                        }
+                        @helper PriceBonusQuotes(decimal price)
+                        {
+                            @:(@price.ToString("N0")&nbsp;бонусов)
+                        }
+                        @helper Price(decimal price, decimal bonusPrice)
+                        {
+                            if (Model.HideRurPrices)
+                            {
+                                @PriceBonus(bonusPrice)
+                            }
+                            else
+                            {
+                                @PriceRur(price)
+                                if (Model.Permissions.Prices)
+                                {
+                                    @PriceBonusQuotes(bonusPrice)
+                                }
+                            }
+                        }
+                        @helper Payment(decimal rur, decimal bonus)
+                        {
+                            @:@bonus.ToString("N0")&nbsp;бонусов и @rur.ToString("N2")&nbsp;руб.
+                        }
+                        <li class="row pad-bottom-10">
+                            <div class="span3 text-right nowrap">Вознаграждения:</div>
+                            <div class="span9">
+                                <table class="table table-bordered table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>Артикул</th>
+                                            <th>Наименование</th>
+                                            @if (!hideAllPrices)
+                                            {
+                                                <th class="nowrap">Цена 1 шт</th>
+                                            }
+                                            <th>Количество</th>
+                                            @if (!hideAllPrices)
+                                            {
+                                                <th>Цена</th>
+                                            }
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Items)
+                                        {
+                                            <tr>
+                                                <td>@item.ProductId</td>
+                                                <td>@item.Title</td>
+                                                @if (!hideAllPrices)
+                                                {
+                                                    <td>@Price(item.Price, item.BonusPrice)</td>
+                                                }
+                                                <td class="text-center">@item.Quantity</td>
+                                                @if (!hideAllPrices)
+                                                {
+                                                    <td>@Price(item.QuantityPrice, item.QuantityBonusPrice)</td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        @if (!hideAllPrices)
+                        {
+                            <li class="row  pad-bottom-10">
+                                <div class="span3 text-right nowrap">Цена вознаграждений:</div>
+                                <div class="span9">@Price(Model.ItemsPrice, Model.ItemsBonusPrice)</div>
+                            </li>
+                            <li class="row  pad-bottom-10">
+                                <div class="span3 text-right nowrap">Цена доставки:</div>
+                                <div class="span9">
+                                    @if (Model.DeliveryPrice == 0)
+                                    {
+                                        @Price(0, 0)
+                                    }
+                                    else
+                                    {
+                                        if (Model.DeliveryAdvance == 0)
+                                        {
+                                            @Price(Model.DeliveryPrice, Model.DeliveryBonusPrice)
+                                            @:- оплачено бонусами
+                                        }
+                                        else
+                                        {
+                                            @PriceRur(Model.DeliveryPrice)
+                                            @:- оплачено картой
+                                        }
+                                    }
+                                </div>
+                            </li>
+                            <li class="row  pad-bottom-10">
+                                <div class="span3 text-right nowrap">Общая цена:</div>
+                                <div class="span9">
+                                    @if (Model.TotalAdvance == 0)
+                                    {
+                                        @Price(Model.TotalPrice, Model.TotalBonusPrice)
+                                    }
+                                    else
+                                    {
+                                        @PriceRur(Model.TotalPrice)
+                                    }
+                                </div>
+                            </li>
+                            if (Model.TotalAdvance > 0 && !Model.HideRurPrices)
+                            {
+                                <li class="row  pad-bottom-10">
+                                    <div class="span3 text-right nowrap">Оплачено:</div>
+                                    <div class="span9">@Payment(Model.TotalAdvance, Model.TotalBonusPrice)</div>
+                                </li>
+                            }
+                        }
+                        @if (Model.ContactInfo != null)
+                        {
+                            <li class="row  pad-bottom-10">
+                                <div class="span3 text-right nowrap">Контактное лицо:</div>
+                                <div class="span9">@Model.ContactInfo.LastName @Model.ContactInfo.FirstName @Model.ContactInfo.MiddleName</div>
+                            </li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Address))
+                        {
+                            <li class="row  pad-bottom-10">
+                                <div class="span3 text-right nowrap">Доставка:</div>
+                                <div class="span9">@Html.SanitizeHtml(Model.Address)</div>
+                            </li>
+                        }
+                        @if (Model.ContactInfo != null)
+                        {
+                            <li class="row  pad-bottom-10">
+                                <div class="span3 text-right nowrap">Телефон:</div>
+                                <div class="span9">@Model.ContactInfo.Phone</div>
+                            </li>
+
+                            <li class="row  pad-bottom-10">
+                                <div class="span3 text-right nowrap">E-mail:</div>
+                                <div class="span9">@Model.ContactInfo.Email</div>
+                            </li>
+                        }
+                        @if (Model.DeliveryInfo != null)
+                        {
+                            if (!string.IsNullOrEmpty(Model.DeliveryInfo.Date))
+                            {
+                                <li class="row  pad-bottom-10">
+                                    <div class="span3 text-right nowrap">Дата доставки:</div>
+                                    <div class="span9">@Model.DeliveryInfo.Date</div>
+                                </li>
+                            }
+                            if (!string.IsNullOrEmpty(Model.DeliveryInfo.Time))
+                            {
+                                <li class="row  pad-bottom-10">
+                                    <div class="span3 text-right nowrap">Время доставки:</div>
+                                    <div class="span9">@Model.DeliveryInfo.Time</div>
+                                </li>
+                            }
+                            if (!string.IsNullOrEmpty(Model.DeliveryInfo.Comment))
+                            {
+                                <li class="row  pad-bottom-10">
+                                    <div class="span3 text-right nowrap">Комментарий:</div>
+                                    <div class="span9" style="white-space: pre-wrap;">@Model.DeliveryInfo.Comment</div>
+                                </li>
+                            }
+                            if (!string.IsNullOrEmpty(Model.DeliveryInfo.AdditionalText))
+                            {
+                                <li class="row  pad-bottom-10">
+                                    <div class="span3 text-right nowrap">Дополнительный текст:</div>
+                                    <div class="span9">@Model.DeliveryInfo.AdditionalText</div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <h4 class="font-normal">
+                История изменений статусов заказа №&nbsp;@Model.Id
+            </h4>
+            <table class="table table-bordered table-order-history font-size-13" lang="ru">
+                <colgroup>
+                    <col />
+                    <col />
+                    <col width="33%" />
+                    <col width="33%" />
+                    <col width="33%" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th><div class="nowrap">Дата и время изменения</div></th>
+                        <th><div class="nowrap">Кто изменил</div> </th>
+                        <th><div class="nowrap">Что изменилось</div> </th>
+                        <th><div class="nowrap">Старое значение</div></th>
+                        <th><div class="nowrap">Новое значение</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in Model.StatusHistory)
+                    {
+                        var rowSpan = record.Fields != null && record.Fields.Length > 0
+                                          ? record.Fields.Length
+                                          : 1;
+                        <tr>
+                            <td rowspan="@rowSpan">@record.When.ToString("dd.MM.yyyy HH:mm:ss")</td>
+                            <td rowspan="@rowSpan">@record.Who</td>
+                            @if (record.Fields != null && record.Fields.Length > 0)
+                            {
+                                <td>@record.Fields[0].What</td>
+                                <td><span class="nowrap">@record.Fields[0].OldValue</span></td>
+                                <td><span class="nowrap">@record.Fields[0].NewValue</span></td>
+                            }
+                            else
+                            {
+                                <td>-</td><td>-</td><td>-</td>
+                            }
+                        </tr>
+                            if (record.Fields != null && record.Fields.Length > 1)
+                            {
+                                foreach (var index in Enumerable.Range(1, record.Fields.Length - 1))
+                                {
+                                <tr>
+                                    <td>@record.Fields[index].What</td>
+                                    <td>@record.Fields[index].OldValue</td>
+                                    <td>@record.Fields[index].NewValue</td>
+                                </tr>
+                                }
+                            }
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

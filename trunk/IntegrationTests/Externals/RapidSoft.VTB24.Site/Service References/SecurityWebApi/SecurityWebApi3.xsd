@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Vtb24.Site.SecurityWebServices.Security.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Vtb24.Site.SecurityWebServices.Security.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="RegistrationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SiteRegistration" />
+      <xs:enumeration value="BankRegistration" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RegistrationType" nillable="true" type="tns:RegistrationType" />
+</xs:schema>

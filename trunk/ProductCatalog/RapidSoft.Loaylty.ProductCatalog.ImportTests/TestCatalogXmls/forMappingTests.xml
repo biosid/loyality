@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2012-11-01 01:52">
+  <shop>
+    <name>OZON.ru</name>
+    <company>?????? "???????????????? ??????????????"</company>
+    <url>http://www.ozon.ru/</url>
+    <currencies>
+      <currency id="RUR" rate="1" />
+    </currencies>
+    <categories>
+      <category id="1135276">Обучающие программы</category>
+    </categories>
+    <offers>
+      <offer id="test1" available="true" bid="23" cbid="43" >
+        <categoryId>1135276</categoryId>
+        <name>Name test1</name>
+        <title>Title test1</title>
+        <vendor>Vendor test1</vendor>
+        <model>model test1</model>
+        <price>139</price>
+        <currencyId>RUR</currencyId>
+      </offer>
+      <offer id="test2" available="true" bid="23" cbid="43" >
+        <categoryId>1135276</categoryId>
+        <title>Title test2</title>
+        <vendor>Vendor test2</vendor>
+        <model>model test2</model>
+        <price>139</price>
+        <currencyId>RUR</currencyId>
+      </offer>
+      <offer id="test3" available="true" bid="23" cbid="43" >
+        <categoryId>1135276</categoryId>
+        <vendor>Vendor test3</vendor>
+        <model>model test3</model>
+        <price>139</price>
+        <currencyId>RUR</currencyId>
+      </offer>
+      <offer id="test4" available="true" bid="23" cbid="43" >
+        <categoryId>1135276</categoryId>
+        <name></name>
+        <title></title>
+        <vendor>Vendor test4</vendor>
+        <model>model test4</model>
+        <price>139</price>
+        <currencyId>RUR</currencyId>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

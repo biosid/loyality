@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{276395A6-28FF-46AF-ACCC-14F2F175E25D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Etl.Runtime</RootNamespace>
+    <AssemblyName>RapidSoft.Etl.Runtime</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agents\EtlAgentInfo.cs" />
+    <Compile Include="Agents\EtlAgents.cs" />
+    <Compile Include="Agents\EtlPackageAlreadyExistsException.cs" />
+    <Compile Include="Agents\EtlPackageDeploymentOptions.cs" />
+    <Compile Include="Agents\FS\FileEtlAgent.cs" />
+    <Compile Include="Agents\IEtlAgent.cs" />
+    <Compile Include="Agents\ILocalEtlAgent.cs" />
+    <Compile Include="Agents\Sql\SqlEtlAgent.cs" />
+    <Compile Include="DataSources\DB\FileCounterDataSource.cs" />
+    <Compile Include="EtlPackage_Context.cs" />
+    <Compile Include="DataSources\Csv\CsvParseErrorAction.cs" />
+    <Compile Include="DataSources\Csv\CsvParseErrorEventArgs.cs" />
+    <Compile Include="DataSources\Csv\CsvReader.cs" />
+    <Compile Include="DataSources\Csv\CsvReader.DataReaderValidations.cs" />
+    <Compile Include="DataSources\Csv\CsvReader.DataRecordEnumerator.cs" />
+    <Compile Include="DataSources\Csv\CsvReaderOptions.cs" />
+    <Compile Include="DataSources\Csv\CsvSyntaxInfo.cs" />
+    <Compile Include="DataSources\Csv\CsvValidationErrorEventArgs.cs" />
+    <Compile Include="DataSources\Csv\CsvWriter.cs" />
+    <Compile Include="DataSources\Csv\MalformedCsvException.cs" />
+    <Compile Include="DataSources\Csv\MissingFieldAction.cs" />
+    <Compile Include="DataSources\Csv\MissingFieldCsvException.cs" />
+    <Compile Include="DataSources\Csv\ValueTrimmingOptions.cs" />
+    <Compile Include="DataSources\DB\DBAccessor.cs" />
+    <Compile Include="DataSources\DB\DBTableWriter.cs" />
+    <Compile Include="DataSources\DB\DBTableWriterErrorEventArgs.cs" />
+    <Compile Include="DataSources\DB\DBTableWriterErrorFlags.cs" />
+    <Compile Include="DataSources\Xml\FlatXmlDataReader.cs" />
+    <Compile Include="DataSources\Xml\FlatXmlDataReaderOptions.cs" />
+    <Compile Include="DataSources\Xml\SimpleXPathParser.cs" />
+    <Compile Include="DataSources\Xml\XmlNameComparer.cs" />
+    <Compile Include="EtlComponentModelInfo.cs" />
+    <Compile Include="EtlContext.cs" />
+    <Compile Include="EtlDataSourceInfo.cs" />
+    <Compile Include="EtlPackage.cs" />
+    <Compile Include="EtlPackageException.cs" />
+    <Compile Include="EtlPackagePreprocessor.cs" />
+    <Compile Include="EtlPackageVersionConverter.cs" />
+    <Compile Include="EtlPackageXmlSerializer.cs" />
+    <Compile Include="EtlPackage_Invoker.cs" />
+    <Compile Include="EtlVariableAssignmentExtensions.cs" />
+    <Compile Include="EtlVariableBinding.cs" />
+    <Compile Include="EtlVariableInfo.cs" />
+    <Compile Include="EtlVariableAssignment.cs" />
+    <Compile Include="EtlStep.cs" />
+    <Compile Include="EtlStepResult.cs" />
+    <Compile Include="EtlValueFunction.cs" />
+    <Compile Include="EtlValueTranslation.cs" />
+    <Compile Include="Functions\EtlConcatenateFunction.cs" />
+    <Compile Include="Functions\EtlDecodeFunction.cs" />
+    <Compile Include="Functions\EtlDecodeRule.cs" />
+    <Compile Include="Functions\EtlMatchFunction.cs" />
+    <Compile Include="Functions\EtlMatchResult.cs" />
+    <Compile Include="Functions\EtlMatchRule.cs" />
+    <Compile Include="Functions\EtlParseFunction.cs" />
+    <Compile Include="Functions\EtlReplaceFunction.cs" />
+    <Compile Include="Functions\EtlSubstringFunction.cs" />
+    <Compile Include="Functions\EtlTrimFunction.cs" />
+    <Compile Include="Functions\EtlTrimOptions.cs" />
+    <Compile Include="OpenPop\Common\Logging\DefaultLogger.cs" />
+    <Compile Include="OpenPop\Common\Logging\DiagnosticsLogger.cs" />
+    <Compile Include="OpenPop\Common\Logging\FileLogger.cs" />
+    <Compile Include="OpenPop\Common\Logging\ILog.cs" />
+    <Compile Include="OpenPop\Common\StreamUtility.cs" />
+    <Compile Include="OpenPop\Mime\Decode\Base64.cs" />
+    <Compile Include="OpenPop\Mime\Decode\EncodedWord.cs" />
+    <Compile Include="OpenPop\Mime\Decode\EncodingFinder.cs" />
+    <Compile Include="OpenPop\Mime\Decode\QuotedPrintable.cs" />
+    <Compile Include="OpenPop\Mime\Decode\Rfc2231Decoder.cs" />
+    <Compile Include="OpenPop\Mime\Decode\Rfc2822DateTime.cs" />
+    <Compile Include="OpenPop\Mime\Decode\Utility.cs" />
+    <Compile Include="OpenPop\Mime\Header\ContentTransferEncoding.cs" />
+    <Compile Include="OpenPop\Mime\Header\HeaderExtractor.cs" />
+    <Compile Include="OpenPop\Mime\Header\HeaderFieldParser.cs" />
+    <Compile Include="OpenPop\Mime\Header\MessageHeader.cs" />
+    <Compile Include="OpenPop\Mime\Header\Received.cs" />
+    <Compile Include="OpenPop\Mime\Header\RfcMailAddress.cs" />
+    <Compile Include="OpenPop\Mime\Message.cs" />
+    <Compile Include="OpenPop\Mime\MessagePart.cs" />
+    <Compile Include="OpenPop\Mime\Traverse\AnswerMessageTraverser.cs" />
+    <Compile Include="OpenPop\Mime\Traverse\AttachmentFinder.cs" />
+    <Compile Include="OpenPop\Mime\Traverse\FindAllMessagePartsWithMediaType.cs" />
+    <Compile Include="OpenPop\Mime\Traverse\FindFirstMessagePartWithMediaType.cs" />
+    <Compile Include="OpenPop\Mime\Traverse\IAnswerMessageTraverser.cs" />
+    <Compile Include="OpenPop\Mime\Traverse\IQuestionAnswerMessageTraverser.cs" />
+    <Compile Include="OpenPop\Mime\Traverse\MultipleMessagePartFinder.cs" />
+    <Compile Include="OpenPop\Mime\Traverse\TextVersionFinder.cs" />
+    <Compile Include="OpenPop\Pop3\Apop.cs" />
+    <Compile Include="OpenPop\Pop3\AuthenticationMethod.cs" />
+    <Compile Include="OpenPop\Pop3\ConnectionState.cs" />
+    <Compile Include="OpenPop\Pop3\CramMd5.cs" />
+    <Compile Include="OpenPop\Pop3\Disposable.cs" />
+    <Compile Include="OpenPop\Pop3\Exceptions\InvalidLoginException.cs" />
+    <Compile Include="OpenPop\Pop3\Exceptions\InvalidUseException.cs" />
+    <Compile Include="OpenPop\Pop3\Exceptions\LoginDelayException.cs" />
+    <Compile Include="OpenPop\Pop3\Exceptions\PopClientException.cs" />
+    <Compile Include="OpenPop\Pop3\Exceptions\PopServerException.cs" />
+    <Compile Include="OpenPop\Pop3\Exceptions\PopServerLockedException.cs" />
+    <Compile Include="OpenPop\Pop3\Exceptions\PopServerNotAvailableException.cs" />
+    <Compile Include="OpenPop\Pop3\Exceptions\PopServerNotFoundException.cs" />
+    <Compile Include="OpenPop\Pop3\Pop3Client.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\CsvHeaderColumn.cs" />
+    <Compile Include="Steps\EtlValidateCsvFileHeaderStep.cs" />
+    <Compile Include="Steps\EtlEmailMoveToBoxImapStep.cs" />
+    <Compile Include="Steps\FileCounterDbStorage.cs" />
+    <Compile Include="Steps\EtlDecryptStep.cs" />
+    <Compile Include="Steps\EtlEmailDeleteImapStep.cs" />
+    <Compile Include="Steps\EtlEmailDbStorage.cs" />
+    <Compile Include="Steps\EtlEmailReceiveMessage.cs" />
+    <Compile Include="Steps\EtlEmailSendMessage.cs" />
+    <Compile Include="Steps\EtlEncryptStep.cs" />
+    <Compile Include="Steps\EtlExecStep.cs" />
+    <Compile Include="Steps\EtlEmailServer.cs" />
+    <Compile Include="Steps\EtlEmailReceiveImapStep.cs" />
+    <Compile Include="Steps\EtlEmailSourceInfo.cs" />
+    <Compile Include="Steps\EtlEmailSendStep.cs" />
+    <Compile Include="Steps\EtlCsvFileBatchInfo.cs" />
+    <Compile Include="Steps\EtlImportCsvFileBatchStep.cs" />
+    <Compile Include="Steps\EtlExecuteQueryCounterSet.cs" />
+    <Compile Include="Steps\EtlCounterBinding.cs" />
+    <Compile Include="Steps\EtlMethodParameter.cs" />
+    <Compile Include="Steps\EtlMethodSourceInfo.cs" />
+    <Compile Include="Steps\EtlInvokeMethodStep.cs" />
+    <Compile Include="Steps\EtlExecuteProcedureOutputVariableSet.cs" />
+    <Compile Include="Steps\EtlFieldToVariableAssignment.cs" />
+    <Compile Include="Steps\EtlCopyFileStep.cs" />
+    <Compile Include="Steps\EtlCsvFileInfo.cs" />
+    <Compile Include="Steps\EtlDelayStep.cs" />
+    <Compile Include="Steps\EtlDownloadFileStep.cs" />
+    <Compile Include="Steps\EtlEmptyStep.cs" />
+    <Compile Include="Steps\EtlExecuteProcedureStep.cs" />
+    <Compile Include="Steps\EtlExecuteQueryOutputVariableSet.cs" />
+    <Compile Include="Steps\EtlExecuteQueryStep.cs" />
+    <Compile Include="Steps\EtlExportCsvFileStep.cs" />
+    <Compile Include="Steps\EtlFailStep.cs" />
+    <Compile Include="Steps\EtlFieldMapping.cs" />
+    <Compile Include="Steps\EtlFieldValidationRule.cs" />
+    <Compile Include="Steps\EtlFileInfo.cs" />
+    <Compile Include="Steps\EtlImportCsvFileStep.cs" />
+    <Compile Include="Steps\EtlImportDataLossBehavior.cs" />
+    <Compile Include="Steps\EtlImportFlatXmlFileStep.cs" />
+    <Compile Include="Steps\EtlImportQueryStep.cs" />
+    <Compile Include="Steps\EtlImportTableStep.cs" />
+    <Compile Include="Steps\EtlMappedDataReader.cs" />
+    <Compile Include="Steps\EtlProcedureParameter.cs" />
+    <Compile Include="Steps\EtlProcedureSourceInfo.cs" />
+    <Compile Include="Steps\EtlQueryParameter.cs" />
+    <Compile Include="Steps\EtlQuerySourceInfo.cs" />
+    <Compile Include="Steps\EtlEmailReceiveFilter.cs" />
+    <Compile Include="Steps\EtlRequestHeader.cs" />
+    <Compile Include="Steps\EtlResourceCredential.cs" />
+    <Compile Include="Steps\EtlResourceInfo.cs" />
+    <Compile Include="Steps\EtlTableInfo.cs" />
+    <Compile Include="Steps\EtlTimeSpan.cs" />
+    <Compile Include="Steps\EtlTimeSpanType.cs" />
+    <Compile Include="Steps\EtlUploadFileStep.cs" />
+    <Compile Include="Steps\EtlValidateCsvFileStep.cs" />
+    <Compile Include="Steps\EtlValidationErrorBehavior.cs" />
+    <Compile Include="Steps\EtlXmlFileInfo.cs" />
+    <Compile Include="DataSources\DB\MailDataSource.cs" />
+    <Compile Include="Steps\StepLoggerBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RapidSoft.Etl.Logging\RapidSoft.Etl.Logging.csproj">
+      <Project>{dc9a13a8-98a5-4460-b499-c8972944c764}</Project>
+      <Name>RapidSoft.Etl.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.VTB24.VtbEncryption\RapidSoft.VTB24.VtbEncryption.csproj">
+      <Project>{176c5b9a-c1a3-45eb-9dbc-42888a1ab09a}</Project>
+      <Name>RapidSoft.VTB24.VtbEncryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\S22.Imap\S22.Imap.csproj">
+      <Project>{369c32a5-e099-4bd5-bbbf-51713947ca99}</Project>
+      <Name>S22.Imap</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

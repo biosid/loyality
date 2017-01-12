@@ -1,0 +1,103 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+    <body>
+        @using (Html.BeginForm("SendNotifyOrderStatus", "Home"))
+        {
+            <div style="border: black 1px solid">
+                <div>
+                    <input name="Order1" type="checkbox" checked="checked"/>
+                    <label title="Идентификатор заказа в информационной системе поставщика">OrderId: 
+                        <input name="OrderId1" type="text" value="ORDER1"/></label>
+                    <label title="Числовой код статуса">StatusCode: 
+                        <input name="StatusCode1" type="text" value="40"/></label>
+                    <label title="Дата и время изменения статуса в информационной системе поставщика">StatusDateTime: 
+                        <input name="StatusDateTime1" type="text" value="2013-01-01T12:30:00.0"/></label>
+                    <label title="Причина изменения статуса">StatusReason: 
+                        <input name="StatusReason1" type="text" value=""/></label>
+                    <label title="Код статуса в информационной системе поставщика">InternalStatusCode: 
+                        <input name="InternalStatusCode1" type="text" value=""/></label>
+                </div>
+                <div>
+                    <input name="Order2" type="checkbox"/>
+                    <label title="Идентификатор заказа в информационной системе поставщика">OrderId: 
+                        <input name="OrderId2" type="text" value="ORDER2"/></label>
+                    <label title="Числовой код статуса">StatusCode: 
+                        <input name="StatusCode2" type="text" value="40"/></label>
+                    <label title="Дата и время изменения статуса в информационной системе поставщика">StatusDateTime: 
+                        <input name="StatusDateTime2" type="text" value="2013-01-01T12:30:00.0"/></label>
+                    <label title="Причина изменения статуса">StatusReason: 
+                        <input name="StatusReason2" type="text" value=""/></label>
+                    <label title="Код статуса в информационной системе поставщика">InternalStatusCode: 
+                        <input name="InternalStatusCode2" type="text" value=""/></label>
+                </div>
+                <div>
+                    <input name="Order3" type="checkbox"/>
+                    <label title="Идентификатор заказа в информационной системе поставщика">OrderId: 
+                        <input name="OrderId3" type="text" value="ORDER3"/></label>
+                    <label title="Числовой код статуса">StatusCode: 
+                        <input name="StatusCode3" type="text" value="40"/></label>
+                    <label title="Дата и время изменения статуса в информационной системе поставщика">StatusDateTime: 
+                        <input name="StatusDateTime3" type="text" value="2013-01-01T12:30:00.0"/></label>
+                    <label title="Причина изменения статуса">StatusReason: 
+                        <input name="StatusReason3" type="text" value=""/></label>
+                    <label title="Код статуса в информационной системе поставщика">InternalStatusCode: 
+                        <input name="InternalStatusCode3" type="text" value=""/></label>
+                </div>
+            </div>
+            <input type="submit" value="GO"/>
+            <div>
+                @if (this.ViewData["to"] != null)
+                {
+                    <div>
+                        <span>Send:</span>
+                        <pre>@this.ViewData["to"]</pre>
+                    </div>
+                }
+                <hr/>
+                @if (this.ViewData["from"] != null)
+                {
+                    <div>
+                        <span>From:</span>
+                        <pre>@this.ViewData["from"]</pre>
+                    </div>
+                }
+            </div>
+        }
+        <div>
+            @using (Html.BeginForm("CheckOrder", "Actions"))
+            {
+                <input type="submit" value="CheckOrder"/>
+            }
+            @using (Html.BeginForm("ConfirmOrder", "Actions"))
+            {
+                <input type="submit" value="ConfirmOrder"/>
+            }
+            @using (Html.BeginForm("BatchConfirmOrder", "Actions"))
+            {
+                <input type="submit" value="BatchConfirmOrder"/>
+            }
+        </div>
+        <hr/>
+        <div>
+            <h2>Генерация подписи</h2>
+            @using (Html.BeginForm("GenerateSignature", "Home"))
+            {
+                <textarea id="Input" name="Input" rows="20" cols="150"></textarea>
+                <input type="submit" value="GenerateSignature"/>
+            }
+            
+            @if (this.ViewData["Signature"] != null)
+            {
+                <div style="padding: 5px; margin: 5px; border: 1px black solid">
+                    @Html.Encode(this.ViewData["Signature"])
+                </div>
+            }
+        </div>
+    </body>
+</html>

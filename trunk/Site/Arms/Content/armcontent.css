@@ -1,0 +1,53 @@
+.stand-alone-autocomplete-results {}
+.stand-alone-autocomplete-results ul {list-style-type: none; padding: 1ex 0.9ex;}
+.stand-alone-autocomplete-results li {margin: 0.5ex 0;}
+
+.newstable {}
+.newstable .text-center {text-align: center !important;}
+.newstable input[type="radio"], .newstable input[type="checkbox"] {margin: 0px;}
+
+.hoveredrow td {background-color:#fffdf0 !important;}
+.checkedrow td {background-color:#fffce3 !important;}
+
+.newstable tbody>tr:nth-child(odd)>td, .newstable tbody>tr:nth-child(odd)>th {
+background-color: #fcfcfc;
+}
+.newstable input[type="checkbox"] {}
+
+.for-button
+{
+    padding: 0px; 
+    vertical-align: middle;
+    text-align: center !important;
+    
+}
+.for-button button
+{
+    margin: 0px !important;
+}
+.newstable .for-button button.status-activity
+{
+    width: 5em;
+}
+
+.right-fall .dropdown-menu
+{
+    width: 160px;
+    margin-right: -160px !important;
+    right: 0px !important;
+    left: auto !important;
+    top: 0px;
+    margin-top: 0px !important;
+    padding: 0px;
+    border: none;
+    box-shadow: none;
+    text-align: left !important;
+}
+.right-fall .dropdown-menu li
+{
+    margin: 0px !important;
+}
+.version-table td, .version-table th
+{
+    padding: 0.5ex 1ex;
+}

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B22CDC9-5DDA-4FBD-9EC1-2CDDCF960618}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Etl.Monitor</RootNamespace>
+    <AssemblyName>RapidSoft.Etl.Monitor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.1\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Newtonsoft.Json.4.5.11\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.WebApi.Client.4.0.30506.0\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.WebApi.Core.4.0.30506.0\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.Mvc.4.0.30506.0\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.Razor.2.0.30506.0\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.WebPages.2.0.30506.0\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.WebPages.2.0.30506.0\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.WebPages.2.0.30506.0\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Libs\Microsoft.AspNet.WebPages.2.0.30506.0\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agents\MultiEtlAgent.cs" />
+    <Compile Include="Agents\MultiEtlAgent_LogParser.cs" />
+    <Compile Include="Configuration\EtlAgentsCollection.cs" />
+    <Compile Include="Configuration\EtlAgentsCollectionElement.cs" />
+    <Compile Include="Configuration\EtlAgentsSection.cs" />
+    <Compile Include="Controllers\EtlPackageMonitorController.cs" />
+    <Compile Include="Controllers\EtlSessionListController.cs" />
+    <Compile Include="Controllers\EtlSessionViewController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\MvcExtensions.cs" />
+    <Compile Include="Models\DataType.cs" />
+    <Compile Include="Models\DataTypeValidationAttribute.cs" />
+    <Compile Include="Models\EtlPackageMonitorItem.cs" />
+    <Compile Include="Models\EtlPackageMonitorItemStatus.cs" />
+    <Compile Include="Models\EtlPackageMonitorItemStatuses.cs" />
+    <Compile Include="Models\EtlPackageMonitorModel.cs" />
+    <Compile Include="Models\EtlSessionListModel.cs" />
+    <Compile Include="Models\EtlSessionViewModel.cs" />
+    <Compile Include="Models\SiteConfiguration.cs" />
+    <Compile Include="PagedList\BasePagedList.cs" />
+    <Compile Include="PagedList\IPagedList.cs" />
+    <Compile Include="PagedList\Mvc\GoToFormRenderOptions.cs" />
+    <Compile Include="PagedList\Mvc\HtmlHelper.cs" />
+    <Compile Include="PagedList\Mvc\PagedListDisplayMode.cs" />
+    <Compile Include="PagedList\Mvc\PagedListRenderOptions.cs" />
+    <Compile Include="PagedList\PagedList.cs" />
+    <Compile Include="PagedList\PagedListExtensions.cs" />
+    <Compile Include="PagedList\PagedListMetaData.cs" />
+    <Compile Include="PagedList\StaticPagedList.cs" />
+    <Compile Include="Ping.svc.cs">
+      <DependentUpon>Ping.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Views\Shared\SharedStrings.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\images\add.png" />
+    <Content Include="Content\images\arrow_down.png" />
+    <Content Include="Content\images\box_bl.png" />
+    <Content Include="Content\images\box_br.png" />
+    <Content Include="Content\images\box_tl.png" />
+    <Content Include="Content\images\box_tr.png" />
+    <Content Include="Content\images\button.png" />
+    <Content Include="Content\images\button1.png" />
+    <Content Include="Content\images\button2.png" />
+    <Content Include="Content\images\button3.png" />
+    <Content Include="Content\images\button4.png" />
+    <Content Include="Content\images\button5.png" />
+    <Content Include="Content\images\button6.png" />
+    <Content Include="Content\images\cal.png" />
+    <Content Include="Content\images\calendar.png" />
+    <Content Include="Content\images\focus.png" />
+    <Content Include="Content\images\h3.png" />
+    <Content Include="Content\images\header.png" />
+    <Content Include="Content\images\header_r.png" />
+    <Content Include="Content\images\iadd.png" />
+    <Content Include="Content\images\iapply.gif" />
+    <Content Include="Content\images\icons.png" />
+    <Content Include="Content\images\idel.png" />
+    <Content Include="Content\images\info.png" />
+    <Content Include="Content\images\invalid.png" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_desc.png" />
+    <Content Include="Content\images\table2.png" />
+    <Content Include="Content\images\table2_th.png" />
+    <Content Include="Content\images\tabs.png" />
+    <Content Include="Content\images\trhover.gif" />
+    <Content Include="Content\images\valid.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_flat_0_eeeeee_40x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_flat_55_0000_40x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_flat_55_ffffff_40x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_highlight-soft_0_807f84_1x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_highlight-soft_100_f5f5f5_1x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_highlight-soft_5_ffffff_1x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_0073ea_256x240.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_666666_256x240.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_807f84_256x240.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui\jquery-ui-1.8.4.custom.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="DBScripts\EtlSqlScript.sql" />
+    <Content Include="DBScripts\InsertPackages.sql" />
+    <Content Include="DBScripts\UpdateParameters.sql" />
+    <Content Include="Global.asax" />
+    <Content Include="PagedList\PagedList.css" />
+    <Content Include="Ping.svc" />
+    <Content Include="Scripts\control-etlsessions.js" />
+    <Content Include="Web.config" />
+    <Content Include="PagedList\README.markdown" />
+    <None Include="Web.config-TEMPLATE" />
+    <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.4.custom.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.formatCurrency-1.4.0.min.js" />
+    <Content Include="Scripts\jquery.formatCurrency.ru-RU.js" />
+    <Content Include="Scripts\jquery.meio.mask.min.js" />
+    <Content Include="Scripts\jquery.query-2.1.7.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-ru.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\page-accountnumberrangeedit.js" />
+    <Content Include="Scripts\page-accountnumberrangeview.js" />
+    <Content Include="Scripts\page-import.js" />
+    <Content Include="Scripts\page-order-list.js" />
+    <Content Include="Scripts\page-providerbranchaddressedit.js" />
+    <Content Include="Scripts\page-providerbranchedit.js" />
+    <Content Include="Scripts\page-providerbranchview.js" />
+    <Content Include="Scripts\page-provideredit.js" />
+    <Content Include="Scripts\page-providerview.js" />
+    <Content Include="Scripts\page-tariffarticleruleedit.js" />
+    <Content Include="Scripts\page-tariffedit.js" />
+    <Content Include="Scripts\page-tarifflist.js" />
+    <Content Include="Views\EtlPackageMonitor\EtlPackageMonitor.aspx" />
+    <Content Include="Views\EtlSessionList\EtlSessionList.aspx" />
+    <Content Include="Views\EtlSessionView\EtlSessionView.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Site.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Views\Shared\SharedStrings.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RapidSoft.Etl.Logging\RapidSoft.Etl.Logging.csproj">
+      <Project>{105A3FD2-B66D-4B38-BB04-FCE7276CBF2A}</Project>
+      <Name>RapidSoft.Etl.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Etl.Runtime\RapidSoft.Etl.Runtime.csproj">
+      <Project>{3EA17C0F-862D-4346-830B-6478C1E30490}</Project>
+      <Name>RapidSoft.Etl.Runtime</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59378</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63941/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

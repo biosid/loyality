@@ -1,0 +1,224 @@
+﻿@using Vtb24.Common.Configuration
+@using Vtb24.Site.Models.Catalog
+@using Vtb24.Site.Services.Infrastructure
+@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@model ProductModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.WrapClass = "two-col2";
+    ViewBag.Title = Model.Title;
+    ViewBag.MainMenu = "Catalog";
+    ViewBag.SeoModelKeywords = Model.Keywords;
+
+    var hasPictures = Model.Pictures != null && Model.Pictures.Any();
+    var firstPicture = hasPictures ? Model.Pictures.First() : null;
+    
+    var tags = "";
+    if (Model.HasDiscount)
+    {
+        tags += " sale";
+    }
+    if (Model.IsNew)
+    {
+        tags += " new";
+    }
+}
+
+@Html.AddScriptBlock(
+    @<script>
+        require(['Catalog/product-image-gallery'], function (module) {
+            $(document).ready(function() {
+                module({ el: '#product-images', fancy: '.fancy_box', zoomer: '.zoomer' });
+            });
+        });
+        
+        function preload() {
+            var images = new Array();
+
+            for (var i = 0; i < arguments.length; i++) {
+                images[i] = new Image();
+                images[i].src = preload.arguments[i];
+            }
+        }
+        
+        @if (hasPictures)
+        {
+            <text>
+            preload(@Html.Raw(
+                string.Join(",", Model.Pictures.Select(p => string.Format("\"{0}\"", Url.ImageProcessor("product", p)))
+                                      .Concat(Model.Pictures.Select(p => string.Format("\"{0}\"", Url.ImageProcessor("product_thumb_list", p)))
+                                                   .ToArray()
+                                     )
+                    )
+                        ));
+            </text>
+        }
+        @if (Model.RecomendedProducts != null)
+        {
+            <text>
+            preload(@Html.Raw(
+                string.Join(",", Model.RecomendedProducts.Select(p => string.Format("\"{0}\"", Url.ImageProcessor("product_recommend_thumb", p.Thumbnail)))
+                                      .ToArray())));
+            </text>
+        }
+     </script>
+)
+
+@section secondary
+{
+    <div class="prod-container@(!Model.IsAvailible ? " no-available" : null)" id="product-images">
+        <div class="prod-card shdw@(tags)">
+@*            @if (hasPictures && Model.Pictures.Length > 1)
+            {
+                <button class="prev" data-x="Catalog/product-image-gallery/prev"></button>
+                <button class="next" data-x="Catalog/product-image-gallery/next"></button>
+            }*@
+            <div class="prod-img">
+                <div class="prod-img">
+                    <a class="fancy_box" href="@Url.ImageProcessor("product_fullsize", firstPicture)">
+                        <div>
+                            <span class="fancy_big_asimage" style="background-image: url('@Url.ImageProcessor("product", firstPicture)');" data-product="image"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @if(!Model.IsAvailible)
+            {
+                <div class="back-layer">
+                    <div class="table">
+                        <div class="cell">@Model.ProductNotification</div>
+                    </div>
+                </div>
+            }
+            @if(Model.HasDiscount)
+            {
+                if (Model.DiscountPercent.HasValue)
+                {
+                    <div class="product__discount-badge">
+                        @Model.DiscountPercent
+                    </div>
+                } 
+                else 
+                {
+                    <div class="product__discount-badge _with-percent"></div>
+                }
+            }
+            @if(Model.IsNew)
+            {
+                <div class="product__new-badge"></div>
+            }
+            @*<div class="tax-icn"></div>*@
+            <a class="zoomer" href="javascript:void(0);" data-product="zoom"></a>
+        </div>
+        @if(hasPictures && Model.Pictures.Length > 1)
+        {
+            <ul class="preview" data-product="gallery">
+                @foreach(var url in Model.Pictures)
+                {
+                    <li>
+                        <a href="@Url.ImageProcessor("product_fullsize", url)">
+                            <div style="background: url('/Content/images/gift60.png') center center no-repeat;">
+                                <span class="fancy_asimage" style="background-image: url('@Url.ImageProcessor("product_thumb_list", url)');" data-product="@Url.ImageProcessor("product", url)" data-product-fullsize="@Url.ImageProcessor("product_fullsize", url)"></span>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+    
+    @if (Model.RecomendedProducts != null)
+    {
+        <div class="see-also-container">
+            <h6>Заказывайте прямо сейчас</h6>
+            <ul class="preview">
+                @foreach (var product in Model.RecomendedProducts)
+                {
+                    <li>
+                        <a href="@Url.Action("Product", "Catalog", new { id = product.Id })">
+                            <div class="see-also-img">
+                                <span style="background-image:url('@Url.ImageProcessor("product_recommend_thumb", product.Thumbnail)');"> </span>
+                            </div>
+                            @if (product.Price.HasValue)
+                            {
+                                <div class="see-also-price">
+                                    <span class="see-also-price-value">@product.Price.Value.ToString("N0")</span>
+                                    <span class="see-also-price-text">@Html.Pluralize(product.Price.Value, "бонус", "бонуса", "бонусов")</span>
+                                </div>
+                            }
+                            <div class="see-also-product-name">@product.Title</div>
+                        </a>
+                        
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+}
+
+@Html.Partial("_BreadCrumbs", Model.BreadCrumbs)
+
+<div class="prod-descript">
+    <h2>@Model.Title</h2>
+    @if (Model.ViewsCount > 0)
+    {
+        <p class="product__views">
+            <b>@Model.ViewsCount</b><br/>
+            @Html.Pluralize(Model.ViewsCount, "просмотр", "просмотра", "просмотров")
+        </p>
+    }
+    <p class="vendor">@Model.Vendor</p>
+    <div>
+        @if(Model.HasDiscount)
+        {
+            <del class="product__old-price" style="margin-bottom:-12px;">@Model.PriceWithoutDiscount.ToString("N0")</del>
+        }
+        <p class="balls">@Html.RawPluralize(Model.Price, "<span>{1:N0}</span> бонус", "<span>{2:N0}</span> бонуса", "<span>{5:N0}</span> бонусов")</p>
+    </div>
+    @if (Model.PointsDeficit.HasValue)
+    {
+        <div class="no-enough">
+            <span class="table">
+                <span class="cell">
+                    <span class="text">@Html.RawPluralize(Model.PointsDeficit.Value, "Вам не хватает <span class=\"red\">{1:N0}</span> бонус.", "Вам не хватает <span class=\"red\">{2:N0}</span> бонуса.", "Вам не хватает <span class=\"red\">{5:N0}</span> бонусов.")</span>
+                </span>
+                <span class="cell">
+                    <span class="indicator-bg">
+                        <span class="indicator-fg" style="width: @Model.PointsProgress%"></span>
+                    </span>
+                </span>
+            </span>
+        </div>
+    }
+    @using (Html.BeginForm("Add", "Basket", FormMethod.Get, new { id = "product_form" }))
+    {
+        @Html.Hidden("id", Model.Id)
+        @Html.AntiForgeryToken()
+        <div class="to-basket">
+            <button type="@(Model.CanRedeem ? "submit" : "button")" class="@(Model.CanRedeem ? "" : "disabled")" @(Model.CanRedeem ? "" : " disabled='disabled'") data-x="client/activation_required"><span>Добавить в корзину</span></button>
+            <a class="wish-link" href="@Url.Action("Add", "WishList", new { id = Model.Id })" rel="nofollow">Мои желания</a>
+        </div>
+    }
+    @if (Model.Params != null && Model.Params.Any())
+    {
+        <ul class="disc-list">
+            @foreach (var param in Model.Params)
+            {
+                <li><span>@(!string.IsNullOrEmpty(param.Name) ? string.Format("{0}: ", param.Name) : "")@param.Value@(!string.IsNullOrEmpty(param.Unit) ? string.Format(" {0}", param.Unit) : "")</span></li>
+            }
+        </ul>
+    }
+    <div class="text shared__typography">
+        @if (FeaturesConfiguration.Instance.Site520Formatting)
+        {
+            @Html.SanitizeHtml(Model.Description, preset: HtmlSanitizerPresets.ProductInfo)
+
+        }
+        else
+        {
+            <p>@Model.Description</p>   
+        }
+    </div>
+</div>
+
+<div class="prod-descript-bg"></div>

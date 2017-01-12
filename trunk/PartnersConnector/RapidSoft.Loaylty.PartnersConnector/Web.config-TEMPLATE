@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<configuration>
+  <configSections>
+    <sectionGroup name="common">
+      <section name="logging" type="Common.Logging.ConfigurationSectionHandler, Common.Logging" />
+    </sectionGroup>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+    <section name="quartz" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0,Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  </configSections>
+
+  <common>
+    <logging>
+      <factoryAdapter type="Common.Logging.Log4Net.Log4NetLoggerFactoryAdapter, Common.Logging.Log4Net1211">
+        <arg key="configType" value="INLINE" />
+      </factoryAdapter>
+    </logging>
+  </common>
+
+  <log4net configSource="log4net.config" />
+
+  <connectionStrings>
+    <add name="Queue"
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"
+         providerName="System.Data.SqlClient" />
+    <add name="Litres"
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <system.web>
+    <compilation debug="true" targetFramework="4.5" />
+    <httpRuntime targetFramework="4.5" executionTimeout="600" maxRequestLength="102400" />
+  </system.web>
+
+  <system.webServer>
+    <security>
+      <requestFiltering>
+        <requestLimits maxAllowedContentLength="104857600" />
+      </requestFiltering>
+    </security>
+    <serverRuntime uploadReadAheadSize="104857600" />
+  </system.webServer>
+
+  <system.serviceModel>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true"
+                               multipleSiteBindingsEnabled="true" />
+    <bindings>
+      <basicHttpBinding>
+        <binding name="" maxReceivedMessageSize="1073741824"/>
+        <binding name="BasicHttpBinding_IOrderManagementServiceBinding" maxReceivedMessageSize="1073741824" sendTimeout="00:10:00"/>
+        <binding name="BasicHttpBinding_ICatalogAdminServiceBinding" maxReceivedMessageSize="1073741824" sendTimeout="00:03:00"/>
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="@PRODCATORDERMGMTURL@"
+                binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IOrderManagementServiceBinding"
+                contract="OrderManagementService.IOrderManagementService"
+                name="BasicHttpBinding_IOrderManagementService" />
+      <endpoint address="@CatalogAdminService@"
+                binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_ICatalogAdminServiceBinding"
+                contract="CatalogAdminService.ICatalogAdminService"
+                name="BasicHttpBinding_ICatalogAdminService" />
+      <endpoint address="@BonusGatewayUrl@"
+                binding="basicHttpBinding"
+                contract="BonusGateway.BonusGateway"
+                name="BasicHttpBinding_BonusGateway" />
+      <endpoint address="@PublicProfileWebApiUrl@"
+                binding="basicHttpBinding"
+                contract="PublicProfileWebApi.IPublicProfileWebApi"
+                name="BasicHttpBinding_IPublicProfileWebApi" />
+      <endpoint address="@SecurityTokenWebApiUrl@"
+                binding="basicHttpBinding"
+                contract="SecurityTokenWebApi.ISecurityTokenWebApi"
+                name="BasicHttpBinding_ISecurityTokenWebApi" />
+    </client>
+  </system.serviceModel>
+
+  <appSettings>
+    <add key="PartnersConnectorThumbprint" value="@PartnersConnectorThumbprint@"/>
+    <add key="VtbSystemUserName" value="vtbSystemUser" />
+    <add key="PartnersSettingsCacheTimeoutSec" value="30" />
+    <add key="PosId" value="@PosId@" />
+    <add key="TerminalId" value="@TerminalId@" />
+    <add key="MaxTaskRefire" value="2" />
+    <add key="RefireCountToMilisecFactor" value="500" />
+    <add key="BankPrivateKeyFile" value="@BankPrivateKeyFile@" />
+    <add key="GiftFilesPath" value="@GiftFilesPath@" />
+    <!-- Тип сериализации параметров методов web-сервисов. Поддерживаются значения "JSON" и "XML", если не указано то используется ToString метод. -->
+    <add key="ParamLogSerializer" value="JSON"/>
+    <!-- Настройки для партнера Литрес -->
+    <add key="LitresPartnerId" value="@LitresPartnerId@" />
+    <add key="LitresMinRemainingCodesCount" value="@LitresMinRemainingCodesCount@" />
+    <add key="LitresLowCodesCountWarningTo" value="@LitresLowCodesCountWarningTo@" />
+    <add key="LitresRemainingCodesCountReportTo" value="@LitresRemainingCodesCountReportTo@" />
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="PartnersConnector" />
+    <add key="LogSubsystemName" value="WebServices" />
+    <add key="EventLogSourceName" value="RapidSoft.Loyalty.PartnersConnector" />
+    <add key="LogsElasticSearchNodes" value="@elasticsearchCluster@" />
+  </appSettings>
+
+</configuration>

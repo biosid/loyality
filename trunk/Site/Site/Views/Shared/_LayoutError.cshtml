@@ -1,0 +1,85 @@
+﻿@using Vtb24.Site.Models.Layout
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- REQUEST UNIQUE IDENTIFIER: @Context.Items[Vtb24.Logging.Constants.HTTP_REQUEST_ID_ITEM] -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        
+        <title>@ViewBag.Title - ВТБ24 Коллекция</title>
+        
+        @Styles.Render("~/Content/themes/base/css")
+        @Styles.Render("~/Content/style")
+        
+        <!--[if lte IE 8]>
+            @Styles.Render("~/Content/ie")
+            @Scripts.Render("~/bundles/html5shiv")
+        <![endif]-->
+        
+        @Html.Partial("_GoogleAnalytics")
+    </head>
+    <body>
+        @Html.Partial("_GoogleTagManager")
+        @Html.Partial("_YandexMetrika")
+        <section class="wrap">
+
+            <header>
+                <div class="hdr">
+                    <div class="hdr-in clearfix">
+                        <a class="logo" href="/"></a>
+                        <a class="collection" href="/"></a>
+                        @Html.Partial("_HeaderSearch", new HeaderModel { SearchSiteInitial = false })
+                        <nav>
+                            <ul class="clearfix nav">
+                                <li class="item">
+                                    <a href="@Url.Action("Index", "Catalog")" class="flevel active">Каталог</a>
+                                </li>
+                                <li class="item">
+                                    <a href="javascript:void(0)" class="flevel">О программе</a>
+                                    <div class="sub-nav" style="display: none;">
+                                        <ul class="sub-nav-ul">   
+                                            <li>
+                                                <a href="/howitworks">Как программа работает</a>
+                                            </li>                                                                  
+                                            <li>
+                                                <a href="/faq">Вопросы и ответы</a>    
+                                            </li>                                   
+                                            <li>
+                                                <a href="/pravila">Правила</a>    
+                                            </li>
+                                            <li>
+                                                <a href="/partners">Партнеры программы</a>    
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                @Html.AddScriptBlock(
+                                    @<script>
+                                         require(['Shared/Header/header-dropdown-menu'], function (dropdown) {
+                                             dropdown();
+                                         });
+                                    </script>
+                                )
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+            <section class="main">
+                <section class="content clearfix">
+                    @RenderBody()
+                </section>
+            </section>
+
+        </section>
+
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+
+        @Scripts.Render("~/bundles/global")
+        @Html.RenderScripts()
+        @Html.Partial("_AdRiver")
+    </body>
+</html>

@@ -1,0 +1,17 @@
+﻿@model Vtb24.Arms.Catalog.Models.Shared.CategoriesLevelModel
+@using (Html.BeginForm("Move", "Gifts", FormMethod.Post, new { data_x = "gifts/move/modal", @class = "modal hide" }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4>Перенос вознаграждений в категорию</h4>
+    </div>
+    <div class="modal-body">
+        <ul class="rootCat tree-modal" data-x="gifts/move/categories">
+            @Html.Partial("_GiftsCategoriesLevel", Model)
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary pull-left" type="submit" disabled="disabled">Перенести</button>
+        <button class="btn" data-dismiss="modal">Отменить</button>
+    </div>
+}

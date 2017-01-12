@@ -1,0 +1,102 @@
+﻿@model Vtb24.Arms.Areas.Catalog.Models.Delivery.HistoryModel
+@{
+    ViewBag.Title = "История изменений привязок населенных пунктов";
+    ViewBag.MenuId = "delivery";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/Delivery/History/index'
+            ],
+            function (index) {
+                index();
+            });
+    </script>
+)
+
+<div class="tab-pane active">
+     @using (Html.BeginForm("History", "Delivery", FormMethod.Get, new {data_x = "catalog/delivery/history/query_form"}))
+     {
+         <div class="sticky-save">
+             <div class="navbar">
+                 <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                     <div class="row pad-left-20">
+                         <div class="span4">
+                             <select name="partnerId" class="input-block-level" data-x="catalog/delivery/history/partners_select">
+                                 @if (Model.Dropdown.Suppliers.Length > 0)
+                                 {
+                                     <optgroup label="Поставщики">
+                                         @foreach (var item in Model.Dropdown.Suppliers)
+                                         {
+                                             <option selected="@(item.IsSelected ? "selected" : null)" value="@item.Id">@item.Name</option>
+                                         }
+                                     </optgroup>
+                                 }
+                                 @if (Model.Dropdown.Carriers.Length > 0)
+                                 {
+                                     <optgroup label="Курьеры">
+                                         @foreach (var item in Model.Dropdown.Carriers)
+                                         {
+                                             <option selected="@(item.IsSelected ? "selected" : null)" value="@item.Id">@item.Name</option>
+                                         }
+                                     </optgroup>
+                                 }
+                             </select>                
+                         </div>
+                         <div>
+                             <a href="@Model.BackUrl" class="btn btn-primary pull-right">Назад</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     }
+    <div class="container">
+        @if (Model.BindingsHistory.Any())
+        {
+            <h4 class="font-normal">@Model.Title</h4>
+            <table class="table table-fix-affect table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-left">Дата изменения</th>
+                        <th>Населенный пункт</th>
+                        <th>КЛАДР старое значение</th>
+                        <th>КЛАДР новое значение</th>
+                        <th>Старый статус</th>
+                        <th>Новый статус</th>
+                        <th>Пользователь</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var history in Model.BindingsHistory)
+                    {
+                        <tr>
+                            <td>@history.DateTime</td>
+                            <td>@history.LocationName@(!string.IsNullOrEmpty(history.LocationId) ? string.Format(" ({0})", history.LocationId) : null)</td>
+                            <td>@history.OldKladrCode</td>
+                            <td>@history.NewKladrCode</td>
+                            <td>@Html.DescriptionFor(history.OldStatus)</td>
+                            <td>@Html.DescriptionFor(history.NewStatus)</td>
+                            <td>@history.UserId</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Нет сохраненных изменений привязок населенных пунктов</p>
+        }    
+
+        @if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.page ?? 1)
+        }
+    </div> 
+</div>
+

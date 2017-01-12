@@ -1,0 +1,165 @@
+﻿@using Vtb24.Arms.AdminSecurity.Models.Shared
+@using Vtb24.Arms.AdminServices.AdminSecurityService.Helpers
+@using Vtb24.Arms.AdminServices.AdminSecurityService.Models
+@model PermissionsEditModel
+
+@Html.AddScriptBlock(
+    @<script>
+         require(['AdminSecurity/Shared/permissions'], function (permissions) {
+             permissions();
+         });
+     </script>
+)
+
+@helper InheritedFromLabels(string[] from)
+{
+    if (from == null)
+    {
+        return;
+    }
+    foreach (var name in from)
+    {
+        <span class="label">@name</span>
+    }
+}
+
+@helper PermissionsScope(PermissionNode node, bool disabled)
+{
+    <div class="row">
+        <div class="span10" data-x="adminsecurity/shared/p_scope">
+            <h5>@node.Description</h5>
+        </div>
+    </div>
+    @ChildrenPermissions(node.Children, disabled)
+}
+@helper PermissionCheckbox(PermissionNode node, bool disabled)
+{
+    var isChecked = Model.Permissions != null && Model.Permissions.IsGranted(node.TargetKey);
+    var inheritedFrom = Model.InheritedPermissions != null
+                            ? Model.InheritedPermissions.WhereGranted(node.TargetKey).Select(s => s.Name).ToArray()
+                            : null;
+    var isInherited = inheritedFrom != null && inheritedFrom.Length > 0;
+
+    var checkedAttr = isChecked ? "checked" : null;
+    var disabledAttr = disabled ? "disabled" : null;
+    <div class="row">
+        <div class="span10" data-x="adminsecurity/shared/p_checkbox" data-permission-is-inherited="@(isInherited ? "true" : null)">
+            <label class="checkbox">
+                <input type="checkbox" name="@string.Format(PermissionsEditModel.PERMISSION_NAME_TEMPLATE, node.TargetKey)" value="true" @checkedAttr @disabledAttr/>
+                @if (isInherited)
+                {
+                    <span style="color: #AAA;">
+                        @node.Description
+                    </span>
+                }
+                else
+                {
+                    @node.Description
+                }
+                @InheritedFromLabels(inheritedFrom)
+            </label>
+        </div>
+    </div>
+    @ChildrenPermissions(node.Children, disabled || (!isChecked && !isInherited))
+}
+@helper PermissionList(PermissionNode node, bool disabled)
+{
+    var values = Model.Permissions != null
+                     ? Model.Permissions.GetGranted(node.TargetKey)
+                     : null;
+    var isWildcard = values != null && values.Length == 0;
+    var isGranted = isWildcard || (values != null && values.Length > 0);
+    var wildcardInheritedFrom = Model.InheritedPermissions != null
+                                    ? Model.InheritedPermissions.WhereWildcardGranted(node.TargetKey).Select(s => s.Name).ToArray()
+                                    : null;
+    var listItems = Model.Lists[node.TargetKey]
+        .Select(item => new
+        {
+            item.Id,
+            item.Name,
+            InheritedFrom = Model.InheritedPermissions != null
+                                ? Model.InheritedPermissions.WhereExplicitlyGranted(node.TargetKey, item.Id).Select(s => s.Name).ToArray()
+                                : null
+        })
+        .ToArray();
+    var isInherited = (wildcardInheritedFrom != null && wildcardInheritedFrom.Length > 0) ||
+                      listItems.Any(item => item.InheritedFrom != null && item.InheritedFrom.Length > 0);
+
+    var wildcardCheckedAttr = isWildcard ? "checked" : null;
+    var listCheckedAttr = !isWildcard ? "checked" : null;
+    var disabledAttr = disabled ? "disabled" : null;
+    var listDisabledAttr = disabled || isWildcard ? "disabled" : null;
+    <div class="row">
+        <div class="span10" data-x="adminsecurity/shared/p_list" data-permission-is-inherited="@(isInherited ? "true" : null)">
+            <div class="row">
+                <div class="span10">
+                    <label class="radio">
+                        <input type="radio" name="@string.Format(PermissionsEditModel.PERMISSION_NAME_TEMPLATE, node.TargetKey)" value="*" @wildcardCheckedAttr @disabledAttr/>
+                        @node.ListWildcardDescription
+                        @InheritedFromLabels(wildcardInheritedFrom)
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="@string.Format(PermissionsEditModel.PERMISSION_NAME_TEMPLATE, node.TargetKey)" @listCheckedAttr @disabledAttr/>
+                        @node.ListDescription
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10" style="padding-left: 20px; padding-bottom: 5px;">
+                    <select name="@string.Format(PermissionsEditModel.PERMISSION_NAME_TEMPLATE, node.TargetKey)" class="input-block-level" multiple @listDisabledAttr data-placeholder="@node.Description">
+                        @foreach (var item in listItems)
+                        {
+                            var inheritedFromLabels = Html.Encode(InheritedFromLabels(item.InheritedFrom));
+                            var isItemInherited = item.InheritedFrom != null && item.InheritedFrom.Length > 0;
+
+                            var selectedAttr = isItemInherited || (values != null && values.Contains(item.Id)) ? "selected" : null;
+                            
+                            <option value="@item.Id" @selectedAttr data-inherited-from-labels="@inheritedFromLabels" data-locked="@(isItemInherited ? "true" : "false")">@Html.Encode(item.Name)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    @ChildrenPermissions(node.Children, disabled || (!isGranted && !isInherited))
+}
+@helper ChildrenPermissions(PermissionNode[] nodes, bool disabled)
+{
+    if (nodes == null || nodes.Length <= 0)
+    {
+        return;
+    }
+    <div class="row">
+        <div class="span10" style="padding-left: 20px;" data-x="adminsecurity/shared/p_children">
+            @foreach (var node in nodes)
+            {
+                @PermissionsNode(node, disabled)
+            }
+        </div>
+    </div>
+}
+@helper PermissionsNode(PermissionNode node, bool disabled = false)
+{
+    <div class="row">
+        <div class="span10" data-x="adminsecurity/shared/p_container">
+            @switch (node.Type)
+            {
+                case PermissionsNodeTypes.Scope:
+                    @PermissionsScope(node, disabled)
+                    break;
+
+                case PermissionsNodeTypes.Checkbox:
+                    @PermissionCheckbox(node, disabled)
+                    break;
+                    
+                case PermissionsNodeTypes.List:
+                    @PermissionList(node, disabled)
+                    break;
+            }
+        </div>
+    </div>
+}
+@foreach (var node in Model.Nodes)
+{
+    @PermissionsNode(node)
+}

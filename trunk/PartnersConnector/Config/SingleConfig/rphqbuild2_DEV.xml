@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs\PartnersConnector</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Database settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBHOST@</string>
+          </Patterns>
+          <ReplaceTo>rphqbuild2</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- PartnersConnector -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PartnersConnectorThumbprint@</string>
+          </Patterns>
+          <ReplaceTo>89 6c f8 1b 28 bb 9d 8a 33 3c 76 56 b4 78 d2 65 e6 04 6a 88</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Импорт каталога ОЗОН -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@OzonLocalFileUrl@</string>
+          </Patterns>
+          <ReplaceTo>http://rphqbuild2:700/YmlFiles/vtb.xml</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@OzonImportChron@</string>
+          </Patterns>
+          <ReplaceTo>0 30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\rphqbuild2_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

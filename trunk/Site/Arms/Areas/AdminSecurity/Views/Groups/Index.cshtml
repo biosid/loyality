@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Группы";
+    ViewBag.MenuId = "groups";
+    Layout = "~/Areas/AdminSecurity/Views/Shared/_Layout.cshtml";
+}
+@model Vtb24.Arms.AdminSecurity.Models.Groups.GroupsModel
+@Html.AddScriptBlock(
+    @<script>
+         require(['AdminSecurity/Groups/index', 'AdminSecurity/Groups/delete'], function (index, del) {
+             index();
+             del({ url: '@Url.Action("Delete", "Groups")' });
+         });
+     </script>
+    )
+<div class="tab-pane active">
+    <div class="container">
+        @*
+        --------------------- Панель действий
+        *@
+        <div class="sticky-save" data-x="adminsecurity/groups/navbar">
+            <div class="navbar">
+                <div class="navbar-inner no-border pad-left-0">
+                    <div class="row">
+                        <div class="span12">
+                            <a class="btn btn-success mar-left-20 pull-left" href="@Url.Action("Create", "Groups", new { query = Url.ToQuery(Model.Query) })">
+                                <i class="icon-plus icon-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*
+        --------------------- Список групп
+        *@
+        @if (Model.Groups != null && Model.Groups.Length > 0)
+        {
+            <div class="row">
+                <div class="span12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 100%;" class="text-left">Название</th>
+                                <th>Пользователей</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var group in Model.Groups)
+                            {
+                                <tr data-adminsecurity-group-name="@group.Name">
+                                    <td><a href="@Url.Action("Edit", "Groups", new { name = group.Name, query = Url.ToQuery(Model.Query) })">@group.Name</a></td>
+                                    <td class="text-center">@group.UsersNumber</td>
+                                    <td>
+                                        @if (group.IsDeleteDenied)
+                                        {
+                                            <a class="btn remove disabled" style="cursor: help; opacity: 0.3;"><i class="icon-remove" title="@group.DenyDeleteReason"></i></a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn" href="#" data-x="adminsecurity/groups/delete"><i class="icon-remove"></i></a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row" style="min-height: 400px;">
+                <div class="span12">
+                    <h4 class="font-normal mar-left-10">
+                        Группы не найдены
+                    </h4>
+                </div>
+            </div>
+        }
+        @*
+        --------------------- Пэйджинг
+        *@
+        @if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+        }
+    </div>
+</div>
+@*
+--------------------- Удаление
+*@
+@Html.Partial("_Delete")

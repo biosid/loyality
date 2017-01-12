@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+<!--
+For more information on how to configure your ASP.NET application, please visit
+http://go.microsoft.com/fwlink/?LinkId=169433
+-->
+
+<configuration>
+
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+    <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration" />
+    <section name="activeDirectory" type="RapidSoft.VTB24.ArmSecurity.ActiveDirectoryConfigSection, RapidSoft.VTB24.ArmSecurity"/>
+  </configSections>
+
+  <system.web>
+    <compilation debug="true" targetFramework="4.5" />
+    <httpRuntime targetFramework="4.5" />
+  </system.web>
+
+  <appSettings configSource="appSettings.config" />
+
+  <connectionStrings configSource="bin\Configuration\connectionStrings.config" />
+
+  <log4net configSource="log4net.config" />
+
+  <unity configSource="bin\Configuration\unity.config" />
+
+  <activeDirectory>
+    <connection path="@ActiveDirectoryPath@" username="@ActiveDirectoryUserName@" password="@ActiveDirectoryPassword@" />
+  </activeDirectory>
+
+  <system.serviceModel>
+    <bindings configSource="bin\Configuration\bindings.config" />
+    <client configSource="bin\Configuration\endpoints.config" />
+    <extensions>
+      <behaviorExtensions>
+        <add name="wcf_endpoint_logger" type="RapidSoft.VTB24.BankConnector.EtlLogger.WcfEndpointLoggerExtension, RapidSoft.VTB24.BankConnector, Version=1.0.0.0, Culture=neutral" />
+      </behaviorExtensions>
+    </extensions>
+    <services>
+      <service name="RapidSoft.VTB24.BankConnector.Service.BankConnectorService">
+        <endpoint address="BankConnectorService" binding="basicHttpBinding"
+                  bindingConfiguration="" contract="RapidSoft.VTB24.BankConnector.API.IBankConnectorService" />
+        <endpoint address="mex" binding="mexHttpBinding" bindingConfiguration=""
+                  contract="IMetadataExchange" />
+      </service>
+      <service name="RapidSoft.VTB24.BankConnector.Service.AdminBankConnectorService">
+        <endpoint address="AdminBankConnectorService" binding="basicHttpBinding"
+                  bindingConfiguration="" contract="RapidSoft.VTB24.BankConnector.API.IAdminBankConnectorService" />
+        <endpoint address="mex" binding="mexHttpBinding" bindingConfiguration=""
+                  contract="IMetadataExchange" />
+      </service>
+      <service name="RapidSoft.VTB24.BankConnector.Service.PaymentService">
+        <endpoint address="PaymentService" binding="basicHttpBinding"
+                  bindingConfiguration="" contract="RapidSoft.VTB24.BankConnector.API.IPaymentService" />
+        <endpoint address="mex" binding="mexHttpBinding" bindingConfiguration=""
+                  contract="IMetadataExchange" />
+      </service>
+    </services>
+    <behaviors>
+      <endpointBehaviors>
+        <behavior name="withLogging">
+          <wcf_endpoint_logger />
+        </behavior>
+      </endpointBehaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true">
+      <serviceActivations>
+        <add factory="RapidSoft.VTB24.BankConnector.WebServices.WcfServiceFactory" relativeAddress="./BankConnectorService.svc" service="RapidSoft.VTB24.BankConnector.Service.BankConnectorService" />
+        <add factory="RapidSoft.VTB24.BankConnector.WebServices.WcfServiceFactory" relativeAddress="./AdminBankConnectorService.svc" service="RapidSoft.VTB24.BankConnector.Service.AdminBankConnectorService" />
+        <add factory="RapidSoft.VTB24.BankConnector.WebServices.WcfServiceFactory" relativeAddress="./PaymentService.svc" service="RapidSoft.VTB24.BankConnector.Service.PaymentService" />
+      </serviceActivations>
+    </serviceHostingEnvironment>
+  </system.serviceModel>
+
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Practices.Unity" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+
+</configuration>

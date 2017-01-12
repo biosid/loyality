@@ -1,0 +1,119 @@
+﻿@model Vtb24.Site.Models.Feedback.FeedbackModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Обратная связь";
+}
+
+@Html.AddScriptBlock(
+    @<script>
+        require(['Feedback/index', 'Shared/form.submit'], function (index, submit) {
+            // контроллер
+            index({
+                el: '#feedback-form', 
+                popup: '#popup',
+                isClient: @(Model.IsClient ? "true" : "false"),
+                captcha: {
+                    refreshButton: '.btn-capcha',
+                    image: '#captchaImage'
+                },
+                hasOrders: @(Model.Orders != null && Model.Orders.Any() ? "true" : "false" )
+            });
+            // отключение кнопки отправки
+            submit({ form: '#feedback-form' });
+        });
+    </script>
+)
+
+<div class="full-content shdw">
+    <div class="fc-padding">
+        @using (Html.BeginForm("Index", "Feedback", FormMethod.Post, new { @id = "feedback-form", autocomplete = "off" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="middle-line white">
+                <div class="ml-text"><span class="size28">Обратная связь</span></div>
+            </div>
+            @Html.ValidationSummary()
+            <div class="mar-bottom-3ex">
+                Все поля обязательны для заполнения
+            </div>
+            <div class="table form-order">
+                <ul class="reset row">
+                    <li class="cell">
+                        Ваше ФИО
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.Fio, Model.IsFioReadonly ? new { @readonly = true } : null)
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Тип сообщения
+                    </li>
+                    <li class="cell">
+                        @Html.EnumDropDownListFor(m => m.SelectedType, Model.Types)
+                    </li>
+                </ul>
+                @if (Model.Orders != null)
+                {
+                    <ul class="reset row" id="OrdersDropdown" style="display:none">
+                        <li class="cell">
+                            Заказ
+                        </li>
+                        <li class="cell">
+                            @Html.DropDownListFor(m => m.OrderId, Model.Orders, Model.Orders.Any() ? "Выберите заказ..." : "У вас нет оформленных заказов!")
+                        </li>
+                    </ul>
+                }
+                <ul class="reset row">
+                    <li class="cell">
+                        E-mail
+                    </li>
+                    <li class="cell">
+                        @Html.TextBoxFor(m => m.Email)
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Сообщение
+                    </li>
+                    <li class="cell textarea-wrapper">
+                        @Html.TextAreaFor(m => m.Text, new { rows=30, cols=10 })
+                    </li>
+                </ul>
+                @if (Model.ValidateCaptcha)
+                {
+                    <ul class="reset row">
+                        <li class="cell">
+                            Введите код с картинки
+                        </li>
+                        <li class="cell">
+                            <img src="@Url.CaptchaUrl(width: 72, height: 24)" width="72" height="24" id="captchaImage" />
+                            <input type="button" class="btn-capcha">
+                            @Html.TextBoxFor(x => x.Captcha, new { @class = "capcha", maxlength = "8" })
+                        </li>
+                    </ul>
+                }
+            </div>
+            <div class="button-wrap mnt40">
+                <button class="btn-blue large" type="submit" id="submit-button"><span>Отправить</span></button>
+            </div>
+        }
+    </div>
+</div>
+
+<div id="popup" style="display:none">
+    <div class="pup-ups">
+        <p>
+            После отключения Вы не сможете накапливать и тратить бонусы! Вы действительно хотите отключиться от программы «Коллекция»?
+        </p>
+        <div class="button-wrap mnt40">
+            <button type="button" class="btn-blue large" id="yes-button"><span>Да</span></button>
+            <button type="button" class="btn-blue large mnl16" id="no-button"><span>Нет</span></button>
+        </div>
+    </div>
+</div>

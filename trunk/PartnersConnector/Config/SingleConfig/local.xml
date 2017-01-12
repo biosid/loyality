@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ValidateRegExp>@(\w*)@</ValidateRegExp>
+  <GlobalConfigFileTransformations>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@logsRoot@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@loyaltyLogs@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@elasticsearchCluster@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:9200</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Database settings -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBHOST@</string>
+      </Patterns>
+      <ReplaceTo>RPHQBUILD1\MSSQLSERVER2008</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBNAME@</string>
+      </Patterns>
+      <ReplaceTo>PartnersConnectorDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBUSER@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBPASS@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBTIMEOUT@</string>
+      </Patterns>
+      <ReplaceTo>60</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- PartnersConnector -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@PartnersConnectorThumbprint@</string>
+      </Patterns>
+      <ReplaceTo>89 6c f8 1b 28 bb 9d 8a 33 3c 76 56 b4 78 d2 65 e6 04 6a 88</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@PosId@</string>
+      </Patterns>
+      <ReplaceTo>vtb_pos_1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@TerminalId@</string>
+      </Patterns>
+      <ReplaceTo>vtb_terminal_1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@BankPrivateKeyFile@</string>
+      </Patterns>
+      <ReplaceTo>bin\TestBankPrivateKey.pem</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Test partner config -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@NotifyOrderStatusURL@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:11396/NotifyOrderStatus.ashx</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@TestPartnerThumbprint@</string>
+      </Patterns>
+      <ReplaceTo>89 6c f8 1b 28 bb 9d 8a 33 3c 76 56 b4 78 d2 65 e6 04 6a 88</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Litres customization -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LitresPartnerId@</string>
+      </Patterns>
+      <ReplaceTo>0</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LitresMinRemainingCodesCount@</string>
+      </Patterns>
+      <ReplaceTo>5</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LitresLowCodesCountWarningTo@</string>
+      </Patterns>
+      <ReplaceTo>egor.goncharov@rapidsoft.ru</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LitresRemainingCodesCountReportTo@</string>
+      </Patterns>
+      <ReplaceTo>egor.goncharov@rapidsoft.ru</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Email settings -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpFrom@</string>
+      </Patterns>
+      <ReplaceTo>egor.goncharov@rapidsoft.ru</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpUserName@</string>
+      </Patterns>
+      <ReplaceTo>dummy</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpPassword@</string>
+      </Patterns>
+      <ReplaceTo>dummy</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpHost@</string>
+      </Patterns>
+      <ReplaceTo>example.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpPort@</string>
+      </Patterns>
+      <ReplaceTo>25</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpEnableSsl@</string>
+      </Patterns>
+      <ReplaceTo>true</ReplaceTo>
+    </ConfigFileTransformation>
+
+
+    <!-- Quartz jobs -->
+
+    <!-- Импорт каталога ОЗОН -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@OzonLocalFileUrl@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:500/YmlFiles/vtb.xml</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@OzonImportChron@</string>
+      </Patterns>
+      <ReplaceTo>0 0 0 1 1 ?</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Импорт каталога Холодильник.ру -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@HolodilnikPartnerId@</string>
+      </Patterns>
+      <ReplaceTo>103</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@HolodilnikRemoteUrl@</string>
+      </Patterns>
+      <ReplaceTo>http://front-41.holodilnik.ru/ozon_products/ozon_yml.xml</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@HolodilnikLocalUrl@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:500/YmlFiles/holodilnik.xml</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Удаление неиспользуемых картинок -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@GiftFilesPath@</string>
+      </Patterns>
+      <ReplaceTo>C:\Loyalty\uploads\Site\catalog\</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ClearDeletedGiftsFilesCron@</string>
+      </Patterns>
+      <ReplaceTo>0 0 1 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+
+  </GlobalConfigFileTransformations>
+
+  <ConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\App.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\bin\Quartz.Server.exe.config</string>
+        <string>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\bin\App.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\quartz.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\quartz.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\bin\quartz.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\log4net.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\bin\log4net.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Internal\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Internal\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Internal\quartz.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Internal\quartz.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector\log4net.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Internal\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Internal\log4net.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\AutoPatch\AutoPatch.exe.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\AutoPatch\AutoPatch.exe.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\DB_DROP_CREATE.cmd-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\DB_DROP_CREATE.cmd</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\Scripts\!DBCreate.sql-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\Scripts\!DBCreate.sql</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\quartz_jobs.xml-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\quartz_jobs.xml</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\bin\quartz_jobs.xml</string>
+      </WriteCopyTo>
+    </ConfigFile>
+  </ConfigFiles>
+
+  <DevConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.TestPartner\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.TestPartner\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Tests\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Tests\App.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Tests\quartz.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.Loaylty.PartnersConnector.Tests\quartz.config</NewFilePath>
+    </ConfigFile>
+  </DevConfigFiles>
+
+
+  <ExternalTransformationsFiles>
+    <ExternalTransformationsFile>
+      <FilePath>CommonConfiguration\local_endpoints.xml</FilePath>
+    </ExternalTransformationsFile>
+  </ExternalTransformationsFiles>
+
+</SingleConfig>

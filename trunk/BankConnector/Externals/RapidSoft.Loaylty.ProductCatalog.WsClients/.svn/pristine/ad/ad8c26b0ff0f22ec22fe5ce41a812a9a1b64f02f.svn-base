@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:8101/CatalogSearcherService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" />
+  <xs:complexType name="GetPublicSubCategoriesParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CalcTotalCount" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ClientContext" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="CountToSkip" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CountToTake" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IncludeParent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NestingLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ParentId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="Type" nillable="true" type="q2:ProductCategoryTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetPublicSubCategoriesParameters" nillable="true" type="tns:GetPublicSubCategoriesParameters" />
+  <xs:complexType name="GetCategoryInfoParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ClientContext" nillable="true" type="q3:ArrayOfKeyValueOfstringstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCategoryInfoParameters" nillable="true" type="tns:GetCategoryInfoParameters" />
+  <xs:complexType name="SearchPublicProductsParameters">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ClientContext" nillable="true" type="q4:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="CountToSkip" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CountToTake" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IncludeSubCategory" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsActionPrice" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaxPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MinInsertedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MinPrice" nillable="true" type="xs:decimal" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ParentCategories" nillable="true" type="q5:ArrayOfint" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PartnerIds" nillable="true" type="q6:ArrayOfint" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" minOccurs="0" name="ProductParams" nillable="true" type="q7:ArrayOfProductParam" />
+      <xs:element minOccurs="0" name="ReturnEmptyVendorProducts" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchTerm" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortType" nillable="true" type="tns:SortTypes" />
+      <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Vendors" nillable="true" type="q8:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchPublicProductsParameters" nillable="true" type="tns:SearchPublicProductsParameters" />
+  <xs:simpleType name="SortTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ByNameAsc" />
+      <xs:enumeration value="ByNameDesc" />
+      <xs:enumeration value="ByPriceAscByNameAsc" />
+      <xs:enumeration value="ByPriceDescByNameAsc" />
+      <xs:enumeration value="ByInsertedDateDescByNameAsc" />
+      <xs:enumeration value="ByPartnerProductIdAsc" />
+      <xs:enumeration value="ByPopularityDesc" />
+      <xs:enumeration value="Random" />
+      <xs:enumeration value="Recommended" />
+      <xs:enumeration value="RecommendedByPriceRange" />
+      <xs:enumeration value="RecommendedByCategory" />
+      <xs:enumeration value="ByDiscountDesc" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortTypes" nillable="true" type="tns:SortTypes" />
+  <xs:complexType name="GetProductByIdParameters">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ClientContext" nillable="true" type="q9:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegisterView" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetProductByIdParameters" nillable="true" type="tns:GetProductByIdParameters" />
+  <xs:complexType name="GetFilterMetaDataParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attribute" type="tns:ProductAttributes" />
+      <xs:element minOccurs="0" name="CategoryId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ClientContext" nillable="true" type="q10:ArrayOfKeyValueOfstringstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetFilterMetaDataParameters" nillable="true" type="tns:GetFilterMetaDataParameters" />
+  <xs:simpleType name="ProductAttributes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Vendor" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProductAttributes" nillable="true" type="tns:ProductAttributes" />
+  <xs:complexType name="CategoryProductParamsParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+      <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ClientContext" nillable="true" type="q11:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="ProductParams" nillable="true" type="tns:ArrayOfCategoryProductParamsParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryProductParamsParameters" nillable="true" type="tns:CategoryProductParamsParameters" />
+  <xs:complexType name="ArrayOfCategoryProductParamsParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryProductParamsParameter" nillable="true" type="tns:CategoryProductParamsParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategoryProductParamsParameter" nillable="true" type="tns:ArrayOfCategoryProductParamsParameter" />
+  <xs:complexType name="CategoryProductParamsParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryProductParamsParameter" nillable="true" type="tns:CategoryProductParamsParameter" />
+</xs:schema>

@@ -1,0 +1,749 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{50D4A8FD-6D52-48F2-BC61-36974C2D1997}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vtb24.Arms.AdminServices</RootNamespace>
+    <AssemblyName>Vtb24.Arms.AdminServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <OutputPath>bin\Staging\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|AnyCPU'">
+    <OutputPath>bin\LoadTesting\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.4.0.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="LINQtoCSV">
+      <HintPath>..\packages\LINQtoCSV.1.5.0.0\lib\net35\LINQtoCSV.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionsManagement\ActionsManagement.cs" />
+    <Compile Include="ActionsManagement\Actions\Actions.cs" />
+    <Compile Include="ActionsManagement\Actions\IActions.cs" />
+    <Compile Include="ActionsManagement\Actions\MappingsFromService.cs" />
+    <Compile Include="ActionsManagement\Actions\MappingsToService.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\Action.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\ActionsSortDirection.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\ActionStatus.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\ActionType.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\ActionApproveStatus.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\HistoryRecord.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\Outputs\ActionHistoryResult.cs" />
+    <Compile Include="ActionsManagement\Mechanics\MappingsToService.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Mechanics.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\Attribute.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\AttributeType.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\ConditionalFactor.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\Helpers\MetadataHelpers.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\Helpers\PredicateHelpers.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\JsonConstants.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\Mechanic.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\Inputs\ActionsSearchCriteria.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\ActionsSort.cs" />
+    <Compile Include="ActionsManagement\Actions\Models\Outputs\ActionsSearchResult.cs" />
+    <Compile Include="ActionsManagement\Mechanics\IMechanics.cs" />
+    <Compile Include="ActionsManagement\Mechanics\MappingsFromService.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\Metadata.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\Predicate.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\PredicateMappingException.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\PredicateOperation.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\PredicateOperator.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\PredicateUnion.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\PredicateUnionType.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\XmlConstants.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\Xml\ConditionalFactors.cs" />
+    <Compile Include="ActionsManagement\Mechanics\Models\Xml\Filter.cs" />
+    <Compile Include="ActionsManagement\Models\ActionConditionalFactorsException.cs" />
+    <Compile Include="ActionsManagement\Models\ActionPredicateException.cs" />
+    <Compile Include="ActionsManagement\Models\ActionsBaseRuleConflictException.cs" />
+    <Compile Include="AdminFeedback\AdminFeedbackService.cs" />
+    <Compile Include="AdminFeedback\Models\Exceptions\AdminFeedbackException.cs" />
+    <Compile Include="GiftShopManagement\Models\Exceptions\EntityNotFoundException.cs" />
+    <Compile Include="GiftShopManagement\Orders\IOrdersExport.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\Inputs\OrdersExportOptions.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderDeliveryContact.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderDeliveryPickupPoint.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderDeliveryType.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderExportItem.cs" />
+    <Compile Include="GiftShopManagement\Orders\OrdersExport.cs" />
+    <Compile Include="IAdminFeedbackService.cs" />
+    <Compile Include="AdminVtbBankConnector\MappingsFromService.cs" />
+    <Compile Include="AdminVtbBankConnector\Models\AdminVtbBankConnectorCustomFieldAlreadyExists.cs" />
+    <Compile Include="AdminVtbBankConnector\Models\AdminVtbBankConnectorPhoneNumberAlreadyUsed.cs" />
+    <Compile Include="AdminVtbBankConnector\Models\AdminVtbBankConnectorServiceException.cs" />
+    <Compile Include="ActionsManagement\Models\BaseActionConditionalFactorsWithTargetException.cs" />
+    <Compile Include="ActionsManagement\Models\BaseActionPredicateWithTargetException.cs" />
+    <Compile Include="ActionsManagement\Stubs\ActionsManagementStub.cs" />
+    <Compile Include="AdminSecurityService\AdminSecurityService.cs" />
+    <Compile Include="AdminSecurityService\Models\Internal\AdPermissionsSource.cs" />
+    <Compile Include="AdminSecurityService\Models\DictionaryPermissionsSource.cs" />
+    <Compile Include="AdminSecurityService\Models\Internal\EffectivePermissionsSource.cs" />
+    <Compile Include="AdminSecurityService\Helpers\DirectoryEntryExtensions.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecurityDirectoryServiceException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecurityGeneralException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecurityGroupExistsException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecurityGroupNotFoundException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecuritySelfDeleteException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecuritySelfEditException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecuritySetPasswordException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecurityUserExistsException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecurityUserNotFoundException.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\ResultCodes.cs" />
+    <Compile Include="AdminSecurityService\Models\AdminGroup.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AdminSecurityServiceException.cs" />
+    <Compile Include="AdminSecurityService\Models\AdminUser.cs" />
+    <Compile Include="AdminSecurityService\Models\Output\GetGroupsResult.cs" />
+    <Compile Include="AdminSecurityService\Models\Output\GetUsersResult.cs" />
+    <Compile Include="AdminSecurityService\IPermissionsSource.cs" />
+    <Compile Include="AdminSecurityService\Models\PermissionKeys.cs" />
+    <Compile Include="AdminSecurityService\Helpers\SearchResultExtensions.cs" />
+    <Compile Include="AdminSecurityService\Helpers\PermissionsSourceExtensions.cs" />
+    <Compile Include="AdminSecurityService\Models\PermissionNode.cs" />
+    <Compile Include="AdminVtbBankConnector\AdminVtbBankConnector.cs" />
+    <Compile Include="AdminVtbBankConnector\Models\AdminVtbBankConnectorUserNotFound.cs" />
+    <Compile Include="AdminVtbBankConnector\Models\CustomField.cs" />
+    <Compile Include="AdminVtbBankConnector\Stubs\AdminVtbBankConnectorStub.cs" />
+    <Compile Include="ClientOrdersManagement\ClientOrdersManagement.cs" />
+    <Compile Include="GiftShopManagement\Models\Exceptions\CatalogManagementServiceException.cs" />
+    <Compile Include="GiftShopManagement\Models\Exceptions\CategoryNameAlreadyExistsException.cs" />
+    <Compile Include="GiftShopManagement\Models\Exceptions\DeliveryLocationKladrAlreadyBindedException.cs" />
+    <Compile Include="GiftShopManagement\Models\Exceptions\EntityAlreadyExistsException.cs" />
+    <Compile Include="GiftShopManagement\Models\Exceptions\PartnerNameAlreadyExistsException.cs" />
+    <Compile Include="IClientOrdersManagement.cs" />
+    <Compile Include="Infrastructure\OrderHelpers.cs" />
+    <Compile Include="Infrastructure\ResponseErrorHelpers.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Catalog.cs" />
+    <Compile Include="ActionsManagement\Models\ActionsManagementServiceException.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Delivery.cs" />
+    <Compile Include="GiftShopManagement\Delivery\IDelivery.cs" />
+    <Compile Include="GiftShopManagement\Delivery\MappingsFromService.cs" />
+    <Compile Include="GiftShopManagement\Delivery\MappingsToService.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Models\Inputs\GetPartnerLocationsOptions.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Models\Outputs\PartnerLocationsBindingsResult.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Models\Outputs\PartnerLocationsHistoryResult.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Models\PartnerLocation.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Models\PartnerLocationHistory.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Models\PartnerLocationStatus.cs" />
+    <Compile Include="GiftShopManagement\ImportTasks\IImportTasks.cs" />
+    <Compile Include="GiftShopManagement\ImportTasks\ImportTasks.cs" />
+    <Compile Include="GiftShopManagement\ImportTasks\MappingsFromService.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Models\DeliveryRatesImportTask.cs" />
+    <Compile Include="GiftShopManagement\Delivery\Models\Outputs\DeliveryRatesImportTaskResult.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\CategoryBinding.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\CategoryPath.cs" />
+    <Compile Include="GiftShopManagement\Catalog\ICatalog.cs" />
+    <Compile Include="GiftShopManagement\Catalog\MappingsFromService.cs" />
+    <Compile Include="GiftShopManagement\Catalog\MappingsToService.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\Inputs\MoveCategoryOptions.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\Inputs\MoveOptions.cs" />
+    <Compile Include="GiftShopManagement\Orders\MappingsFromService.cs" />
+    <Compile Include="GiftShopManagement\Orders\MappingsToService.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderDeliveryAddress.cs" />
+    <Compile Include="GiftShopManagement\Orders\IOrders.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\Inputs\ChangeOrderStatusOptions.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\Inputs\OrdersSearchCriteria.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderDelivery.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderStatusHistoryField.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderItem.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderPaymentStatus.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderStatus.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\OrderStatusHistoryRecord.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\Outputs\OrdersSearchResult.cs" />
+    <Compile Include="GiftShopManagement\Orders\Models\Order.cs" />
+    <Compile Include="GiftShopManagement\Orders\Orders.cs" />
+    <Compile Include="GiftShopManagement\Partners\IPartners.cs" />
+    <Compile Include="GiftShopManagement\Partners\MappingsToService.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\Carrier.cs" />
+    <Compile Include="GiftShopManagement\Partners\MappingsFromService.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\CarrierInfo.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\Partner.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\PartnerInfo.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\Supplier.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\SupplierInfo.cs" />
+    <Compile Include="GiftShopManagement\Partners\Partners.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\PartnerStatus.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\SupplierTrustLevel.cs" />
+    <Compile Include="GiftShopManagement\Partners\Models\SupplierType.cs" />
+    <Compile Include="GiftShopManagement\Products\IProducts.cs" />
+    <Compile Include="GiftShopManagement\Products\MappingsFromService.cs" />
+    <Compile Include="GiftShopManagement\Products\MappingsToService.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\Inputs\ActivateProductsOptions.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\Inputs\ModerateProductsOptions.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\Inputs\MoveProductsOptions.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\Inputs\ProductsSearchCriteria.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\Inputs\RecommendProductsOptions.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\Inputs\SetProductsSegmentsOptions.cs" />
+    <Compile Include="GiftShopManagement\ImportTasks\Models\Outputs\ProductImportTaskResult.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\Outputs\ProductsSearchResult.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\Product.cs" />
+    <Compile Include="GiftShopManagement\ImportTasks\Models\ProductImportTask.cs" />
+    <Compile Include="GiftShopManagement\ImportTasks\Models\ImportTaskStatus.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\ProductModerationStatus.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\ProductsSort.cs" />
+    <Compile Include="GiftShopManagement\Products\Models\ProductStatus.cs" />
+    <Compile Include="GiftShopManagement\Products\Products.cs" />
+    <Compile Include="IActionsManagement.cs" />
+    <Compile Include="IAdminSecurityService.cs" />
+    <Compile Include="IAdminVtbBankConnector.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\PermissionElement.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\PermissionItemElement.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\PermissionItemsCollection.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\PermissionNodeElement.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\PermissionNodesCollection.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\PermissionsCollection.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\AdminSecurityConfigSection.cs" />
+    <Compile Include="AdminSecurityService\Models\PermissionsNodeTypes.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\PermissionValueElement.cs" />
+    <Compile Include="Infrastructure\AdminSecurityConfiguration\PermissionValuesCollection.cs" />
+    <Compile Include="Infrastructure\AppSettingsHelper.cs" />
+    <Compile Include="Infrastructure\MaybeLinqExtensions.cs" />
+    <Compile Include="Infrastructure\ObjectExtensions.cs" />
+    <Compile Include="Infrastructure\PartnerSettingsConfiguration\PartnerSettingsCollection.cs" />
+    <Compile Include="Infrastructure\PartnerSettingsConfiguration\PartnerSettingsConfigSection.cs" />
+    <Compile Include="Infrastructure\PartnerSettingsConfiguration\PartnerSettingsElement.cs" />
+    <Compile Include="Infrastructure\PartnerSettingsConfiguration\PartnerSettingType.cs" />
+    <Compile Include="ITargetingManagement.cs" />
+    <Compile Include="AdminSecurityService\Exceptions\AccessDeniedException.cs" />
+    <Compile Include="Models\ComponentException.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\Category.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\CategoryStatus.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\CategoryType.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\Inputs\CreateCategoryOptions.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\Inputs\GetCategoriesFilter.cs" />
+    <Compile Include="IGiftShopManagement.cs" />
+    <Compile Include="Models\PagedResult.cs" />
+    <Compile Include="Models\PagingSettings.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\Inputs\UpdateCategoryOptions.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\Outputs\ChangeCategoriesStatusResult.cs" />
+    <Compile Include="GiftShopManagement\Catalog\Models\Outputs\GetCategoriesResult.cs" />
+    <Compile Include="GiftShopManagement\GiftShopManagement.cs" />
+    <Compile Include="GiftShopManagement\Stubs\Data.cs" />
+    <Compile Include="GiftShopManagement\Stubs\GiftShopManagementStub.cs" />
+    <Compile Include="Models\ServiceException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ISecurityManagement.cs" />
+    <Compile Include="SecurityManagement\Models\ClientProfileStatus.cs" />
+    <Compile Include="SecurityManagement\Models\Exceptions\SecurityManagementException.cs" />
+    <Compile Include="SecurityManagement\SecurityManagement.cs" />
+    <Compile Include="SecurityManagement\Models\Client.cs" />
+    <Compile Include="Service References\AdminBankConnectorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AdminFeedbackServiceEndpoint\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AdminMechanicsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CatalogAdminService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FeedbackEmailNotificationQueueService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TargetAudienceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="TargetingManagement\MappingsFromService.cs" />
+    <Compile Include="TargetingManagement\Models\Segment.cs" />
+    <Compile Include="TargetingManagement\Models\TargetingManagementServiceException.cs" />
+    <Compile Include="TargetingManagement\Stubs\TargetingManagementStub.cs" />
+    <Compile Include="TargetingManagement\TargetingManagement.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService.wsdl" />
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService1.wsdl" />
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.AppendProfileCustomFieldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.EchoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.GenericBankConnectorResponseOfArrayOfClientProfileCustomFieldGVwQv096.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.GenericBankConnectorResponseOfint.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.GetAllProfileCustomFieldsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.RemoveProfileCustomFieldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.RenameProfileCustomFieldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.SimpleBankConnectorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.UpdateClientEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminBankConnectorService\Vtb24.Arms.AdminServices.AdminBankConnectorService.UpdateClientPhoneNumberResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\AdminFeedbackService.wsdl" />
+    <None Include="Service References\AdminFeedbackServiceEndpoint\AdminFeedbackService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\AdminFeedbackService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\AdminFeedbackService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\AdminFeedbackService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\AdminFeedbackService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\AdminFeedbackService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\Vtb24.Arms.AdminServices.AdminFeedbackServiceEndpoint.AdminGetThreadsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\Vtb24.Arms.AdminServices.AdminFeedbackServiceEndpoint.ChangeAnsweredStatusResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\Vtb24.Arms.AdminServices.AdminFeedbackServiceEndpoint.GetThreadByIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\Vtb24.Arms.AdminServices.AdminFeedbackServiceEndpoint.GetThreadMessagesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\Vtb24.Arms.AdminServices.AdminFeedbackServiceEndpoint.ReplyResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService.wsdl" />
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\Vtb24.Arms.AdminServices.AdminMechanicsService.GetMetadataByDomainIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\Vtb24.Arms.AdminServices.AdminMechanicsService.GetRuleHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\Vtb24.Arms.AdminServices.AdminMechanicsService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\Vtb24.Arms.AdminServices.AdminMechanicsService.RuleDomainResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\Vtb24.Arms.AdminServices.AdminMechanicsService.RuleDomainsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\Vtb24.Arms.AdminServices.AdminMechanicsService.RuleResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\Vtb24.Arms.AdminServices.AdminMechanicsService.RulesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService.wsdl" />
+    <None Include="Service References\CatalogAdminService\CatalogAdminService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.AdminGetProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.ChangeOrdersStatusesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.CreateCategoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.CreatePartnerProductCategoryLinkResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.CreatePartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.CreateProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.DeliveryLocationHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.DeliveryLocationsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetCategoriesPermissionsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetDeliveryRateImportTasksHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetOrderStatusesHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetPartnerByIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetPartnerInfoByIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetPartnerProductCategoryLinksResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetPartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetPartnersInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetProductCatalogImportTasksHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.GetSubCategoriesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.ImportDeliveryRatesFromHttpResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.ImportProductsFromYmlResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.PartnerCommitOrdersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.PartnersSettignsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.SearchOrdersResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.SearchProductsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.UpdateCategoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.AdminServices.CatalogAdminService.UpdatePartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.Services.CatalogAdminService.ChangeCategoriesStatusResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.Services.CatalogAdminService.ChangeProductStatusResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.Services.CatalogAdminService.ImportProductsFromYAMLResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CatalogAdminService\Vtb24.Arms.Services.CatalogAdminService.SearchPartnerResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\FeedbackEmailNotificationQueueService1.wsdl" />
+    <None Include="Service References\FeedbackEmailNotificationQueueService\FeedbackEmailNotificationQueueService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\FeedbackEmailNotificationQueueService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\FeedbackEmailNotificationQueueService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\FeedbackEmailNotificationQueueService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\FeedbackEmailNotificationQueueService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\Vtb24.Arms.AdminServices.FeedbackEmailNotificationQueueService.GetMessagesToNotifyResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\Vtb24.Arms.AdminServices.FeedbackEmailNotificationQueueService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.wsdl" />
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Arms.AdminServices.TargetAudienceService.AssignClientAudienceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Arms.AdminServices.TargetAudienceService.GetClientTargetAudiencesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Arms.AdminServices.TargetAudienceService.GetTargetAudiencesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Arms.AdminServices.TargetAudienceService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\Vtb24.Arms.AdminServices.TargetAudienceService.Version.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdminBankConnectorService\" />
+    <WCFMetadataStorage Include="Service References\AdminFeedbackServiceEndpoint\" />
+    <WCFMetadataStorage Include="Service References\AdminMechanicsService\" />
+    <WCFMetadataStorage Include="Service References\CatalogAdminService\" />
+    <WCFMetadataStorage Include="Service References\FeedbackEmailNotificationQueueService\" />
+    <WCFMetadataStorage Include="Service References\TargetAudienceService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdminService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdminService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdminService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminMechanicsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminMechanicsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminMechanicsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{9EB5135E-C8CF-480C-B2E1-BEF4D06A04F7}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{2059E012-64BB-4E1F-ABAF-C4E2EB0A5F81}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\AdminBankConnectorService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminBankConnectorService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\FeedbackEmailNotificationQueueService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FeedbackEmailNotificationQueueService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminFeedbackServiceEndpoint\AdminFeedbackService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CatalogAdminService\CatalogAdminService.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

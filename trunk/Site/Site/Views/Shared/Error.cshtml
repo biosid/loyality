@@ -1,0 +1,74 @@
+﻿@using Vtb24.Logging
+@model HandleErrorInfo
+@{
+    Layout = "~/Views/Shared/_LayoutError.cshtml";
+    ViewBag.Title = "Ошибка сервера";
+    
+    bool detailsForRemote;
+    bool.TryParse(System.Configuration.ConfigurationManager.AppSettings["show_error_for_remote"], out detailsForRemote);
+}
+<div class="full-content shdw">
+    <div class="fc-padding">
+        <div class="middle-line white">
+            <div class="ml-text">
+                <span class="size28">Ошибка сервера</span>
+            </div>
+        </div>
+        @if (Request.IsLocal || detailsForRemote)
+        {
+            <div>
+                @if (Model != null)
+                {
+                    <h4>Controller:</h4>
+                    <b>@Model.ControllerName</b>
+                    <h4>Action:</h4>
+                    <b>@Model.ActionName</b>
+                    <h4>Request unique identifier:</h4>
+                    <b>@Context.Items[Constants.HTTP_REQUEST_ID_ITEM]</b>
+                    <h4>Message:</h4>
+                    <b>@Model.Exception.Message</b>
+
+                    var errorSource = Model.Exception.GetErrorSource();
+                    if (errorSource != null)
+                    {
+                        <h4>Source:</h4>
+                        <b>@errorSource.FileName</b>
+                        <div style="overflow: auto; border: 1px solid #000;">
+                            <pre style="font-family: monospace;">@string.Join("\n", errorSource.PreErrorLines)<br/><span style="color: red; font-weight: bold;">@errorSource.ErrorLine</span><br/>@string.Join("\n", @errorSource.PostErrorLines)</pre>
+                        </div>
+                    }
+
+                    <h4>Stack trace:</h4>
+                    <div style="overflow: auto; border: 1px solid #000;">
+                        <pre style="font-family: monospace;">@Model.Exception.Format()</pre>
+                    </div>
+                }
+                else
+                {
+                    <p>Exception was 'null'</p>
+                }
+            </div>
+        }
+        else
+        {
+            <p>
+                Извините, на нашем сервере произошла внутренняя ошибка.<br/>
+                Попробуйте повторить свой запрос еще раз, или перейти на <a href="/">главную страницу</a>.
+            </p>
+            <div class="space280"></div>
+        }
+    </div>
+</div>
+@Html.AddScriptBlock(
+    @<script>
+         // обработка обшибок в iframe
+         $(function() {
+             if (window.parent) {
+                 var container = window.parent.document.getElementsByClassName("full-content");
+                 if (container && container.length) {
+                     container[0].innerHTML = $('.full-content').html();
+                 }
+             }
+         });
+     </script>
+)

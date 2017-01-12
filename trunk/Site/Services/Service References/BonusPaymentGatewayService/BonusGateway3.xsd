@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loyalty.BonusGateway.API.Entity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loyalty.BonusGateway.API.Entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.62.169:19120/BonusGateway.svc?xsd=xsd2" namespace="RapidSoft.Loyalty.BonusGateway" />
+  <xs:complexType name="ArrayOfAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Account" nillable="true" type="tns:Account" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccount" nillable="true" type="tns:ArrayOfAccount" />
+  <xs:complexType name="Account">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountId" type="xs:long" />
+      <xs:element minOccurs="0" name="AuthLimit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Balance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IsPrimary" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Account" nillable="true" type="tns:Account" />
+  <xs:complexType name="ChequeDiscountInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChequeDiscount" nillable="true" type="xs:decimal" />
+      <xs:element xmlns:q1="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="CustomFields" nillable="true" type="q1:ArrayOfAdditionalField" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfChequeItemDiscountInfo" />
+      <xs:element minOccurs="0" name="MinSum" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChequeDiscountInfo" nillable="true" type="tns:ChequeDiscountInfo" />
+  <xs:complexType name="ArrayOfChequeItemDiscountInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChequeItemDiscountInfo" nillable="true" type="tns:ChequeItemDiscountInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChequeItemDiscountInfo" nillable="true" type="tns:ArrayOfChequeItemDiscountInfo" />
+  <xs:complexType name="ChequeItemDiscountInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArticleId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="CustomFields" nillable="true" type="q2:ArrayOfAdditionalField" />
+      <xs:element minOccurs="0" name="Discount" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChequeItemDiscountInfo" nillable="true" type="tns:ChequeItemDiscountInfo" />
+</xs:schema>

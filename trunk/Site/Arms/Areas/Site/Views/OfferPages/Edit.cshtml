@@ -1,0 +1,150 @@
+﻿@model Vtb24.Arms.Site.Models.Pages.OfferPageEditModel
+@{
+    ViewBag.Title = Model.IsNewPage ? "Создание оферты" : "Редактирование оферты";
+    ViewBag.MenuId = "offers";
+    Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
+}
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Content/OfferPages/Edit/index'
+            ],
+            function (index) {
+                index();
+            });
+    </script>
+)
+<div class="tab-pane active">
+    <div class="container">
+        @using (Html.BeginForm(Model.IsNewPage ? "Create" : "Edit", "OfferPages", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.IsNewPage)
+            @Html.HiddenFor(m => m.Query)
+            <div class="just-sticky toview" style="width: 940px; height: 40px; padding-bottom: 1em;">
+                <div class="navbar row mar-left-0">
+                    <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                        <div class="row mar-left-0">
+                            <div class="pull-right mar-right-20">
+                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                                <a href="@Url.Action("List", "OfferPages", Model.QueryModel)" class="btn">Отмена</a>
+                            </div>
+                            @if (!Model.IsNewPage && Model.CurrentVersionId != Model.ThisVersionId)
+                            {
+                                <div class="pull-right mar-top-5">
+                                    <div class="line-height-30 mar-right-20 text-right">Вы редактируете не последнюю версию оферты.</div>
+                                </div>
+                            }
+                            <div class="pull-right mar-top-5 none">
+                                <div class="line-height-30 mar-right-20 text-right">Есть несохраненные изменения.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mar-right--20">
+                <div class="span3 line-height-30 field-title" data-title="Партнер, к которому относится данная оферта">Партнер</div>
+                <div class="span8">
+                    @if (Model.IsNewPage)
+                    {
+                        @Html.DropDownListFor(m => m.PartnerId, Model.Partners)
+                        @Html.ValidationMessageFor(m => m.PartnerId)
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.PartnerId)
+                        @Model.PartnerName
+                    }
+                </div>
+            </div>            
+            <div class="row mar-right--20">
+                <div class="span3 line-height-30 field-title" data-title="Адрес страницы от корня домена">Ссылка</div>
+                <div class="span8">
+                    @Html.TextBoxFor(m => m.Data.Url, new { @class = "input-block-level", maxlength = "256" })
+                    @Html.ValidationMessageFor(m => m.Data.Url)
+                </div>
+            </div>
+            <div class="row mar-right--20">
+                <div class="span3 line-height-30 field-title" data-title="&lt;title/&gt;">Заголовок</div>
+                <div class="span8">
+                    @Html.TextBoxFor(m => m.Data.Title, new { @class = "input-block-level", maxlength = "256" })
+                    @Html.ValidationMessageFor(m => m.Data.Title)
+                </div>
+            </div>
+            <div class="row mar-right--20 clear-left">
+                <div class="span3 line-height-30 field-title" data-title="&lt;meta name='keywords'/&gt;">Ключевые слова</div>
+                <div class="span8">
+                    @Html.TextBoxFor(m => m.Data.Keywords, new { @class = "input-block-level", maxlength = "1024" })
+                    @Html.ValidationMessageFor(m => m.Data.Keywords)
+                </div>
+            </div>
+            <div class="row mar-right--20 clear-left">
+                <div class="span3 line-height-30 field-title" data-title="&lt;meta name='description'/&gt;">Описание страницы</div>
+                <div class="span8">
+                    @Html.TextAreaFor(m => m.Data.Description, new { @class = "input-block-level mar-right-20" })
+                    @Html.ValidationMessageFor(m => m.Data.Description)
+                </div>
+            </div>
+
+            @Html.HiddenFor(m => m.Data.Layout)
+            <div class="row mar-left-0"><div class="span4">Содержимое:</div></div>
+            <div class="row mar-right--20 clear-left mar-top-5">
+                <div class="span11">
+                    @Html.TextAreaFor(m => m.Data.Content, new { @class = "input-block-level", data_x = "content/offerpages/edit/cm_area", data_required = "Необходимо ввести содержимое" })
+                    @Html.ValidationMessageFor(m => m.Data.Content)
+                </div>
+            </div>
+            <div class="row mar-left-0"><div class="span4">Скрипты:</div></div>
+            <div class="row mar-right--20 clear-left mar-top-5">
+                <div class="span11">
+                    @Html.TextAreaFor(m => m.Data.Script, new { @class = "input-block-level", data_x = "content/offerpages/edit/cm_area" })
+                    @Html.ValidationMessageFor(m => m.Data.Script)
+                </div>
+            </div>
+            
+            if (!Model.IsNewPage && Model.Versions.Any())
+            {
+                <div class="row mar-left-0"><div class="span4">История изменений:</div></div>
+                <div class="row clear-left mar-top-5">
+                    <table class="span12 table-bordered table-striped width-full version-table mar-bottom-1em">
+                        <thead>
+                            <tr>
+                                <th style="width: 1px;"></th>
+                                <th style="width: 10em !important;">Дата</th>
+                                <th class="text-left" style="width: auto;">Автор изменений</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var index in Enumerable.Range(0, Model.Versions.Length))
+                            {
+                                var version = Model.Versions[index];
+                                <tr>
+                                    <td>
+                                        <a href="@(SitePagesHelper.SiteRoot + Html.SitePageVersionPreviewUrl(version.Id))" target="_blank" class="btn"><i class="icon-eye-open"></i></a>
+                                    </td>
+                                    <td class="text-center">
+                                        @if (Model.ThisVersionId != version.Id)
+                                        {
+                                            <a href="@Url.Action("Edit", "OfferPages", new { partnerId = Model.PartnerId, versionId = version.Id, query = Model.Query })">@version.When</a>
+                                        }
+                                        else
+                                        {
+                                            @version.When
+                                        }
+                                        @Html.HiddenFor(m => m.Versions[index].Id)
+                                        @Html.HiddenFor(m => m.Versions[index].When)
+                                    </td>
+                                    <td>
+                                        @version.Author
+                                        @Html.HiddenFor(m => m.Versions[index].Author)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        }
+    </div>
+</div>

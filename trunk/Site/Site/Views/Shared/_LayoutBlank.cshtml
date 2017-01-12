@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- REQUEST UNIQUE IDENTIFIER: @Context.Items[Vtb24.Logging.Constants.HTTP_REQUEST_ID_ITEM] -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        
+        @if (!string.IsNullOrEmpty(ViewBag.SeoKeywords))
+        {
+            <meta name="keywords" content="@ViewBag.SeoKeywords"/>
+        }
+        @if (!string.IsNullOrEmpty(ViewBag.SeoDescription))
+        {
+            <meta name="description" content="@ViewBag.SeoDescription"/>
+        }
+
+        <title>@(string.IsNullOrEmpty(ViewBag.SeoTitle) ? ViewBag.Title : ViewBag.SeoTitle) - ВТБ24 Коллекция</title>
+        
+        @Styles.Render("~/Content/themes/base/css")
+        @Styles.Render("~/Content/style")
+        
+        <!--[if lte IE 8]>
+            @Styles.Render("~/Content/ie")
+            @Scripts.Render("~/bundles/html5shiv")
+        <![endif]-->
+        
+        @Html.Partial("_GoogleAnalytics")
+    </head>
+    <body class="@ViewBag.BodyClass">
+        @Html.Partial("_GoogleTagManager")
+        @Html.Partial("_YandexMetrika")
+        @Html.AntiForgeryToken()
+        @RenderBody()
+        
+        @Html.Partial("_Popup")
+
+        @Scripts.Render("~/bundles/global")
+        @Html.RenderScripts()
+        @Html.Partial("_AdRiver")
+    </body>
+</html>

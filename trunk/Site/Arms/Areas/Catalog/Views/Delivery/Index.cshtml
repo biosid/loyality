@@ -1,0 +1,161 @@
+﻿@using Vtb24.Arms.Areas.Catalog.Models.Delivery
+@model Vtb24.Arms.Catalog.Models.Delivery.DeliveryModel
+@{
+    ViewBag.Title = "Доставка";
+    ViewBag.MenuId = "delivery";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/Delivery/index',
+                'Catalog/Delivery/update-binding'
+            ],
+            function (index, updateBinding) {
+                index();
+                updateBinding({
+                    resetUrl: '@Url.Action("ResetBinding", "Delivery")',
+                    locationByKladrUrl: '@Url.Action("GetLocationByKladrCode", "Delivery")',
+                    locationSearchUrl: '@Url.Action("Search", "Delivery")'
+                });
+            });
+    </script>
+)
+
+<div class="tab-pane active">
+    @using (Html.BeginForm("List", "Delivery", FormMethod.Get, new { data_x = "catalog/delivery/query_form" }))
+    {
+        <div class="row pad-left-20">
+            <div class="span3 line-height-30 pull-right pad-right-20">
+                @Html.TextBox("term", Model.Query.term, new { placeholder = "Найти нас.пункты", maxlength = 50 })
+            </div>  
+            <div class="span4">
+                <select name="partnerId" class="input-block-level" data-x="catalog/delivery/partners_select">
+                    @if (Model.Dropdown.Suppliers.Length > 0)
+                    {
+                        <optgroup label="Поставщики">
+                            @foreach (var item in Model.Dropdown.Suppliers)
+                            {
+                                <option selected="@(item.IsSelected ? "selected" : null)" value="@item.Id">@item.Name</option>
+                            }
+                        </optgroup>
+                    }
+                    @if (Model.Dropdown.Carriers.Length > 0)
+                    {
+                        <optgroup label="Курьеры">
+                            @foreach (var item in Model.Dropdown.Carriers)
+                            {
+                                <option selected="@(item.IsSelected ? "selected" : null)" value="@item.Id">@item.Name</option>
+                            }
+                        </optgroup>
+                    }
+                </select>                
+            </div>
+            <div class="span4 line-height-30">
+                <a href="@Model.ImportUrl">Загрузить матрицу стоимости доставки</a>
+            </div>  
+        </div>
+        
+        <div class="sticky-save">
+            <div class="navbar">
+                <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                    <div class="row pad-left-20">
+                        <div class="span11">
+                            <label class="checkbox line-height-30">
+                                <input type="checkbox" class="checkbox" name="hidebinded" value="true" @(Model.Query.hidebinded ? "checked=checked" : null) autocomplete="off" data-x="catalog/delivery/hidebinded"/>
+                                Скрыть привязанные
+                            </label>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="container">
+        <p class="pull-right">
+            <a href="@Model.HistoryUrl">История изменений привязок</a>
+        </p>
+
+        @if (Model.Locations.Any())
+        {
+            <table class="table table-bordered table-fix-affect font-size-13">
+                <thead>
+                    <tr>
+                        
+                        <th class="text-left" style="width: 50%">Населенный пункт</th>
+                        <th>Статус</th>
+                        <th>КЛАДР</th>
+                        <th class="text-center" style="width: 100px;">Действия</th>
+                    </tr>
+                </thead>
+                <tbody class="middled">
+                    @foreach (var location in Model.Locations)
+                    {
+                        var trClass = "";
+                        switch (location.Status)
+                        {
+                            case PartnerLocationStatus.WrongBinding:
+                                trClass = "error";
+                                break;
+                        }
+
+                        var data = Html.Json(new
+                        {
+                            id = location.Id,
+                            title = location.LocationName,
+                            kladrCode = location.KladrCode
+                        }).ToString();
+                        
+                        <tr class="@trClass" data-binding="@data">
+                            <td>@location.LocationName@(!string.IsNullOrEmpty(location.LocationId) ? string.Format(" ({0})", location.LocationId) : null)</td>
+                            <td>@Html.DescriptionFor(location.Status)</td>
+
+                            @if (location.Status != PartnerLocationStatus.NotBinded)
+                            {
+                                <td>@location.KladrCode</td>
+                                <td class="text-center">
+                                    <button class="btn" data-x="catalog/delivery/edit">
+                                        <i class="icon-edit"></i>
+                                    </button>
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                                <td class="text-center">
+                                    <button class="btn btn-small btn-success" data-x="catalog/delivery/add">
+                                        <i class="icon-plus icon-white"></i>
+                                    </button>
+                                </td>  
+                            }
+                        </tr>
+                    
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(Model.Query.term))
+            {
+                <p>Поиск не дал результатов</p>    
+            }
+            else
+            {
+                <p>Нет непривязанных населенных пунктов</p>
+            }
+        }        
+
+        @if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+        }
+    </div>
+</div>
+
+@*
+--------------------- Редактирование привязки
+*@
+@Html.Partial("_UpdateBinding", Model.UpdateBinding)

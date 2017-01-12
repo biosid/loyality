@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Country" nillable="true" type="tns:Country" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCountry" nillable="true" type="tns:ArrayOfCountry" />
+  <xs:complexType name="Country">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alpha2Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Alpha3Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Country" nillable="true" type="tns:Country" />
+  <xs:complexType name="ArrayOfLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Location" nillable="true" type="tns:Location" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocation" nillable="true" type="tns:ArrayOfLocation" />
+  <xs:complexType name="Location">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CityKladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityToponym" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DistrictId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DistrictKladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistrictName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistrictToponym" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Index" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationType" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="RegionId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="RegionKladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionToponym" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Toponym" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TownId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TownKladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TownName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TownToponym" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="ServicePoint">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Location">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InstantTransferSystem" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaxSumma" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Schedule" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Summa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Unaddressed" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServicePoint" nillable="true" type="tns:ServicePoint" />
+</xs:schema>

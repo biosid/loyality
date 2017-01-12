@@ -1,0 +1,34 @@
+﻿@model Vtb24.Site.Models.Catalog.SearchModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Поиск";
+    ViewBag.MainMenu = "Catalog";
+}
+
+@section secondary
+{
+    <div class="left-search shdw">
+        <form method="GET">
+            @Html.Hidden("sort", Model.Query.sort)
+            <div class="in">
+                <h3 class="title">Поиск</h3>
+
+                <h6 class="subtitle">Запрос</h6>
+                @Html.TextBox("term", Model.Query.term, new { maxlength = 100 })                
+            </div>
+
+            <div class="search-drop">@Html.DropDownList("category", Model.Categories, new { @data_placeholder = "- все главные категории -" } )</div>
+
+            <div class="wrap-submit">
+                <button type="submit" class="btn-red large width-max"><span>Искать</span></button>
+            </div>
+        </form>
+    </div>
+    @Html.AddScriptBlock(
+        @<script>
+             $('#category').select2({ minimumResultsForSearch: -1, allowClear: true });
+        </script>
+    )
+}
+
+@Html.Partial("_CatalogListing", Model)

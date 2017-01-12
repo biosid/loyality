@@ -1,0 +1,109 @@
+﻿@model Vtb24.Arms.Catalog.Models.Categories.CategoryModel
+@{
+    var catClass = "category-" + Model.Depth;
+    if (!Model.IsEnabled)
+    {
+        catClass += " disabled not-active";
+    }
+    catClass += Model.HasChildren ? " closed" : " empty";
+    var data = Html.Json(
+        new
+        {
+            id = Model.Id,
+            empty = Model.IsEmpty,
+            depth = Model.Depth,
+            parent = Model.ParentId,
+            online = Model.IsOnline
+        }
+    ).ToString();
+}
+<tr class="@catClass" data-category="@data" id="cat-@Model.Id" style="@(Model.ParentId.HasValue ? "display: none" : null)">
+    @if (Model.Permissions.Manage)
+    {
+        <td>
+            <div class="dd-move">
+                <div class="move-actions">
+                    <a href="#" data-x="categories/move/in" class="icon-move"></a>
+                    <a href="#" data-x="categories/move/up" class="icon-arrow-up"></a>
+                    <a href="#" data-x="categories/move/down" class="icon-arrow-down"></a>
+                </div>
+                <span>@Model.Id</span>
+            </div>
+        </td>
+        <td>
+            <input type="checkbox" name="category" autocomplete="off" value="@Model.Id">
+        </td>
+        <td>
+            <div class="wrap-block">
+                @if (Model.IsOnline)
+                {
+                    <a href="@Model.OnlineCategoryUrl" class="icon icon-globe pull-left mar-top-5" data-x="categories/online" data-category-notifyurl="@Model.NotifyOrderStatusUrl" data-category-partnerid="@Model.OnlineCategoryPartnerId"></a>
+                }
+                else
+                {
+                    <a href="#" class="triangle" data-x="categories/toggler"></a>
+                }
+                <div class="wrap-textarea">
+                    <input type="text" class="input-block-level" name="title" value="@Model.Title" maxlength="256">
+                    <div class="btn-group pull-right hidden">
+                        <button class="btn btn-mini btn-success" data-x="categories/apply_rename"><i class="icon-ok icon-white"></i></button>
+                        <button class="btn btn-mini" data-x="categories/cancel_rename"><i class="icon-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+        </td>
+    }
+    else
+    {
+        <td>@Model.Id</td>
+        <td>
+            <div class="wrap-block">
+                @if (Model.IsOnline)
+                {
+                    <span class="icon icon-globe pull-left"></span>
+                } else
+                {
+                    <a href="#" class="triangle" data-x="categories/toggler"></a>
+                }
+                <div class="wrap-textarea">
+                    @Model.Title
+                </div>
+            </div>
+        </td>
+    }
+    <td>
+        <div class="text-right">
+            @if(Model.IsOnline)
+            {
+                @:&nbsp;
+            } else
+            {
+                @Model.ProductsCount
+            }
+        </div>
+    </td>
+    <td data-x="categories/status">
+        @if (Model.IsEnabled)
+        {
+            @:Активная
+        }
+        else
+        {
+            @:Неактивная
+ 
+        }
+    </td>
+    @if (Model.Permissions.Manage)
+    {
+        <td>
+            @if (Model.IsEmpty)
+            {
+                <a class="btn remove" data-x="categories/remove"><i class="icon-remove"></i></a>
+            }
+            else
+            {
+                <a class="btn remove disabled" data-x="categories/remove"><i class="icon-remove" title="Запрещено удалять категории с товарами"></i></a>
+            }
+        </td>
+    }
+</tr>

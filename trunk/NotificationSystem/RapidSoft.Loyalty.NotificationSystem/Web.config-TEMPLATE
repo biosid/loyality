@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<configuration>
+  <configSections>
+    <section name="log4net"
+             type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+    <section name="activeDirectory"
+             type="RapidSoft.VTB24.ArmSecurity.ActiveDirectoryConfigSection, RapidSoft.VTB24.ArmSecurity"/>
+  </configSections>
+  
+  <connectionStrings>
+    <add name="LoyaltyDB"
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"
+         providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+
+  <log4net configSource="log4net.config" />
+
+  <system.web>
+    <compilation debug="true" targetFramework="4.5" />
+    <httpRuntime targetFramework="4.5" />
+  </system.web>
+
+  <appSettings>
+    <add key="UseStub" value="false"/>
+    <add key="ClientFeedbackFrom" value="noreply@bonus.vtb24.ru"/>
+    <add key="ClientSiteUrl" value="@ClientSiteUrl@"/>
+    <!-- отписка от нотификаций -->
+    <add key="unsubscribe_key" value="qazwsxedc"/>
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="NotificationSystem" />
+    <add key="LogSubsystemName" value="WebServices" />
+    <add key="EventLogSourceName" value="RapidSoft.Loyalty.NotificationSystem" />
+    <add key="LogsElasticSearchNodes" value="@elasticsearchCluster@" />
+  </appSettings>
+
+  <system.net>
+    <mailSettings>
+      <smtp
+          deliveryMethod="Network">
+        <network
+            host="@MAILSMTPHOST@"
+            port="@MAILSMTPPORT@"
+            enableSsl="@MailEnableSsl@"
+            userName="@MAILUSERNAME@"
+            password="@MAILPASSWORD@"
+            />
+      </smtp>
+    </mailSettings>
+  </system.net>
+
+  <system.serviceModel>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true" />
+    <bindings>
+      <basicHttpBinding>
+        <binding name="ClientProfileServicePortBinding" maxReceivedMessageSize = "1000000"/>
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="@ClientProfileAddress@"
+                binding="basicHttpBinding" bindingConfiguration="ClientProfileServicePortBinding"
+                contract="ClientProfileService.ClientProfileService" name="ClientProfileServicePort" />
+    </client>
+  </system.serviceModel>
+
+  <activeDirectory>
+    <connection path="@ActiveDirectoryPath@" username="@ActiveDirectoryUserName@" password="@ActiveDirectoryPassword@" />
+  </activeDirectory>
+</configuration>

@@ -1,0 +1,27 @@
+﻿@model Rapidsoft.VTB24.Reports.Site.Models.PixelReports.ReportsListModel
+@foreach (var report in Model.Reports)
+{
+    <tr>
+        <td>@report.CreateTimestamp.ToString("dd.MM.yyyy HH:mm:ss")</td>
+        <td>@report.Status</td>
+        <td>@report.FromDate.ToString("dd.MM.yyyy")&nbsp;&mdash;&nbsp;@report.ToDate.ToString("dd.MM.yyyy")</td>
+        <td>@report.Pixel</td>
+        <td>@(report.ItemsCount.HasValue ? report.ItemsCount.Value.ToString("D") : "-")</td>
+        <td>
+            @if (report.Id.HasValue)
+            {
+                <a href="@Url.Action("Csv", "PixelReports", new { id = report.Id.Value })">
+                    <span class="glyphicon glyphicon-download"></span> Скачать
+                </a>
+            }
+        </td>
+    </tr>
+}
+@if (Model.NextSkip.HasValue)
+{
+    <tr>
+        <td colspan="6">
+            <a id="load-reports" href="#" class="btn btn-default btn-sm" data-skip="@Model.NextSkip.Value">Показать еще...</a>
+        </td>
+    </tr>
+}

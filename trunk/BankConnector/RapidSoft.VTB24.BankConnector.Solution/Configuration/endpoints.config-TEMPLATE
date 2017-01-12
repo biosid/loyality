@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<client>
+  <endpoint address="@AdminMechanicsService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IAdminMechanicsService"
+            contract="AdminMechanicsService.IAdminMechanicsService" name="BasicHttpBinding_IAdminMechanicsService"  behaviorConfiguration="withLogging" />
+  <endpoint address="@SecurityService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ISecurityWebApi"
+            contract="SecurityWebApi.ISecurityWebApi" name="BasicHttpBinding_ISecurityWebApi"  behaviorConfiguration="withLogging"/>
+  <endpoint address="@BonusGatewayService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_BonusGateway"
+            contract="BonusGateway.BonusGateway" name="BasicHttpBinding_BonusGateway" behaviorConfiguration="withLogging"/>
+  <endpoint address="@ClientProfileAddress@"
+            binding="basicHttpBinding" bindingConfiguration="ClientProfileServicePortBinding"
+            contract="ClientProfileService.ClientProfileService" name="ClientProfileServicePort" behaviorConfiguration="withLogging"/>
+  <endpoint address="@ProcessingAddress@" binding="basicHttpBinding"
+            bindingConfiguration="ProcessingServicePortBinding" contract="ProcessingService.ProcessingService"
+            name="ProcessingServicePort" behaviorConfiguration="withLogging"/>
+  <endpoint address="@OrderManagementService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOrderManagementService"
+            contract="OrderManagementService.IOrderManagementService"
+            name="BasicHttpBinding_IOrderManagementService" behaviorConfiguration="withLogging"/>
+  <endpoint address="@NotificationSystemService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IClientMessageService"
+            contract="ClientMessageService.IClientMessageService" name="BasicHttpBinding_IClientMessageService" behaviorConfiguration="withLogging"/>
+  <endpoint address="@BasketService@" binding="basicHttpBinding"
+            bindingConfiguration="BasicHttpBinding_IBasketService" contract="BasketService.IBasketService"
+            name="BasicHttpBinding_IBasketService" behaviorConfiguration="withLogging"/>
+  <endpoint address="@CatalogAdminService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICatalogAdminService"
+            contract="CatalogAdminService.ICatalogAdminService" name="BasicHttpBinding_ICatalogAdminService" behaviorConfiguration="withLogging"/>
+  <endpoint address="@CatalogSearcherService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICatalogSearcher"
+            contract="CatalogSearcherService.ICatalogSearcher" name="BasicHttpBinding_ICatalogSearcher" behaviorConfiguration="withLogging"/>
+  <endpoint address="@WishListService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IWishListService"
+            contract="WishListService.IWishListService" name="BasicHttpBinding_IWishListService" behaviorConfiguration="withLogging"/>
+  <endpoint address="@MechanicsService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IMechanicsService"
+            contract="MechanicsService.IMechanicsService" name="BasicHttpBinding_IMechanicsService" behaviorConfiguration="withLogging"/>
+  <endpoint address="@MechanicsService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceInfo"
+            contract="MechanicsService.IServiceInfo" name="BasicHttpBinding_IServiceInfo" behaviorConfiguration="withLogging"/>
+  <endpoint address="@TargetAudienceService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ITargetAudienceService"
+            contract="TargetAudienceService.ITargetAudienceService" name="BasicHttpBinding_ITargetAudienceService" behaviorConfiguration="withLogging"/>
+  <endpoint address="@EmailSenderService@" binding="basicHttpBinding"
+            bindingConfiguration="BasicHttpBinding_IEmailSender" contract="EmailSenderService.IEmailSender"
+            name="BasicHttpBinding_IEmailSender" behaviorConfiguration="withLogging"/>
+  <endpoint address="@SecurityTokenWebApiService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ISecurityTokenWebApi"
+            contract="SecurityTokenWebApi.ISecurityTokenWebApi" name="BasicHttpBinding_ISecurityTokenWebApi" behaviorConfiguration="withLogging"/>
+  <endpoint address="@PublicProfileWebApi@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IPublicProfileWebApi"
+            contract="PublicProfileWebApi.IPublicProfileWebApi" name="BasicHttpBinding_IPublicProfileWebApi" behaviorConfiguration="withLogging"/>
+</client>

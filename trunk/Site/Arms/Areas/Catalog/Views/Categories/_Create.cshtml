@@ -1,0 +1,61 @@
+﻿@model Vtb24.Arms.Catalog.Models.Categories.CreateCategoryModel
+@using (Html.BeginForm("Create", "Categories", FormMethod.Post, new { @class = "modal hide", data_x = "categories/create/modal" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Создание категории</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="span2 text-right"><span class="line-height-30">Наименование:</span></div>
+            <div class="span5">
+                @Html.TextBoxFor(m=>m.Title, new{@class="input-block-level", maxlength=256})
+                @Html.ValidationMessageFor(m=>m.Title)
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 text-right"><span class="line-height-30">Тип:</span></div>
+            <div class="span5">
+                @Html.EnumDropDownListFor(m=>m.Type, new {@class="input-block-level"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2"></div>
+            <div class="span5" data-x="catalog/categories/online_error"></div>
+        </div>
+        <div class="row" style="display: none" data-x="categories/create/online_url">
+            <div class="span2 text-right"><span class="line-height-30">Url:</span></div>
+            <div class="span5">
+                @Html.TextBoxFor(m=>m.OnlineCategoryUrl, new{@class="input-block-level", maxlength=512})
+                @Html.ValidationMessageFor(m=>m.OnlineCategoryUrl)
+            </div>
+        </div>
+        <div class="row" style="display: none" data-x="categories/create/notify_url">
+            <div class="span2 text-right"><span class="line-height-30">Url возврата:</span></div>
+            <div class="span5">
+                @Html.TextBoxFor(m=>m.NotifyOrderStatusUrl, new{@class="input-block-level", maxlength=512})
+                @Html.ValidationMessageFor(m=>m.NotifyOrderStatusUrl)
+            </div>
+        </div>
+        <div class="row" style="display: none" data-x="categories/create/online_partner">
+            <div class="span2 text-right"><span class="line-height-30">Online-партнер:</span></div>
+            <div class="span5">
+                @Html.DropDownListFor(m=>m.OnlineCategoryPartnerId, Model.OnlinePartners, new { @class="input-block-level" })
+                @Html.ValidationMessageFor(m=>m.OnlineCategoryPartnerId)
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 text-right">Родительская:</div>
+            <div class="span5">
+                <ul class="rootCat tree-modal" data-x="categories/create/categories">
+                    @Html.Partial("_GiftsCategoriesLevel", Model.RootCategoryItem)
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Создать</button>
+        <button class="btn" data-dismiss="modal">Отменить</button>
+    </div>
+}

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdminFeedbackService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" />
+      <xsd:import schemaLocation="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" />
+      <xsd:import schemaLocation="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.OutputResults" />
+      <xsd:import schemaLocation="http://localhost:5657/AdminFeedbackService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAdminFeedbackService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_GetThreads_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetThreads" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_GetThreads_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetThreadsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_GetThreadMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetThreadMessages" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_GetThreadMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetThreadMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_Reply_InputMessage">
+    <wsdl:part name="parameters" element="tns:Reply" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_Reply_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReplyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_ChangeAnsweredStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeAnsweredStatus" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_ChangeAnsweredStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeAnsweredStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_GetThreadById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetThreadById" />
+  </wsdl:message>
+  <wsdl:message name="IAdminFeedbackService_GetThreadById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetThreadByIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAdminFeedbackService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:IAdminFeedbackService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:IAdminFeedbackService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetThreads">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminFeedbackService/GetThreads" message="tns:IAdminFeedbackService_GetThreads_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminFeedbackService/GetThreadsResponse" message="tns:IAdminFeedbackService_GetThreads_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetThreadMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminFeedbackService/GetThreadMessages" message="tns:IAdminFeedbackService_GetThreadMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminFeedbackService/GetThreadMessagesResponse" message="tns:IAdminFeedbackService_GetThreadMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Reply">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminFeedbackService/Reply" message="tns:IAdminFeedbackService_Reply_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminFeedbackService/ReplyResponse" message="tns:IAdminFeedbackService_Reply_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAnsweredStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminFeedbackService/ChangeAnsweredStatus" message="tns:IAdminFeedbackService_ChangeAnsweredStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminFeedbackService/ChangeAnsweredStatusResponse" message="tns:IAdminFeedbackService_ChangeAnsweredStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetThreadById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminFeedbackService/GetThreadById" message="tns:IAdminFeedbackService_GetThreadById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminFeedbackService/GetThreadByIdResponse" message="tns:IAdminFeedbackService_GetThreadById_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAdminFeedbackService" type="tns:IAdminFeedbackService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISupportService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetThreads">
+      <soap:operation soapAction="http://tempuri.org/IAdminFeedbackService/GetThreads" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetThreadMessages">
+      <soap:operation soapAction="http://tempuri.org/IAdminFeedbackService/GetThreadMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reply">
+      <soap:operation soapAction="http://tempuri.org/IAdminFeedbackService/Reply" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAnsweredStatus">
+      <soap:operation soapAction="http://tempuri.org/IAdminFeedbackService/ChangeAnsweredStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetThreadById">
+      <soap:operation soapAction="http://tempuri.org/IAdminFeedbackService/GetThreadById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminFeedbackService">
+    <wsdl:port name="BasicHttpBinding_IAdminFeedbackService" binding="tns:BasicHttpBinding_IAdminFeedbackService">
+      <soap:address location="http://localhost:5657/AdminFeedbackService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

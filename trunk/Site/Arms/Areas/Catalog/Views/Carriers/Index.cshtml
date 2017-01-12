@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Курьеры";
+    ViewBag.MenuId = "carriers";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@model Vtb24.Arms.Catalog.Models.Partners.CarriersModel
+@Html.AddScriptBlock(
+@<script>
+     $('.sticky-save').sticky({ topSpacing: 0, center: false });
+  </script>
+)
+<div class="tab-pane active" id="tab5">
+@*
+--------------------- Шапка
+*@
+    <div class="container">
+        <div class="sticky-save" style="width:940px">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-left-0">
+                @if (Model.Permissions.Edit)
+                {
+                    <a href="@Url.Action("Create", "Carriers")" class="btn btn-success mar-left-20">
+                        <i class="icon-plus icon-white"></i>
+                    </a>
+                }
+            </div>
+        </div>
+        </div>
+        
+@*
+--------------------- Список курьеров
+*@
+        <table class="table info-table table-bordered table-partners font-size-13">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th class="text-left w12em">Наименование</th>
+                    <th class="text-left">Описание</th>
+                    <th class="w8em">Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var carrier in Model.Carriers)
+                {
+                    <tr class="@(carrier.Disabled ? "not-active" : "")">
+                        <td>@carrier.Id</td>
+                        <td class="text-left">
+                            @if (Model.Permissions.Edit)
+                            {
+                                <a href="@Url.Action("Edit", "Carriers", new { id = carrier.Id })">@carrier.Name</a>
+                            }
+                            else
+                            {
+                                @carrier.Name
+                            }
+                        </td>
+                        <td class="text-left">@(string.IsNullOrEmpty(@carrier.Description) ? "Нет описания" : carrier.Description)</td>
+                        <td class="text-center">@carrier.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

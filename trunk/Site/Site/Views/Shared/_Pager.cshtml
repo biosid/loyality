@@ -1,0 +1,31 @@
+﻿@model PagerHtmlHelper.PagerModel
+
+<ul class="pager">
+    @if (Model.Prev != null)
+    {
+        <li class="item prev"><a href="@Model.Prev.Url">Назад</a></li>
+    } 
+    else
+    {
+        <li class="item prev opacity-04"><span>Назад</span></li>
+    }
+    @foreach (var page in Model.Pages)
+    {
+        if (page.IsPlaceholder)
+        {
+            <li class="item">...</li>
+        }
+        else
+        {
+            <li class="item @(page.IsActive ? "active" : null)"><a href="@page.Url">@page.Number</a></li>
+        }
+    }        
+    @if (Model.Next != null)
+    {
+        <li class="item next"><a href="@Model.Next.Url">Вперед</a></li>
+    } 
+    else
+    {
+        <li class="item next opacity-04"><span>Вперед</span></li>
+    }
+</ul>

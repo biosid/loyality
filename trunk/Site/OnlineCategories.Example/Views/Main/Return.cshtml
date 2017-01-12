@@ -1,0 +1,35 @@
+﻿@model OnlinePartnerStub.Models.Main.ReturnModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Онлайн-партнер \"Заглушка\"";
+}
+<h2>Онлайн-партнер "Заглушка"</h2>
+<h4>Результат оформления заказа:</h4>
+<table>
+    <tr>
+        <td>OrderId</td>
+        <td>@Model.OrderId</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <td>Discount</td>
+        <td>@Model.Discount</td>
+    </tr>
+    <tr>
+        <td>Error</td>
+        <td>@Model.Error</td>
+    </tr>
+    <tr>
+        <td>UtcDateTime</td>
+        <td>@Model.UtcDateTime</td>
+    </tr>
+    <tr>
+        <td>Signature</td>
+        <td>@Model.Signature</td>
+    </tr>
+</table>
+<br>
+<a href="@Url.Action("GetPaymentStatus", "Main", Model.OrderId)" target="_blank">Запросить статус оплаты заказа</a>

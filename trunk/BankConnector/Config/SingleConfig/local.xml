@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ValidateRegExp>@(\w*)@</ValidateRegExp>
+  <GlobalConfigFileTransformations>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@logsRoot@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@loyaltyLogs@</string>
+      </Patterns>
+      <ReplaceTo>Logs</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@elasticsearchCluster@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:9200</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ETLSchemaName@</string>
+      </Patterns>
+      <ReplaceTo>etl</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBHOST@</string>
+      </Patterns>
+      <ReplaceTo>RPHQBUILD1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBNAME@</string>
+      </Patterns>
+      <ReplaceTo>RapidSoft.VTB24.BankConnector</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBUSER@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBPASS@</string>
+      </Patterns>
+      <ReplaceTo>LoyaltyDB</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@DBTIMEOUT@</string>
+      </Patterns>
+      <ReplaceTo>60</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SMTPHOST@</string>
+      </Patterns>
+      <ReplaceTo>localhost</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@TERADATAIMAPHOST@</string>
+      </Patterns>
+      <ReplaceTo>localhost</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LOYALTYIMAPHOST@</string>
+      </Patterns>
+      <ReplaceTo>localhost</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- SMTP START -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpUserName@</string>
+      </Patterns>
+      <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpPass@</string>
+      </Patterns>
+      <ReplaceTo>ZxcAsdQwe</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@TestSmtpHost@</string>
+      </Patterns>
+      <ReplaceTo>smtp.gmail.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SmtpPort@</string>
+      </Patterns>
+      <ReplaceTo>587</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- SMTP END -->
+
+    <!-- Message property START -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SendFrom@</string>
+      </Patterns>
+      <ReplaceTo>DZakharovRapidSoft@gmail.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SendTo@</string>
+      </Patterns>
+      <ReplaceTo>DZakharovRapidSoft@gmail.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Message property END -->
+
+    <!-- IMAP START -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ImapUserName@</string>
+      </Patterns>
+      <ReplaceTo>DZakharovRapidSoft@gmail.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ImapPass@</string>
+      </Patterns>
+      <ReplaceTo>ZxcAsdQwe</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ImapHost@</string>
+      </Patterns>
+      <ReplaceTo>imap.googlemail.com</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ImapPort@</string>
+      </Patterns>
+      <ReplaceTo>993</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- IMAP END -->
+
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LoyaltyEmail@</string>
+      </Patterns>
+      <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@TeradataEmail@</string>
+      </Patterns>
+      <ReplaceTo>teradata@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@BankSmsEmail@</string>
+      </Patterns>
+      <ReplaceTo>teradata@vtb24.loyalty</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- START AppSettings -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LOYALTYPROGRAMID@</string>
+      </Patterns>
+      <ReplaceTo>5</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LoyaltyPOSId@</string>
+      </Patterns>
+      <ReplaceTo>vtb_pos_1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LoyaltyTerminalId@</string>
+      </Patterns>
+      <ReplaceTo>vtb_terminal_1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@LoyaltyPartnerId@</string>
+      </Patterns>
+      <ReplaceTo>vtb_partner_1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@CARDREADERID@</string>
+      </Patterns>
+      <ReplaceTo>card_reader_vtb1</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@CHANNELID@</string>
+      </Patterns>
+      <ReplaceTo>4</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@VTBSYSTEMUSER@</string>
+      </Patterns>
+      <ReplaceTo>vtbSystemUser</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@UnitellerRegisterShopId@</string>
+      </Patterns>
+      <ReplaceTo>00001436</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@UnitellerLogin@</string>
+      </Patterns>
+      <ReplaceTo>739</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@UnitellerPassword@</string>
+      </Patterns>
+      <ReplaceTo>ENqN3zEtRz0NvnLwmYnOQFvORH1NjuO4l4lb0jWTdoHlu2W5T3tyqxBcxlKB0BU1kOoGqgOVfqk035bi</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- END AppSettings -->
+
+    <!-- Настройки рассылки напоминаний о неоформленных заказах -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ClientSiteBasketUrl@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:3139/basket</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Настройки рассылки предложений оценить сервис -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ClientSiteOrderUrlTemplate@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:3139/myorders/order/{0}</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Настройки эквайринга Uniteller -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@PaymentUnitellerUsePreauth@</string>
+      </Patterns>
+      <ReplaceTo>false</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@PaymentUnitellerLifetime@</string>
+      </Patterns>
+      <ReplaceTo>300</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@AcquiringUnitellerLogin@</string>
+      </Patterns>
+      <ReplaceTo>2688</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@AcquiringUnitellerPassword@</string>
+      </Patterns>
+      <ReplaceTo>2Jf8lLBlXgWjYRRcab667F0eyKwI46lBzCDTra1GYRkHGfiOSesF78gtMYOoDOJpBbJ6V32lijr4KWik</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@AcquiringUnitellerPayFormUrl@</string>
+      </Patterns>
+      <ReplaceTo>https://test.wpay.uniteller.ru/pay/</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@AcquiringUnitellerResultsUrl@</string>
+      </Patterns>
+      <ReplaceTo>https://test.wpay.uniteller.ru/results/</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@AcquiringUnitellerConfirmUrl@</string>
+      </Patterns>
+      <ReplaceTo>https://test.wpay.uniteller.ru/confirm/</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@AcquiringUnitellerCancelUrl@</string>
+      </Patterns>
+      <ReplaceTo>https://test.wpay.uniteller.ru/unblock/</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@BankProductsPartnerId@</string>
+      </Patterns>
+      <ReplaceTo>171</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Настройки отправки отчетов по файлообмену -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@InteractionReportsUrl@</string>
+      </Patterns>
+      <ReplaceTo>http://localhost:61284/interactionreports/report</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@InteractionReportsLogin@</string>
+      </Patterns>
+      <ReplaceTo></ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@InteractionReportsPwd@</string>
+      </Patterns>
+      <ReplaceTo></ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@InteractionReportsSendTo@</string>
+      </Patterns>
+      <ReplaceTo></ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- Stubs -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@VtbEncryption@</string>
+      </Patterns>
+      <ReplaceTo>VtbEncryptionStub</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@UnitellerProvider@</string>
+      </Patterns>
+      <ReplaceTo>UnitellerProviderStub</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- START Cron выражения для расписания выполнения джоб -->
+
+    <!-- Настройки активации участников -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <!--Периодичность выгрузки исходного файла: ежедневно, в 24:00/ Периодичность выгрузки ответного файла: не позднее 12 часов после обработки файла-->
+        <string>@ActivateClientsChron@</string>
+      </Patterns>
+      <ReplaceTo>0 0 22 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки отправки запросов на регистрацию -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SendRegistrationClientsChron@</string>
+      </Patterns>
+      <!--Периодичность выгрузки исходного файла: два раза в день, в 10:00 для зарегистрировавшихся с 19:00 прошлого дня до 10:00 текущего дня; в 19:00 для зарегистрировавшихся с 10:00 до 19:00 текущего дня-->
+      <ReplaceTo>0 0 10,19 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки получения результата регистрации от банка -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ReceiveRegistrationClientsChron@</string>
+      </Patterns>
+      <!--Периодичность выгрузки ответного файла: не позднее 12 часов после выгрузки файла из Системы лояльности-->
+      <ReplaceTo>0 0 7,22 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки отправки и получения заказов -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SendOrdersChron@</string>
+      </Patterns>
+      <!--Периодичность выгрузки исходного файла: ежедневно в 11:00 -->
+      <ReplaceTo>0 0 11 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ReceiveOrdersChron@</string>
+      </Patterns>
+      <!--Не позднее 12 часов после выгрузки-->
+      <ReplaceTo>0 0 23 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки задачи отправки списка промоакций -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@PromoActionSendChron@</string>
+      </Patterns>
+      <!-- Периодичность выгрузки исходного файла: ежедневно, в 24:00 -->
+      <ReplaceTo>0 0 0 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки задачи получения ответа по списку промоакций -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@PromoActionReceiveChron@</string>
+      </Patterns>
+      <!-- Каждый день в 12:00:00, то есть через 12 часов после "Отправка списка промоакций" -->
+      <ReplaceTo>0 0 12 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки задачи загрузка сообщений для ЛК клиентов -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@PersonalMessagesChron@</string>
+      </Patterns>
+      <!--Периодичность выгрузки исходного файла: ежедневно (точное время будет оговорено позднее).-->
+      <ReplaceTo>0 0 12 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки отключения участников -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SendDetachListChron@</string>
+      </Patterns>
+      <!--Периодичность выгрузки исходного файла: ежедневно, в 19:00-->
+      <ReplaceTo>0 0 19 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ReceiveDetachCountChron@</string>
+      </Patterns>
+      <!--Периодичность выгрузки ответного файла: не позднее 12 часов после обработки файла-->
+      <ReplaceTo>0 0 7 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки задачи Регистрации клиентов банка -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@RegisterBankClientsChron@</string>
+      </Patterns>
+      <!-- Периодичность выгрузки исходного файла: ежедневно, в 09:00. Периодичность выгрузки ответного файла: не позднее 12 часов после выгрузки файла из Системы лояльности -->
+      <ReplaceTo>0 0 15 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки задачи Загрузки продуктов банка -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@RegisterBankOffersChron@</string>
+      </Patterns>
+      <!-- Периодичность выгрузки исходного файла: ежедневно, в 09:00. Периодичность выгрузки ответного файла: не позднее 12 часов после выгрузки файла из Системы лояльности -->
+      <ReplaceTo>0 0 9 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Привязка клиентов к целевым аудиториям -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@AssignClientTargetAudienceChron@</string>
+      </Patterns>
+      <!-- Периодичность выгрузки исходного файла: ежедневно (точное время будет оговорено позднее/ Периодичность выгрузки ответного файла: не позднее 12 часов после обработки файла -->
+      <ReplaceTo>0 0 12 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки начисления баллов -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ReceiveAccrualsChron@</string>
+      </Patterns>
+      <!--Периодичность выгрузки исходного файла: ежедневно (точное время будет оговорено позднее). -->
+      <ReplaceTo>0 0 12 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@SendAccrualsChron@</string>
+      </Patterns>
+      <!--Периодичность выгрузки ответного файла: не позднее 12 часов после выгрузки файла из Банка -->
+      <ReplaceTo>0 0 0 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+    <!-- Настройки рассылки оппвещений WishList -->
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@WishListNotificationsChron@</string>
+      </Patterns>
+      <!--Каждую полночь -->
+      <ReplaceTo>0 0 0 * * ?</ReplaceTo>
+    </ConfigFileTransformation>
+
+    <!-- END Cron выражения для расписания выполнения джоб -->
+
+  </GlobalConfigFileTransformations>
+
+  <ConfigFiles>
+
+    <ConfigFile>
+      <FilePath>..\..\Database\AutoPatch\AutoPatch.exe.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\AutoPatch\AutoPatch.exe.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\DB_DROP_CREATE.cmd-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\DB_DROP_CREATE.cmd</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Database\Scripts\!DBCreate.sql-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Database\Scripts\!DBCreate.sql</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.WebServices\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.WebServices\log4net.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.WebServices\appSettings.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.WebServices\appSettings.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.WebServices\web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.WebServices\web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\App.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\Quartz.Server.exe.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\log4net.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\log4net.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\quartz.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\quartz.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\quartz.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\quartz_jobs.xml-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\quartz_jobs.xml</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\quartz_jobs.xml</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\appSettings.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\appSettings.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\appSettings.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <!-- Common configuration files -->
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\connectionStrings.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\connectionStrings.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.WebServices\bin\Configuration\connectionStrings.config</string>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\Configuration\connectionStrings.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\etlConfig.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\etlConfig.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.WebServices\bin\Configuration\etlConfig.config</string>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\Configuration\etlConfig.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\endpoints.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\endpoints.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.WebServices\bin\Configuration\endpoints.config</string>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\Configuration\endpoints.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\bindings.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\bindings.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.WebServices\bin\Configuration\bindings.config</string>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\Configuration\bindings.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\unity.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Solution\Configuration\unity.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.VTB24.BankConnector.WebServices\bin\Configuration\unity.config</string>
+        <string>..\..\RapidSoft.VTB24.BankConnector.Quartz.Server\bin\Configuration\unity.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+  </ConfigFiles>
+
+  <DevConfigFiles>
+    <ConfigFile>
+      <FilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Editor\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Editor\App.config</NewFilePath>
+      <WriteCopyTo>
+        <string>..\..\RapidSoft.Etl\RapidSoft.Etl.Editor\bin\Debug\RapidSoft.Etl.Editor.exe.config</string>
+        <string>..\..\RapidSoft.Etl\RapidSoft.Etl.Editor\bin\Release\RapidSoft.Etl.Editor.exe.config</string>
+      </WriteCopyTo>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Monitor\Web.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\Externals\RapidSoft.Etl\RapidSoft.Etl.Monitor\Web.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\App.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\App.config</NewFilePath>
+    </ConfigFile>
+    <!-- Internal configuration files -->
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\Configuration\log4net.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\Configuration\log4net.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\Configuration\appSettings.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\Configuration\appSettings.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\Configuration\unity.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\Configuration\unity.config</NewFilePath>
+    </ConfigFile>
+    <ConfigFile>
+      <FilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\Configuration\etlConfig.config-TEMPLATE</FilePath>
+      <NewFilePath>..\..\RapidSoft.VTB24.BankConnector.Tests\Configuration\etlConfig.config</NewFilePath>
+    </ConfigFile>
+  </DevConfigFiles>
+
+  <ExternalTransformationsFiles>
+    <ExternalTransformationsFile>
+      <FilePath>CommonConfiguration\local_endpoints.xml</FilePath>
+    </ExternalTransformationsFile>
+  </ExternalTransformationsFiles>
+
+</SingleConfig>

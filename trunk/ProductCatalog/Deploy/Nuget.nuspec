@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>RapidSoft.Loaylty.ProductCatalog</id>
+    <version>1.0.0</version>
+    <authors>ogrischenko</authors>
+    <owners>ogrischenko</owners>
+    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package description</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>Tag1 Tag2</tags>
+    <dependencies>
+      <dependency id="SampleDependency" version="1.0" />
+    </dependencies>
+  </metadata>
+	<files>
+    <file src="..\Config\**\*.*" target="Config" />
+		<file src="..\Database\**\*.*" target="Database" />
+		<file src="..\RapidSoft.Loaylty.ProductCatalog.WebServices\**\*.*" target="RapidSoft.Loaylty.ProductCatalog.WebServices" />
+		<file src="..\RapidSoft.Loaylty.ProductCatalog.Quartz.Server\**\*.*" target="RapidSoft.Loaylty.ProductCatalog.Quartz.Server" />
+		<file src="..\Deploy\**\*.*" target="" />
+  </files>
+</package>

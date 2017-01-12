@@ -1,0 +1,41 @@
+﻿@using Rapidsoft.VTB24.Reports.Site.Models.InteractionReports
+@using Rapidsoft.VTB24.Reports.Site.Models.Shared
+@model Rapidsoft.VTB24.Reports.Etl.EtlReports.Models.Report
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-default"
+           href="@Url.Action("Query", "InteractionReports", new ReportQueryModel
+                 {
+                     Type = Model.Request.Type,
+                     FromDate = new DateModel(Model.Request.FromDate),
+                     ToDate = new DateModel(Model.Request.ToDate)
+                 })">
+            <span class="glyphicon glyphicon-arrow-left"></span> Назад
+        </a>
+        <a class="btn"
+           target="_blank"
+           href="@Url.Action("Report", "InteractionReports", new ReportQueryModel
+                 {
+                     Type = Model.Request.Type,
+                     FromDate = new DateModel(Model.Request.FromDate),
+                     ToDate = new DateModel(Model.Request.ToDate),
+                     Print = true
+                 })">
+            <span class="glyphicon glyphicon-print"></span> Печать
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.Title</h2>
+        <h3>
+            Отчет за период @Model.Request.FromDate.ToString("dd.MM.yyyy")&#8210;@Model.Request.ToDate.ToString("dd.MM.yyyy")
+        </h3>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Сгенерирован @Model.Summary.Timestamp.ToString("dd.MM.yyyy HH:mm:ss")</h4>
+    </div>
+</div>

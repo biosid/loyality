@@ -1,0 +1,108 @@
+﻿@model Vtb24.Site.Models.MyPoints.MyPointsModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Выписка по счету";
+    ViewBag.Menu = "LoyaltyPoints";
+}
+
+@section secondary
+{
+    @Html.Action("ClientMenu", "Layout", new { activeMenu = ViewBag.Menu })
+}
+
+<div class="mnl16">
+    <div class="middle-line">
+        <div class="ml-text"><span class="size28">Баланс &nbsp;&nbsp;&nbsp;<span class="red">@Html.Pluralize(Model.ClientBalance, "{1:N0} бонус", "{2:N0} бонуса", "{5:N0} бонусов")</span> </span></div>
+    </div>
+    <p>Начисленные бонусы будут отображены не позднее 21 календарного дня с даты обработки банком расчетных документов, подтверждающих совершение операции по карте.</p>
+    <h3 class="mnt40">Операции по счету</h3>
+
+    <div class="date-choose clearfix">
+        @if (Model.ShowMonthFilter)
+        {
+            <div class="roll-month clearfix">
+                @if (!string.IsNullOrEmpty(Model.PrevMonthUrl))
+                {
+                    <a href="@Model.PrevMonthUrl" class="month-prev"></a>
+                }
+                <input type="text" value="@Model.DateLabel" class="month-field" disabled />
+                @if (!string.IsNullOrEmpty(Model.NextMonthUrl))
+                {
+                    <a href="@Model.NextMonthUrl" class="month-next"></a>
+                }
+            </div>
+        }
+        <div class="date-picker">
+            @using(Html.BeginForm("Index", "MyPoints", FormMethod.Get))
+            {
+                <input type="text" class="datapicker" placeholder="от" id="from" name="from" value="@(Model.StartDate.HasValue ? Model.StartDate.Value.ToShortDateString() : "")" readonly />
+                <span>&mdash;</span>
+                <input type="text" class="datapicker" placeholder="до" id="to" name="to" value="@(Model.EndDate.HasValue ? Model.EndDate.Value.ToShortDateString() : "")" readonly />
+                <input type="submit" class="submit" @(Model.EndDate.HasValue && Model.StartDate.HasValue ? "" : "disabled=\"disabled\"") value=" " />
+            }
+        </div>
+    </div>
+
+    <div class="wrap-table">
+        <table cellpadding="0" cellspacing="0" class="table-style mypoints__grid">
+            <colgroup>
+                <col/>
+                <col/>
+                <col width="100%"/>
+                <col/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <td class="align-center">Дата</td>
+                    <td class="align-center mypoints__grid__thead-bonuses" >Бонусы</td>
+                    <td style="width:100%" class="text-center" colspan="2">Описание</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model.Operations)
+                {
+                    var defaultCLassName = row.IsRecieved ? "green" : "red";
+                    var className = row.IsHighlighted ? "blue" : defaultCLassName;
+                    <tr>
+                        <td class="mypoints__grid-time">@row.Date.ToShortDateString()</td>
+                        <td class="mypoints__grid-bonuses">
+                            <span class="@className">@(row.IsRecieved  ? "+" : "-")@row.Amount.ToString("N0")</span>
+                        </td>
+                        <td class="align-left mypoints__grid-description" colspan="@(row.ShowImage ? 1 : 2)">
+                            <p class="mypoints__grid-description__text">@row.Description</p>
+                        </td>
+                        @if (row.ShowImage)
+                        {
+                        <td class="mypoints__grid-image">
+                            <img src="@Url.Content(row.ImagePath)" alt="" class="mypoints__grid-image__image"/>
+                        </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                @{ var totalClassName = Model.BonusTotal > 0 ? "green" : "red"; }
+                <tr>
+                    <td class="align-center">Всего</td>
+                    <td class="align-right mypoints__grid-total">
+                        <span class="@totalClassName">@string.Format("{0}{1:N0}", Model.BonusTotal > 0 ? "+" : "", Model.BonusTotal)</span>
+                    </td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+@if (Model.TotalPages > 1)
+{
+    @Html.Pager(Model.TotalPages, Model.Page)
+}      
+
+</div>
+
+@Html.AddScriptBlock(
+    @<script>
+         require(['MyPoints/index'], function (module) { module(); })
+     </script>
+)

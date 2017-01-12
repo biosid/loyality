@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="RapidSoft.VTB24.BankConnector.Service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="RapidSoft.VTB24.BankConnector.Service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="RapidSoft.VTB24.BankConnector.Service/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" />
+      <xsd:import schemaLocation="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd3" namespace="RapidSoft.VTB24.BankConnector" />
+      <xsd:import schemaLocation="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.DataModels" />
+      <xsd:import schemaLocation="http://rphqbuild1:63910/BankConnectorService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="BankConnector_IsCardRegistered_InputMessage">
+    <wsdl:part xmlns:q1="http://tempuri.org/" name="parameters" element="q1:IsCardRegistered" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_IsCardRegistered_OutputMessage">
+    <wsdl:part xmlns:q2="http://tempuri.org/" name="parameters" element="q2:IsCardRegisteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_RegisterCard_InputMessage">
+    <wsdl:part xmlns:q3="http://tempuri.org/" name="parameters" element="q3:RegisterCard" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_RegisterCard_OutputMessage">
+    <wsdl:part xmlns:q4="http://tempuri.org/" name="parameters" element="q4:RegisterCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_UnregisterCard_InputMessage">
+    <wsdl:part xmlns:q5="http://tempuri.org/" name="parameters" element="q5:UnregisterCard" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_UnregisterCard_OutputMessage">
+    <wsdl:part xmlns:q6="http://tempuri.org/" name="parameters" element="q6:UnregisterCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_RegisterNewClient_InputMessage">
+    <wsdl:part xmlns:q7="http://tempuri.org/" name="parameters" element="q7:RegisterNewClient" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_RegisterNewClient_OutputMessage">
+    <wsdl:part xmlns:q8="http://tempuri.org/" name="parameters" element="q8:RegisterNewClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_BlockClientToDelete_InputMessage">
+    <wsdl:part xmlns:q9="http://tempuri.org/" name="parameters" element="q9:BlockClientToDelete" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_BlockClientToDelete_OutputMessage">
+    <wsdl:part xmlns:q10="http://tempuri.org/" name="parameters" element="q10:BlockClientToDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_IsClientAddedToDetachList_InputMessage">
+    <wsdl:part xmlns:q11="http://tempuri.org/" name="parameters" element="q11:IsClientAddedToDetachList" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_IsClientAddedToDetachList_OutputMessage">
+    <wsdl:part xmlns:q12="http://tempuri.org/" name="parameters" element="q12:IsClientAddedToDetachListResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_GetCardRegistrationParameters_InputMessage">
+    <wsdl:part xmlns:q13="http://tempuri.org/" name="parameters" element="q13:GetCardRegistrationParameters" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_GetCardRegistrationParameters_OutputMessage">
+    <wsdl:part xmlns:q14="http://tempuri.org/" name="parameters" element="q14:GetCardRegistrationParametersResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_VerifyCardRegistration_InputMessage">
+    <wsdl:part xmlns:q15="http://tempuri.org/" name="parameters" element="q15:VerifyCardRegistration" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_VerifyCardRegistration_OutputMessage">
+    <wsdl:part xmlns:q16="http://tempuri.org/" name="parameters" element="q16:VerifyCardRegistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_UpdateClient_InputMessage">
+    <wsdl:part xmlns:q17="http://tempuri.org/" name="parameters" element="q17:UpdateClient" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_UpdateClient_OutputMessage">
+    <wsdl:part xmlns:q18="http://tempuri.org/" name="parameters" element="q18:UpdateClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_GetClientProfile_InputMessage">
+    <wsdl:part xmlns:q19="http://tempuri.org/" name="parameters" element="q19:GetClientProfile" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_GetClientProfile_OutputMessage">
+    <wsdl:part xmlns:q20="http://tempuri.org/" name="parameters" element="q20:GetClientProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_SaveOrderAttempt_InputMessage">
+    <wsdl:part xmlns:q21="http://tempuri.org/" name="parameters" element="q21:SaveOrderAttempt" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_SaveOrderAttempt_OutputMessage">
+    <wsdl:part xmlns:q22="http://tempuri.org/" name="parameters" element="q22:SaveOrderAttemptResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_ClearOrderAttempt_InputMessage">
+    <wsdl:part xmlns:q23="http://tempuri.org/" name="parameters" element="q23:ClearOrderAttempt" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_ClearOrderAttempt_OutputMessage">
+    <wsdl:part xmlns:q24="http://tempuri.org/" name="parameters" element="q24:ClearOrderAttemptResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_GetBankOffers_InputMessage">
+    <wsdl:part xmlns:q25="http://tempuri.org/" name="parameters" element="q25:GetBankOffers" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_GetBankOffers_OutputMessage">
+    <wsdl:part xmlns:q26="http://tempuri.org/" name="parameters" element="q26:GetBankOffersResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_DisableOffer_InputMessage">
+    <wsdl:part xmlns:q27="http://tempuri.org/" name="parameters" element="q27:DisableOffer" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_DisableOffer_OutputMessage">
+    <wsdl:part xmlns:q28="http://tempuri.org/" name="parameters" element="q28:DisableOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_EnqueueSms_InputMessage">
+    <wsdl:part xmlns:q29="http://tempuri.org/" name="parameters" element="q29:EnqueueSms" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_EnqueueSms_OutputMessage">
+    <wsdl:part xmlns:q30="http://tempuri.org/" name="parameters" element="q30:EnqueueSmsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_Echo_InputMessage">
+    <wsdl:part xmlns:q31="http://tempuri.org/" name="parameters" element="q31:Echo" />
+  </wsdl:message>
+  <wsdl:message name="BankConnector_Echo_OutputMessage">
+    <wsdl:part xmlns:q32="http://tempuri.org/" name="parameters" element="q32:EchoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BankConnector">
+    <wsdl:operation name="IsCardRegistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderPaymentService/IsCardRegistered" message="tns:BankConnector_IsCardRegistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderPaymentService/IsCardRegisteredResponse" message="tns:BankConnector_IsCardRegistered_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderPaymentService/RegisterCard" message="tns:BankConnector_RegisterCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderPaymentService/RegisterCardResponse" message="tns:BankConnector_RegisterCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderPaymentService/UnregisterCard" message="tns:BankConnector_UnregisterCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderPaymentService/UnregisterCardResponse" message="tns:BankConnector_UnregisterCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/RegisterNewClient" message="tns:BankConnector_RegisterNewClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/RegisterNewClientResponse" message="tns:BankConnector_RegisterNewClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlockClientToDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/BlockClientToDelete" message="tns:BankConnector_BlockClientToDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/BlockClientToDeleteResponse" message="tns:BankConnector_BlockClientToDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsClientAddedToDetachList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/IsClientAddedToDetachList" message="tns:BankConnector_IsClientAddedToDetachList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/IsClientAddedToDetachListResponse" message="tns:BankConnector_IsClientAddedToDetachList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardRegistrationParameters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/GetCardRegistrationParameters" message="tns:BankConnector_GetCardRegistrationParameters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/GetCardRegistrationParametersResponse" message="tns:BankConnector_GetCardRegistrationParameters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyCardRegistration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/VerifyCardRegistration" message="tns:BankConnector_VerifyCardRegistration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/VerifyCardRegistrationResponse" message="tns:BankConnector_VerifyCardRegistration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/UpdateClient" message="tns:BankConnector_UpdateClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/UpdateClientResponse" message="tns:BankConnector_UpdateClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/GetClientProfile" message="tns:BankConnector_GetClientProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/GetClientProfileResponse" message="tns:BankConnector_GetClientProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderAttempt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/SaveOrderAttempt" message="tns:BankConnector_SaveOrderAttempt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/SaveOrderAttemptResponse" message="tns:BankConnector_SaveOrderAttempt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearOrderAttempt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientManagementService/ClearOrderAttempt" message="tns:BankConnector_ClearOrderAttempt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientManagementService/ClearOrderAttemptResponse" message="tns:BankConnector_ClearOrderAttempt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBankOffers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankOffersService/GetBankOffers" message="tns:BankConnector_GetBankOffers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankOffersService/GetBankOffersResponse" message="tns:BankConnector_GetBankOffers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableOffer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankOffersService/DisableOffer" message="tns:BankConnector_DisableOffer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankOffersService/DisableOfferResponse" message="tns:BankConnector_DisableOffer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnqueueSms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankSmsService/EnqueueSms" message="tns:BankConnector_EnqueueSms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankSmsService/EnqueueSmsResponse" message="tns:BankConnector_EnqueueSms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:BankConnector_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:BankConnector_Echo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

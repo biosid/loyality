@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA1C2964-F5E6-4F73-8115-93B8CFB88C81}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rapidsoft.VTB24.Reports.Statistics</RootNamespace>
+    <AssemblyName>Rapidsoft.VTB24.Reports.Statistics</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LINQtoCSV">
+      <HintPath>..\packages\LINQtoCSV.1.5.0.0\lib\net35\LINQtoCSV.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\Migrations\201409180935148_Initial.cs" />
+    <Compile Include="DataAccess\Migrations\201409180935148_Initial.Designer.cs">
+      <DependentUpon>201409180935148_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Migrations\201409191006560_ProductViews.cs" />
+    <Compile Include="DataAccess\Migrations\201409191006560_ProductViews.Designer.cs">
+      <DependentUpon>201409191006560_ProductViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\StatisticsContext.cs" />
+    <Compile Include="Entities\ProductViewEvents\ViewEventsDay.cs" />
+    <Compile Include="Helpers\EnumerableExtensions.cs" />
+    <Compile Include="Models\ProductViewEvents\ViewEventsDayStatus.cs" />
+    <Compile Include="Helpers\DbDateExtensions.cs" />
+    <Compile Include="IIisLogsJobs.cs" />
+    <Compile Include="IPixelReports.cs" />
+    <Compile Include="Models\ProductViewEvents\ViewEvent.cs" />
+    <Compile Include="PixelReports\PixelReports.cs" />
+    <Compile Include="ProductViewEvents\ProductViewEventsJobs.cs" />
+    <Compile Include="Workers\IisLogsWorker.cs" />
+    <Compile Include="Models\PixelReports\ReportBrief.cs" />
+    <Compile Include="Models\PixelReports\ReportItem.cs" />
+    <Compile Include="Models\PixelReports\ReportRequest.cs" />
+    <Compile Include="Models\PixelReports\ReportStatus.cs" />
+    <Compile Include="Entities\PixelReports\PixelReport.cs" />
+    <Compile Include="Entities\PixelReports\PixelReportCsvItem.cs" />
+    <Compile Include="Entities\PixelReports\PixelReportItem.cs" />
+    <Compile Include="PixelReports\MappingsFromDb.cs" />
+    <Compile Include="PixelReports\PixelReportsJobs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IWorker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataAccess\Migrations\201409180935148_Initial.resx">
+      <DependentUpon>201409180935148_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Migrations\201409191006560_ProductViews.resx">
+      <DependentUpon>201409191006560_ProductViews.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IisLogs\IisLogs.csproj">
+      <Project>{aff0d7d5-cc8e-4187-9b4c-9ecee0611b21}</Project>
+      <Name>IisLogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcfClients\WcfClients.csproj">
+      <Project>{c638d865-54bd-4bf4-80cc-a3bc720061c6}</Project>
+      <Name>WcfClients</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

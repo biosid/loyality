@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Пользователи";
+    ViewBag.MenuId = "users";
+    Layout = "~/Areas/Security/Views/Shared/_Layout.cshtml";
+}
+@model Vtb24.Arms.Security.Models.Users.UsersModel
+
+<div class="tab-pane active">
+    @using (Html.BeginForm ("Edit", "Users", FormMethod.Get))
+    {
+        @Html.TextBoxFor(m => m.Login, new { @class="input-large" })
+        <button type="submit" class="btn mar-bottom-10">Искать</button>
+        if (Model.NoResults)
+        {
+            <p>Пользователь с логином @Model.Login не найден!</p>
+        }
+    }
+</div>

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:8101/OrderManagementService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://rphqbuild1:8101/OrderManagementService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="DeliveryAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityKladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistrictKladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistrictTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Flat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="House" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionKladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StreetTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TownKladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TownTitle" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeliveryAddress" nillable="true" type="tns:DeliveryAddress" />
+  <xs:complexType name="Contact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="tns:PhoneNumber" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Contact" nillable="true" type="tns:Contact" />
+  <xs:complexType name="PhoneNumber">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocalNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhoneNumber" nillable="true" type="tns:PhoneNumber" />
+  <xs:simpleType name="DeliveryTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Delivery" />
+      <xs:enumeration value="Pickup" />
+      <xs:enumeration value="Email" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DeliveryTypes" nillable="true" type="tns:DeliveryTypes" />
+  <xs:complexType name="Order">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BonusDeliveryCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BonusItemsCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BonusTotalCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CarrierId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryAdvance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeliveryCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeliveryInfo" nillable="true" type="tns:DeliveryInfo" />
+      <xs:element minOccurs="0" name="DeliveryInstructions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryPaymentStatus" type="tns:OrderDeliveryPaymentStatus" />
+      <xs:element minOccurs="0" name="ExternalOrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalOrderStatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalOrderStatusDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="InsertedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfOrderItem" />
+      <xs:element minOccurs="0" name="ItemsAdvance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ItemsCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OrderStatusDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="PaymentStatus" type="tns:OrderPaymentStatuses" />
+      <xs:element minOccurs="0" name="PublicStatus" type="tns:PublicOrderStatuses" />
+      <xs:element minOccurs="0" name="Status" type="tns:OrderStatuses" />
+      <xs:element minOccurs="0" name="StatusChangedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalAdvance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalWeight" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdatedUserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:complexType name="DeliveryInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="tns:DeliveryAddress" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contact" nillable="true" type="tns:Contact" />
+      <xs:element minOccurs="0" name="DeliveryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DeliveryTimeFrom" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="DeliveryTimeTo" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="DeliveryType" type="tns:DeliveryTypes" />
+      <xs:element minOccurs="0" name="DeliveryVariantDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryVariantName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryVariantsLocation" nillable="true" type="tns:VariantsLocation" />
+      <xs:element minOccurs="0" name="ExternalDeliveryVariantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PickupPoint" nillable="true" type="tns:PickupPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeliveryInfo" nillable="true" type="tns:DeliveryInfo" />
+  <xs:complexType name="VariantsLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExternalLocationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KladrCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VariantsLocation" nillable="true" type="tns:VariantsLocation" />
+  <xs:complexType name="PickupPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalDeliveryVariantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalPickupPointId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="OperatingHours" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Phones" nillable="true" type="q2:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PickupPoint" nillable="true" type="tns:PickupPoint" />
+  <xs:simpleType name="OrderDeliveryPaymentStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="No" />
+      <xs:enumeration value="Yes" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="BankCancelled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderDeliveryPaymentStatus" nillable="true" type="tns:OrderDeliveryPaymentStatus" />
+  <xs:complexType name="ArrayOfOrderItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderItem" nillable="true" type="tns:OrderItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderItem" nillable="true" type="tns:ArrayOfOrderItem" />
+  <xs:complexType name="OrderItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:int" />
+      <xs:element minOccurs="0" name="AmountPriceBonus" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AmountPriceRur" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BasketItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceBonus" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PriceRur" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderItem" nillable="true" type="tns:OrderItem" />
+  <xs:complexType name="Product">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Adult" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Artist" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Available" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Barcode" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="BasePriceRUR" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BasePriceRurDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Binding" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryNamePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryOfOrigin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataTour" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Days" type="xs:int" />
+      <xs:element minOccurs="0" name="Delivery" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Director" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Downloadable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ExternalLocationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Format" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HallPlan" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelStars" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ISBN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Included" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsActionPrice" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDeliveredByEmail" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsKids" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPremiere" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRecommended" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastChangedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastChangedUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ManufacturerWarranty" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Meal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Media" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModerationStatus" type="tns:ProductModerationStatuses" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageExtent" type="xs:int" />
+      <xs:element minOccurs="0" name="Param" nillable="true" type="tns:ArrayOfProductParam" />
+      <xs:element minOccurs="0" name="Part" type="xs:int" />
+      <xs:element minOccurs="0" name="PartnerCategoryId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="PartnerProductId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PerformanceType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PerformedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pickup" type="xs:boolean" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Pictures" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Place" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PriceBase" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PriceRUR" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProductId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Publisher" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecordingLength" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Room" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesNotes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Starring" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="tns:ProductStatuses" />
+      <xs:element minOccurs="0" name="StatusChangedCause" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusChangedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StatusChangedUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Storage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Store" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TableOfContents" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TargetAudiencesIds" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Transport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypePrefix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vendor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VendorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Volume" type="xs:int" />
+      <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="WorldRegion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Year" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Product" nillable="true" type="tns:Product" />
+  <xs:simpleType name="ProductModerationStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="InModeration" />
+      <xs:enumeration value="Canceled" />
+      <xs:enumeration value="Applied" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProductModerationStatuses" nillable="true" type="tns:ProductModerationStatuses" />
+  <xs:complexType name="ArrayOfProductParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductParam" nillable="true" type="tns:ProductParam" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductParam" nillable="true" type="tns:ArrayOfProductParam" />
+  <xs:complexType name="ProductParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductParam" nillable="true" type="tns:ProductParam" />
+  <xs:simpleType name="ProductStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotActive" />
+      <xs:enumeration value="Active" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProductStatuses" nillable="true" type="tns:ProductStatuses" />
+  <xs:simpleType name="OrderPaymentStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="No" />
+      <xs:enumeration value="Yes" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="BankCancelled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderPaymentStatuses" nillable="true" type="tns:OrderPaymentStatuses" />
+  <xs:simpleType name="PublicOrderStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Processing">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DeliveryWaiting">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Delivery">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">40</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Delivered">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">50</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NotDelivered">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">60</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cancelled">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Registration">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PublicOrderStatuses" nillable="true" type="tns:PublicOrderStatuses" />
+  <xs:simpleType name="OrderStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Draft" />
+      <xs:enumeration value="Registration">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Processing">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CancelledByPartner">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DeliveryWaiting">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Delivery">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">40</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Delivered">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">50</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DeliveredWithDelay">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">51</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NotDelivered">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">60</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderStatuses" nillable="true" type="tns:OrderStatuses" />
+  <xs:complexType name="ArrayOfPublicOrderStatuses">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PublicOrderStatuses" type="tns:PublicOrderStatuses" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPublicOrderStatuses" nillable="true" type="tns:ArrayOfPublicOrderStatuses" />
+  <xs:complexType name="ArrayOfOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
+  <xs:complexType name="ArrayOfOrderStatuses">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderStatuses" type="tns:OrderStatuses" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderStatuses" nillable="true" type="tns:ArrayOfOrderStatuses" />
+  <xs:complexType name="ArrayOfDeliveryGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliveryGroup" nillable="true" type="tns:DeliveryGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeliveryGroup" nillable="true" type="tns:ArrayOfDeliveryGroup" />
+  <xs:complexType name="DeliveryGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeliveryVariants" nillable="true" type="tns:ArrayOfDeliveryVariant" />
+      <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeliveryGroup" nillable="true" type="tns:DeliveryGroup" />
+  <xs:complexType name="ArrayOfDeliveryVariant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliveryVariant" nillable="true" type="tns:DeliveryVariant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeliveryVariant" nillable="true" type="tns:ArrayOfDeliveryVariant" />
+  <xs:complexType name="DeliveryVariant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BonusDeliveryCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeliveryCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeliveryType" type="tns:DeliveryTypes" />
+      <xs:element minOccurs="0" name="DeliveryVariantName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalDeliveryVariantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PickupPoints" nillable="true" type="tns:ArrayOfPickupVariant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeliveryVariant" nillable="true" type="tns:DeliveryVariant" />
+  <xs:complexType name="ArrayOfPickupVariant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PickupVariant" nillable="true" type="tns:PickupVariant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPickupVariant" nillable="true" type="tns:ArrayOfPickupVariant" />
+  <xs:complexType name="PickupVariant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BonusDeliveryCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeliveryCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PickupPoint" nillable="true" type="tns:PickupPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PickupVariant" nillable="true" type="tns:PickupVariant" />
+</xs:schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d47d5d9f-2b98-4fc5-9d7e-bf8022dd6a1f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>true</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:8101/BasketService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BasketService.disco" MetadataType="Disco" ID="75189f09-1ac7-46fe-93d2-91c7454720ea" SourceId="1" SourceUrl="http://rphqbuild1:8101/BasketService.svc?disco" />
+    <MetadataFile FileName="BasketService.xsd" MetadataType="Schema" ID="37b79bda-27bc-4780-8665-1d5908a53a94" SourceId="1" SourceUrl="http://rphqbuild1:8101/BasketService.svc?xsd=xsd5" />
+    <MetadataFile FileName="BasketService1.xsd" MetadataType="Schema" ID="f8105adb-ae1b-4da0-85f7-3c62db10e5c2" SourceId="1" SourceUrl="http://rphqbuild1:8101/BasketService.svc?xsd=xsd4" />
+    <MetadataFile FileName="BasketService.wsdl" MetadataType="Wsdl" ID="3c8a07a6-3d48-4224-a604-0e54dd5c19dc" SourceId="1" SourceUrl="http://rphqbuild1:8101/BasketService.svc?wsdl" />
+    <MetadataFile FileName="BasketService2.xsd" MetadataType="Schema" ID="9b698b7e-96ae-4e8f-9826-a6a19337f730" SourceId="1" SourceUrl="http://rphqbuild1:8101/BasketService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BasketService3.xsd" MetadataType="Schema" ID="9fee00e3-b871-44b4-aeac-ac5b24da91a1" SourceId="1" SourceUrl="http://rphqbuild1:8101/BasketService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BasketService4.xsd" MetadataType="Schema" ID="aa1e28e0-7108-44b6-92bd-50f636f94ab4" SourceId="1" SourceUrl="http://rphqbuild1:8101/BasketService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BasketService5.xsd" MetadataType="Schema" ID="7ce4b4bf-c791-4633-9ef2-13959f03bbc1" SourceId="1" SourceUrl="http://rphqbuild1:8101/BasketService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

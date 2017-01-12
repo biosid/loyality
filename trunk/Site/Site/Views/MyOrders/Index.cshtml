@@ -1,0 +1,103 @@
+﻿@using Vtb24.Site.Models.MyOrders
+@model MyOrdersModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Список заказов";
+    ViewBag.Menu = "Orders";
+}
+
+@Html.AddScriptBlock(
+    @<script>
+        require(['MyOrders/index'], function (module) {
+            module({ el: '#ordersTable' });
+        });
+    </script>
+)
+
+@section secondary
+{
+    @Html.Action("ClientMenu", "Layout", new { activeMenu = ViewBag.Menu })
+}
+
+@helper NoOrdersMessage(OrdersKind kind) {
+    switch (kind)
+    {
+        case OrdersKind.InProcess:
+            <p class="h3" style="margin: 2em 0; text-align: center;">
+                @if(ViewBag.ClientActivationRequired) {
+                    @: Чтобы оформлять заказы Вам следует пройти <a href="/howitworks">активацию</a>   
+                } else  {
+                    @: У вас нет активных заказов
+                }
+            </p>
+            break;
+        case OrdersKind.History:
+            <p class="h3" style="margin: 2em 0em; text-align: center;">
+                
+                @if(ViewBag.ClientActivationRequired) {
+                    @: Чтобы оформлять заказы Вам следует пройти <a href="/howitworks">активацию</a>
+                } else  {
+                    @: У вас нет завершенных заказов
+                }
+            </p>
+            break;
+    }
+}
+
+<div class="mnl16">
+    <ul class="content-menu size18 middle">
+        <li class="item @(ViewBag.Tab == 1 ? "active" : "")">
+            <span>
+                <a href="@Url.Action("Index", "MyOrders")">
+                    В процессе
+                </a>
+            </span>
+        </li>
+        <li class="item @(ViewBag.Tab == 2 ? "active" : "")">
+            <span>
+                <a href="@Url.Action("History", "MyOrders")">
+                    История
+                </a>
+            </span>
+        </li>
+    </ul>
+    
+    @if (Model.Orders.Any())
+    {
+        <div class="space45"></div>
+        <div class="wrap-table" id="ordersTable">
+            <table cellpadding="0" cellspacing="0" class="table-style">
+                <colgroup>
+                    <col width="105"/>
+                    <col width="75"/>
+                    <col/>
+                    <col width="75"/>
+                    <col width="150"/>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <td class="align-center">Дата</td>
+                        <td class="align-center">Номер</td>
+                        <td class="align-center">Вознаграждения</td>
+                        <td class="align-center">Итого</td> 
+                        <td class="align-center">Статус</td>
+                    </tr>
+                </thead>
+            
+                @foreach (var order in Model.Orders)
+                {
+                    @Html.Partial("_ListOrder", order)
+                }
+            </table>
+        </div>
+    }
+    else
+    {
+        @NoOrdersMessage(Model.Kind)
+    }
+</div>
+@if (Model.TotalPages > 1)
+{
+    @Html.Pager(Model.TotalPages, Model.Page)
+}

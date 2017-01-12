@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Service="RapidSoft.VTB24.BankConnector.Service.PaymentService" Factory="RapidSoft.VTB24.BankConnector.WebServices.WcfServiceFactory"  %>

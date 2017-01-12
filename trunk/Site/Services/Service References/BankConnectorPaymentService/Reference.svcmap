@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="18ee5d4e-2b36-48b2-87b8-727a1aa6d9d0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:63910/PaymentService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PaymentService.disco" MetadataType="Disco" ID="f166a878-4013-48a6-95c7-389199b14d0b" SourceId="1" SourceUrl="http://rphqbuild1:63910/PaymentService.svc?disco" />
+    <MetadataFile FileName="PaymentService.xsd" MetadataType="Schema" ID="7f813768-9e27-4d51-9a2f-ff483beaffc0" SourceId="1" SourceUrl="http://rphqbuild1:63910/PaymentService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PaymentService1.xsd" MetadataType="Schema" ID="4e06c3ac-fb2c-4e66-82a2-dcc7a36efac8" SourceId="1" SourceUrl="http://rphqbuild1:63910/PaymentService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PaymentService.wsdl" MetadataType="Wsdl" ID="42666ae4-b8d7-4b28-8106-667c32de9599" SourceId="1" SourceUrl="http://rphqbuild1:63910/PaymentService.svc?wsdl" />
+    <MetadataFile FileName="PaymentService2.xsd" MetadataType="Schema" ID="e30d29ac-b7be-45ea-a59e-f84932cfc4e0" SourceId="1" SourceUrl="http://rphqbuild1:63910/PaymentService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PaymentService3.xsd" MetadataType="Schema" ID="446538b6-9749-440c-ae7f-26b80716f3e8" SourceId="1" SourceUrl="http://rphqbuild1:63910/PaymentService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

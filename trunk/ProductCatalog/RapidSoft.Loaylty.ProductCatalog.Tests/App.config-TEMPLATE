@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="quartz" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0,Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <section name="fakeData" type="RapidSoft.Loaylty.ProductCatalog.Fake.FakeDataConfigSection, RapidSoft.Loaylty.ProductCatalog"/>
+    <section name="log4net"  type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+  </configSections>
+  <appSettings>
+    <add key="VtbSystemUserName" value="vtbSystemUser" />
+    <add key="MaxResultsCountBasketItems" value="10"/>
+    <add key="IsAssemblyInitialize" value="true"/>
+    <add key="TestPartnerIds" value="1,2"/>
+    <!-- Список email адресов через ";", на которые необходимо отправлять отчеты импорта и сообщения об ошибке уникальности идентификаторов заказов в системе поставщика/партнера. -->
+    <add key="reportRecipients" value="@MAILTO@" />
+		<!-- Список идентификаторов дополнительных etl-пакетов импорта тарифов доставки (77A3E3C6-C00B-41FF-8376-DCEF0DF79A00 - указывать не надо) -->
+    <add key="ImportDeliveryRatesEtlPackageIds" value="777FF1A8-3FBF-4127-96D3-70A0FA7FD05C" />
+    <add key="WishListNotificationDeliveryPrice" value="300" />
+    <!-- Настройки для рассчета скидок. -->
+    <add key="ProductPriceDropThresholdPercent" value="80" />
+    <add key="ProductPriceRiseThresholdPercent" value="90" />
+    <add key="ProductPriceDiscountPeriod" value="30" />
+    <!-- Настройка продуктов банка -->
+    <add key="BankProductsPartnerId" value="@BankProductsPartnerId@" />
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="Logs" />
+    <add key="LogAppName" value="ProductCatalog" />
+    <add key="LogSubsystemName" value="Tests" />
+  </appSettings>
+  
+  <quartz configSource="quartz.config" />
+
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="" maxReceivedMessageSize = "1000000"/>
+        <binding name="ClientProfileServicePortBinding" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_IGeoPointService" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_IOrderManagementService" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_IPartnerSecurityService" maxReceivedMessageSize = "1000000"/>
+        <binding name="ProcessingServicePortBinding" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_IAdminMechanicsService" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_IMechanicsService" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_IServiceInfo" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_ITargetAudienceService" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_IServiceInfo1" maxReceivedMessageSize = "1000000"/>
+        <binding name="BasicHttpBinding_ICatalogSearcher" maxReceivedMessageSize = "1000000"/>
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="@ClientProfileAddress@"
+        binding="basicHttpBinding" bindingConfiguration="ClientProfileServicePortBinding"
+        contract="ClientProfileService.ClientProfileService" name="ClientProfileServicePort" />
+      <endpoint address="@GEOSERVICEURL@"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IGeoPointService"
+        contract="GeoPointService.IGeoPointService" name="BasicHttpBinding_IGeoPointService" />
+      <endpoint address="@PartnersConnectorOrderManagementURL@"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOrderManagementService"
+        contract="PartnersOrderManagementService.IOrderManagementService"
+        name="BasicHttpBinding_IOrderManagementService" />
+      <endpoint address="@PartnersConnectorPartnerSecurityURL@"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IPartnerSecurityService"
+        contract="PartnerSecurityService.IPartnerSecurityService"
+        name="BasicHttpBinding_IPartnerSecurityService" />
+      <endpoint address="@ProcessingAddress@" binding="basicHttpBinding"
+        bindingConfiguration="ProcessingServicePortBinding" contract="ProcessingService.ProcessingService"
+        name="ProcessingServicePort" />
+      <endpoint address="@AdminMechanicsService@"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IAdminMechanicsService"
+        contract="AdminMechanicsService.IAdminMechanicsService" name="BasicHttpBinding_IAdminMechanicsService" />
+      <endpoint address="@MechanicsService@"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IMechanicsService"
+        contract="MechanicsService.IMechanicsService" name="BasicHttpBinding_IMechanicsService" />
+      <endpoint address="@MechanicsService@"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceInfo"
+        contract="MechanicsService.IServiceInfo" name="BasicHttpBinding_IServiceInfo" />
+      <endpoint address="@TargetAudienceService@"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ITargetAudienceService"
+        contract="TargetAudienceService.ITargetAudienceService" name="BasicHttpBinding_ITargetAudienceService" />
+      <endpoint address="@TargetAudienceService@"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceInfo1"
+        contract="TargetAudienceService.IServiceInfo" name="BasicHttpBinding_IServiceInfo1" />
+      <endpoint address="@CatalogSearcherService@"
+            binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICatalogSearcher"
+            contract="CatalogSearcherService.ICatalogSearcher" name="BasicHttpBinding_ICatalogSearcher" />
+    </client>
+  </system.serviceModel>
+
+  <connectionStrings>
+    <add name="LoyaltyProductCatalogDB" 
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@" 
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+	<log4net configSource="log4net.config" />
+
+  <system.net>
+    <mailSettings>
+      <smtp
+          deliveryMethod="Network"
+          from="@MAILFROM@">
+        <network
+            host="@MAILSMTPHOST@"
+            port="@MAILSMTPPORT@"
+            enableSsl="@MailEnableSsl@"
+            userName="@MAILUSERNAME@"
+            password="@MAILPASSWORD@"
+            />
+      </smtp>
+    </mailSettings>
+  </system.net>
+  
+</configuration>

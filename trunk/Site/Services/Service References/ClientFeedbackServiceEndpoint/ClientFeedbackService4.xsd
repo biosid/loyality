@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:5657/ClientFeedbackService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfMessageAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessageAttachment" nillable="true" type="tns:MessageAttachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessageAttachment" nillable="true" type="tns:ArrayOfMessageAttachment" />
+  <xs:complexType name="MessageAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileSize" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="MessageId" type="xs:int" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageAttachment" nillable="true" type="tns:MessageAttachment" />
+  <xs:simpleType name="FeedbackTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Suggestion" />
+      <xs:enumeration value="Issue" />
+      <xs:enumeration value="OrderIncident" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FeedbackTypes" nillable="true" type="tns:FeedbackTypes" />
+  <xs:complexType name="Thread">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientType" type="tns:ThreadClientTypes" />
+      <xs:element minOccurs="0" name="FirstMessageBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstMessageTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstMessageType" type="tns:MessageTypes" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="InsertedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsAnswered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsClosed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastMessageBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastMessageTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastMessageType" type="tns:MessageTypes" />
+      <xs:element minOccurs="0" name="MessagesCount" type="xs:int" />
+      <xs:element minOccurs="0" name="MetaData" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShowSince" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShowUntil" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TopicMessage" nillable="true" type="tns:ThreadMessage" />
+      <xs:element minOccurs="0" name="Type" type="tns:ThreadTypes" />
+      <xs:element minOccurs="0" name="UnreadMessagesCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Thread" nillable="true" type="tns:Thread" />
+  <xs:simpleType name="ThreadClientTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Guest" />
+      <xs:enumeration value="Client" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ThreadClientTypes" nillable="true" type="tns:ThreadClientTypes" />
+  <xs:simpleType name="MessageTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OperatorMessage" />
+      <xs:enumeration value="ClientMessage" />
+      <xs:enumeration value="GuestMessage" />
+      <xs:enumeration value="SystemMessage" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MessageTypes" nillable="true" type="tns:MessageTypes" />
+  <xs:complexType name="ThreadMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfMessageAttachment" />
+      <xs:element minOccurs="0" name="AuthorEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthorFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthorId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Index" type="xs:int" />
+      <xs:element minOccurs="0" name="InsertedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsUnread" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MessageBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageType" type="tns:MessageTypes" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThreadMessage" nillable="true" type="tns:ThreadMessage" />
+  <xs:simpleType name="ThreadTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Suggestion" />
+      <xs:enumeration value="Issue" />
+      <xs:enumeration value="Notification" />
+      <xs:enumeration value="OrderIncident" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ThreadTypes" nillable="true" type="tns:ThreadTypes" />
+</xs:schema>

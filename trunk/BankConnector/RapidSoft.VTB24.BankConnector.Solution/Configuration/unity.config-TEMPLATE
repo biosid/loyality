@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<unity>
+  <namespace name="RapidSoft.VTB24.BankConnector.API" />
+  <assembly name="RapidSoft.VTB24.BankConnector.API" />
+
+  <namespace name="RapidSoft.VTB24.BankConnector.Service" />
+  <namespace name="RapidSoft.VTB24.BankConnector.Acquiring" />
+  <namespace name="RapidSoft.VTB24.BankConnector.Stubs" />
+  <assembly name="RapidSoft.VTB24.BankConnector" />
+
+  <namespace name="RapidSoft.VTB24.BankConnector.DataSource" />
+  <namespace name="RapidSoft.VTB24.BankConnector.DataSource.Repository" />
+  <namespace name="RapidSoft.VTB24.BankConnector.DataSource.Interface" />
+  <namespace name="RapidSoft.VTB24.BankConnector.DataSource.Provider" />
+  <assembly name="RapidSoft.VTB24.BankConnector.DataSource" />
+
+  <namespace name="RapidSoft.VTB24.BankConnector.DataModels" />
+  <assembly name="RapidSoft.VTB24.BankConnector.DataModels" />
+
+  <namespace name="RapidSoft.Loaylty.BonusGateway.BonusGateway"/>
+  <assembly name="RapidSoft.Loaylty.BonusGateway" />
+
+  <namespace name="RapidSoft.Loaylty.ClientProfile.ClientProfileService"/>
+  <assembly name="RapidSoft.Loaylty.ClientProfile" />
+
+  <namespace name="RapidSoft.Loaylty.Processing.ProcessingService"/>
+  <assembly name="RapidSoft.Loaylty.Processing" />
+
+  <namespace name="RapidSoft.Loaylty.ProductCatalog.WsClients.BasketService" />
+  <namespace name="RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogAdminService" />
+  <namespace name="RapidSoft.Loaylty.ProductCatalog.WsClients.CatalogSearcherService" />
+  <namespace name="RapidSoft.Loaylty.ProductCatalog.WsClients.ComponentInfo" />
+  <namespace name="RapidSoft.Loaylty.ProductCatalog.WsClients.WishListService" />
+  <namespace name="RapidSoft.Loaylty.ProductCatalog.WsClients.OrderManagementService" />
+  <assembly name="RapidSoft.Loaylty.ProductCatalog.WsClients" />
+
+  <namespace name="RapidSoft.Loaylty.PromoAction.WsClients.AdminMechanicsService"/>
+  <namespace name="RapidSoft.Loaylty.PromoAction.WsClients.MechanicsService"/>
+  <namespace name="RapidSoft.Loaylty.PromoAction.WsClients.TargetAudienceService"/>
+  <assembly name="RapidSoft.Loaylty.PromoAction.WsClients" />
+
+  <namespace name="Rapidsoft.Loyalty.NotificationSystem.WsClients.EmailSenderService"/>
+  <namespace name="Rapidsoft.Loyalty.NotificationSystem.WsClients.ClientMessageService"/>
+  <assembly name="Rapidsoft.Loyalty.NotificationSystem.WsClients" />
+
+  <namespace name="RapidSoft.VTB24.Site.PublicProfileWebApi"/>
+  <namespace name="RapidSoft.VTB24.Site.SecurityTokenWebApi"/>
+  <namespace name="RapidSoft.VTB24.Site.SecurityWebApi"/>
+  <assembly name="RapidSoft.VTB24.Site" />
+
+  <namespace name="RapidSoft.VTB24.BankConnector.WsClients.SecurityService"/>
+  <assembly name="RapidSoft.VTB24.BankConnector.WsClients" />
+
+  <namespace name="RapidSoft.VTB24.BankConnector.Infrastructure.Logging" />
+  <namespace name="RapidSoft.VTB24.BankConnector.Infrastructure.Security" />
+  <assembly name="RapidSoft.VTB24.BankConnector.Infrastructure" />
+
+  <namespace name="RapidSoft.VTB24.BankConnector.Tests.StubServices"/>
+  <assembly name="RapidSoft.VTB24.BankConnector.Tests" />
+
+  <namespace name="RapidSoft.VTB24.BankConnector.Acquiring" />
+  <assembly name="RapidSoft.VTB24.BankConnector.Acquiring" />
+
+  <typeAliases>
+    <typeAlias alias="perResolve" type="Microsoft.Practices.Unity.PerResolveLifetimeManager, Microsoft.Practices.Unity" />
+    <typeAlias alias="hierarchical" type="Microsoft.Practices.Unity.HierarchicalLifetimeManager, Microsoft.Practices.Unity" />
+  </typeAliases>
+    
+  <container>
+    <register type="BankConnectorDBContext">
+      <lifetime type="hierarchical" />
+    </register>
+    <register type="IUnitOfWork" mapTo="UnitOfWork">
+      <lifetime type="hierarchical" />
+    </register>
+    
+    <register type="IUnitellerProvider" mapTo="@UnitellerProvider@"/>
+    <register type="IAdminMechanicsServiceProvider" mapTo="AdminMechanicsServiceProvider" />
+
+    <!-- START Repository -->
+    <register type="IClientPersonalMessageRepository" mapTo="ClientPersonalMessageRepository"/>
+    <register type="IClientPersonalMessageResponseRepository" mapTo="ClientPersonalMessageResponseRepository"/>
+    <register type="IPromoActionRepository" mapTo="PromoActionRepository"/>
+    <register type="IPromoActionResponseRepository" mapTo="PromoActionResponseRepository"/>
+    <register type="IClientForActivationRepository" mapTo="ClientForActivationRepository"/>
+    <register type="IClientForRegistrationRepository" mapTo="ClientForRegistrationRepository"/>
+    <register type="IClientForBankRegistrationRepository" mapTo="ClientForBankRegistrationRepository"/>
+    <register type="IOrderPaymentResponseRepository" mapTo="OrderPaymentResponseRepository"/>
+    <register type="IOrderForPaymentRepository" mapTo="OrderForPaymentRepository"/>
+    <register type="IOrderItemsForPaymentRepository" mapTo="OrderItemsForPaymentRepository"/>
+    <register type="IOrderPaymentResponse2Repository" mapTo="OrderPaymentResponse2Repository"/>
+    <register type="IClientForRegistrationResponseRepository" mapTo="ClientForRegistrationResponseRepository"/>
+    <register type="IClientUpdatesRepository" mapTo="ClientUpdatesRepository"/>
+    <register type="ILoyaltyClientUpdateRepository" mapTo="LoyaltyClientUpdateRepository"/>
+    <register type="IProfileCustomFieldsRepository" mapTo="ProfileCustomFieldsRepository"/>
+    <register type="IProfileCustomFieldsValuesRepository" mapTo="ProfileCustomFieldsValuesRepository"/>
+    <register type="IClientLoginBankUpdatesRepository" mapTo="ClientLoginBankUpdatesRepository"/>
+    <register type="IClientLoginBankUpdatesResponseRepository" mapTo="ClientLoginBankUpdatesResponseRepository"/>
+    <register type="IClientForBankPwdResetRepository" mapTo="ClientForBankPwdResetRepository"/>
+    <register type="IClientForBankPwdResetResponseRepository" mapTo="ClientForBankPwdResetResponseRepository"/>
+    <register type="IUnitellerPaymentsRepository" mapTo="UnitellerPaymentsRepository" />
+    <register type="IOrderAttemptsRepository" mapTo="OrderAttemptsRepository" />
+    <register type="IBankOfferRepository" mapTo="BankOfferRepository" />
+    <register type="IRegisterBankOffersRepository" mapTo="RegisterBankOffersRepository" />
+    <register type="IRegisterBankOffersResponseRepository" mapTo="RegisterBankOffersResponseRepository" />
+    <register type="IBankSmsRepository" mapTo="BankSmsRepository" />
+    <!-- End Repository -->
+
+    <!-- START Service -->
+    <register type="IBankConnectorService" mapTo="BankConnectorService"/>
+    <register type="IAdminBankConnectorService" mapTo="AdminBankConnectorService"/>
+    <register type="IClientManagementService" mapTo="ClientManagementService"/>
+    <register type="IAdminClientManagementService" mapTo="AdminClientManagementService"/>
+    <register type="IOrderPaymentService" mapTo="OrderPaymentService"/>
+    <register type="IPaymentService" mapTo="PaymentService" />
+    <register type="IBankOffersService" mapTo="BankOffersService"/>
+    <register type="IBankSmsService" mapTo="BankSmsService" />
+
+    <register type="IOrderManagementService" mapTo="OrderManagementServiceClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="BasicHttpBinding_IOrderManagementService"/>
+      </constructor>
+    </register>
+    <register type="IWishListService" mapTo="WishListServiceClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="BasicHttpBinding_IWishListService"/>
+      </constructor>
+    </register>
+    <register type="IClientMessageService" mapTo="ClientMessageServiceClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="BasicHttpBinding_IClientMessageService"/>
+      </constructor>
+    </register>
+    <register type="ProcessingService" mapTo="ProcessingServiceClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="ProcessingServicePort"/>
+      </constructor>
+    </register>
+    <register type="ClientProfileService" mapTo="ClientProfileServiceClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="ClientProfileServicePort"/>
+      </constructor>
+    </register>
+    <register type="IAdminMechanicsService" mapTo="AdminMechanicsServiceClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="BasicHttpBinding_IAdminMechanicsService"/>
+      </constructor>
+    </register>
+    <register type="ITargetAudienceService" mapTo="TargetAudienceServiceClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="BasicHttpBinding_ITargetAudienceService"/>
+      </constructor>
+    </register>
+    <register type="ISecurityWebApi" mapTo="SecurityWebApiClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="BasicHttpBinding_ISecurityWebApi"/>
+      </constructor>
+    </register>
+    <register type="BonusGateway" mapTo="BonusGatewayClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="BasicHttpBinding_BonusGateway"/>
+      </constructor>
+    </register>
+    <register type="ICatalogAdminService" mapTo="CatalogAdminServiceClient">
+      <constructor>
+        <param name="endpointConfigurationName" value="BasicHttpBinding_ICatalogAdminService"/>
+      </constructor>
+    </register>
+    <!-- END Service -->
+
+    <register type="Uniteller.IUnitellerAcquiring" mapTo="Uniteller.UnitellerAcquiring" />
+    
+  </container>
+</unity>

@@ -1,0 +1,27 @@
+﻿@model IList<MenuItemModel>
+
+@helper LeftMenuTree (IList<MenuItemModel> list)
+{
+    var ulClass = list.First().Depth > 1 ? "sub-left-menu" : "left-menu";
+    <ul class="@ulClass">
+        @foreach (var item in list)
+        {
+            var liClass = item.IsRoot ? "item" : "sub-item";
+            liClass += item.IsActive || item.HasActiveChild ? " active" : "";
+            liClass += item.Children.Any() ? " sub" : "";
+            <li class="@liClass">
+                <a href="@item.Url">@item.Text</a>
+                @if (item.Children.Any())
+                {
+                    @LeftMenuTree(item.Children)
+                }
+                @if (item.BadgeNumber.HasValue)
+                {
+                    <span data-badge="@item.BadgeName" class="num" style="@(item.BadgeNumber > 0 ? null : "display:none")">@item.BadgeNumber.Value</span>
+                }
+            </li>            
+        }
+    </ul>
+}
+
+@LeftMenuTree(Model)

@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CatalogAdminService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.Entities" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.OutputResults" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICatalogAdminService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetAllSubCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSubCategories" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetAllSubCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSubCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_CreateCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCategory" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_CreateCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_UpdateCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategory" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_UpdateCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_DeleteCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategory" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_DeleteCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeCategoriesStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeCategoriesStatus" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeCategoriesStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeCategoriesStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_MoveCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:MoveCategory" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_MoveCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MoveCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnerProductCategoryLinks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnerProductCategoryLinks" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnerProductCategoryLinks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnerProductCategoryLinksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetPartnerProductCategoryLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPartnerProductCategoryLink" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetPartnerProductCategoryLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPartnerProductCategoryLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetCategoriesPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetCategoriesPermissions" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetCategoriesPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetCategoriesPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetCategoriesPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesPermissions" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetCategoriesPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_CreatePartner_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePartner" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_CreatePartner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePartnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_UpdatePartner_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePartner" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_UpdatePartner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePartnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartners_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartners" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartners_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnersInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnersInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnersInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnersInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnerById" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnerInfoById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnerInfoById" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnerInfoById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnerInfoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetPartnerSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPartnerSettings" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetPartnerSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPartnerSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_DeletePartnerSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePartnerSettings" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_DeletePartnerSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePartnerSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnersSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnersSettings" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetPartnersSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnersSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ImportDeliveryRatesFromHttp_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportDeliveryRatesFromHttp" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ImportDeliveryRatesFromHttp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportDeliveryRatesFromHttpResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetDeliveryRateImportTasksHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryRateImportTasksHistory" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetDeliveryRateImportTasksHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryRateImportTasksHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetDeliveryLocations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryLocations" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetDeliveryLocations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetDeliveryLocationKladr_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDeliveryLocationKladr" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetDeliveryLocationKladr_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDeliveryLocationKladrResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ResetDeliveryLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetDeliveryLocation" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ResetDeliveryLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetDeliveryLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetDeliveryLocationHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryLocationHistory" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetDeliveryLocationHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliveryLocationHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ImportProductsFromYmlHttp_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportProductsFromYmlHttp" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ImportProductsFromYmlHttp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportProductsFromYmlHttpResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetProductCatalogImportTasksHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductCatalogImportTasksHistory" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetProductCatalogImportTasksHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductCatalogImportTasksHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SearchProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProducts" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SearchProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetProductById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductById" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetProductById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_CreateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProduct" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_CreateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_UpdateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProduct" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_UpdateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_DeleteProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProducts" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_DeleteProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_MoveProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:MoveProducts" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_MoveProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MoveProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetProductsTargetAudiences_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetProductsTargetAudiences" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SetProductsTargetAudiences_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetProductsTargetAudiencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeProductsStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeProductsStatus" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeProductsStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeProductsStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeProductsStatusByPartner_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeProductsStatusByPartner" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeProductsStatusByPartner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeProductsStatusByPartnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeProductsModerationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeProductsModerationStatus" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeProductsModerationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeProductsModerationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_RecommendProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecommendProducts" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_RecommendProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecommendProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_DeleteCache_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCache" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_DeleteCache_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SaveProductViewsForDay_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProductViewsForDay" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SaveProductViewsForDay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProductViewsForDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SearchOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchOrders" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_SearchOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetOrderById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderById" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetOrderById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrdersStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersStatuses" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrdersStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrdersStatusDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersStatusDescription" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrdersStatusDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersStatusDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrdersPaymentStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersPaymentStatuses" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrdersPaymentStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersPaymentStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrdersDeliveryStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersDeliveryStatuses" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrdersDeliveryStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrdersDeliveryStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetOrderStatusesHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderStatusesHistory" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_GetOrderStatusesHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderStatusesHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_PartnerCommitOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerCommitOrder" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_PartnerCommitOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerCommitOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrderDeliveryInstructions_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrderDeliveryInstructions" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogAdminService_ChangeOrderDeliveryInstructions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOrderDeliveryInstructionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICatalogAdminService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:ICatalogAdminService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:ICatalogAdminService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSubCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetAllSubCategories" message="tns:ICatalogAdminService_GetAllSubCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetAllSubCategoriesResponse" message="tns:ICatalogAdminService_GetAllSubCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/CreateCategory" message="tns:ICatalogAdminService_CreateCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/CreateCategoryResponse" message="tns:ICatalogAdminService_CreateCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/UpdateCategory" message="tns:ICatalogAdminService_UpdateCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/UpdateCategoryResponse" message="tns:ICatalogAdminService_UpdateCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/DeleteCategory" message="tns:ICatalogAdminService_DeleteCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/DeleteCategoryResponse" message="tns:ICatalogAdminService_DeleteCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeCategoriesStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeCategoriesStatus" message="tns:ICatalogAdminService_ChangeCategoriesStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeCategoriesStatusResponse" message="tns:ICatalogAdminService_ChangeCategoriesStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/MoveCategory" message="tns:ICatalogAdminService_MoveCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/MoveCategoryResponse" message="tns:ICatalogAdminService_MoveCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerProductCategoryLinks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnerProductCategoryLinks" message="tns:ICatalogAdminService_GetPartnerProductCategoryLinks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnerProductCategoryLinksResponse" message="tns:ICatalogAdminService_GetPartnerProductCategoryLinks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPartnerProductCategoryLink">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/SetPartnerProductCategoryLink" message="tns:ICatalogAdminService_SetPartnerProductCategoryLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/SetPartnerProductCategoryLinkResponse" message="tns:ICatalogAdminService_SetPartnerProductCategoryLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCategoriesPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/SetCategoriesPermissions" message="tns:ICatalogAdminService_SetCategoriesPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/SetCategoriesPermissionsResponse" message="tns:ICatalogAdminService_SetCategoriesPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoriesPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetCategoriesPermissions" message="tns:ICatalogAdminService_GetCategoriesPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetCategoriesPermissionsResponse" message="tns:ICatalogAdminService_GetCategoriesPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePartner">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/CreatePartner" message="tns:ICatalogAdminService_CreatePartner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/CreatePartnerResponse" message="tns:ICatalogAdminService_CreatePartner_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePartner">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/UpdatePartner" message="tns:ICatalogAdminService_UpdatePartner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/UpdatePartnerResponse" message="tns:ICatalogAdminService_UpdatePartner_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartners">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartners" message="tns:ICatalogAdminService_GetPartners_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnersResponse" message="tns:ICatalogAdminService_GetPartners_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnersInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnersInfo" message="tns:ICatalogAdminService_GetPartnersInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnersInfoResponse" message="tns:ICatalogAdminService_GetPartnersInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnerById" message="tns:ICatalogAdminService_GetPartnerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnerByIdResponse" message="tns:ICatalogAdminService_GetPartnerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerInfoById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnerInfoById" message="tns:ICatalogAdminService_GetPartnerInfoById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnerInfoByIdResponse" message="tns:ICatalogAdminService_GetPartnerInfoById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPartnerSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/SetPartnerSettings" message="tns:ICatalogAdminService_SetPartnerSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/SetPartnerSettingsResponse" message="tns:ICatalogAdminService_SetPartnerSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePartnerSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/DeletePartnerSettings" message="tns:ICatalogAdminService_DeletePartnerSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/DeletePartnerSettingsResponse" message="tns:ICatalogAdminService_DeletePartnerSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnersSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnersSettings" message="tns:ICatalogAdminService_GetPartnersSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetPartnersSettingsResponse" message="tns:ICatalogAdminService_GetPartnersSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportDeliveryRatesFromHttp">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ImportDeliveryRatesFromHttp" message="tns:ICatalogAdminService_ImportDeliveryRatesFromHttp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ImportDeliveryRatesFromHttpResponse" message="tns:ICatalogAdminService_ImportDeliveryRatesFromHttp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryRateImportTasksHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetDeliveryRateImportTasksHistory" message="tns:ICatalogAdminService_GetDeliveryRateImportTasksHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetDeliveryRateImportTasksHistoryResponse" message="tns:ICatalogAdminService_GetDeliveryRateImportTasksHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryLocations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetDeliveryLocations" message="tns:ICatalogAdminService_GetDeliveryLocations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetDeliveryLocationsResponse" message="tns:ICatalogAdminService_GetDeliveryLocations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDeliveryLocationKladr">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/SetDeliveryLocationKladr" message="tns:ICatalogAdminService_SetDeliveryLocationKladr_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/SetDeliveryLocationKladrResponse" message="tns:ICatalogAdminService_SetDeliveryLocationKladr_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetDeliveryLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ResetDeliveryLocation" message="tns:ICatalogAdminService_ResetDeliveryLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ResetDeliveryLocationResponse" message="tns:ICatalogAdminService_ResetDeliveryLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryLocationHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetDeliveryLocationHistory" message="tns:ICatalogAdminService_GetDeliveryLocationHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetDeliveryLocationHistoryResponse" message="tns:ICatalogAdminService_GetDeliveryLocationHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportProductsFromYmlHttp">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ImportProductsFromYmlHttp" message="tns:ICatalogAdminService_ImportProductsFromYmlHttp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ImportProductsFromYmlHttpResponse" message="tns:ICatalogAdminService_ImportProductsFromYmlHttp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductCatalogImportTasksHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetProductCatalogImportTasksHistory" message="tns:ICatalogAdminService_GetProductCatalogImportTasksHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetProductCatalogImportTasksHistoryResponse" message="tns:ICatalogAdminService_GetProductCatalogImportTasksHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/SearchProducts" message="tns:ICatalogAdminService_SearchProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/SearchProductsResponse" message="tns:ICatalogAdminService_SearchProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetProductById" message="tns:ICatalogAdminService_GetProductById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetProductByIdResponse" message="tns:ICatalogAdminService_GetProductById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/CreateProduct" message="tns:ICatalogAdminService_CreateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/CreateProductResponse" message="tns:ICatalogAdminService_CreateProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/UpdateProduct" message="tns:ICatalogAdminService_UpdateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/UpdateProductResponse" message="tns:ICatalogAdminService_UpdateProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/DeleteProducts" message="tns:ICatalogAdminService_DeleteProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/DeleteProductsResponse" message="tns:ICatalogAdminService_DeleteProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/MoveProducts" message="tns:ICatalogAdminService_MoveProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/MoveProductsResponse" message="tns:ICatalogAdminService_MoveProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetProductsTargetAudiences">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/SetProductsTargetAudiences" message="tns:ICatalogAdminService_SetProductsTargetAudiences_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/SetProductsTargetAudiencesResponse" message="tns:ICatalogAdminService_SetProductsTargetAudiences_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProductsStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeProductsStatus" message="tns:ICatalogAdminService_ChangeProductsStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeProductsStatusResponse" message="tns:ICatalogAdminService_ChangeProductsStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProductsStatusByPartner">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeProductsStatusByPartner" message="tns:ICatalogAdminService_ChangeProductsStatusByPartner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeProductsStatusByPartnerResponse" message="tns:ICatalogAdminService_ChangeProductsStatusByPartner_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProductsModerationStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeProductsModerationStatus" message="tns:ICatalogAdminService_ChangeProductsModerationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeProductsModerationStatusResponse" message="tns:ICatalogAdminService_ChangeProductsModerationStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecommendProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/RecommendProducts" message="tns:ICatalogAdminService_RecommendProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/RecommendProductsResponse" message="tns:ICatalogAdminService_RecommendProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCache">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/DeleteCache" message="tns:ICatalogAdminService_DeleteCache_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/DeleteCacheResponse" message="tns:ICatalogAdminService_DeleteCache_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveProductViewsForDay">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/SaveProductViewsForDay" message="tns:ICatalogAdminService_SaveProductViewsForDay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/SaveProductViewsForDayResponse" message="tns:ICatalogAdminService_SaveProductViewsForDay_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/SearchOrders" message="tns:ICatalogAdminService_SearchOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/SearchOrdersResponse" message="tns:ICatalogAdminService_SearchOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetOrderById" message="tns:ICatalogAdminService_GetOrderById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetOrderByIdResponse" message="tns:ICatalogAdminService_GetOrderById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrdersStatuses" message="tns:ICatalogAdminService_ChangeOrdersStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrdersStatusesResponse" message="tns:ICatalogAdminService_ChangeOrdersStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersStatusDescription">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrdersStatusDescription" message="tns:ICatalogAdminService_ChangeOrdersStatusDescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrdersStatusDescriptionResponse" message="tns:ICatalogAdminService_ChangeOrdersStatusDescription_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersPaymentStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrdersPaymentStatuses" message="tns:ICatalogAdminService_ChangeOrdersPaymentStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrdersPaymentStatusesResponse" message="tns:ICatalogAdminService_ChangeOrdersPaymentStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersDeliveryStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrdersDeliveryStatuses" message="tns:ICatalogAdminService_ChangeOrdersDeliveryStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrdersDeliveryStatusesResponse" message="tns:ICatalogAdminService_ChangeOrdersDeliveryStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatusesHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/GetOrderStatusesHistory" message="tns:ICatalogAdminService_GetOrderStatusesHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/GetOrderStatusesHistoryResponse" message="tns:ICatalogAdminService_GetOrderStatusesHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PartnerCommitOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/PartnerCommitOrder" message="tns:ICatalogAdminService_PartnerCommitOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/PartnerCommitOrderResponse" message="tns:ICatalogAdminService_PartnerCommitOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrderDeliveryInstructions">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrderDeliveryInstructions" message="tns:ICatalogAdminService_ChangeOrderDeliveryInstructions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogAdminService/ChangeOrderDeliveryInstructionsResponse" message="tns:ICatalogAdminService_ChangeOrderDeliveryInstructions_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICatalogAdminService" type="tns:ICatalogAdminService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISupportService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSubCategories">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetAllSubCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCategory">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/CreateCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/UpdateCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeCategoriesStatus">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeCategoriesStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveCategory">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/MoveCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerProductCategoryLinks">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetPartnerProductCategoryLinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPartnerProductCategoryLink">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/SetPartnerProductCategoryLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCategoriesPermissions">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/SetCategoriesPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoriesPermissions">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetCategoriesPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePartner">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/CreatePartner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePartner">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/UpdatePartner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartners">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetPartners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnersInfo">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetPartnersInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerById">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetPartnerById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerInfoById">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetPartnerInfoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPartnerSettings">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/SetPartnerSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePartnerSettings">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/DeletePartnerSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnersSettings">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetPartnersSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDeliveryRatesFromHttp">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ImportDeliveryRatesFromHttp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryRateImportTasksHistory">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetDeliveryRateImportTasksHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryLocations">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetDeliveryLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDeliveryLocationKladr">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/SetDeliveryLocationKladr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetDeliveryLocation">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ResetDeliveryLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryLocationHistory">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetDeliveryLocationHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportProductsFromYmlHttp">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ImportProductsFromYmlHttp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductCatalogImportTasksHistory">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetProductCatalogImportTasksHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProducts">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/SearchProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductById">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetProductById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProduct">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/CreateProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/UpdateProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProducts">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/DeleteProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveProducts">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/MoveProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProductsTargetAudiences">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/SetProductsTargetAudiences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProductsStatus">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeProductsStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProductsStatusByPartner">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeProductsStatusByPartner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeProductsModerationStatus">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeProductsModerationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecommendProducts">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/RecommendProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCache">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/DeleteCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveProductViewsForDay">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/SaveProductViewsForDay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchOrders">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/SearchOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetOrderById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersStatuses">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeOrdersStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersStatusDescription">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeOrdersStatusDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersPaymentStatuses">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeOrdersPaymentStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrdersDeliveryStatuses">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeOrdersDeliveryStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatusesHistory">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/GetOrderStatusesHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PartnerCommitOrder">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/PartnerCommitOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOrderDeliveryInstructions">
+      <soap:operation soapAction="http://tempuri.org/ICatalogAdminService/ChangeOrderDeliveryInstructions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CatalogAdminService">
+    <wsdl:port name="BasicHttpBinding_ICatalogAdminService" binding="tns:BasicHttpBinding_ICatalogAdminService">
+      <soap:address location="http://rphqbuild1:8101/CatalogAdminService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

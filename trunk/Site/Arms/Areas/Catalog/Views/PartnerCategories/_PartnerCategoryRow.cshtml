@@ -1,0 +1,54 @@
+﻿@model Vtb24.Arms.Catalog.Models.PartnerCategories.SupplierCategoryModel
+@{
+    var catClass = "category-" + Model.Depth;
+    if (!Model.IsEnabled)
+    {
+        catClass += " disabled not-active";
+    }
+    catClass += Model.HasChildren ? " closed" : " empty";
+    var bindings = string.Join("|", Model.Bindings ?? new string[0]);
+    var data = Html.Json(
+        new
+        {
+            id = Model.Id, 
+            empty = Model.IsEmpty, 
+            depth = Model.Depth, 
+            parent = Model.ParentId,
+            title = Model.Title
+        }
+    ).ToString();
+}
+<tr class="@catClass" data-category="@data" data-category-bindings="@bindings" id="cat-@Model.Id" style="@(Model.ParentId.HasValue ? "display: none" : null)">
+    <td>
+        @if (Model.Permissions.Access)
+        {
+            <input type="checkbox" name="permission" autocomplete="off" class="mar-top-11" value="@Model.Id" @(Model.SupplierHasAccess ? "checked=\"checked\"" : "") />
+        }
+        else
+        {
+            @(Model.SupplierHasAccess ? "Да" : "Нет")
+        }
+    </td>
+    <td>
+        <div class="wrap-block">
+            <a href="#" class="triangle" data-x="categories/toggler"></a>
+            <div class="mar-left-20 pad-top-5 pad-bottom-5">@Model.Title</div>
+        </div>
+    </td>
+    <td>
+        <div style="width: 300px; overflow: visible;">
+            @if (Model.Permissions.Binding)
+            {
+                <input name="tags" id="tag@(Model.Id)" value="@string.Join("|", bindings)" />
+                <span class="none tags-binding-progress">привязка...</span>
+            }
+            else if (Model.Bindings != null)
+            {
+                foreach (var binding in Model.Bindings)
+                {
+                    <div>@binding</div>
+                }
+            }
+        </div>
+    </td>
+</tr>

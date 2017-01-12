@@ -1,0 +1,181 @@
+﻿@model Vtb24.Site.Models.Layout.HeaderModel
+<header>
+    <div class="hdr">
+        <div class="hdr-in clearfix">
+            <a href="/" class="logo"></a>
+            <a href="/" class="collection"></a>
+            
+            @if (Model.IsAuthenticated)
+            {
+                <ul class="top-menu">
+                    <li class="top-menu__item">
+                        <a title="Мои желания" href="@Url.Action("Index", "WishList")" class="top-menu__link top-menu__wishlist">
+                            <span class="top-menu__label" id="header-wishlist-num" style="@(Model.WishListCount == 0 ? "visibility:hidden":"")">@Model.WishListCount</span>
+                        </a>
+                    </li>
+                    <li class="top-menu__item">
+                        <a title="Корзина" href="@Url.Action("Index", "Basket")" data-x="client/activation_required" class="top-menu__link top-menu__basket">
+                            <span class="top-menu__label" id="header-basket-num" style="@(Model.BasketCount == 0 ? "visibility:hidden":"")">@Model.BasketCount</span>
+                        </a>
+                    </li>
+                    <li class="top-menu__item top-menu__item-with-dropdown">
+                        <a title="Личный кабинет" href="#" onclick="return false;" class="top-menu__link top-menu__user">
+                            <span class="menu-badge" data-badge="unreads" style="@(Model.UnreadMessagesCount == 0 ? "visibility:hidden":"")">@Model.UnreadMessagesCount</span>
+                            <span class="menu-dropdown__handler"></span>
+                        </a>
+                        <ul class="small-menu" style="display:none">
+                            <li class="small-menu__item first">
+                                <a href="@Url.Action("Index", "MyPoints")" class="small-menu__item-link">Выписка</a>
+                            </li>
+                            <li class="small-menu__item">
+                                <a href="@Url.Action("Index", "MyOrders")" class="small-menu__item-link">Заказы</a>
+                            </li>
+                            <li class="small-menu__item">
+                                <a href="@Url.Action("Index", "MyMessages")" class="small-menu__item-link">
+                                    Сообщения
+                                    <span class="menu-badge" data-badge="unreads" style="@(Model.UnreadMessagesCount == 0 ? "visibility:hidden":"")">@Model.UnreadMessagesCount</span>
+                                </a>
+                            </li>
+                            @if (Model.ShowMyInfoLink)
+                            {
+                                <li class="small-menu__item">
+                                    <a href="@Url.Action("Index", "MyInfo")" class="small-menu__item-link">Мои данные</a>
+                                </li>
+                            }
+                            <li class="small-menu__item">
+                                <a href="@Url.Action("Index", "Calculator")" class="small-menu__item-link">
+                                    Бонусный калькулятор
+                                </a>
+                            </li>
+                            <li class="small-menu__item small-menu__logoff">
+                                <a href="@Url.Action("Logout", "Account")" class="small-menu__logoff-link">Выход</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <div class="hdr-lgn__special">
+                    <a class="hdr-lgn__special-reg" href="@Url.Action("Register", "Account")">Регистрация</a><a class="hdr-lgn__special-lgn" href="@Url.Action("Login", "Account")">Войти</a>
+                </div>
+            }
+
+            @if (!Model.HideRegionSelector)
+            {
+                <div class="user">
+                    <div class="drop-down" id="header-location-dropdown">
+                        <ul class="table reset top">
+                            <li class="cell click">@Model.UserLocationName</li>
+                            <li class="cell click"><span></span></li>
+                        </ul>
+                        @Html.Partial("Location/_HeaderSelector", @Model.Regions)
+                    </div><!-- /.drop-down -->
+                    @if (Model.IsAuthenticated)
+                    {
+                        <div class="clear"></div>
+                        <div class="hdr__greetings">
+                            @if (Model.ShowMyInfoLink)
+                            {
+                                <text><a class="hdr__greetings-name" href="@Url.Action("Index", "MyInfo")">@Model.UserFullName</a>,</text>
+                            }
+                            else
+                            {
+                                <text>@Model.UserFullName,</text>
+                            }
+                            у Вас
+                            <a class="hdr__greetings-balance" href="@Url.Action("Index", "MyPoints")">@Model.Balance.ToString("N0")</a>
+                            @Html.Pluralize(Model.Balance, "бонус", "бонуса", "бонусов")
+                        </div>
+                    }
+                </div>
+                <!-- /.user -->
+            }
+
+            <div class="clear"></div>
+
+            @Html.Partial("_HeaderSearch", Model)
+
+            <nav>
+                <ul class="clearfix nav">
+                    <li class="item@(Model.ActiveMenu == "Catalog" ? " active" : null)">
+                        <a href="@Url.Action("Index", "Catalog")" class="flevel active">Каталог</a>
+                        @if (Model.EnableHeaderDropdown)
+                        {
+                            @Html.Action("HeaderDropdownMenu", "Catalog")
+                        }
+                    </li>
+                    <li class="item">
+                        <a href="javascript:void(0)" class="flevel">О программе</a>
+                        <div class="sub-nav" style="display: none;">
+                            <ul class="sub-nav-ul">
+                                <li>
+                                    <a href="/howitworks">Как программа работает</a>
+                                </li>
+                                <li>
+                                    <a href="/cards">Какие карты участвуют в&nbsp;программе</a>
+                                </li>
+                                <li>
+                                    <a href="/pravila">Правила</a>
+                                </li>
+                                <li>
+                                    <a href="/partners">Партнеры</a>
+                                </li>
+                                <li>
+                                    <a href="/faq">Вопросы и ответы</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="javascript:void(0)" class="flevel">Бонусы</a>
+                        <div class="sub-nav" style="display: none;">
+                            <ul class="sub-nav-ul">
+                                <li>
+                                    <a href="/bonuses/vtb24">Бонусы от Банка ВТБ24</a>
+                                </li>
+                                <li>
+                                    <a href="/bonuses/partners">Бонусы от Партнеров программы</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        
+        </div>
+    </div>
+</header>
+@Html.AddScriptBlock(
+    @<script>
+            require(['Shared/Header/header-dropdown-menu'], function(dropdown) {
+                dropdown();
+            });
+    </script>
+)
+@Html.AddScriptBlock(
+    @<script>
+         require(['Shared/global'], function(global) {
+             global.init({
+                unreadsCount: @Model.UnreadMessagesCount,
+                wishedCount: @Model.WishListCount,
+                basketCount: @Html.Json(Model.BasketCount),
+                balance: @Html.Json(Model.Balance)
+             });
+         });
+         
+         require(['Shared/Header/index'], function (module) {
+             module();
+         });
+    </script>
+)
+@if (ViewBag.ClientActivationRequired != null && ViewBag.ClientActivationRequired)
+{
+    @Html.AddScriptBlock(
+        @<script>
+                require(['Client/activation_required'], function(module) {
+                    module({ hiwUrl: '/howitworks' });
+                });
+            </script>
+    )
+}

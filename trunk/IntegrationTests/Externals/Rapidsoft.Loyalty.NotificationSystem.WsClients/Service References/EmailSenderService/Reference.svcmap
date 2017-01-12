@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6f5b142f-0e7c-4c46-a96f-353dc50cf7d7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:5657/EmailSender.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EmailSender.disco" MetadataType="Disco" ID="1e464a18-334e-481b-85a5-8744c8f3c3db" SourceId="1" SourceUrl="http://localhost:5657/EmailSender.svc?disco" />
+    <MetadataFile FileName="EmailSender.wsdl" MetadataType="Wsdl" ID="23a76248-20df-4758-b1b0-5fd4287df540" SourceId="1" SourceUrl="http://localhost:5657/EmailSender.svc?wsdl" />
+    <MetadataFile FileName="EmailSender.xsd" MetadataType="Schema" ID="250f2626-a654-42c3-beff-85542c221da6" SourceId="1" SourceUrl="http://localhost:5657/EmailSender.svc?xsd=xsd3" />
+    <MetadataFile FileName="EmailSender1.xsd" MetadataType="Schema" ID="9a1f9ba8-9414-47c9-8469-511bd039adb6" SourceId="1" SourceUrl="http://localhost:5657/EmailSender.svc?xsd=xsd2" />
+    <MetadataFile FileName="EmailSender2.xsd" MetadataType="Schema" ID="49067871-dfea-4646-b729-6bc5781c02a7" SourceId="1" SourceUrl="http://localhost:5657/EmailSender.svc?xsd=xsd1" />
+    <MetadataFile FileName="EmailSender3.xsd" MetadataType="Schema" ID="ff57b740-d4c3-4694-be91-4d68b64f8c30" SourceId="1" SourceUrl="http://localhost:5657/EmailSender.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

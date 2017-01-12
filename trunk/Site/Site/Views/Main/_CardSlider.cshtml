@@ -1,0 +1,59 @@
+<div class="card-slider">
+    <div class="card-slider__controls-wrap">
+        <div class="card-slider__controls">
+            <div class="card-slider__dropdown">
+                <img src="/content/images/platinum.png" alt=""/>
+                <span class="card-slider__dropdown-text">Привилегия</span>
+                <span class="card-slider__dropdown-arrow"></span>
+            </div>
+            <div class="card-slider__register">
+                @if (!Model.IsAuthenticated)
+                {
+                    <a href="@Url.Action("Register", "Account")" class="btn-red large">
+                        <span>Зарегистрироваться</span>
+                    </a>
+                }
+            </div>
+            <div class="card-slider__slider">
+                <div class="slider">
+                    <a href="#" class="ui-slider-handle">
+                        <div class="rel">
+                            <div class="buble">
+                                <div class="points">
+                                    <div class="red"><span class="amount">100</span> <small>бонусов</small></div>
+                                    <div class="blue"><span class="amount">2000</span> <small>RUR</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-slider__cards" style="display:none;">
+        <ul class="">
+            <li class="" data-moneyrate="50">
+                <img src="/content/images/classic.png" alt="Классика" title="Классическая карта BТБ24">
+                <span>Классика</span>
+            </li>
+            <li class="" data-moneyrate="30">
+                <img src="/content/images/gold.png" alt="Золото" title="Золотая карта Visa ВТБ">
+                <span>Золото</span>
+            </li>
+            <li class="" data-moneyrate="25">
+                <img src="/content/images/platinum.png" alt="Привилегия" title="Платиновая карта ВТБ24">
+                <span>Привилегия</span>
+            </li>
+            <li class="" data-moneyrate="20">
+                <img src="/content/images/prime.png" alt="Прайм" title="Карта Прайм ВТБ24">
+                <span>Прайм</span>
+            </li>
+            <li class="card-slider__cards-nopadding">
+                <a href="http://www.vtb24.ru/personal/cards/credit/Pages/default.aspx" target="_blank" onclick="ga('send', 'event', 'Outbound Links', 'A01/homepageordercart', this.href)">
+                    <img src="/content/images/order_cards.png" alt="Order" title="Оформить кредитную карту">
+                    <span>Заказать карту</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

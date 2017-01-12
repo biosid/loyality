@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains job definitions in schema version 2.0 format -->
+
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+
+  <schedule>
+
+    <job>
+      <name>Импорт каталога ОЗОН</name>
+      <group>Импорт каталога</group>
+      <job-type>RapidSoft.Loaylty.PartnersConnector.QuarzTasks.Jobs.ImportYmlJob, RapidSoft.Loaylty.PartnersConnector.QuarzTasks</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <!-- Уникальный идентификатор партнера партнера, партнера с ид -777 не должно быть, поэтому импорт не будет работать          -->
+          <key>PartnerId</key>
+          <value>1</value>
+        </entry>
+        <entry>
+          <!-- HTTPs адрес по которому должен быть доступен yml на сервере партнера -->
+          <key>RemoteFileUrl</key>
+          <value>http://mmedia.ozon.ru/multimedia/zip/vtb.xml</value>
+        </entry>
+        <entry>
+          <!-- Путь к файлу в который будет сохранены данные из файл указанного в RemoteYmlUrl -->
+          <key>LocalFilePath</key>
+          <value>..\..\RapidSoft.Loaylty.PartnersConnector.Internal\YmlFiles\vtb.xml</value>
+        </entry>
+        <entry>
+          <!-- HTTP адрес файла по которому он будет доступен для импорта компонентом Каталог порадков (ProductCatalog) -->
+          <key>LocalFileUrl</key>
+          <value>@OzonLocalFileUrl@</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Импорт каталога ОЗОН</name>
+        <group>DEFAULT</group>
+        <job-name>Импорт каталога ОЗОН</job-name>
+        <job-group>Импорт каталога</job-group>
+        <!-- Каждые 30 минут -->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!-- Каждые 30 секунд -->
+        <!--<cron-expression>0/30 * * * * ?</cron-expression>-->
+
+        <cron-expression>@OzonImportChron@</cron-expression>
+      </cron>
+    </trigger>
+
+    <job>
+      <name>Импорт каталога Holodilnik.ru</name>
+      <group>Импорт каталога</group>
+      <job-type>RapidSoft.Loaylty.PartnersConnector.QuarzTasks.Jobs.ImportYmlJob, RapidSoft.Loaylty.PartnersConnector.QuarzTasks</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>PartnerId</key>
+          <value>@HolodilnikPartnerId@</value>
+        </entry>
+        <entry>
+          <key>RemoteFileUrl</key>
+          <value>@HolodilnikRemoteUrl@</value>
+        </entry>
+        <entry>
+          <key>LocalFilePath</key>
+          <value>..\..\RapidSoft.Loaylty.PartnersConnector.Internal\YmlFiles\holodilnik.xml</value>
+        </entry>
+        <entry>
+          <key>LocalFileUrl</key>
+          <value>@HolodilnikLocalUrl@</value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Импорт каталога Holodilnik.ru</name>
+        <group>DEFAULT</group>
+        <job-name>Импорт каталога Holodilnik.ru</job-name>
+        <job-group>Импорт каталога</job-group>
+        <cron-expression>0 20 * * * ?</cron-expression>
+      </cron>
+    </trigger>
+
+    <job>
+      <name>Удаление файлов товаров, отсутствующих в каталоге</name>
+      <group>Удаление файлов товаров, отсутствующих в каталоге</group>
+      <description>Задача для удаления файлов товаров, которые более не используются в каталоге</description>
+      <job-type>RapidSoft.Loaylty.PartnersConnector.QuarzTasks.Jobs.ClearDeletedGiftsFilesJob, RapidSoft.Loaylty.PartnersConnector.QuarzTasks</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для удаления файлов товаров, отсутствующих в каталоге</name>
+        <group>DEFAULT</group>
+        <job-name>Удаление файлов товаров, отсутствующих в каталоге</job-name>
+        <job-group>Удаление файлов товаров, отсутствующих в каталоге</job-group>
+        <!--Каждые 30 минут-->
+        <!--<cron-expression>0 0/30 * * * ?</cron-expression>-->
+        <!--Каждые 30 секунд-->
+        <!-- <cron-expression>0/30 * * * * ?</cron-expression> -->
+        <cron-expression>@ClearDeletedGiftsFilesCron@</cron-expression>
+      </cron>
+    </trigger>
+
+    <job>
+      <name>Отправка отчета по оставшимся кодам Литрес</name>
+      <group>Задачи Литрес</group>
+      <description>Задача для отправки письма с отчетом по оставшися кодам скачивания вознаграждений Литрес</description>
+      <job-type>RapidSoft.Loaylty.PartnersConnector.QuarzTasks.Jobs.SendLitresRemainingCodesCountReport, RapidSoft.Loaylty.PartnersConnector.QuarzTasks</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+
+    <trigger>
+      <cron>
+        <name>Триггер для отправки отчета по оставшимся кодам Литрес</name>
+        <group>DEFAULT</group>
+        <job-name>Отправка отчета по оставшимся кодам Литрес</job-name>
+        <job-group>Задачи Литрес</job-group>
+        <cron-expression>0 0 2 5 * ?</cron-expression>
+      </cron>
+    </trigger>
+
+  </schedule>
+</job-scheduling-data>

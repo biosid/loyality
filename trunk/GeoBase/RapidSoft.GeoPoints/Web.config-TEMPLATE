@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<configuration>
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+  </configSections>
+
+  <system.web>
+    <compilation debug="true" targetFramework="4.0"/>
+    <pages controlRenderingCompatibilityVersion="4.0"/>
+  </system.web>
+
+  <connectionStrings>
+    <add name="InformationServicesDB" 
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;User ID=@DBUSER@;Password=@DBPASS@;Connect Timeout=600000" 
+         providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+
+  <appSettings>
+    <!-- Тип сериализации параметров методов web-сервисов. Поддерживаются значения "JSON" и "XML", если не указано то используется ToString метод. -->
+    <add key="ParamLogSerializer" value="JSON"/>
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="GeoBase" />
+    <add key="LogSubsystemName" value="WebServices" />
+    <add key="EventLogSourceName" value="RapidSoft.GeoPoints" />
+    <add key="LogsElasticSearchNodes" value="@elasticsearchCluster@" />
+  </appSettings>
+
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true"/>
+  </system.webServer>
+
+  <log4net configSource="log4net.config" />
+
+  <system.serviceModel>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true"/>
+          <serviceDebug includeExceptionDetailInFaults="true"/>
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment multipleSiteBindingsEnabled="true"/>
+  </system.serviceModel>
+</configuration>

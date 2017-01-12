@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ddda87ad-6d17-42d3-b00e-e36ac59d440e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:5657/ClientMessageService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ClientMessageService5.xsd" MetadataType="Schema" ID="479acddf-90bd-43c9-b7b8-3eb0ed6c065c" SourceId="1" SourceUrl="http://rphqbuild1:5657/ClientMessageService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ClientMessageService1.disco" MetadataType="Disco" ID="c99ee8c5-146f-48f9-924a-5d199a8da36c" SourceId="1" SourceUrl="http://rphqbuild1:5657/ClientMessageService.svc?disco" />
+    <MetadataFile FileName="ClientMessageService51.xsd" MetadataType="Schema" ID="ba9515f3-8ed0-45b9-8774-1be48d8913d9" SourceId="1" SourceUrl="http://rphqbuild1:5657/ClientMessageService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ClientMessageService52.xsd" MetadataType="Schema" ID="9e015078-6b25-4bad-b00c-2c64bfe16f16" SourceId="1" SourceUrl="http://rphqbuild1:5657/ClientMessageService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ClientMessageService53.xsd" MetadataType="Schema" ID="1c716bb4-3d24-4b3f-a1dc-da16022e7252" SourceId="1" SourceUrl="http://rphqbuild1:5657/ClientMessageService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ClientMessageService1.wsdl" MetadataType="Wsdl" ID="c081444c-0d24-417a-bef6-58633e2f99ef" SourceId="1" SourceUrl="http://rphqbuild1:5657/ClientMessageService.svc?wsdl" />
+    <MetadataFile FileName="ClientMessageService54.xsd" MetadataType="Schema" ID="f00c5f4e-d40a-48f7-b165-97a171d83d9a" SourceId="1" SourceUrl="http://rphqbuild1:5657/ClientMessageService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

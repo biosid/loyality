@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:6761/SecurityTokenWebApi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Vtb24.Site.Security.SecurityTokenService.Models.Inputs" />
+  <xs:import schemaLocation="http://rphqbuild1:6761/SecurityTokenWebApi.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Vtb24.Site.Security.SecurityTokenService.Models.Outputs" />
+  <xs:element name="Validate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Vtb24.Site.Security.SecurityTokenService.Models.Inputs" minOccurs="0" name="parameters" nillable="true" type="q1:ValidateSecurityTokenParameters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Vtb24.Site.Security.SecurityTokenService.Models.Outputs" minOccurs="0" name="ValidateResult" nillable="true" type="q2:ValidateSecurityTokenResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Echo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EchoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EchoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

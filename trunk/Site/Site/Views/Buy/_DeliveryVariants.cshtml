@@ -1,0 +1,230 @@
+﻿@using System.Globalization
+@using System.Linq;
+@using Microsoft.Practices.ObjectBuilder2
+@using Vtb24.Site.Models.Buy
+@using Vtb24.Site.Services.Infrastructure.MvcHelpers
+@model DeliveryVariantsModel
+
+<article id="delivery-variants">
+    @Controls()
+</article>
+
+<article id="delivery-variants-descriptions" style="display: none">
+    <div class="middle-line white">
+        <div class="ml-text"><span class="size28">Информация о выбранном способе доставки</span></div>
+    </div>
+    @Descriptions()
+</article>
+<script>
+    if ('$' in window) {
+        $('#Address_Location').val('@Model.LocationName');
+    }
+</script>
+
+@*
+    
+    
+    
+    
+
+*@
+@helper Controls() {
+    for (int i = 0, j = 0; i < Model.Groups.Length; i++)
+    {
+         var hideGroups = Model.Groups.Length == 1;
+         var group = Model.Groups[i];
+         if (i > 0)
+         {
+             <hr />
+         }
+         <div class="table form-order">
+             <ul class="row">
+                 @if (!hideGroups)
+                 {
+                     <li class="cell">@group.Name</li>
+                 }
+                 <li class="cell">
+                     @foreach (var variant in group.Variants)
+                     {
+                         var variantSelected = Model.DeliveryVariantId == variant.Id;
+                         <fieldset data-name="@variant.Name"
+                                   data-pickup="@(variant.IsPickup ? "true" : "false")"
+	                               data-email="@(variant.IsEmail ? "true" : "false")"
+								   data-deliveryType="@variant.DeliveryType"
+                                   data-description="#description-@j"
+                                   data-price="@variant.DeliveryPriceBonus"
+                                   data-price-rur="@variant.DeliveryPriceRur.ToString("F2", CultureInfo.InvariantCulture)">
+                             <input type="radio" class="styled-rbox" name="variant" value="@variant.Id" id="variant-@j" @(variantSelected ? "checked" : "")/>
+
+                             <label for="variant-@j">
+                                 @variant.Name
+                                 @(variant.IsPickup ? PickupDeliveryPrice(variant.PickupPoints) : DeliveryPrice(variant.DeliveryPriceBonus, variant.DeliveryPriceRur))
+                             </label>
+                             @if (variant.IsPickup)
+                             {
+                                 <select class="html-select">
+                                     @for(var k =0; k < variant.PickupPoints.Length; k++)
+                                     {
+                                         var pickup = variant.PickupPoints[k];
+                                         var pickupSelected = (variantSelected && Model.PickupPointId == pickup.PickupPointId) || (!variantSelected && k == 0);
+                                         <option value="@pickup.PickupPointId"
+                                                 data-description="#description-@j-@k"
+                                                 data-price="@pickup.DeliveryPriceBonus"
+                                                 data-price-rur="@pickup.DeliveryPriceRur.ToString("F2", CultureInfo.InvariantCulture)"
+                                                 @(pickupSelected ? "selected" : "")>
+                                             @pickup.Name @DeliveryPrice(pickup.DeliveryPriceBonus, pickup.DeliveryPriceRur)
+                                         </option>
+                                     }
+                                 </select>
+                             }
+                         </fieldset>
+                         j++;
+                     }
+                 </li>
+             </ul>
+         </div>
+    }
+}
+@*
+    
+    
+    
+    
+
+*@
+@helper DeliveryPrice(int priceBonus, decimal priceRur)
+{
+    if (priceBonus == 0)
+    {
+        @:(бесплатно)
+    }
+    else if (!Model.ShowRurPrice)
+    {
+        @:(@Html.Pluralize(priceBonus, "{1:N0} бонус", "{2:N0} бонуса", "{5:N0} бонусов"))
+    }
+    else
+    {
+        @:(@Html.Pluralize(priceBonus, "{1:N0} бонус", "{2:N0} бонуса", "{5:N0} бонусов") или @PluralizeRurNominative(priceRur))
+    }
+}
+@*
+    
+    
+    
+    
+
+*@
+@helper PickupDeliveryPrice(PickupPointModel[] pickups)
+{
+    var minPriceBonus = pickups.Min(p => p.DeliveryPriceBonus);
+    var maxPriceBonus = pickups.Max(p => p.DeliveryPriceBonus);
+
+    if (minPriceBonus == maxPriceBonus)
+    {
+        if (minPriceBonus == 0)
+        {
+            @:(бесплатно)
+            return;
+        }
+        @:(@Html.Pluralize(minPriceBonus, "{1:N0} бонус", "{2:N0} бонуса", "{5:N0} бонусов")@(!Model.ShowRurPrice ? ")" : null)
+    }
+    else
+    {
+        @:(от @minPriceBonus.ToString("N0") до @Html.Pluralize(maxPriceBonus, "{1:N0} бонуса", "{2:N0} бонусов")@(!Model.ShowRurPrice ? ")" : null)
+    }
+
+    if (!Model.ShowRurPrice)
+    {
+        return;
+    }
+
+    var minPriceRur = pickups.Min(p => p.DeliveryPriceRur);
+    var maxPriceRur = pickups.Max(p => p.DeliveryPriceRur);
+
+    if (minPriceRur == maxPriceRur)
+    {
+        @:или @PluralizeRurNominative(minPriceRur))
+    }
+    else
+    {
+        @:или от @minPriceRur.ToString(minPriceRur == decimal.Truncate(minPriceRur) ? "N0" : "N2") до @PluralizeRurGenitive(maxPriceRur))
+    }
+}
+@*
+    
+    
+    
+    
+
+*@
+@helper PluralizeRurNominative(decimal priceRur)
+{
+    if (priceRur == decimal.Truncate(priceRur))
+    {
+        @Html.Pluralize(priceRur, "{1:N0} рубль", "{2:N0} рубля", "{5:N0} рублей")
+    }
+    else
+    {
+        @Html.Pluralize(priceRur, "{1:N2} рубль", "{2:N2} рубля", "{5:N2} рублей")
+    }
+}
+@helper PluralizeRurGenitive(decimal priceRur)
+{
+    if (priceRur == decimal.Truncate(priceRur))
+    {
+        @Html.Pluralize(priceRur, "{1:N0} рубля", "{2:N0} рублей")
+    }
+    else
+    {
+        @Html.Pluralize(priceRur, "{1:N2} рубля", "{2:N2} рублей")
+    }
+}
+@*
+    
+    
+    
+    
+
+*@
+@helper Descriptions()
+{
+    var variants = Model.Groups.SelectMany(g => g.Variants).ToArray();
+    for (var j = 0; j < variants.Length; j++)
+    {
+        var variant = variants[j];
+        if (!variant.IsPickup)
+        {
+            if (variant.IsEmail)
+            {
+                <div id="description-@j" style="display: none">
+                    <p>Заказанное вами вознаграждение будет выслано на указанный в контактных данных адрес электронной почты.</p>
+                    <p>Вознаграждения направляются по электронной почте в течение двух рабочих дней. Активация электронных сертификатов может занять до 3 рабочих дней. Пожалуйста, ознакомьтесь с условиями получения и использования вознаграждения в его описании.</p>
+                </div>
+            }
+            else if (!string.IsNullOrWhiteSpace(variant.Description))
+            {
+                <div id="description-@j" style="display: none">@Html.SanitizeHtml(variant.Description)</div>
+            }
+        }
+        else
+        {
+            for (var k = 0; k < variant.PickupPoints.Length; k++)
+            {
+                var pickup = variant.PickupPoints[k];
+                <div id="description-@j-@k" style="display:none">
+                    <p>Адрес: @Html.SanitizeHtml(pickup.Address)</p>
+                    @if (pickup.Phones != null && pickup.Phones.Any())
+                    {
+                        <p>Тел.: @pickup.Phones.JoinStrings(", ")</p>
+                    }
+                    @if (pickup.OperationHours != null && pickup.OperationHours.Any())
+                    {
+                        <p>Часы работы: @Html.SanitizeHtml(pickup.OperationHours.Select(h => h.TrimEnd(new[] { ';' })).JoinStrings(", "))</p>
+                    }
+
+                    @Html.SanitizeHtml(pickup.Description)
+                </div>
+            }
+        }
+    }
+}

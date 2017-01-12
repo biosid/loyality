@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.InputParameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5657/ClientMessageService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:5657/ClientMessageService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" />
+  <xs:complexType name="ClientGetThreadsParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountToSkip" type="xs:int" />
+      <xs:element name="CountToTake" type="xs:int" />
+      <xs:element minOccurs="0" name="Filter" type="tns:ReadFilters" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientGetThreadsParameters" nillable="true" type="tns:ClientGetThreadsParameters" />
+  <xs:simpleType name="ReadFilters">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All" />
+      <xs:enumeration value="Read" />
+      <xs:enumeration value="Unread" />
+      <xs:enumeration value="UnreadFirst" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReadFilters" nillable="true" type="tns:ReadFilters" />
+  <xs:complexType name="GetStatisticsParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetStatisticsParameters" nillable="true" type="tns:GetStatisticsParameters" />
+  <xs:complexType name="ClientGetThreadByIdParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientGetThreadByIdParameters" nillable="true" type="tns:ClientGetThreadByIdParameters" />
+  <xs:complexType name="ClientGetThreadMessagesParameters">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GetThreadMessagesParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClientGetThreadMessagesParameters" nillable="true" type="tns:ClientGetThreadMessagesParameters" />
+  <xs:complexType name="GetThreadMessagesParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountToSkip" type="xs:int" />
+      <xs:element name="CountToTake" type="xs:int" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetThreadMessagesParameters" nillable="true" type="tns:GetThreadMessagesParameters" />
+  <xs:complexType name="ClientReplyParameters">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Rapidsoft.Loyalty.NotificationSystem.API.Entities" minOccurs="0" name="Attachments" nillable="true" type="q1:ArrayOfMessageAttachment" />
+      <xs:element minOccurs="0" name="ClientEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientReplyParameters" nillable="true" type="tns:ClientReplyParameters" />
+  <xs:complexType name="MarkThreadAsReadParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThreadId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MarkThreadAsReadParameters" nillable="true" type="tns:MarkThreadAsReadParameters" />
+  <xs:complexType name="NotifyClientsParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Notifications" nillable="true" type="tns:ArrayOfNotification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NotifyClientsParameters" nillable="true" type="tns:NotifyClientsParameters" />
+  <xs:complexType name="ArrayOfNotification">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Notification" nillable="true" type="tns:Notification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNotification" nillable="true" type="tns:ArrayOfNotification" />
+  <xs:complexType name="Notification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShowSince" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShowUntil" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Notification" nillable="true" type="tns:Notification" />
+</xs:schema>

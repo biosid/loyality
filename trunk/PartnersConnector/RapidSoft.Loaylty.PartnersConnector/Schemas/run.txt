@@ -1,0 +1,11 @@
+﻿"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe" C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\Schemas\ValidateUserResult.xsd /outputdir:C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\DTO\ /classes /namespace:RapidSoft.Loaylty.PartnersConnector.DTO
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe" C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\Schemas\CancelPaymentResult.xsd /outputdir:C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\DTO\ /classes /namespace:RapidSoft.Loaylty.PartnersConnector.DTO
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe" C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\Schemas\NotifyOrderResult.xsd /outputdir:C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\DTO\ /classes /namespace:RapidSoft.Loaylty.PartnersConnector.DTO
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe" C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\Schemas\GetPaymentStatusResult.xsd /outputdir:C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\DTO\ /classes /namespace:RapidSoft.Loaylty.PartnersConnector.DTO
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe" C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\Schemas\NotifyOrder.xsd /outputdir:C:\Work\ВТБ\source\PartnersConnector\trunk\RapidSoft.Loaylty.PartnersConnector\DTO\ /classes /namespace:RapidSoft.Loaylty.PartnersConnector.DTO
+
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe" NotifyOrdersResult.xsd /outputdir:C:\Work\ВТБ\source\PartnersConnector\RapidSoft.Loaylty.PartnersConnector\Schemas\Offline\ /classes /namespace:RapidSoft.Loaylty.PartnersConnector.Common.DTO.Offline

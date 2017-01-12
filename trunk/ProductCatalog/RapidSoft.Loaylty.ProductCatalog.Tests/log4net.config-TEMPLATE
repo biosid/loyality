@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+  <appender name="CsvAppender" type="log4net.Appender.RollingFileAppender">
+    <lockingmodel type="log4net.Appender.FileAppender+MinimalLock" />
+    <file value="Logs\log.csv" />
+    <appendtofile value="true" />
+    <encoding value="utf-8" />
+    <maxsizerollbackups value="10" />
+    <maximumfilesize value="200MB" />
+    <staticlogfilename value="true" />
+    <layout type="RapidSoft.Loaylty.Logging.Cvs.CsvPatternLayout, RapidSoft.Loaylty.Logging">
+      <conversionPattern value="%d{yyyy-MM-dd HH:mm:ss,fff};%level;%csvmessage;%csvexception;%n" />
+    </layout>
+  </appender>
+ 
+	<root>
+    <level value="ALL" />
+    <appender-ref ref="CsvAppender" />
+	</root>
+
+</log4net>

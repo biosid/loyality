@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="log4net"
+             type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+  </configSections>
+  <appSettings>
+    <add key="UseStub" value="false"/>
+    <add key="ClientFeedbackFrom" value="noreply@bonus.vtb24.ru"/>
+    <add key="ClientSiteUrl" value="@ClientSiteUrl@"/>
+    <!-- отписка от нотификаций -->
+    <add key="unsubscribe_key" value="qazwsxedc"/>
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="NotificationSystem" />
+    <add key="LogSubsystemName" value="Tests" />
+  </appSettings>
+  <connectionStrings>
+    <add name="LoyaltyDB" 
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@" 
+         providerName="System.Data.SqlClient"/>
+  </connectionStrings>  
+  <log4net>
+    <appender name="CsvAppender2" type="log4net.Appender.ConsoleAppender">
+      <layout type="RapidSoft.Loaylty.Logging.Cvs.CsvPatternLayout">
+        <conversionPattern value='%d{yyyy-MM-dd HH:mm:ss,fff};%level;%csvmessage;%csvexception;%n' />
+      </layout>
+    </appender>
+    <root>
+      <level value="ALL" />
+      <appender-ref ref="CsvAppender2" />
+    </root>
+  </log4net>
+  <system.net>
+    <mailSettings>
+      <smtp
+          deliveryMethod="Network">
+        <network
+            host="@MAILSMTPHOST@"
+            port="@MAILSMTPPORT@"
+            enableSsl="@MailEnableSsl@"
+            userName="@MAILUSERNAME@"
+            password="@MAILPASSWORD@"
+            />
+      </smtp>
+    </mailSettings>
+  </system.net>
+</configuration>

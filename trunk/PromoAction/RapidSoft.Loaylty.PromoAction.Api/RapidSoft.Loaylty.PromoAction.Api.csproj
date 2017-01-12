@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30B65739-C589-4A2F-9001-3E3CFC8E3F71}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.PromoAction.Api</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.PromoAction.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OutputResults\GetTargetAudiencesResult.cs" />
+    <Compile Include="InputParameters\AssignClientSegmentParameters.cs" />
+    <Compile Include="Entities\ApproveStatus.cs" />
+    <Compile Include="InputParameters\Approve.cs" />
+    <Compile Include="DTO\TargetAudience.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\ConditionalFactor.cs" />
+    <Compile Include="Entities\EntitiesMetadata.cs" />
+    <Compile Include="Entities\History\BaseHistoryEntity.cs" />
+    <Compile Include="Entities\History\HistoryEvent.cs" />
+    <Compile Include="Entities\History\IHistoryEntity.cs" />
+    <Compile Include="Entities\History\IHistoryTraceable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\History\RuleDomainHistory.cs" />
+    <Compile Include="Entities\History\RuleHistory.cs" />
+    <Compile Include="Entities\History\TargetAudienceClientLinkHistory.cs" />
+    <Compile Include="Entities\History\TargetAudienceHistory.cs" />
+    <Compile Include="Entities\IEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\IResettable.cs" />
+    <Compile Include="Entities\ITargetAudience.cs" />
+    <Compile Include="Entities\ITraceableEntity.cs" />
+    <Compile Include="Entities\LimitTypes.cs" />
+    <Compile Include="Entities\Rule.cs" />
+    <Compile Include="Entities\RuleDomain.cs" />
+    <Compile Include="Entities\RuleStatuses.cs" />
+    <Compile Include="Entities\RuleTypeExtensions.cs" />
+    <Compile Include="Entities\RuleTypes.cs" />
+    <Compile Include="Entities\TargetAudience.cs" />
+    <Compile Include="Entities\TargetAudienceClientLink.cs" />
+    <Compile Include="OutputResults\AssignClientTargetAudienceCodes.cs" />
+    <Compile Include="OutputResults\ClientTargetAudienceRelationResult.cs" />
+    <Compile Include="OutputResults\FactorsResult.cs" />
+    <Compile Include="FilterBuilder\Filter.cs" />
+    <Compile Include="InputParameters\AssignClientTargetAudienceParameters.cs" />
+    <Compile Include="InputParameters\ClientTargetAudienceRelation.cs" />
+    <Compile Include="InputParameters\GetRuleHistoryParameters.cs" />
+    <Compile Include="InputParameters\SortProperty.cs" />
+    <Compile Include="OutputResults\AssignClientAudienceResult.cs" />
+    <Compile Include="OutputResults\GetMetadataByDomainIdResult.cs" />
+    <Compile Include="InputParameters\GetRulesParameters.cs" />
+    <Compile Include="InputParameters\SortDirections.cs" />
+    <Compile Include="OutputResults\GetRuleHistoryResult.cs" />
+    <Compile Include="IAdminMechanicsService.cs" />
+    <Compile Include="IMechanicsService.cs" />
+    <Compile Include="InputParameters\GenerateSqlParameters.cs" />
+    <Compile Include="ITargetAudienceService.cs" />
+    <Compile Include="IServiceInfo.cs" />
+    <Compile Include="OutputResults\CalculateResult.cs" />
+    <Compile Include="OutputResults\GenerateDetailedResult.cs" />
+    <Compile Include="OutputResults\GenerateResult.cs" />
+    <Compile Include="OutputResults\GetClientTargetAudiencesResult.cs" />
+    <Compile Include="OutputResults\ResultBase.cs" />
+    <Compile Include="OutputResults\ResultCodes.cs" />
+    <Compile Include="OutputResults\RuleApplyStatuses.cs" />
+    <Compile Include="OutputResults\RuleDomainResult.cs" />
+    <Compile Include="OutputResults\RuleDomainsResult.cs" />
+    <Compile Include="OutputResults\RuleResult.cs" />
+    <Compile Include="OutputResults\RulesResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DTO\Segment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Xsd\EntitiesMetadata.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63df64b8-c9f3-4a51-841d-58d6d1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj">
+      <Project>{E10328E0-16F8-448C-8F26-E754D9A1FE83}</Project>
+      <Name>RapidSoft.Loaylty.Monitoring</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

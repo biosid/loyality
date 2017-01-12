@@ -1,0 +1,51 @@
+﻿@using Rapidsoft.VTB24.Reports.Etl.EtlFiles.Models
+@using Rapidsoft.VTB24.Reports.Etl.EtlReports.Models
+@model Report<NotificationReportItem>
+@{
+    Layout = "~/Views/InteractionReports/_Layout.cshtml";
+    ViewBag.Title = Html.DescriptionFor(Model.Request.Type);
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @FileHeaderItem("Файл", "Коллекция")
+        </tr>
+        <tr>
+            @FileHeader2Item()
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                @FileItem(item.Notification, false)
+            </tr>
+        }
+    </tbody>
+</table>
+@helper FileHeaderItem(string caption, string side)
+{
+    <th class="text-center" colspan="4">@caption<br/>@side</th>
+}
+@helper FileHeader2Item()
+{
+    <th class="text-center">Дата/время</th>
+    <th>Наименование</th>
+    <th class="text-center">Количество записей</th>
+    <th class="text-center">Размер, KB</th>
+}
+@helper FileItem(EtlFile file, bool hasRowDiscrepancy)
+{
+    <td class="text-center">
+        @file.Timestamp.ToString("dd.MM.yyyy HH:mm:ss")
+    </td>
+    <td>
+        @file.Name
+    </td>
+    <td class="text-center @(hasRowDiscrepancy ? " danger" : null)">
+        @(file.RowCount.HasValue ? file.RowCount.Value.ToString("D") : "-")
+    </td>
+    <td class="text-center @(file.SizeExceeded ? " danger" : null)">
+        @(file.Size.HasValue ? (file.Size.Value / 1024.0).ToString("F1") : "-")
+    </td>
+}

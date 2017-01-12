@@ -1,0 +1,55 @@
+﻿@model Vtb24.Site.Models.Layout.HeaderModel
+<div class="search_block_wrap clearfix">
+    <div class="search-block" data-x="header/search-forms">
+        <div data-x="header/search-form-catalog" style="display:@(Model.SearchSiteInitial ? "none" : "block")">
+            @using (Html.BeginForm("Search", "Catalog", FormMethod.Get))
+            {
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <input name="term" type="text" placeholder="Поиск" maxlength="100">
+                        </td>
+                        <td>
+                            <button type="submit" class="loupe">
+                                <span></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+        <div data-x="header/search-form-site" style="display:@(Model.SearchSiteInitial ? "block" : "none")">
+            <form>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <input data-x="header/search-site/term" name="term" type="text" placeholder="Поиск" maxlength="100">
+                        </td>
+                        <td>
+                            <button type="submit" class="loupe">
+                                <span></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <ul class="search-scope clearfix">
+        <li>
+            <input class="styled-rbox" type="radio" name="search-scope" id="search-scope-catalog" data-target-search-form="header/search-form-catalog" @(Model.SearchSiteInitial ? null : "checked")/>
+            <label for="search-scope-catalog">по каталогу</label>
+        </li>
+        <li>
+            <input class="styled-rbox" type="radio" name="search-scope" id="search-scope-site" data-target-search-form="header/search-form-site" @(Model.SearchSiteInitial ? "checked" : null)/>
+            <label for="search-scope-site">на сайте</label>
+        </li>
+    </ul>
+</div>
+@Html.AddScriptBlock(
+    @<script>
+         require(['Shared/Header/search'], function(search) {
+             search();
+         });
+     </script>
+)

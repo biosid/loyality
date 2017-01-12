@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>RapidSoft.Loyalty.Security</id>
+    <version>1.0.0</version>
+    <authors>egoncharov</authors>
+    <owners>egoncharov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>VTB24 common packages: RapidSoft.Loyalty.Security</description>
+    <dependencies>
+      <dependency id="RapidSoft.Extensions" version="1.3.0.1" />
+      <dependency id="RapidSoft.Loaylty.Logging" version="1.3.0.1" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" />
+    </frameworkAssemblies>
+    </metadata>
+  <files>
+    <file src="bin\Release\RapidSoft.Loyalty.Security.*" target="lib" />
+  </files>
+</package>

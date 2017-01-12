@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EntitiesMetadata" nillable="true" type="EntitiesMetadata" />
+  
+  <xs:simpleType name="AttributeTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Number" />
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="Boolean" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="EntitiesMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="Entities" type="EntityMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EntityMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="Attributes" type="Attribute" />
+      <xs:element minOccurs="1" maxOccurs="1" name="EntityName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DisplayName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Attribute">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DisplayName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Type" type="AttributeTypes" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DictionaryId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

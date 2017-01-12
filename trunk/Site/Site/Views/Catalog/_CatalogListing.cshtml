@@ -1,0 +1,43 @@
+﻿@model Vtb24.Site.Models.Catalog.BaseCatalogListingModel
+
+@if(Model.BreadCrumbs != null) { @Html.Partial("_BreadCrumbs", Model.BreadCrumbs) }
+
+<div class="sort-by">
+    @if(Model.Total > 0)
+    {
+        <span class="text">Найдено @Html.Pluralize(Model.Total, "{1:N0} вознаграждение", "{2:N0} вознаграждения", "{5:N0} вознаграждений")</span>
+    } else
+    {
+        <span class="text">Вознаграждений не найдено</span>
+    }
+    <span class="left">
+        <span class="select-decor">
+            @Html.EnumDropDownListFor(m => Model.Query.sort, new { data_filter = @"{""name"":""sort""}", @class="html-select" })
+        </span>
+    </span>
+</div>
+
+@Html.AddScriptBlock(
+    @<script>
+         $('#Query_sort').select2({
+             minimumResultsForSearch: -1
+         });
+    </script>
+)
+
+@if(Model.Filters != null) { @Html.Partial("_Filter", Model.Filters) }
+
+@if (Model.Products != null && Model.Products.Any())
+{
+    <ul class="catalog clearfix">
+        @foreach (var product in Model.Products)
+        {
+            @Html.Partial("Catalog/_ListProduct", product)
+        }
+    </ul>
+}
+
+@if (Model.TotalPages > 1)
+{
+    @Html.Pager(Model.TotalPages, Model.Page)
+}

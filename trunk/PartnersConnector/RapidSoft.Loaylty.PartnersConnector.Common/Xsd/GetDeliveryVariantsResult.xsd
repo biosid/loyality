@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/XMLSchema.xsd" elementFormDefault="qualified" targetNamespace="http://tempuri.org/XMLSchema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetDeliveryVariantsResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="ResultCode" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Reason" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="Location" type="tns:VariantsLocation" />
+        <xs:element minOccurs="1" maxOccurs="1" name="DeliveryGroups" type="tns:ArrayOfDeliveryGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="VariantsLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="LocationName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="KladrCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PostCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExternalLocationId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDeliveryGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliveryGroup" nillable="true" type="tns:DeliveryGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeliveryGroup">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="GroupName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DeliveryVariants" type="tns:ArrayOfDeliveryVariant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDeliveryVariant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliveryVariant" nillable="true" type="tns:DeliveryVariant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeliveryVariant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="DeliveryVariantName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExternalDeliveryVariantId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PickupPoints" type="tns:ArrayOfPickupPoint" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemsCost" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DeliveryCost" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TotalCost" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPickupPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PickupPoint" nillable="true" type="tns:PickupPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PickupPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExternalPickupPointId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DeliveryVariantName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExternalDeliveryVariantId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Address" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Phones" type="tns:ArrayOfString" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OperatingHours" type="tns:ArrayOfString1" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemsCost" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DeliveryCost" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TotalCost" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Phone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OperatingHour" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

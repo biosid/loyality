@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1D80E7AF-780F-407C-AAC8-0B6359B53B26}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaders.KLADR</RootNamespace>
+    <AssemblyName>RapidSoft.Loaders.KLADR</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="7zSharp, Version=1.0.3.0, Culture=neutral, PublicKeyToken=aa6a31abd3bf9e52, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\7zSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RapidSoft.Etl.Logging">
+      <HintPath>..\Lib\RapidSoft.Etl.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Exceptions\ConfigurationException.cs" />
+    <Compile Include="Exceptions\DownloadException.cs" />
+    <Compile Include="IConfiguration.cs" />
+    <Compile Include="Service\BulkLoader.cs" />
+    <Compile Include="Logic\KladrLoader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BulkLoaderCreator.cs" />
+    <Compile Include="Service\EtlService.cs" />
+    <Compile Include="Service\HttpLoader.cs" />
+    <Compile Include="Service\IBulkLoader.cs" />
+    <Compile Include="Service\IBulkLoaderCreator.cs" />
+    <Compile Include="Service\IEtlService.cs" />
+    <Compile Include="Service\IHttpLoader.cs" />
+    <Compile Include="Utils\ISqlUtils.cs" />
+    <Compile Include="Utils\SqlUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.config-TEMPLATE">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="7z.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="7z.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Db\20110920 - Rapidsoft.Loaders.KLADR.sql" />
+    <Content Include="Db\20110921 - Rapidsoft.Loaders.KLADR.sql" />
+    <Content Include="Db\20110922 - Rapidsoft.Loaders.KLADR.sql" />
+    <Content Include="Db\20110928_index1.sql" />
+    <Content Include="Db\20110928_index2.sql" />
+    <Content Include="Db\20110929_index1.sql" />
+    <Content Include="Db\20110929_index2.sql" />
+    <Content Include="Db\20111005_fixIDs.sql" />
+    <Content Include="Db\20111010_index1.sql" />
+    <Content Include="Db\20111010_index2.sql" />
+    <Content Include="Db\20111014_RemoveAddress_AddCountryId.sql" />
+    <Content Include="Db\20111017_index.sql" />
+    <Content Include="Db\20111021_index.sql" />
+    <Content Include="Db\20111104_Refactoring.sql" />
+    <Content Include="Db\20111107_Refactoring.sql" />
+    <Content Include="Db\20111108_Refactoring.sql" />
+    <Content Include="Db\20111109_Refactoring.sql" />
+    <Content Include="Db\20111110_NOLOCK_Using.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

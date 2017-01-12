@@ -1,0 +1,279 @@
+﻿@{
+    ViewBag.Title = "Профиль клиента " + Model.Login;
+    ViewBag.MenuId = "users";
+    Layout = "~/Areas/Security/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.AdminServices.SecurityManagement.Models
+@using Vtb24.Arms.Security.Models.Users
+@model UserEditModel
+@if (Model.Permissions.SiteAccess)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(['Security/Users/disable-user'], function(disableUser) {
+                 disableUser({
+                     login: '@Model.Login',
+                     disableUserUrl: '@Url.Action("DisableUser", "Users")',
+                 });
+             });
+         </script>
+         )
+}
+@if (Model.Permissions.PasswordReset)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(['Security/Users/reset'], function(reset) {
+                 reset({
+                     login: '@Model.Login',
+                     resetPasswordUrl: '@Url.Action("ResetPassword", "Users")'
+                 });
+             });
+         </script>
+         )
+}
+@if (Model.Permissions.Deactivate)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(['Security/Users/disable-profile'], function (disableProfile) {
+                 disableProfile({
+                     login: '@Model.Login',
+                     disableProfileUrl: '@Url.Action("DisableProfile", "Users")'
+                 });
+             });
+         </script>
+         )
+}
+@if (Model.Permissions.ChangePhone)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(['Security/Users/change-phone'], function(changePhone) {
+                 changePhone();
+             })
+         </script>
+    )
+    @Html.AddScriptBlock(
+        @<script>
+             require(['Security/Users/change-email'], function (changeEmail) {
+                 changeEmail();
+             })
+         </script>
+    )
+}
+@*
+--------------------- Навигация
+*@
+<ul class="nav nav-pills mar-left-0 mar-bottom-10">
+    <li class="disabled"><a href="@Url.Action("Edit", "Users", new { Model.Login })"><span>Профиль</span></a></li>
+    <li><a href="@Url.Action("Messages", "Users", new { Model.Login })">Личные сообщения</a></li>
+    <li><a href="@Url.Action("Orders", "Users", new { Model.Login })">Заказы</a></li>
+    <li><a href="@Url.Action("Points", "Users", new { Model.Login })">Выписка</a></li>
+</ul>
+@*
+--------------------- Шапка
+*@ 
+<div class="sticky-save">
+    <div class="navbar" style="width: 940px;">
+        <div class="navbar-inner mar-bottom-10 no-border pad-left-12 mar-left-0 pad-top-5">
+            <div class="span1 pull-right text-right">
+                <a href="@Url.Action("Index", "Users")" class="btn">Назад</a>
+            </div>
+            @if (Model.IsUserOnBlocking)
+            {
+                <div class="span4 line-height-30">
+                    <span class="red">Пользователь находится на удалении!</span>
+                </div>
+            }
+            else
+            {
+                if (Model.Permissions.SiteAccess)
+                {
+                    if (Model.IsUserDisabled)
+                    {
+                        <button type="button" class="btn" data-x="security/edit/enable">Вернуть доступ к сайту</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn" data-x="security/edit/disable">Отключить доступ к сайту</button>
+                    }
+                }
+                if (Model.Permissions.Deactivate)
+                {
+                    <button type="button" class="btn btn-danger" data-x="security/edit/program_block">Отключение от программы</button>
+                }
+                if (Model.Permissions.SiteAccess || Model.Permissions.Deactivate)
+                {
+                    <br/>
+                }
+                if (Model.Permissions.PasswordReset)
+                {
+                    <button type="button" class="btn" data-x="security/edit/reset_password">Сбросить пароль</button>
+                }
+                if (Model.Permissions.ChangePhone)
+                {
+                    <button type="button" class="btn" data-x="security/edit/change_phone">Сменить номер телефона</button>
+                    <button type="button" class="btn" data-x="security/edit/change_email">Сменить E-mail</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+<h3>@ViewBag.Title</h3>
+@*
+--------------------- Профиль
+*@
+<div class="row mar-left-0 line-height-30">
+    <div class="span4">Логин:</div>
+    <div class="span7">@Model.Login</div>
+</div>
+<div class="row mar-left-0 line-height-30">
+    <div class="span4">Доступ к сайту: </div>
+    <div class="span7">@Model.SiteAccess</div>
+</div>
+<div class="row mar-left-0 line-height-30">
+    <div class="span4">Пароль:</div>
+    <div class="span7">@Model.PasswordStatus</div>
+</div>
+@if (Model.ProfileStatus != ClientProfileStatus.NotFound)
+{
+    <div class="row mar-left-0 line-height-30">
+        <div class="span4">Бонусный баланс:</div>
+        @if (Model.Balance.HasValue)
+        {
+            <div class="span7">@Model.Balance.Value.ToString("N0")</div>
+        }
+        else
+        {
+            <div class="span7">N/A</div>
+        }
+    </div>
+        if (Model.ShowPersonalInfo)
+        {
+        <div class="row mar-left-0 line-height-30">
+            <div class="span4">ФИО:</div>
+            <div class="span7">@Model.FullName</div>
+        </div>
+        }
+    <div class="row mar-left-0">
+        <div class="span4 line-height-30">Статус клиента:</div>
+        <div class="span7 line-height-30">@Model.ClientStatus</div>
+    </div>
+    <div class="row mar-left-0 line-height-30">
+        <div class="span4">Сегменты:</div>
+        <div class="span7">@(string.IsNullOrEmpty(Model.Segments) ? "-нет-" : Model.Segments)</div>
+    </div>
+    <div class="row mar-left-0 line-height-30">
+        <div class="span4">Регистрация:</div>
+        <div class="span7">@Model.RegistrationDate.ToShortDateString()</div>
+    </div>
+        if (Model.ShowPersonalInfo)
+        {
+        <div class="row mar-left-0 line-height-30">
+            <div class="span4">Дата рождения:</div>
+            <div class="span7">@(Model.BirthDate.HasValue ? Model.BirthDate.Value.ToShortDateString() : "Не указана")</div>
+        </div>
+        <div class="row mar-left-0 line-height-30">
+            <div class="span4">Пол:</div>
+            <div class="span7">@Model.Gender</div>
+        </div>
+        <div class="row mar-left-0 line-height-30">
+            <div class="span4">E-mail:</div>
+            <div class="span7">@Model.Email</div>
+        </div>
+        }
+    <div class="row mar-left-0 line-height-30">
+        <div class="span4">Местоположение:</div>
+        <div class="span7">@Model.LocationTitle</div>
+    </div>
+        if (Model.ShowPersonalInfo)
+        {
+            foreach (var field in Model.CustomFields)
+            {
+            <div class="row mar-left-0 line-height-30">
+                <div class="span4">@field.Title:</div>
+                <div class="span7">
+                    @if (string.IsNullOrWhiteSpace(field.Value))
+                    {
+                        <small>&lt;поле не заполнено&gt;</small>
+                    }
+                    else
+                    {
+                        @field.Value
+                    }
+                </div>
+            </div>
+            }
+        }
+}
+else
+{
+    <div class="row mar-left-0 line-height-30">
+        <div class="span12 red">Профиль клиента не найден!</div>
+    </div>
+}
+@*
+--------------------- История изменений номера телефора
+*@
+@if (Model.TotalPhoneChangeHistoryItems > 0)
+{
+    <div class="row mar-left-0">
+        <div class="span12">
+        <h4 class="font-normal mar-top-20">История изменения номера телефона</h4>
+            <table class="table table-fix-affect table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-left">Дата&nbsp;изменения</th>
+                        <th>Старый&nbsp;номер</th>
+                        <th>Новый&nbsp;номер</th>
+                        <th>Пользователь</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var change in Model.PhoneChangeHistory)
+                    {
+                        <tr>
+                            <td class="nowrap">@change.ChangeTime</td>
+                            <td>@change.OldPhoneNumber</td>
+                            <td>@change.NewPhoneNumber</td>
+                            <td>@change.ChangedBy</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @if (Model.TotalPhoneChangeHistoryItems > Model.PhoneChangeHistory.Length)
+            {
+                @Html.Pager(total: Model.TotalPhoneChangeHistoryItems, page: Model.PhoneHistoryPage)
+            }
+        </div>
+    </div>
+}
+@*
+--------------------- Предупреждение о сбросе пароля
+*@
+@if (Model.Permissions.PasswordReset)
+{
+    @Html.Partial("_ResetPassword")
+}
+@*
+--------------------- Предупреждение об отключении программы
+*@
+@if (Model.Permissions.Deactivate)
+{
+    @Html.Partial("_DisableProfile")
+}
+@*
+--------------------- Диалог смены номера телефона
+*@
+@if (Model.Permissions.ChangePhone)
+{
+    @Html.Partial("_ChangePhone", new ChangePhoneNumberModel { Login = Model.Login })
+}
+@*
+--------------------- Диалог смены E-mail
+*@
+@if (Model.Permissions.ChangePhone)
+{
+    @Html.Partial("_ChangeEmail", new ChangeEmailModel { Login = Model.Login })
+}

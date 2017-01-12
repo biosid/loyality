@@ -1,0 +1,27 @@
+﻿@model IList<MenuItemModel>
+
+@helper MenuTree (IList<MenuItemModel> list)
+{
+    var firstLevel = list.First().IsRoot;
+    var display = firstLevel ? "display:none" : null;
+    var wrapperClass = firstLevel ? "sub-nav" : "dsub-nav";
+    var ulClass = firstLevel ? "sub-nav-ul" : "dsnav";
+    var liClass = firstLevel ? "" : "dsitem";
+    <div class="@wrapperClass" style="@display">
+        <ul class="@ulClass">
+            @foreach (var item in list)
+            {
+                var className = item.Children.Any() ? liClass + " sub" : liClass;
+                <li class="@className">
+                    <a href="@item.Url">@item.Text</a>
+                    @if (item.Children.Any())
+                    {
+                        @MenuTree(item.Children)
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@MenuTree(Model)

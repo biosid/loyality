@@ -1,0 +1,49 @@
+﻿@model Vtb24.Arms.Areas.Catalog.Models.Delivery.UpdateBindingModel
+@using (Html.BeginForm("UpdateBinding", "Delivery", FormMethod.Post, new { @class = "modal hide", data_x = "catalog/delivery/modal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.KladrCode)
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Изменение привязки населенного пункта</h3>
+    </div>
+    
+    <div class="modal-body pad-bottom-20">
+        
+        <h4></h4>
+        
+        <div class="row mar-bottom-1em">
+            <div class="span2 line-height-30">Регион:</div>
+            <div class="span4">
+                @Html.TextBoxFor(m=>m.Region, new { @class="input-block-level" })
+                @Html.ValidationMessageFor(m=>m.Region)                
+            </div>
+        </div>        
+
+        <div class="row mar-bottom-1em">
+            <div class="span2 line-height-30">Район:</div>
+            <div class="span4">
+                @Html.TextBoxFor(m=>m.District, new { @class="input-block-level" })
+                @Html.ValidationMessageFor(m=>m.District)                  
+            </div>
+        </div>        
+
+        <div class="row mar-bottom-1em">
+            <div class="span2 line-height-30">Населенный пункт:</div>
+            <div class="span4">
+                @Html.TextBoxFor(m=>m.City, new { @class="input-block-level" })
+                @Html.ValidationMessageFor(m=>m.City)                  
+            </div>
+        </div>        
+        
+        @Html.ValidationMessageFor(m=>m.KladrCode)         
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" data-x="catalog/delivery/modal/reset">Сбросить привязку</button>
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <button class="btn" data-dismiss="modal">Отменить</button>
+    </div>
+}

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Database settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBHOST@</string>
+          </Patterns>
+          <ReplaceTo>.</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- PartnersConnector -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@FixBasketItemPriceUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://egoncharov-w7.rapidsoft.local:643/Actions/FixBasketItemPrice</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@CheckOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://egoncharov-w7.rapidsoft.local:643/Actions/CheckOrder</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ConfirmOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://egoncharov-w7.rapidsoft.local:643/Actions/ConfirmOrder</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BatchConfirmOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://egoncharov-w7.rapidsoft.local:643/Actions/BatchConfirmOrder</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@NotifyOrderStatusURL@</string>
+          </Patterns>
+          <ReplaceTo>https://egoncharov-w7.rapidsoft.local:543/NotifyOrderStatus.ashx</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TestPartnerCer@</string>
+          </Patterns>
+          <ReplaceTo>testpartner.egoncharov-w7.rapidsoft.local.cer</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TestPartnerPfx@</string>
+          </Patterns>
+          <ReplaceTo>testpartner.egoncharov-w7.rapidsoft.local.pfx</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TestPartnerThumbprint@</string>
+          </Patterns>
+          <ReplaceTo>10 8e 80 42 da 05 48 78 80 c3 e5 b0 c1 a2 39 dc f8 ea 63 1b</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TestPartnerHomeURL@</string>
+          </Patterns>
+          <ReplaceTo>https://egoncharov-w7.rapidsoft.local:643/Actions/</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PartnersConnectorPfx@</string>
+          </Patterns>
+          <ReplaceTo>partnersConnector.egoncharov-w7.rapidsoft.local.pfx</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PartnersConnectorThumbprint@</string>
+          </Patterns>
+          <ReplaceTo>08 a4 be 7f 7b 8e 74 6b a6 d7 ad c6 25 79 92 4b 12 d8 ca 0b</ReplaceTo>
+        </ConfigFileTransformation>
+      </GlobalConfigFileTransformations>
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+
+  <ExternalTransformationsFiles>
+    <ExternalTransformationsFile>
+      <FilePath>CommonConfiguration\local_endpoints.xml</FilePath>
+    </ExternalTransformationsFile>
+  </ExternalTransformationsFiles>
+
+</SingleConfig>

@@ -1,0 +1,15 @@
+﻿@model Vtb24.Site.Models.Catalog.ProductCatalogModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Каталог";
+    ViewBag.MainMenu = "Catalog";
+    ViewBag.SeoModelKeywords = Model.Keywords;
+    ViewBag.EnableHeaderDropdown = false;
+}
+
+@section secondary
+{
+    @Html.Partial("_CatalogSections", Model.CatalogSections)
+}
+
+@Html.Partial("_CatalogListing", Model)

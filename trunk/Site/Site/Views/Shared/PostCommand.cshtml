@@ -1,0 +1,31 @@
+﻿@model PostCommandModel
+@{
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+}
+@Html.AddScriptBlock(
+    @<script>
+         require(['Shared/post-command'], function(postCommand) {
+             postCommand({
+                 command: '@Model.Command',
+                 query: '@Html.Raw(Model.Query)'
+             });
+         });
+     </script>
+    )
+<style>
+    html {
+        height: auto;
+    }
+    body {
+        background-color: transparent;
+        min-width: inherit;
+        min-height: inherit;
+        height: auto;
+    }
+</style>
+<div class="full-content">
+    <div class="fc-padding">
+        <h4 style="text-align: center;">Обработка запроса...</h4>
+        <div class="space280"></div>
+    </div>
+</div>

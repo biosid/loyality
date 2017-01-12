@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.WrapClass = IsSectionDefined("secondary") ? ViewBag.WrapClass ?? "two-col" : null;
+
+    var keywords = ViewBag.SeoKeywords;
+    if (ViewBag.SeoModelKeywords != null && ViewBag.SeoModelKeywords.Length > 0)
+    {
+        if (!string.IsNullOrEmpty(keywords))
+        {
+            keywords += ", ";
+        }
+        keywords += string.Join(", ", ViewBag.SeoModelKeywords);
+    }
+}
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- REQUEST UNIQUE IDENTIFIER: @Context.Items[Vtb24.Logging.Constants.HTTP_REQUEST_ID_ITEM] -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        
+        @if (!string.IsNullOrEmpty(keywords))
+        {
+            <meta name="keywords" content="@keywords"/>
+        }
+        @if (!string.IsNullOrEmpty(ViewBag.SeoDescription))
+        {
+            <meta name="description" content="@ViewBag.SeoDescription"/>
+        }
+
+        <title>@(string.IsNullOrEmpty(ViewBag.SeoTitle) ? ViewBag.Title : ViewBag.SeoTitle) - ВТБ24 Коллекция</title>
+        
+        @Styles.Render("~/Content/themes/base/css")
+        @Styles.Render("~/Content/style")
+        
+        <!--[if lte IE 8]>
+            @Styles.Render("~/Content/ie")
+            @Scripts.Render("~/bundles/html5shiv")
+        <![endif]-->
+        
+        @Html.Partial("_GoogleAnalytics")
+    </head>
+    <body lang="ru">
+        @Html.Partial("_GoogleTagManager")
+        @Html.Partial("_YandexMetrika")
+        @Html.AntiForgeryToken()
+        <section class="wrap @ViewBag.WrapClass">
+            @* Шапка *@
+            @Html.Action("Header", "Layout",
+                         new
+                         {
+                             activeMenu = ViewBag.MainMenu,
+                             enableHeaderDropdown = ViewBag.EnableHeaderDropdown ?? true,
+                             hideRegionSelector = ViewBag.HideRegionSelector ?? false,
+                             searchSiteInitial = ViewBag.SearchSiteInitial ?? false
+                         })
+        
+            <section class="main">
+                @if (IsSectionDefined("promoblock"))
+                {
+                    <section class="promo-block">
+                        @RenderSection("promoblock", false)
+                    </section>
+                }
+
+                <section class="content clearfix">
+                    @if (IsSectionDefined("secondary"))
+                    {
+                        <div class="scol">
+                            @RenderSection("secondary", false)
+                        </div>
+                        <div class="pcol">
+                            @RenderBody()
+                        </div>
+                    }
+                    else
+                    {
+                        @RenderBody()
+                    }
+                </section>
+                <div class="top-shadow"></div>
+            </section>
+        </section>
+
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+        
+        @if (ViewBag.ClientActivationRequired != null && ViewBag.ClientActivationRequired)
+        {
+            @Html.AddScriptBlock(
+                @<script>
+                     require(['Client/activation_required'], function(module) {
+                         module({ hiwUrl: '/howitworks' });
+                     });
+                 </script>
+                )
+        }
+        
+        @{ var advertisement = ViewBag.ActiveAdvertisement as AdvertisementModel; }
+        @if (advertisement != null)
+        {
+            <div id="advertisement_popup" style="display: none;">
+                <a href="@advertisement.Url"><img src="@Url.Content(advertisement.PictureUrl)" /></a>
+            </div>
+             @Html.AddScriptBlock(
+                @<script>
+                     require(['Client/advertisement'], function (module) {
+                         module({ popup: '#advertisement_popup', dialogClass: '@advertisement.CssClass' });
+                     });
+                 </script>
+                )
+        }
+        
+        @if (ViewBag.ProposeToSetEmail != null && ViewBag.ProposeToSetEmail)
+        {
+            @Html.AddScriptBlock(
+                @<script>
+                     require(['Client/set_email_proposal'], function (proposal) {
+                         proposal({ myinfoUrl: '@Url.Action("Index", "MyInfo")' });
+                     });
+                 </script>
+            )
+        }
+        
+        @Html.Partial("_Popup")
+        @Html.Partial("_YesNoPopup")
+
+        @Scripts.Render("~/bundles/global")
+        @Html.RenderScripts()
+
+        @Html.Partial("_AdRiver")
+    </body>
+</html>

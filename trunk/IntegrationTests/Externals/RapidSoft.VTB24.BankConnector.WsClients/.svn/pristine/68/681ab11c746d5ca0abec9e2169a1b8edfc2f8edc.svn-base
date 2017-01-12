@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="RapidSoft.VTB24.BankConnector" elementFormDefault="qualified" targetNamespace="RapidSoft.VTB24.BankConnector" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfClientProfileCustomField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientProfileCustomField" nillable="true" type="tns:ClientProfileCustomField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClientProfileCustomField" nillable="true" type="tns:ArrayOfClientProfileCustomField" />
+  <xs:complexType name="ClientProfileCustomField">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientProfileCustomField" nillable="true" type="tns:ClientProfileCustomField" />
+  <xs:complexType name="UpdateClientPhoneNumberRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateClientPhoneNumberRequest" nillable="true" type="tns:UpdateClientPhoneNumberRequest" />
+  <xs:complexType name="UpdateClientEmailRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateClientEmailRequest" nillable="true" type="tns:UpdateClientEmailRequest" />
+</xs:schema>

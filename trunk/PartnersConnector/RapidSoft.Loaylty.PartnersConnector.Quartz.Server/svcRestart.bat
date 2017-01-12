@@ -1,0 +1,3 @@
+net stop QuartzServer$PartnersConnector
+net start QuartzServer$PartnersConnector
+pause

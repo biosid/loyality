@@ -1,0 +1,13 @@
+﻿@model Vtb24.Site.Content.Pages.Models.PageData
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(Model.Content)
+
+@Html.AddScriptBlock(
+    @<text>
+        @Html.Raw(Model.Script)
+    </text>
+    )

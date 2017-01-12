@@ -1,0 +1,8 @@
+@model dynamic
+<div class="banner-carousel__item @(Model.IsActive ? "active" : null)">
+    <div class="banner-kinohod__background">
+        <div class="banner-kinohod__posters">
+            <a class="banner-kinohod__foreground" href="@Url.Action("OnlineCategory", "Catalog", new { id = 1040 })"></a>
+        </div>
+    </div>
+</div>

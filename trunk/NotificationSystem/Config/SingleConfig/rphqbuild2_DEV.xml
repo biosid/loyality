@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs\NotificationSystem</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+	<!-- Environment settings -->
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@ENVIRONMENTNAME@</string>
+	  </Patterns>
+	  <ReplaceTo>rphqbuild2_DEV</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@ENVIRONMENTFROMEMAIL@</string>
+	  </Patterns>
+	  <ReplaceTo>rphqbuild2_DEV@loyalty.ru</ReplaceTo>
+	</ConfigFileTransformation>
+	<!-- Database settings -->
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@DBHOST@</string>
+	  </Patterns>
+	  <ReplaceTo>rphqbuild2</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@DBNAME@</string>
+	  </Patterns>
+	  <ReplaceTo>NotificationSystemDB</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@DBUSER@</string>
+	  </Patterns>
+	  <ReplaceTo>LoyaltyDB</ReplaceTo>
+	</ConfigFileTransformation>
+	<ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+	  <Patterns>
+	    <string>@DBPASS@</string>
+	  </Patterns>
+	  <ReplaceTo>LoyaltyDB</ReplaceTo>
+	</ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+	    <string>@FAKEPRICEMECHANIC@</string>
+	  </Patterns>
+          <ReplaceTo>false</ReplaceTo>
+        </ConfigFileTransformation>
+    <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+      <Patterns>
+        <string>@ClientSiteUrl@</string>
+      </Patterns>
+      <ReplaceTo>http://rphqbuild2:3139</ReplaceTo>
+    </ConfigFileTransformation>
+
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\rphqbuild2_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

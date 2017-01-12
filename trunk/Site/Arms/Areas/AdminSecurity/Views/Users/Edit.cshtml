@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = Model.IsNewUser ? "Создание пользователя" : "Редактирование пользователя «" + Model.Login + "»";
+    ViewBag.MenuId = "users";
+    Layout = "~/Areas/AdminSecurity/Views/Shared/_Layout.cshtml";
+}
+@model Vtb24.Arms.AdminSecurity.Models.Users.UserEditModel
+@Html.AddScriptBlock(
+    @<script>
+         require(['AdminSecurity/Users/edit'], function (edit) {
+             edit();
+         });
+     </script>
+)
+@if (!Model.IsNewUser)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(['AdminSecurity/Users/pwdreset'], function (pwdreset) {
+                 pwdreset();
+             });
+         </script>
+    )
+}
+<div class="tab-pane active">
+    <div class="container">
+        @using (Html.BeginForm(Model.IsNewUser ? "Create" : "Edit", "Users", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.query)
+            @Html.HiddenFor(m => m.IsNewUser)
+            @Html.HiddenFor(m => m.WhenCreated)
+
+            @*
+            --------------------- Панель действий
+            *@
+            <div class="sticky-save" data-x="adminsecurity/users/edit/navbar">
+                <div class="navbar">
+                    <div class="navbar-inner no-border pad-left-0">
+                        <div class="row">
+                            <div class="span12">
+                                @if (!Model.IsNewUser)
+                                {
+                                    <div class="pull-left mar-left-20">
+                                        <a href="#" class="btn" data-x="adminsecurity/users/pwdreset/show_button">Сбросить пароль</a>
+                                    </div>
+                                }
+                                <div class="pull-right mar-right-20">
+                                    <button class="btn btn-primary" type="submit">Сохранить</button>
+                                    <a href="@Url.Action("Index", "Users", Model.UsersQueryModel)" role="button" data-toggle="modal" class="btn">Отмена</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="font-normal">@ViewBag.Title</h3>
+            if (ViewContext.ViewData.ModelState.ContainsKey(""))
+            {
+                 @Html.ValidationSummary(true)
+            }
+            if (Model.IsNewUser)
+            {
+                <div class="row">
+                    <div class="span10">
+                        <h4 id="user_name">Учетные данные</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">Логин:</div>
+                    <div class="span8">
+                        @Html.TextBoxFor(m => m.Login, new { @class = "input-block-level", maxlength = 16 })
+                        @Html.ValidationMessageFor(m => m.Login)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">Пароль:</div>
+                    <div class="span8">
+                        @Html.PasswordFor(m => m.Password, new { @class = "input-block-level", maxlength = 64 })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+            }
+            else
+            {
+                @Html.HiddenFor(m => m.Login)
+                <div class="row">
+                    <div class="span2">Дата создания</div>
+                    <div class="span8">@Model.WhenCreated.ToString("dd.MM.yyyy HH:mm:ss")</div>
+                </div>
+            }
+            <div class="row">
+                <div class="span10">
+                    <h4 id="user_groups">Группы</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10">
+                    <select name="@Html.NameFor(m => m.Groups)" class="input-block-level" multiple data-placeholder="Выберите группы из списка" data-x="adminsecurity/users/edit/groups">
+                        @foreach (var group in Model.AllGroups)
+                        {
+                            <option value="@group" @(Model.Groups != null && Model.Groups.Contains(group) ? "selected" : null)>@group</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10">
+                    <h4 id="user_permissions">Права</h4>
+                </div>
+            </div>
+            @Html.Partial("_Permissions", Model.Permissions)
+        }
+    </div>
+</div>
+@if (!Model.IsNewUser)
+{
+    @*
+    --------------------- Сброс пароля
+    *@
+    @Html.Partial("_ResetPassword", Model.ResetPassword)
+}

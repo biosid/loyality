@@ -1,0 +1,17 @@
+﻿@model OnlinePartnerStub.Models.Main.BuyModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Онлайн-партнер \"Заглушка\"";
+}
+<h2>Онлайн-партнер "Заглушка"</h2>
+<h4>Заказ товара</h4>
+@using (Html.BeginForm("Buy", "Main", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.UserTicket)
+    @Html.HiddenFor(m => m.OrderId)
+    @Html.HiddenFor(m => m.Price)
+    @Html.HiddenFor(m => m.BonusPrice)
+    <span>товар за @Model.Price.ToString("N2") рублей</span>
+    <br/>
+    <button type="submit">Оформить</button>
+}

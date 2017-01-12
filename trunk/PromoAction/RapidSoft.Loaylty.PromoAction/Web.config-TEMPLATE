@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+<configuration>
+  <configSections>
+    <section name="entityFramework"
+             type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+             requirePermission="false" />
+    <section name="activeDirectory" 
+             type="RapidSoft.VTB24.ArmSecurity.ActiveDirectoryConfigSection, RapidSoft.VTB24.ArmSecurity"/>
+    <section name="log4net"
+             type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+  </configSections>
+
+  <appSettings>
+    <!-- Тип сериализации параметров методов web-сервисов. Поддерживаются значения "JSON" и "XML", если не указано то используется ToString метод. -->
+    <add key="ParamLogSerializer" value="JSON"/>
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="@loyaltyLogs@" />
+    <add key="LogAppName" value="PromoAction" />
+    <add key="LogSubsystemName" value="WebServices" />
+    <add key="EventLogSourceName" value="RapidSoft.Loyalty.PromoAction" />
+    <add key="LogsElasticSearchNodes" value="@elasticsearchCluster@" />
+  </appSettings>
+  
+  <connectionStrings>
+    <add name="LoyaltyDB" 
+         connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;User ID=@DBUSER@;Password=@DBPASS@;Connect Timeout=@DBTIMEOUT@;MultipleActiveResultSets=true;" 
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <activeDirectory>
+    <connection path="@ActiveDirectoryPath@" username="@ActiveDirectoryUserName@" password="@ActiveDirectoryPassword@" />
+  </activeDirectory>
+  
+  <log4net configSource="log4net.config" />
+  
+  <system.web>
+    <compilation debug="true" targetFramework="4.5" />
+    <httpRuntime targetFramework="4.5" />
+  </system.web>
+  <system.serviceModel>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="true" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true" />
+  </system.serviceModel>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
+  </entityFramework>
+</configuration>

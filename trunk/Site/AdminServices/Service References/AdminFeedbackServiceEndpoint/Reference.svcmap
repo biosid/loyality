@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4ce41026-d0e1-4950-89bf-019eb4016ea6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:5657/AdminFeedbackService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AdminFeedbackService.xsd" MetadataType="Schema" ID="301b49f6-1069-4a5f-aa96-ed1d4c7a78e3" SourceId="1" SourceUrl="http://rphqbuild1:5657/AdminFeedbackService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AdminFeedbackService1.xsd" MetadataType="Schema" ID="a09eca6e-6493-4b11-b8e9-67fbd4872e4c" SourceId="1" SourceUrl="http://rphqbuild1:5657/AdminFeedbackService.svc?xsd=xsd5" />
+    <MetadataFile FileName="AdminFeedbackService2.xsd" MetadataType="Schema" ID="d4e12cf8-4aed-4d1b-8dbc-bbbe2a71df34" SourceId="1" SourceUrl="http://rphqbuild1:5657/AdminFeedbackService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AdminFeedbackService3.xsd" MetadataType="Schema" ID="676279d4-7de0-4c49-987d-527313708975" SourceId="1" SourceUrl="http://rphqbuild1:5657/AdminFeedbackService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AdminFeedbackService.disco" MetadataType="Disco" ID="4b160bb6-e1de-433c-8c12-e514abb89c29" SourceId="1" SourceUrl="http://rphqbuild1:5657/AdminFeedbackService.svc?disco" />
+    <MetadataFile FileName="AdminFeedbackService.wsdl" MetadataType="Wsdl" ID="fe62bb86-ec23-467d-8823-bf9b7c2e78a1" SourceId="1" SourceUrl="http://rphqbuild1:5657/AdminFeedbackService.svc?wsdl" />
+    <MetadataFile FileName="AdminFeedbackService4.xsd" MetadataType="Schema" ID="7d4461f4-70e4-45bd-bdd2-d8675d92e796" SourceId="1" SourceUrl="http://rphqbuild1:5657/AdminFeedbackService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdminFeedbackService5.xsd" MetadataType="Schema" ID="2c100b6b-8413-48c6-8a6d-a91b03f6e9d3" SourceId="1" SourceUrl="http://rphqbuild1:5657/AdminFeedbackService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

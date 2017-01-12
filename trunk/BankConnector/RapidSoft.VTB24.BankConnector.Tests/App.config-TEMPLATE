@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+    <section name="etlConfig" type="RapidSoft.VTB24.BankConnector.Configuration.EtlConfigSection, RapidSoft.VTB24.BankConnector" />
+    <section name="notificationTemplate" type="RapidSoft.VTB24.BankConnector.Configuration.NotificationTemplateSection, RapidSoft.VTB24.BankConnector" />
+    <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration" />
+  </configSections>
+
+  <log4net configSource="Configuration\log4net.config" />
+
+  <unity configSource="Configuration\unity.config" />
+  
+  <appSettings configSource="Configuration\appSettings.config" />
+  
+  <connectionStrings configSource="Configuration\connectionStrings.config" />
+
+  <etlConfig configSource="Configuration\etlConfig.config" />
+
+  <system.serviceModel>
+    <bindings configSource="Configuration\bindings.config" />
+    <client configSource="Configuration\endpoints.config" />
+    <extensions>
+      <behaviorExtensions>
+        <add name="wcf_endpoint_logger" type="RapidSoft.VTB24.BankConnector.EtlLogger.WcfEndpointLoggerExtension, RapidSoft.VTB24.BankConnector, Version=1.0.0.0, Culture=neutral" />
+      </behaviorExtensions>
+    </extensions>
+    <behaviors>
+      <endpointBehaviors>
+        <behavior name="withLogging">
+          <wcf_endpoint_logger />
+        </behavior>
+      </endpointBehaviors>
+    </behaviors>
+  </system.serviceModel>
+
+</configuration>

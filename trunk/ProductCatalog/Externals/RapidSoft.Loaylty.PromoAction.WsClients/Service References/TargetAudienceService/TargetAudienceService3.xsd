@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:57451/TargetAudienceService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.DTO" />
+  <xs:complexType name="AssignClientTargetAudienceParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientAudienceRelations" nillable="true" type="tns:ArrayOfClientTargetAudienceRelation" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssignClientTargetAudienceParameters" nillable="true" type="tns:AssignClientTargetAudienceParameters" />
+  <xs:complexType name="ArrayOfClientTargetAudienceRelation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientTargetAudienceRelation" nillable="true" type="tns:ClientTargetAudienceRelation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClientTargetAudienceRelation" nillable="true" type="tns:ArrayOfClientTargetAudienceRelation" />
+  <xs:complexType name="ClientTargetAudienceRelation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PromoActionId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientTargetAudienceRelation" nillable="true" type="tns:ClientTargetAudienceRelation" />
+  <xs:complexType name="ArrayOfClientTargetAudienceRelationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientTargetAudienceRelationResult" nillable="true" type="tns:ClientTargetAudienceRelationResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClientTargetAudienceRelationResult" nillable="true" type="tns:ArrayOfClientTargetAudienceRelationResult" />
+  <xs:complexType name="ClientTargetAudienceRelationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssignResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PromoActionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientTargetAudienceRelationResult" nillable="true" type="tns:ClientTargetAudienceRelationResult" />
+  <xs:complexType name="AssignClientSegmentParameters">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.DTO" minOccurs="0" name="Segments" nillable="true" type="q1:ArrayOfSegment" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssignClientSegmentParameters" nillable="true" type="tns:AssignClientSegmentParameters" />
+</xs:schema>

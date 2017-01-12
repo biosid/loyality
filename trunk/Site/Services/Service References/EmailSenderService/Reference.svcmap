@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3f61cab1-a4c1-412a-b655-1a1b82c77664" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:5657/EmailSender.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EmailSender.xsd" MetadataType="Schema" ID="88360365-f666-47df-8110-df82b01c907a" SourceId="1" SourceUrl="http://rphqbuild1:5657/EmailSender.svc?xsd=xsd1" />
+    <MetadataFile FileName="EmailSender1.xsd" MetadataType="Schema" ID="ddcbd1a3-4c0a-4171-ad88-057a2aca1adb" SourceId="1" SourceUrl="http://rphqbuild1:5657/EmailSender.svc?xsd=xsd3" />
+    <MetadataFile FileName="EmailSender.disco" MetadataType="Disco" ID="0e9905cb-07e4-4c36-adc1-21ae47326d4a" SourceId="1" SourceUrl="http://rphqbuild1:5657/EmailSender.svc?disco" />
+    <MetadataFile FileName="EmailSender2.xsd" MetadataType="Schema" ID="a1995b5d-8697-4173-90d0-c9d7441201bc" SourceId="1" SourceUrl="http://rphqbuild1:5657/EmailSender.svc?xsd=xsd0" />
+    <MetadataFile FileName="EmailSender.wsdl" MetadataType="Wsdl" ID="26792c28-26f1-4315-8e52-30213d5b3597" SourceId="1" SourceUrl="http://rphqbuild1:5657/EmailSender.svc?wsdl" />
+    <MetadataFile FileName="EmailSender3.xsd" MetadataType="Schema" ID="a9bddc93-2ff7-4fee-8e63-c6a67c0f5d84" SourceId="1" SourceUrl="http://rphqbuild1:5657/EmailSender.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

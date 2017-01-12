@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ac307214-31e8-457a-ad1d-8f27cd535335" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8101/WishListService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WishListService.xsd" MetadataType="Schema" ID="6ef24333-fad5-456f-8414-2a812e6fb35b" SourceId="1" SourceUrl="http://localhost:8101/WishListService.svc?xsd=xsd1" />
+    <MetadataFile FileName="WishListService1.xsd" MetadataType="Schema" ID="4c50756a-d932-413f-a9ae-5a273b4ebd19" SourceId="1" SourceUrl="http://localhost:8101/WishListService.svc?xsd=xsd2" />
+    <MetadataFile FileName="WishListService.wsdl" MetadataType="Wsdl" ID="314d93f4-6958-4d88-bad6-859c41eebcdf" SourceId="1" SourceUrl="http://localhost:8101/WishListService.svc?wsdl" />
+    <MetadataFile FileName="WishListService2.xsd" MetadataType="Schema" ID="9c3e1232-9ebc-44ee-b62f-4f56eba34a33" SourceId="1" SourceUrl="http://localhost:8101/WishListService.svc?xsd=xsd3" />
+    <MetadataFile FileName="WishListService3.xsd" MetadataType="Schema" ID="d8a8510e-a13d-4388-b49c-17512fc9907a" SourceId="1" SourceUrl="http://localhost:8101/WishListService.svc?xsd=xsd4" />
+    <MetadataFile FileName="WishListService4.xsd" MetadataType="Schema" ID="b38928a6-82d2-4e84-8927-de1d54ad0709" SourceId="1" SourceUrl="http://localhost:8101/WishListService.svc?xsd=xsd5" />
+    <MetadataFile FileName="WishListService.disco" MetadataType="Disco" ID="92902b05-546e-4ed5-a544-e45f9a7abb4c" SourceId="1" SourceUrl="http://localhost:8101/WishListService.svc?disco" />
+    <MetadataFile FileName="WishListService5.xsd" MetadataType="Schema" ID="b261b23c-999c-4d46-b3fd-fcdd180cd921" SourceId="1" SourceUrl="http://localhost:8101/WishListService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

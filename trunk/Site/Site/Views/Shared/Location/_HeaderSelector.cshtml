@@ -1,0 +1,69 @@
+﻿@using System.Text.RegularExpressions
+@using Vtb24.Site.Infrastructure
+@model Vtb24.Site.Models.Shared.Location.LocationItem[]
+
+<div class="down" id="header-location-popup">
+    <div class="down-in">
+        <div class="table">
+            <form action="@Url.Action("SetUserLocation", "MyInfo")" method="POST">
+                <span class="cell">                
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="backUrl" value="@Regex.Replace(Request.RawUrl, @"(?<=&|\?)page=[^&]*&?", "").TrimEnd('&', '?')" />
+                    <input name="locationKladr" id="locationKladr" type="text" class="z10 header-city" data-location="search"/>
+                </span>
+            </form>
+            <span class="cell">
+                Цены и доступность вознаграждений могут меняться в зависимости от выбранного региона
+            </span>
+        </div>
+        
+        <div class="towns" data-location="popular">
+            
+                    <ul class="town-list popular-towns">
+                        <li class="tl-item item-city"><span><a rel="7700000000000" class="location">Москва</a></span></li>
+                    
+                        <li class="tl-item item-city"><span><a rel="7800000000000" class="location">Санкт-Петербург</a></span></li>
+                    
+                        <li class="tl-item item-city"><span><a rel="5400000100000" class="location">Новосибирск</a></span></li>
+                    
+                        <li class="tl-item item-city"><span><a rel="6600000100000" class="location">Екатеринбург</a></span></li>
+                    </ul>
+            
+            <h4 class="title clear-left">Выберите свой город или регион</h4>
+        </div>
+
+        <div class="towns" data-location="regions">
+            <div class="table">
+            @{ var columns = Model.Split(4); }
+            @foreach (var column in columns)
+            {
+                <div class="cell">
+                    <ul class="town-list">
+                        @foreach (var item in column)
+                        {
+                            <li class="tl-item"><span><a rel="@item.KladrCode">@item.Name</a></span></li>
+                        }
+                    </ul>
+                </div>
+            }
+            </div>
+        </div>
+
+        <div class="towns" style="display:none" data-location="cities">
+        </div>         
+    </div>
+</div> <!-- /.down -->
+
+@Html.AddScriptBlock(
+    @<script>
+        require(['Shared/Header/location'], function (module) {
+            module({
+                button: '#header-location-dropdown',
+                popup: '#header-location-popup',
+                citiesUrl: '@Url.Action("GetCitiesByRegion", "Geo")',
+                searchUrl: '@Url.Action("SearchCity", "Geo")',
+                searchSelect: '#locationKladr'
+            });
+        });
+    </script>
+)

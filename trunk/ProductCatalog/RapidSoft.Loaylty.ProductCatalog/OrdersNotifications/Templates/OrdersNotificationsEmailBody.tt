@@ -1,0 +1,60 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="RapidSoft.Loaylty.ProductCatalog.OrdersNotifications.Helpers" #>
+<html>
+  <head></head>
+  <body>
+    <h1>Отчет по заказам партнера &laquo;<#= PartnerName #>&raquo;</h1>
+      <table border="1" cellspacing="0" cellpadding="3" bordercolor="#bfbfbf" style="border-collapse: collapse;">
+        <thead>
+          <tr bgcolor="#f2f2f2">
+            <th><font size="2" face="sans-serif">Ссылка на заказ в АРМ</font></th>
+            <th><font size="2" face="sans-serif">Дата / время</font></th>
+            <th><font size="2" face="sans-serif">ID заказа в системе «Коллекция»</font></th>
+            <th><font size="2" face="sans-serif">ID заказа в системе партнёра</font></th>
+            <th><font size="2" face="sans-serif">Артикул</font></th>
+            <th align="left"><font size="2" face="sans-serif">Наименование</font></th>
+            <th nowrap><font size="2" face="sans-serif">К-во</font></th>
+            <th><font size="2" face="sans-serif">Цена, руб.</font></th>
+            <th><font size="2" face="sans-serif">E-mail</font></th>
+            <th align="left"><font size="2" face="sans-serif">Адрес</font></th>
+          </tr>
+        </thead>
+        <tbody>
+        <# foreach (var notification in OrdersNotifications) { #>
+          <tr>
+            <td align="center"><font size="2" face="sans-serif"><a href="<#= notification.OrderId.GenerateOrderUrl() #>">ссылка</a></font></td>
+            <td align="center"><font size="2" face="sans-serif"><#= notification.CreateDate.ToString("dd.MM.yyyy HH:mm") #></font></td>
+            <td align="center"><font size="2" face="sans-serif"><#= notification.OrderId #></font></td>
+            <td align="center"><font size="2" face="sans-serif"><#= MdashIfEmpty(notification.ExternalOrderId) #></font></td>
+            <td align="center"><font size="2" face="sans-serif"><#= MdashIfEmpty(notification.Items[0].ProductId) #></font></td>
+            <td><font size="2" face="sans-serif"><#= MdashIfEmpty(notification.Items[0].ProductName) #></font></td>
+            <td align="center"><font size="2" face="sans-serif"><#= notification.Items[0].ProductQuantity #></font></td>
+            <td align="center" nowrap><font size="2" face="sans-serif"><#= notification.TotalCost.ToString("N2") #></font></td>
+            <td><font size="2" face="sans-serif"><#= MdashIfEmpty(notification.ExtractEmailAddress()) #></font></td>
+            <td><font size="2" face="sans-serif"><#= MdashIfEmpty(notification.ExtractDeliveryAddress()) #></font></td>
+          </tr>
+          <# foreach (var item in notification.Items.Skip(1)) { #>
+            <tr>
+              <td colspan="4"></td>
+              <td align="center"><font size="2" face="sans-serif"><#= MdashIfEmpty(item.ProductId) #></font></td>
+              <td><font size="2" face="sans-serif"><#= MdashIfEmpty(item.ProductName) #></font></td>
+              <td align="center"><font size="2" face="sans-serif"><#= item.ProductQuantity #></font></td>
+              <td colspan="3"></td>
+            </tr>
+          <# } #>
+          </tr>
+        <# } #>
+      </tbody>
+    </table>
+  </body>
+</html>
+<#+
+private string MdashIfEmpty(string value)
+{
+    return string.IsNullOrEmpty(value) ? "&mdash;" : value;
+}
+#>

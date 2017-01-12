@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.OutputResults" />
+  <xs:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" />
+  <xs:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://rphqbuild1:49210/GeoPointService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:element name="Echo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EchoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EchoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAddressByKladrCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="KladrCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAddressByKladrCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.OutputResults" minOccurs="0" name="GetAddressByKladrCodeResult" nillable="true" type="q1:KladrAddressResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExistKladrCodes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="KladrCodes" nillable="true" type="q2:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExistKladrCodesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.OutputResults" minOccurs="0" name="GetExistKladrCodesResult" nillable="true" type="q3:CheckKladrCodeResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCountriesNamesByCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="codes" nillable="true" type="q4:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCountriesNamesByCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.OutputResults" minOccurs="0" name="GetCountriesNamesByCodeResult" nillable="true" type="q5:CountryListResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCountries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NameSearchPattern" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Skip" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Top" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCountriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" minOccurs="0" name="GetCountriesResult" nillable="true" type="q6:ArrayOfLocation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationsByParent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ParentId" type="q7:guid" />
+        <xs:element minOccurs="0" name="LocationType" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="NameSearchPattern" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Skip" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Top" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationsByParentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" minOccurs="0" name="GetLocationsByParentResult" nillable="true" type="q8:ArrayOfLocation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationsByIP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LocationType" type="xs:int" />
+        <xs:element minOccurs="0" name="Skip" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Top" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationsByIPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" minOccurs="0" name="GetLocationsByIPResult" nillable="true" type="q9:ArrayOfLocation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByIP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByIPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" minOccurs="0" name="GetLocationByIPResult" nillable="true" type="q10:Location" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Id" type="q11:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" minOccurs="0" name="GetLocationByIdResult" nillable="true" type="q12:Location" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByExternalId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByExternalIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" minOccurs="0" name="GetLocationByExternalIdResult" nillable="true" type="q13:Location" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByKladrCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="KladrCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByKladrCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" minOccurs="0" name="GetLocationByKladrCodeResult" nillable="true" type="q14:Location" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationsByKladrCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ParentKladrCode" nillable="true" type="xs:string" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="LocationType" nillable="true" type="q15:ArrayOfint" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Toponyms" nillable="true" type="q16:ArrayOfstring" />
+        <xs:element minOccurs="0" name="NameSearchPattern" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RegionIsCityOnly" nillable="true" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Skip" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Top" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationsByKladrCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.OutputResults" minOccurs="0" name="GetLocationsByKladrCodeResult" nillable="true" type="q17:GetLocationsResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByCoordinates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GeoSystem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LocationType" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Radius" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Lat" type="xs:decimal" />
+        <xs:element minOccurs="0" name="Lng" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationByCoordinatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/RapidSoft.GeoPoints.Entities" minOccurs="0" name="GetLocationByCoordinatesResult" nillable="true" type="q18:Location" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceVersion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetServiceVersionResult" nillable="true" type="q19:Version" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

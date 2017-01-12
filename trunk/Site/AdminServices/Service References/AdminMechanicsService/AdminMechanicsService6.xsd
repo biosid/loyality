@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities.History" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities.History" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rphqbuild1:57451/AdminMechanicsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" />
+  <xs:complexType name="ArrayOfRuleHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RuleHistory" nillable="true" type="tns:RuleHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRuleHistory" nillable="true" type="tns:ArrayOfRuleHistory" />
+  <xs:complexType name="RuleHistory">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseHistoryEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApproveDescription" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="Approved" type="q1:ApproveStatus" />
+          <xs:element minOccurs="0" name="ConditionalFactors" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DateTimeFrom" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DateTimeTo" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Factor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="IsExclusive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsNotExcludedBy" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Predicate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Priority" type="xs:int" />
+          <xs:element minOccurs="0" name="RuleDomainId" type="xs:long" />
+          <xs:element minOccurs="0" name="RuleId" type="xs:long" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="Status" type="q2:RuleStatuses" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="Type" type="q3:RuleTypes" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RuleHistory" nillable="true" type="tns:RuleHistory" />
+  <xs:complexType name="BaseHistoryEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" base="q4:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Event" type="tns:HistoryEvent" />
+          <xs:element minOccurs="0" name="HistoryId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BaseHistoryEntity" nillable="true" type="tns:BaseHistoryEntity" />
+  <xs:simpleType name="HistoryEvent">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknow" />
+      <xs:enumeration value="Create" />
+      <xs:enumeration value="Update" />
+      <xs:enumeration value="Delete" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="HistoryEvent" nillable="true" type="tns:HistoryEvent" />
+</xs:schema>

@@ -1,0 +1,7 @@
+ClientId;LastName;FirstName;MiddleName;BirthDate;Segment;Gender;Email
+Success;Шерман;Леонид;Михайлович;1959-11-29;0;1;a@a.a
+profileFail;Семененкова;Наталия;Сергеевна;1978-04-24;0;2;b@b.b
+profileNotExists;l;f;m;1959-11-29;1;1;b@b.b
+wrongGender;l;f;m;1959-11-29;1;5;
+wrongSegment;l;f;m;1959-11-29;5;1;
+createdClient;l;f;m;1959-11-29;0;1;

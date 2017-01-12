@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c690bc2c-2db6-446b-a0e8-d6323c606871" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:500/PartnerSecurityService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PartnerSecurityService.disco" MetadataType="Disco" ID="b4ec53d2-ffc5-443e-9157-a230f4f97ea4" SourceId="1" SourceUrl="http://localhost:500/PartnerSecurityService.svc?disco" />
+    <MetadataFile FileName="PartnerSecurityService.xsd" MetadataType="Schema" ID="f1605ac6-2caa-42d1-b9e0-09ca66406bf6" SourceId="1" SourceUrl="http://localhost:500/PartnerSecurityService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PartnerSecurityService.wsdl" MetadataType="Wsdl" ID="d607e119-3728-44fc-a75d-276f67d4be7d" SourceId="1" SourceUrl="http://localhost:500/PartnerSecurityService.svc?wsdl" />
+    <MetadataFile FileName="PartnerSecurityService1.xsd" MetadataType="Schema" ID="f45364f5-ba94-4ceb-b1a3-1492db5b7e25" SourceId="1" SourceUrl="http://localhost:500/PartnerSecurityService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PartnerSecurityService2.xsd" MetadataType="Schema" ID="e137e0f9-dc8e-4e80-a02a-b6b8e8f3ac20" SourceId="1" SourceUrl="http://localhost:500/PartnerSecurityService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

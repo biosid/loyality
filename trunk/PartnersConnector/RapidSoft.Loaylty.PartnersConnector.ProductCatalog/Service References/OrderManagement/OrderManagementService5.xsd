@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.API.InputParameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5156/OrderManagementService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.Entities" />
+  <xs:complexType name="ArrayOfPartnerOrderCommitment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PartnerOrderCommitment" nillable="true" type="tns:PartnerOrderCommitment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPartnerOrderCommitment" nillable="true" type="tns:ArrayOfPartnerOrderCommitment" />
+  <xs:complexType name="PartnerOrderCommitment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Confirmed" type="xs:int" />
+      <xs:element minOccurs="0" name="InternalOrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReasonCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartnerOrderCommitment" nillable="true" type="tns:PartnerOrderCommitment" />
+  <xs:complexType name="ArrayOfOrdersStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdersStatus" nillable="true" type="tns:OrdersStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrdersStatus" nillable="true" type="tns:ArrayOfOrdersStatus" />
+  <xs:complexType name="OrdersStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExternalOrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalOrderStatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalOrderStatusDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExternalOrderStatusDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.ProductCatalog.Entities" minOccurs="0" name="OrderStatus" type="q1:OrderStatuses" />
+      <xs:element minOccurs="0" name="PartnerId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdersStatus" nillable="true" type="tns:OrdersStatus" />
+</xs:schema>

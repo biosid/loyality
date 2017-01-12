@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7f17da59-4a4f-48fe-af20-28b8d922d98f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:8101/CatalogAdminService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CatalogAdminService.wsdl" MetadataType="Wsdl" ID="deabadfc-6bff-4988-9dfa-de763eaeb19b" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?wsdl" />
+    <MetadataFile FileName="CatalogAdminService.disco" MetadataType="Disco" ID="2ae8dc46-c73c-4f68-ae15-8bd73e959d46" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?disco" />
+    <MetadataFile FileName="CatalogAdminService.xsd" MetadataType="Schema" ID="2c2c48bc-f090-4420-9907-dbe42ed3648a" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CatalogAdminService1.xsd" MetadataType="Schema" ID="c12ce036-8a7c-4d34-a982-f083404859fd" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd5" />
+    <MetadataFile FileName="CatalogAdminService2.xsd" MetadataType="Schema" ID="0a8fe8ee-269d-4406-ab3a-5d633cd8bf6c" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CatalogAdminService6.xsd" MetadataType="Schema" ID="7158400b-3532-43b7-bba2-1743f315fe0b" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd6" />
+    <MetadataFile FileName="CatalogAdminService3.xsd" MetadataType="Schema" ID="e6ec1dc5-852a-4b80-ada7-2b8f117bd618" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CatalogAdminService4.xsd" MetadataType="Schema" ID="3255579f-085d-4557-8674-0466b9d71c41" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CatalogAdminService5.xsd" MetadataType="Schema" ID="8c3c885e-165a-4d8e-a4ff-d3817b191ed3" SourceId="1" SourceUrl="http://rphqbuild1:8101/CatalogAdminService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

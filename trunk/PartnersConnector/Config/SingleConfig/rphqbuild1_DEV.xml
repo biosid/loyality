@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs\PartnersConnector</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Database settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBHOST@</string>
+          </Patterns>
+          <ReplaceTo>RPHQBUILD1\MSSQLSERVER2008</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- PartnersConnector -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@PartnersConnectorThumbprint@</string>
+          </Patterns>
+          <ReplaceTo>d2 92 b7 ab da 16 e5 b5 6b c7 81 28 2b db 99 bc 2a 42 44 92</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Litres customization -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@LitresPartnerId@</string>
+          </Patterns>
+          <ReplaceTo>110</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Email settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpFrom@</string>
+          </Patterns>
+          <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpUserName@</string>
+          </Patterns>
+          <ReplaceTo>loyalty@vtb24.loyalty</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpPassword@</string>
+          </Patterns>
+          <ReplaceTo>mail</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpHost@</string>
+          </Patterns>
+          <ReplaceTo>rphqbuild1</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@SmtpEnableSsl@</string>
+          </Patterns>
+          <ReplaceTo>false</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Импорт каталога ОЗОН -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@OzonLocalFileUrl@</string>
+          </Patterns>
+          <ReplaceTo>http://rphqbuild1:700/YmlFiles/vtb.xml</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@OzonImportChron@</string>
+          </Patterns>
+          <ReplaceTo>0 30 * * * ?</ReplaceTo>
+        </ConfigFileTransformation>
+
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\rphqbuild1_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

@@ -1,0 +1,53 @@
+.span1 .mar-top-0,
+.span2 .mar-top-0,
+.span3 .mar-top-0,
+.span4 .mar-top-0,
+.span5 .mar-top-0,
+.span6 .mar-top-0,
+.span7 .mar-top-0,
+.span8 .mar-top-0,
+.span9 .mar-top-0,
+.span10 .mar-top-0,
+.span11.mar-top-0,
+.span12 .mar-top-0,
+.container .mar-top-0
+{
+    margin-top: 0px !important;
+}
+.filters-drop-down hr
+{
+    margin: 1ex 0ex;
+}
+.select-to-string, .string-input-to-string
+{
+    position: relative;
+    top: 0.5ex;
+    margin-right: 1em;
+}
+.button-tostring-calibrate
+{
+    position: relative; top: -0.1ex;
+}
+
+
+.autocols, .autocols td, .autocols thead tr th:last-child, .autocols tbody tr td:last-child
+, .autocols thead tr th:first-child, .autocols tbody tr td:first-child
+{
+    width: auto;    
+}
+.centered tbody tr td:last-child, .centered td, .centered th
+{
+    text-align: center;
+}
+
+.thleft th:first-child,
+.thleft th:last-child
+{
+    text-align:left !important;
+}
+
+
+.table
+{
+    width: 100%;
+}

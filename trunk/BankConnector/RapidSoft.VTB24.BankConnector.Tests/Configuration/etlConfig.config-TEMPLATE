@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<etlConfig>
+	<EtlVariables>
+		<add name="DB" value="data source=@DBHOST@;initial catalog=@DBNAME@;integrated security=False;User=@DBUSER@;Password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"/>
+		<add name="LoyaltyProgramId" value="@LOYALTYPROGRAMID@"/>
+		<add name="BatchSize" value="1000"/>
+
+		<!-- Настройки для отправки почты через SMTP -->
+		<add name="SmtpHost" value="@SMTPHOST@"/>
+		<add name="SmtpPort" value="25"/>
+		<add name="SmtpUseSSL" value="false"/>
+		<add name="SmtpUserName" value="loyalty@vtb24.loyalty"/>
+		<add name="SmtpPassword" value="mail"/>
+
+		<!-- Адреса при отправки почты в ящик терадаты -->
+		<add name="MailToTeradataFrom" value="loyalty@vtb24.loyalty"/>
+		<add name="MailToTeradataTo" value="teradata@vtb24.loyalty"/>
+
+		<!-- Адреса при отправки почты в ящик лояльности -->
+		<add name="MailToLoyaltyFrom" value="teradata@vtb24.loyalty"/>
+		<add name="MailToLoyaltyTo" value="loyalty@vtb24.loyalty"/>
+
+		<!-- Настройки для доступа к ящику терадаты-->
+		<add name="TeradataImapHost" value="@TERADATAIMAPHOST@"/>
+		<add name="TeradataImapPort" value="143"/>
+		<add name="TeradataImapUseSSL" value="false"/>
+		<add name="TeradataImapUserName" value="teradata@vtb24.loyalty"/>
+		<add name="TeradataImapPassword" value="mail"/>
+
+		<!-- Настройки для доступа к ящику лояльности -->
+		<add name="LoyaltyImapHost" value="@LOYALTYIMAPHOST@"/>
+		<add name="LoyaltyImapPort" value="143"/>
+		<add name="LoyaltyImapUseSSL" value="false"/>
+		<add name="LoyaltyImapUserName" value="loyalty@vtb24.loyalty"/>
+		<add name="LoyaltyImapPassword" value="mail"/>
+
+		<!-- Для удаления кода страны из номера телефона -->
+		<add name="DefaultCountryCode" value="7"/>
+	</EtlVariables>
+</etlConfig>

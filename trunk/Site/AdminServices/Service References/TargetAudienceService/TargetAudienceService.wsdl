@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TargetAudienceService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.DTO" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/TargetAudienceService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITargetAudienceService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_GetClientTargetAudiences_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientTargetAudiences" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_GetClientTargetAudiences_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientTargetAudiencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_AssignClientTargetAudience_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignClientTargetAudience" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_AssignClientTargetAudience_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignClientTargetAudienceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_AssignClientSegment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignClientSegment" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_AssignClientSegment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignClientSegmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_GetTargetAudiences_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTargetAudiences" />
+  </wsdl:message>
+  <wsdl:message name="ITargetAudienceService_GetTargetAudiences_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTargetAudiencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceInfo_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IServiceInfo_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceInfo_GetServiceVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="IServiceInfo_GetServiceVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITargetAudienceService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:ITargetAudienceService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:ITargetAudienceService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientTargetAudiences">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITargetAudienceService/GetClientTargetAudiences" message="tns:ITargetAudienceService_GetClientTargetAudiences_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITargetAudienceService/GetClientTargetAudiencesResponse" message="tns:ITargetAudienceService_GetClientTargetAudiences_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignClientTargetAudience">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITargetAudienceService/AssignClientTargetAudience" message="tns:ITargetAudienceService_AssignClientTargetAudience_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITargetAudienceService/AssignClientTargetAudienceResponse" message="tns:ITargetAudienceService_AssignClientTargetAudience_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignClientSegment">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITargetAudienceService/AssignClientSegment" message="tns:ITargetAudienceService_AssignClientSegment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITargetAudienceService/AssignClientSegmentResponse" message="tns:ITargetAudienceService_AssignClientSegment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTargetAudiences">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITargetAudienceService/GetTargetAudiences" message="tns:ITargetAudienceService_GetTargetAudiences_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITargetAudienceService/GetTargetAudiencesResponse" message="tns:ITargetAudienceService_GetTargetAudiences_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IServiceInfo">
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceInfo/Ping" message="tns:IServiceInfo_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceInfo/PingResponse" message="tns:IServiceInfo_Ping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceInfo/GetServiceVersion" message="tns:IServiceInfo_GetServiceVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceInfo/GetServiceVersionResponse" message="tns:IServiceInfo_GetServiceVersion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITargetAudienceService" type="tns:ITargetAudienceService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISupportService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientTargetAudiences">
+      <soap:operation soapAction="http://tempuri.org/ITargetAudienceService/GetClientTargetAudiences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignClientTargetAudience">
+      <soap:operation soapAction="http://tempuri.org/ITargetAudienceService/AssignClientTargetAudience" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignClientSegment">
+      <soap:operation soapAction="http://tempuri.org/ITargetAudienceService/AssignClientSegment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTargetAudiences">
+      <soap:operation soapAction="http://tempuri.org/ITargetAudienceService/GetTargetAudiences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IServiceInfo" type="tns:IServiceInfo">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/IServiceInfo/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceVersion">
+      <soap:operation soapAction="http://tempuri.org/IServiceInfo/GetServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TargetAudienceService">
+    <wsdl:port name="BasicHttpBinding_ITargetAudienceService" binding="tns:BasicHttpBinding_ITargetAudienceService">
+      <soap:address location="http://rphqbuild1:57451/TargetAudienceService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IServiceInfo" binding="tns:BasicHttpBinding_IServiceInfo">
+      <soap:address location="http://rphqbuild1:57451/TargetAudienceService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

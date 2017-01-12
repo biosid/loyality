@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="RapidSoft.VTB24.BankConnector.Service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="RapidSoft.VTB24.BankConnector.Service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="RapidSoft.VTB24.BankConnector.Service/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:63910/AdminBankConnectorService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:63910/AdminBankConnectorService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:63910/AdminBankConnectorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.VTB24.BankConnector.API.Entities" />
+      <xsd:import schemaLocation="http://rphqbuild1:63910/AdminBankConnectorService.svc?xsd=xsd3" namespace="RapidSoft.VTB24.BankConnector" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AdminBankConnector_GetAllProfileCustomFields_InputMessage">
+    <wsdl:part xmlns:q1="http://tempuri.org/" name="parameters" element="q1:GetAllProfileCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_GetAllProfileCustomFields_OutputMessage">
+    <wsdl:part xmlns:q2="http://tempuri.org/" name="parameters" element="q2:GetAllProfileCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_UpdateClientPhoneNumber_InputMessage">
+    <wsdl:part xmlns:q3="http://tempuri.org/" name="parameters" element="q3:UpdateClientPhoneNumber" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_UpdateClientPhoneNumber_OutputMessage">
+    <wsdl:part xmlns:q4="http://tempuri.org/" name="parameters" element="q4:UpdateClientPhoneNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_UpdateClientEmail_InputMessage">
+    <wsdl:part xmlns:q5="http://tempuri.org/" name="parameters" element="q5:UpdateClientEmail" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_UpdateClientEmail_OutputMessage">
+    <wsdl:part xmlns:q6="http://tempuri.org/" name="parameters" element="q6:UpdateClientEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_AppendProfileCustomField_InputMessage">
+    <wsdl:part xmlns:q7="http://tempuri.org/" name="parameters" element="q7:AppendProfileCustomField" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_AppendProfileCustomField_OutputMessage">
+    <wsdl:part xmlns:q8="http://tempuri.org/" name="parameters" element="q8:AppendProfileCustomFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_RemoveProfileCustomField_InputMessage">
+    <wsdl:part xmlns:q9="http://tempuri.org/" name="parameters" element="q9:RemoveProfileCustomField" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_RemoveProfileCustomField_OutputMessage">
+    <wsdl:part xmlns:q10="http://tempuri.org/" name="parameters" element="q10:RemoveProfileCustomFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_RenameProfileCustomField_InputMessage">
+    <wsdl:part xmlns:q11="http://tempuri.org/" name="parameters" element="q11:RenameProfileCustomField" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_RenameProfileCustomField_OutputMessage">
+    <wsdl:part xmlns:q12="http://tempuri.org/" name="parameters" element="q12:RenameProfileCustomFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_Echo_InputMessage">
+    <wsdl:part xmlns:q13="http://tempuri.org/" name="parameters" element="q13:Echo" />
+  </wsdl:message>
+  <wsdl:message name="AdminBankConnector_Echo_OutputMessage">
+    <wsdl:part xmlns:q14="http://tempuri.org/" name="parameters" element="q14:EchoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AdminBankConnector">
+    <wsdl:operation name="GetAllProfileCustomFields">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientManagementService/GetAllProfileCustomFields" message="tns:AdminBankConnector_GetAllProfileCustomFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientManagementService/GetAllProfileCustomFieldsResponse" message="tns:AdminBankConnector_GetAllProfileCustomFields_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientPhoneNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientManagementService/UpdateClientPhoneNumber" message="tns:AdminBankConnector_UpdateClientPhoneNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientManagementService/UpdateClientPhoneNumberResponse" message="tns:AdminBankConnector_UpdateClientPhoneNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientManagementService/UpdateClientEmail" message="tns:AdminBankConnector_UpdateClientEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientManagementService/UpdateClientEmailResponse" message="tns:AdminBankConnector_UpdateClientEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AppendProfileCustomField">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientManagementService/AppendProfileCustomField" message="tns:AdminBankConnector_AppendProfileCustomField_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientManagementService/AppendProfileCustomFieldResponse" message="tns:AdminBankConnector_AppendProfileCustomField_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveProfileCustomField">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientManagementService/RemoveProfileCustomField" message="tns:AdminBankConnector_RemoveProfileCustomField_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientManagementService/RemoveProfileCustomFieldResponse" message="tns:AdminBankConnector_RemoveProfileCustomField_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RenameProfileCustomField">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientManagementService/RenameProfileCustomField" message="tns:AdminBankConnector_RenameProfileCustomField_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientManagementService/RenameProfileCustomFieldResponse" message="tns:AdminBankConnector_RenameProfileCustomField_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:AdminBankConnector_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:AdminBankConnector_Echo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

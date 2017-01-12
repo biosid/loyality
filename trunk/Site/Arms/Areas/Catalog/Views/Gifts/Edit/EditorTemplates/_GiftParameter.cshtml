@@ -1,0 +1,21 @@
+﻿@model Vtb24.Arms.Catalog.Models.Gifts.GiftEditModel.Parameter
+
+<tr data-x="gifts/edit/parameter">
+    <td>
+        @Html.TextBoxFor(m => m.Name, new { @class="input-large clearable-input"})
+    </td>
+    <td>
+        <div>
+            @Html.TextAreaFor(m => m.Value, new { @class="input-block-level clearable-input" })
+        </div>
+    </td>
+    <td class="text-center">
+        @Html.TextBoxFor(m => m.Unit, new { @class="input-mini clearable-input" })
+    </td>
+    <td>
+        <a data-x="gifts/edit/add_parameter" class="btn btn-success add-ost"><i class="icon-plus icon-white"></i></a>
+    </td>
+    <td>
+        <a data-x="gifts/edit/remove_parameter" class="btn remove-char"><i class="icon-remove"></i></a>
+    </td>
+</tr>

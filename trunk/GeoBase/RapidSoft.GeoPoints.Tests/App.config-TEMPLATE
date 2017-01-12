@@ -1,0 +1,59 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+  </configSections>
+  <system.web>
+    <compilation debug="true" targetFramework="4.0"/>
+    <pages controlRenderingCompatibilityVersion="4.0"/>
+  </system.web>
+  <connectionStrings>
+    <add name="InformationServicesDB" connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;User ID=@DBUSER@;Password=@DBPASS@;Connect Timeout=600000" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+  <log4net debug="true">
+    <appender name="EventAppender" type="log4net.Appender.RollingFileAppender">
+      <lockingmodel type="log4net.Appender.FileAppender+MinimalLock"/>
+      <file value="C:\Logs\GeoPointServiceLogs\Event.log"/>
+      <appendtofile value="true"/>
+      <maxsizerollbackups value="10"/>
+      <maximumfilesize value="200MB"/>
+      <staticlogfilename value="true"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%n[%d]%n%m%n"/>
+      </layout>
+    </appender>
+    <appender name="ErrorAppender" type="log4net.Appender.RollingFileAppender">
+      <lockingmodel type="log4net.Appender.FileAppender+MinimalLock"/>
+      <file value="C:\Logs\GeoPointServiceLogs\Errors.log"/>
+      <appendtofile value="true"/>
+      <rollingstyle value="Size"/>
+      <maxsizerollbackups value="10"/>
+      <maximumfilesize value="200MB"/>
+      <staticlogfilename value="true"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%n[%d]%n%m%n"/>
+      </layout>
+    </appender>
+    <appender name="WindowsEventLogAppender" type="log4net.Appender.EventLogAppender">
+      <param name="ApplicationName" value="GeoPointService"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%n[%d]%n%m%n"/>
+      </layout>
+    </appender>
+    <root>
+      <level value="ALL"/>
+    </root>
+    <logger name="EventLogger">
+      <level value="INFO"/>
+      <appender-ref ref="EventAppender"/>
+    </logger>
+    <logger name="ErrorLogger">
+      <level value="ERROR"/>
+      <appender-ref ref="ErrorAppender"/>
+    </logger>
+    <logger name="WindowsEventLogger">
+      <level value="ERROR"/>
+      <appender-ref ref="WindowsEventLogAppender"/>
+    </logger>
+  </log4net>
+</configuration>

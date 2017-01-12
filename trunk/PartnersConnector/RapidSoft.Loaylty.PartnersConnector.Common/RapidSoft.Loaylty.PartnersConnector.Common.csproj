@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24BAF73D-238C-43A2-9670-F937CE31CB7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.PartnersConnector.Common</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.PartnersConnector.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\CheckOrder\DeliveryInfo.cs" />
+    <Compile Include="DTO\CheckOrder\Order.cs" />
+    <Compile Include="DTO\CheckOrder\OrderItem.cs" />
+    <Compile Include="DTO\GetDeliveryVariants\DeliveryGroup.cs" />
+    <Compile Include="DTO\GetDeliveryVariants\DeliveryVariant.cs" />
+    <Compile Include="DTO\GetDeliveryVariants\GetDeliveryVariantsMessage.cs" />
+    <Compile Include="DTO\GetDeliveryVariants\GetDeliveryVariantsResult.cs" />
+    <Compile Include="DTO\GetDeliveryVariants\OrderItem.cs" />
+    <Compile Include="DTO\Online\GetPaymentStatusResult.cs" />
+    <Compile Include="DTO\Online\GetPaymentStatusResult.Ext.cs" />
+    <Compile Include="Services\MessagesExtensions.cs" />
+    <Compile Include="DTO\NotifyOrderStatus\NotifyOrdersResult.cs" />
+    <Compile Include="DTO\GetDeliveryVariants\PickupPoint.cs" />
+    <Compile Include="DTO\GetDeliveryVariants\VariantsLocation.cs" />
+    <Compile Include="DTO\Online\CancelPaymentResult.cs" />
+    <Compile Include="DTO\Online\CancelPaymentResult.ext.cs" />
+    <Compile Include="DTO\CheckOrder\CheckOrderMessage.cs" />
+    <Compile Include="DTO\CheckOrder\CheckOrderResult.cs" />
+    <Compile Include="DTO\CommitOrder\CommitOrderMessage.cs" />
+    <Compile Include="DTO\CommitOrder\CommitOrderResult.cs" />
+    <Compile Include="DTO\CommitOrder\CommitOrdersMessage.cs" />
+    <Compile Include="DTO\CommitOrder\CommitOrdersResult.cs" />
+    <Compile Include="DTO\CommitOrder\Contact.cs" />
+    <Compile Include="DTO\CommitOrder\DeliveryInfo.cs" />
+    <Compile Include="DTO\FixBasketItemPrice\FixBasketItemPriceMessage.cs" />
+    <Compile Include="DTO\FixBasketItemPrice\FixBasketItemPriceResult.cs" />
+    <Compile Include="DTO\Online\NotifyOrder.cs" />
+    <Compile Include="DTO\Online\NotifyOrder.Ext.cs" />
+    <Compile Include="DTO\Online\NotifyOrderResult.cs" />
+    <Compile Include="DTO\Online\NotifyOrderResult.Ext.cs" />
+    <Compile Include="DTO\NotifyOrderStatus\NotifyOrderStatusMessage.cs" />
+    <Compile Include="DTO\NotifyOrderStatus\NotifyOrderStatusMessageOrder.cs" />
+    <Compile Include="DTO\CommitOrder\Order.cs" />
+    <Compile Include="DTO\CommitOrder\OrderItem.cs" />
+    <Compile Include="DTO\Online\ValidateUserResult.cs" />
+    <Compile Include="DTO\Online\ValidateUserResult.Ext.cs" />
+    <Compile Include="FileSystem.cs" />
+    <Compile Include="Interfaces\IBonusGatewayProvider.cs" />
+    <Compile Include="Interfaces\ICryptoService.cs" />
+    <Compile Include="Interfaces\ICryptoServiceFactory.cs" />
+    <Compile Include="Interfaces\IFileSystem.cs" />
+    <Compile Include="Interfaces\IProductCatalogProvider.cs" />
+    <Compile Include="Interfaces\ISecurityWebServicesProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BatchProcessing\Batch.cs" />
+    <Compile Include="Services\BatchProcessing\BatchItem.cs" />
+    <Compile Include="Services\BatchProcessing\IBatchAction.cs" />
+    <Compile Include="Services\BatchProcessing\MarkAsCompliteAction.cs" />
+    <Compile Include="Services\BatchProcessing\NormalizeAction.cs" />
+    <Compile Include="Services\BatchProcessing\NotifyCatalogAction.cs" />
+    <Compile Include="Services\BatchProcessing\QueueProcessor.cs" />
+    <Compile Include="Services\BatchProcessing\SendToPartnerAction.cs" />
+    <Compile Include="Services\CryptoServices\CryptoServiceFactory.cs" />
+    <Compile Include="Services\CryptoServices\PemPrivateKeyCryptoService.cs" />
+    <Compile Include="Services\CryptoServices\PemPublicKeyCryptoService.cs" />
+    <Compile Include="Services\CryptoServices\RSACryptoServiceProviderExtension.cs" />
+    <Compile Include="Services\CryptoServices\XmlKeyCryptoServiceBase.cs" />
+    <Compile Include="Services\CryptoServices\XmlPrivateKeyCryptoService.cs" />
+    <Compile Include="Services\CryptoServices\XmlPublicKeyCryptoService.cs" />
+    <Compile Include="Services\MessageValidator.cs" />
+    <Compile Include="Services\OperationException.cs" />
+    <Compile Include="Services\OrderManagementService.cs" />
+    <Compile Include="Services\PartnerSecurityService.cs" />
+    <Compile Include="Services\Providers\BonusGatewayProvider.cs" />
+    <Compile Include="Services\Providers\CatalogAdminServiceProvider.cs" />
+    <Compile Include="Services\Providers\ProductCatalogProvider.cs" />
+    <Compile Include="Services\Providers\SecurityWebServicesProvider.cs" />
+    <Compile Include="Services\ServiceOperationResult.cs" />
+    <Compile Include="Services\Validation\OfflineOrderStatusAttribute.cs" />
+    <Compile Include="ValidateObjectAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63df64b8-c9f3-4a51-841d-58d6d1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.BonusGateway\RapidSoft.Loaylty.BonusGateway.csproj">
+      <Project>{a130d3dc-72ea-4e07-ae64-caa194245b6e}</Project>
+      <Name>RapidSoft.Loaylty.BonusGateway</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Logging\RapidSoft.Loaylty.Logging.csproj">
+      <Project>{6b6e5793-b048-473d-8707-23031cc227cd}</Project>
+      <Name>RapidSoft.Loaylty.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj">
+      <Project>{E10328E0-16F8-448C-8F26-E754D9A1FE83}</Project>
+      <Name>RapidSoft.Loaylty.Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ProductCatalog.WsClients\RapidSoft.Loaylty.ProductCatalog.WsClients.csproj">
+      <Project>{fa8260e1-3e5b-4be8-9c65-5c6554310ef6}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loyalty.Security\RapidSoft.Loyalty.Security.csproj">
+      <Project>{58f9d3de-b234-483c-9674-cc838206524e}</Project>
+      <Name>RapidSoft.Loyalty.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.Site\RapidSoft.VTB24.Site.csproj">
+      <Project>{bef9525f-6493-469f-bd15-acbbb7b011a8}</Project>
+      <Name>RapidSoft.VTB24.Site</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Interfaces\RapidSoft.Loaylty.PartnersConnector.Interfaces.csproj">
+      <Project>{f80d391a-fe15-4ebb-aac0-ca1a229e9c35}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Litres\RapidSoft.Loaylty.PartnersConnector.Litres.csproj">
+      <Project>{3fbe62a1-a43f-4f75-8bff-eea251aeda76}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Litres</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.PartnersConnector.Queue\RapidSoft.Loaylty.PartnersConnector.Queue.csproj">
+      <Project>{89bba02c-6700-49fc-8057-7fe55f716046}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.Queue</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\RapidSoft.Loaylty.Solution\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

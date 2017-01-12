@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Дополнительные поля";
+    ViewBag.MenuId = "custom_fields";
+    Layout = "~/Areas/Security/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.Security.Models.CustomFields
+@model CustomFieldModel[]
+@Html.AddScriptBlock(
+    @<script>
+         require(['Security/CustomFields/index',
+                 'Security/CustomFields/append',
+                 'Security/CustomFields/remove',
+                 'Security/CustomFields/rename'],
+             function(index, append, remove, rename) {
+                 index();
+                 append();
+                 remove({ url: '@Url.Action("Remove", "CustomFields")' });
+                 rename({ url: '@Url.Action("Rename", "CustomFields")' });
+             });
+     </script>
+    )
+<div class="tab-pane active">
+    @*
+    --------------------- Шапка
+    *@
+    <div class="sticky-save" data-x="security/customfields/navbar">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                <div class="row" style="width: 940px; margin-left: 0;">
+                    <div class="pull-left line-height-30 mar-right-20 mar-left-20">
+                        <a href="#" class="btn btn-success" data-x="security/customfields/append">
+                            <i class="icon-plus icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*
+    --------------------- Список дополнительных полей
+    *@
+    <table class="table table-bordered table-customfields" data-x="security/customfields/list" style="display:@(Model.Any() ? "table" : "none")">
+        <colgroup><col width="100%"/></colgroup>
+        <thead>
+            <tr>
+                <th class="left">Дополнительные поля</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customField in Model)
+            {
+                <tr data-customfield-id="@customField.Id">
+                    <td>
+                        <div class="wrap-textarea">
+                            <input type="text" class="input-block-level" data-x="security/customfields/name" value="@customField.Name" maxlength="128" />
+                            <div class="btn-group pull-right hidden">
+                                <button class="btn btn-mini btn-success" data-x="security/customfields/apply_rename"><i class="icon-ok icon-white"></i></button>
+                                <button class="btn btn-mini" data-x="security/customfields/cancel_rename"><i class="icon-remove"></i></button>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="btn remove" data-x="security/customfields/remove"><i class="icon-remove"></i></a>
+                    </td>
+                </tr>
+            }
+            <tr style="display: none;" data-x="security/customfields/template">
+                <td>
+                    <div class="wrap-textarea">
+                        <input type="text" class="input-block-level" data-x="security/customfields/name" value="" maxlength="128" />
+                        <div class="btn-group pull-right hidden">
+                            <button class="btn btn-mini btn-success" data-x="security/customfields/apply_rename"><i class="icon-ok icon-white"></i></button>
+                            <button class="btn btn-mini" data-x="security/customfields/cancel_rename"><i class="icon-remove"></i></button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <a class="btn remove" data-x="security/customfields/remove"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4 class="mar-left-10" style="display:@(Model.Any() ? "none": "block")" data-x="security/customfields/empty">Дополнительные поля отсутствуют</h4>
+</div>
+@*
+--------------------- Предупреждение об удалении
+*@
+@Html.Partial("_Remove")
+@*
+--------------------- Создание дополнительного поля
+*@
+@Html.Partial("_Append", new AppendCustomFieldModel())
+@*
+--------------------- Сообщение об ошибке
+*@
+@Html.Partial("_ModalError")

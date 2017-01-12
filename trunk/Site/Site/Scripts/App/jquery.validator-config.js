@@ -1,0 +1,1 @@
+﻿jQuery.validator.defaults.ignore = ".novalidate, :hidden";

@@ -1,0 +1,9 @@
+﻿@model Vtb24.Arms.Models.TabModel[]
+<ul class="nav nav-tabs">
+    @foreach (var tab in Model)
+    {
+        <li class="@(tab.IsActive ? "active" : null)">
+            <a href="@tab.Url">@tab.Title</a>
+        </li>
+    }
+</ul>

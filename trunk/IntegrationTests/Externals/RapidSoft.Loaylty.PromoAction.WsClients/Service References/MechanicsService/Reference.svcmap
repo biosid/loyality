@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5bf04ab1-3a01-4c33-8a9b-6db22ac1bd04" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:57451/MechanicsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MechanicsService.xsd" MetadataType="Schema" ID="7b1148fe-aeba-4b13-9b29-8cbfeed7b0bd" SourceId="1" SourceUrl="http://localhost:57451/MechanicsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MechanicsService1.xsd" MetadataType="Schema" ID="05c321cb-2852-491f-bbe0-567ea2f8d94a" SourceId="1" SourceUrl="http://localhost:57451/MechanicsService.svc?xsd=xsd3" />
+    <MetadataFile FileName="MechanicsService2.xsd" MetadataType="Schema" ID="9a6155e1-40ba-4532-a2ab-a1ecc404233c" SourceId="1" SourceUrl="http://localhost:57451/MechanicsService.svc?xsd=xsd4" />
+    <MetadataFile FileName="MechanicsService3.xsd" MetadataType="Schema" ID="8df5a193-ed00-4e91-8db3-6069ae575f3e" SourceId="1" SourceUrl="http://localhost:57451/MechanicsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MechanicsService.wsdl" MetadataType="Wsdl" ID="d185aa60-7431-47c0-a13b-e218a0ba88ac" SourceId="1" SourceUrl="http://localhost:57451/MechanicsService.svc?wsdl" />
+    <MetadataFile FileName="MechanicsService4.xsd" MetadataType="Schema" ID="33378f32-c5df-4311-9ad4-beb0eaf6f44b" SourceId="1" SourceUrl="http://localhost:57451/MechanicsService.svc?xsd=xsd5" />
+    <MetadataFile FileName="MechanicsService5.xsd" MetadataType="Schema" ID="2fcca1f0-146a-465e-8fbf-2c0528e7bde9" SourceId="1" SourceUrl="http://localhost:57451/MechanicsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MechanicsService.disco" MetadataType="Disco" ID="7cf9fbf5-dbff-46d0-af4f-a4c1a485f81f" SourceId="1" SourceUrl="http://localhost:57451/MechanicsService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

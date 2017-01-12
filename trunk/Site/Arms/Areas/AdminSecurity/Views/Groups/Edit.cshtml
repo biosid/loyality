@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = Model.IsNewGroup ? "Создание группы" : "Редактирование группы «" + Model.Name + "»";
+    ViewBag.MenuId = "groups";
+    Layout = "~/Areas/AdminSecurity/Views/Shared/_Layout.cshtml";
+}
+@using Vtb24.Arms.AdminSecurity.Models.Groups
+@model GroupEditModel
+@Html.AddScriptBlock(
+    @<script>
+         require(['AdminSecurity/Groups/edit'], function (edit) {
+             edit();
+         });
+     </script>
+)
+
+<div class="tab-pane active">
+    <div class="container">
+        @using (Html.BeginForm(Model.IsNewGroup ? "Create" : "Edit", "Groups", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.query)
+            @Html.HiddenFor(m => m.IsNewGroup)
+
+            @*
+            --------------------- Панель действий
+            *@
+            <div class="sticky-save" data-x="adminsecurity/groups/edit/navbar">
+                <div class="navbar">
+                    <div class="navbar-inner no-border pad-left-0">
+                        <div class="row">
+                            <div class="span12">
+                                <div class="pull-right mar-right-20">
+                                    <button class="btn btn-primary" type="submit">Сохранить</button>
+                                    <a href="@Url.Action("Index", "Groups", Model.GroupsQueryModel)" role="button" data-toggle="modal" class="btn">Отмена</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="font-normal">@ViewBag.Title</h3>
+            @Html.ValidationSummary(true)
+            if (Model.IsNewGroup)
+            {
+                <div class="row">
+                    <div class="span10">
+                        <h4 id="group_name">Название</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span10">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "input-block-level", maxlength = 16 })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+            }
+            else
+            {
+                @Html.HiddenFor(m => m.Name)
+            }
+            <div class="row">
+                <div class="span10">
+                    <h4 id="group_users">Пользователи</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10">
+                    <select name="@Html.NameFor(m => m.Users)" class="input-block-level" multiple data-placeholder="Выберите пользователей из списка" data-x="adminsecurity/groups/edit/users">
+                        @foreach (var user in Model.AllUsers)
+                        {
+                            <option value="@user" @(Model.Users != null && Model.Users.Contains(user) ? "selected" : null)>@user</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10">
+                    <h4 id="group_permissions">Права</h4>
+                </div>
+            </div>
+            @Html.Partial("_Permissions", Model.Permissions)
+        }
+    </div>
+</div>

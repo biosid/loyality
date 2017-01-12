@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdminMechanicsService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:57451/AdminMechanicsService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/AdminMechanicsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/AdminMechanicsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.OutputResults" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/AdminMechanicsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/AdminMechanicsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/AdminMechanicsService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://rphqbuild1:57451/AdminMechanicsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities.History" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAdminMechanicsService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetMetadataByDomainId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMetadataByDomainId" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetMetadataByDomainId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMetadataByDomainIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_SaveRuleDomain_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRuleDomain" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_SaveRuleDomain_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRuleDomainResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetRuleDomain_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRuleDomain" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetRuleDomain_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRuleDomainResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetAllRuleDomains_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRuleDomains" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetAllRuleDomains_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRuleDomainsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_DeleteRuleDomainById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRuleDomainById" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_DeleteRuleDomainById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRuleDomainByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_CreateRule_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRule" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_CreateRule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRuleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_UpdateRule_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRule" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_UpdateRule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRuleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetRule_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRule" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetRule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRuleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetRules_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRules" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetRules_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRulesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetPromoActions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromoActions" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetPromoActions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromoActionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_DeleteRuleById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRuleById" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_DeleteRuleById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRuleByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_DeactivateRule_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateRule" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_DeactivateRule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateRuleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_DeactivateRules_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateRules" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_DeactivateRules_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateRulesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetRuleHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRuleHistory" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_GetRuleHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRuleHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_SetRuleApproved_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetRuleApproved" />
+  </wsdl:message>
+  <wsdl:message name="IAdminMechanicsService_SetRuleApproved_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetRuleApprovedResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAdminMechanicsService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:IAdminMechanicsService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:IAdminMechanicsService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMetadataByDomainId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetMetadataByDomainId" message="tns:IAdminMechanicsService_GetMetadataByDomainId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetMetadataByDomainIdResponse" message="tns:IAdminMechanicsService_GetMetadataByDomainId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRuleDomain">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/SaveRuleDomain" message="tns:IAdminMechanicsService_SaveRuleDomain_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/SaveRuleDomainResponse" message="tns:IAdminMechanicsService_SaveRuleDomain_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRuleDomain">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetRuleDomain" message="tns:IAdminMechanicsService_GetRuleDomain_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetRuleDomainResponse" message="tns:IAdminMechanicsService_GetRuleDomain_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRuleDomains">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetAllRuleDomains" message="tns:IAdminMechanicsService_GetAllRuleDomains_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetAllRuleDomainsResponse" message="tns:IAdminMechanicsService_GetAllRuleDomains_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRuleDomainById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/DeleteRuleDomainById" message="tns:IAdminMechanicsService_DeleteRuleDomainById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/DeleteRuleDomainByIdResponse" message="tns:IAdminMechanicsService_DeleteRuleDomainById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRule">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/CreateRule" message="tns:IAdminMechanicsService_CreateRule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/CreateRuleResponse" message="tns:IAdminMechanicsService_CreateRule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRule">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/UpdateRule" message="tns:IAdminMechanicsService_UpdateRule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/UpdateRuleResponse" message="tns:IAdminMechanicsService_UpdateRule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRule">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetRule" message="tns:IAdminMechanicsService_GetRule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetRuleResponse" message="tns:IAdminMechanicsService_GetRule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRules">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetRules" message="tns:IAdminMechanicsService_GetRules_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetRulesResponse" message="tns:IAdminMechanicsService_GetRules_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPromoActions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetPromoActions" message="tns:IAdminMechanicsService_GetPromoActions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetPromoActionsResponse" message="tns:IAdminMechanicsService_GetPromoActions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRuleById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/DeleteRuleById" message="tns:IAdminMechanicsService_DeleteRuleById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/DeleteRuleByIdResponse" message="tns:IAdminMechanicsService_DeleteRuleById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateRule">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/DeactivateRule" message="tns:IAdminMechanicsService_DeactivateRule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/DeactivateRuleResponse" message="tns:IAdminMechanicsService_DeactivateRule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateRules">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/DeactivateRules" message="tns:IAdminMechanicsService_DeactivateRules_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/DeactivateRulesResponse" message="tns:IAdminMechanicsService_DeactivateRules_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRuleHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetRuleHistory" message="tns:IAdminMechanicsService_GetRuleHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/GetRuleHistoryResponse" message="tns:IAdminMechanicsService_GetRuleHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRuleApproved">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminMechanicsService/SetRuleApproved" message="tns:IAdminMechanicsService_SetRuleApproved_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminMechanicsService/SetRuleApprovedResponse" message="tns:IAdminMechanicsService_SetRuleApproved_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAdminMechanicsService" type="tns:IAdminMechanicsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISupportService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMetadataByDomainId">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/GetMetadataByDomainId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRuleDomain">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/SaveRuleDomain" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRuleDomain">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/GetRuleDomain" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRuleDomains">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/GetAllRuleDomains" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRuleDomainById">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/DeleteRuleDomainById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRule">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/CreateRule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRule">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/UpdateRule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRule">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/GetRule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRules">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/GetRules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPromoActions">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/GetPromoActions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRuleById">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/DeleteRuleById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateRule">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/DeactivateRule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateRules">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/DeactivateRules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRuleHistory">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/GetRuleHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRuleApproved">
+      <soap:operation soapAction="http://tempuri.org/IAdminMechanicsService/SetRuleApproved" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminMechanicsService">
+    <wsdl:port name="BasicHttpBinding_IAdminMechanicsService" binding="tns:BasicHttpBinding_IAdminMechanicsService">
+      <soap:address location="http://rphqbuild1:57451/AdminMechanicsService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

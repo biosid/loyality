@@ -1,0 +1,9 @@
+﻿@model Rapidsoft.VTB24.Reports.Etl.EtlReports.Models.Report
+@{
+    Layout = "~/Views/Shared/_LayoutPrint.cshtml";
+    ViewBag.Title = Html.DescriptionFor(Model.Request.Type);
+}
+@Html.Partial("_HeaderPrint", Model)
+<h4>
+    Взаимодействий за данный период не производилось.
+</h4>

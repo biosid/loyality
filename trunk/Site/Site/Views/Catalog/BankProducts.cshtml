@@ -1,0 +1,53 @@
+﻿@model Vtb24.Site.Models.Catalog.BankProductsModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Продукты банка";
+    ViewBag.MainMenu = "Catalog";
+    ViewBag.EnableHeaderDropdown = false;
+}
+
+@section secondary
+{
+    @Html.Partial("_CatalogSections", Model.CatalogSections)
+}
+
+@if (Model.BreadCrumbs != null)
+{
+    @Html.Partial("_BreadCrumbs", Model.BreadCrumbs)
+}
+
+<div class="mnl16">
+    <div class="middle-line bgr">
+        <div class="ml-text"><span class="size28">Продукты банка</span></div>
+    </div>
+    <div class="shared__well-yellow">
+        <span class="shared__well-yellow-icon"></span>
+        @if (!Model.IsUserActivated)
+        {
+            <span class="shared__well-yellow-title" style="margin-bottom: 0;">
+                Для оплаты вознаграждений, пожалуйста, активируйте свое участие в Программе «Коллекция» через <a target="_blank" href="https://www.telebank.ru">Телебанк</a> или <a target="_blank" href="http://www.vtb24.ru/pages/atmsearch.aspx">банкоматы ВТБ24</a>. Спасибо.
+            </span>
+        }
+        else
+        {
+            <span class="shared__well-yellow-title">
+                Вы можете вернуть сумму ранее оплаченной комиссии по предложенным продуктам Банка, использовав бонусы Программы «Коллекция».
+            </span>
+            <span class="shared__well-yellow-title" style="margin-bottom: 0;">
+                В случае успешного проведения операции, рублевый эквивалент комиссии будет переведен на счет Вашей карты.
+            </span>
+        }
+    </div>
+</div>
+
+<ul class="catalog clearfix">
+    @foreach (var product in Model.Products)
+    {
+        @Html.Partial("_ListBankProduct", product)
+    }
+</ul>
+
+@if (Model.TotalPages > 1)
+{
+    @Html.Pager(Model.TotalPages, Model.Page)
+}

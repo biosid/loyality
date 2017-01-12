@@ -1,0 +1,79 @@
+﻿<h4>Посчитайте, как быстро вы сможете накопить бонусы на интересующие вас подарки!</h4>
+
+<fieldset>
+    <div class="layout__form-w540">
+        <label for="bonus-calc__target" class="layout__col1" style="vertical-align: top;">
+            Пожалуйста, укажите, какое количество бонусов Вы хотите накопить
+        </label>
+        <div class="layout__col2">
+            <input maxlength="11" type="text" class="full" id="bonus-calc__target" data-numeric='{"allow":"0123456789 "}'/>
+        </div>
+    </div>
+    <div class="layout__form-w540">
+        <label for="bonus-calc__card" class="layout__col1">
+            Я владелец карты
+        </label>
+        <div class="layout__col2">
+            <select id="bonus-calc__card" class="html-select full">
+                <option selected="selected" value="">Выберите...</option>
+                <option data-rate="50" value="classic">Классика</option>
+                <option data-rate="30" value="gold">Золото</option>
+                <option data-rate="25" value="privilege">Привилегия</option>
+                <option data-rate="20" value="prime">Прайм</option>
+                <option data-rate="50" value="online">Всё онлайн</option>
+            </select>
+        </div>
+    </div>
+</fieldset>
+                
+<hr class="shared__hr" />
+                
+<h4>Оцените, как скоро Вы достигните цели:</h4>
+
+<fieldset>
+    <div class="layout__form-w540">
+        <label for="bonus-calc__purchases" class="layout__col1">
+            Ваши покупки в месяц по карте
+        </label>
+        <div class="layout__col2">
+            <input class="layout__shortinput" value="5 000" id="bonus-calc__purchases" type="text" data-numeric='{"allow":"0123456789 "}' />
+            <span>рублей</span>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <div class="layout__form-w540">
+        <label for="bonus-calc__estimate" class="layout__col1">
+            Расчетное время накопления
+        </label>
+        <div class="layout__col2">
+            <input class="layout__shortinput bonus-calc__dependent" value="5" id="bonus-calc__estimate" type="text" data-numeric='{"allow":"0123456789 "}' />
+            <span>месяцев</span>
+        </div>
+    </div>
+</fieldset>
+                
+<div class="button-wrap" style="margin: 50px 0 30px 0;">
+    <button type="submit" class="btn-blue large" disabled><span>Пересчитать</span></button>
+</div>
+
+<fieldset>
+    <div class="layout__form-w540">
+        <div class="layout__col1">
+            Вам необходимо совершить покупок по карте на сумму:
+        </div>
+        <div class="layout__col2 bonus-calc__points">
+        </div>
+    </div>
+</fieldset>
+
+@Html.AddScriptBlock(
+    @<script>
+        require(['Calculator/bonus_calc'], function (calc) {
+             var $el = $('.bonus-calc'),
+                 $showBtn = $('.bonus-calc__button');
+             calc({el: $el, showBtn: $showBtn});
+         });
+     </script>
+)

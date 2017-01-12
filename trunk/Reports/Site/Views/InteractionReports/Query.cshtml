@@ -1,0 +1,70 @@
+﻿@model Rapidsoft.VTB24.Reports.Site.Models.InteractionReports.ReportQueryModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Генератор отчетов по взаимодействиям с банком";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-9">
+        @using (Html.BeginForm("Report", "InteractionReports", FormMethod.Get, new { @class = "form-horizontal" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Type, new { @class = "col-md-3 control-label" })
+                <div class="col-md-6">
+                    @Html.EnumDropDownListFor(m => m.Type, new { @class = "form-control" })
+                </div>
+                <div class="col-md-3">
+                    @Html.ValidationMessageFor(m => m.Type, string.Empty, new { @class = "help-block" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FromDate, new { @class = "col-md-3 control-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.FromDate, new
+                    {
+                        @class = "form-control",
+                        data_provide = "datepicker",
+                        data_date_format = "dd.mm.yyyy",
+                        data_date_autoclose = "true",
+                        data_date_today_btn = "true",
+                        data_date_today_highlight = "true",
+                        data_date_force_parse = "false",
+                        data_date_language = "ru"
+                    })
+                </div>
+                <div class="col-md-3">
+                    @Html.ValidationMessageFor(m => m.FromDate, string.Empty, new { @class = "help-block" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ToDate, new { @class = "col-md-3 control-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.ToDate, new
+                    {
+                        @class = "form-control",
+                        data_provide = "datepicker",
+                        data_date_format = "dd.mm.yyyy",
+                        data_date_autoclose = "true",
+                        data_date_today_btn = "true",
+                        data_date_today_highlight = "true",
+                        data_date_force_parse = "false",
+                        data_date_language = "ru"
+                    })
+                </div>
+                <div class="col-md-3">
+                    @Html.ValidationMessageFor(m => m.ToDate, string.Empty, new { @class = "help-block" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-3">
+                    <button type="submit" class="btn btn-default">Получить отчет</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

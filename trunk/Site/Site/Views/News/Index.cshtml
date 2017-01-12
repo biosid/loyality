@@ -1,0 +1,21 @@
+﻿@model Vtb24.Site.Models.News.NewsModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Новости";
+}
+
+<div class="full-content shdw">
+    <div class="fc-padding">
+
+        <div class="middle-line white">
+            <div class="ml-text">
+                <span class="size28">@Model.Title</span>
+            </div>
+        </div>
+        
+        @Html.Raw(HttpUtility.HtmlDecode(Model.Text))
+
+        <div class="space280"></div>
+    </div>
+</div>

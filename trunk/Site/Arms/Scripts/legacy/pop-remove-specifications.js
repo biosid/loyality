@@ -1,0 +1,1 @@
+popover({selector:'.object-specifications-table .remove', placement:'left', title:'Удалить характеристику ?'});

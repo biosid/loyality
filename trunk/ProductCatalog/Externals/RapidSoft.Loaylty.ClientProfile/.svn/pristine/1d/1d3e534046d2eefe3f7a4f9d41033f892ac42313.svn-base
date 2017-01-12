@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://rapidsoft.ru/clientprofile/" elementFormDefault="qualified" targetNamespace="http://rapidsoft.ru/clientprofile/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AddClientDeliveryAddressRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:AddClientDeliveryAddressRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddClientDeliveryAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:AddClientDeliveryAddressResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchActivateClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchActivateClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchActivateClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchActivateClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchCreateClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchCreateClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchCreateClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchCreateClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDeactivateClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchDeactivateClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDeactivateClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchDeactivateClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDeleteClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchDeleteClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchDeleteClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchDeleteClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchGetClientsByExternalIdRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchGetClientsByExternalIdRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchGetClientsByExternalIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchGetClientsByExternalIdResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchLockClientsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:BatchLockClientsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchLockClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:BatchLockClientsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientDeliveryAddressesRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:GetClientDeliveryAddressesRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientDeliveryAddressesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:GetClientDeliveryAddressesResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientProfileFullRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:GetClientProfileFullRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientProfileFullResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:GetClientProfileFullResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetClientLocationRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:SetClientLocationRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetClientLocationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:SetClientLocationResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientProfileRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request" type="tns:UpdateClientProfileRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" type="tns:UpdateClientProfileResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BatchCreateClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientRegistrationResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientRegistrationResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientId" type="xs:string" />
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchLockClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="LockFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="LockFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchCreateClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="ClientRegistrationFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientRegistrationFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientId" type="xs:string" />
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="LastName" type="xs:string" />
+                  <xs:element name="FirstName" type="xs:string" />
+                  <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+                  <xs:element name="Gender" type="xs:int" />
+                  <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime" />
+                  <xs:element name="MobilePhone" type="xs:string" />
+                  <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchActivateClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientActivationResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientActivationResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDeactivateClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientDeactivationResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientDeactivationResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDeleteClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="DeletionFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DeletionFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDeleteClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientDeletionResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientDeletionResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchActivateClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="ClientActivationFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientActivationFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchLockClientsResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ClientLockResults" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientLockResult">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchDeactivateClientsRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element minOccurs="0" name="EtlSessionId" nillable="true" type="xs:string" />
+      <xs:element name="DeactivationFacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DeactivationFact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SetClientLocationRequestType">
+    <xs:sequence>
+      <xs:element name="ClientId" type="xs:string" />
+      <xs:element name="ClientLocationKladr" type="xs:string" />
+      <xs:element name="ClientLocationName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SetClientLocationResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetClientProfileFullRequestType">
+    <xs:sequence>
+      <xs:element name="ClientId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UpdatingPhone">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PhoneId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPrimary" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BatchGetClientsByExternalIdResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="ResClientsIdentifiers" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ResClientIdentifier">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                  <xs:element name="ClientId" nillable="true" type="xs:string" />
+                  <xs:element name="StatusCode" type="xs:int" />
+                  <xs:element name="Error" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetClientDeliveryAddressesRequestType">
+    <xs:sequence>
+      <xs:element name="ClientId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddClientDeliveryAddressResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="AddressId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddClientDeliveryAddressRequestType">
+    <xs:sequence>
+      <xs:element name="ClientId" type="xs:int" />
+      <xs:element name="ClientDeliveryAddress">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CountryCode" type="xs:string" />
+            <xs:element name="CountryName" type="xs:string" />
+            <xs:element name="PostalCode" nillable="true" type="xs:string" />
+            <xs:element name="KladrCode" nillable="true" type="xs:string" />
+            <xs:element name="CityName" nillable="true" type="xs:string" />
+            <xs:element name="TownName" nillable="true" type="xs:string" />
+            <xs:element name="Street" nillable="true" type="xs:string" />
+            <xs:element name="House" nillable="true" type="xs:string" />
+            <xs:element name="Apartment" nillable="true" type="xs:string" />
+            <xs:element name="Address" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetClientDeliveryAddressesResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="ClientDeliveryAddresses" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientDeliveryAddress" nillable="true">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="AddressId" type="xs:int" />
+                  <xs:element name="CountryCode" type="xs:string" />
+                  <xs:element name="CountryName" type="xs:string" />
+                  <xs:element name="PostalCode" nillable="true" type="xs:string" />
+                  <xs:element name="KladrCode" nillable="true" type="xs:string" />
+                  <xs:element name="CityName" nillable="true" type="xs:string" />
+                  <xs:element name="TownName" nillable="true" type="xs:string" />
+                  <xs:element name="Street" nillable="true" type="xs:string" />
+                  <xs:element name="House" nillable="true" type="xs:string" />
+                  <xs:element name="Apartment" nillable="true" type="xs:string" />
+                  <xs:element name="Address" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetClientProfileFullResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="ClientProfile" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ClientId" nillable="true" type="xs:string" />
+            <xs:element name="FirstName" nillable="true" type="xs:string" />
+            <xs:element name="MiddleName" nillable="true" type="xs:string" />
+            <xs:element name="LastName" nillable="true" type="xs:string" />
+            <xs:element name="BirthDate" nillable="true" type="xs:dateTime" />
+            <xs:element name="Gender" nillable="true" type="xs:string" />
+            <xs:element name="Email" nillable="true" type="xs:string" />
+            <xs:element name="Phones" nillable="true">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="Phone">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="PhoneId" type="xs:int" />
+                        <xs:element name="PhoneNumber" type="xs:string" />
+                        <xs:element name="PhoneType" type="xs:string" />
+                        <xs:element name="IsPrimary" type="xs:boolean" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Documents" nillable="true">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="Document">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="DocumentId" type="xs:int" />
+                        <xs:element name="DocumentTypeCode" type="xs:string" />
+                        <xs:element name="DocumentSeries" nillable="true" type="xs:string" />
+                        <xs:element name="DocumentNumber" type="xs:string" />
+                        <xs:element name="IssuerName" nillable="true" type="xs:string" />
+                        <xs:element name="IssuerCode" nillable="true" type="xs:string" />
+                        <xs:element name="IssueDate" nillable="true" type="xs:dateTime" />
+                        <xs:element name="IsPrimary" type="xs:boolean" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Addresses" nillable="true">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="Address">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AddressId" type="xs:int" />
+                        <xs:element name="SubjectRF" nillable="true" type="xs:string" />
+                        <xs:element name="RegionType" nillable="true" type="xs:string" />
+                        <xs:element name="Region" nillable="true" type="xs:string" />
+                        <xs:element name="CityType" nillable="true" type="xs:string" />
+                        <xs:element name="City" nillable="true" type="xs:string" />
+                        <xs:element name="PlaceType" nillable="true" type="xs:string" />
+                        <xs:element name="Place" nillable="true" type="xs:string" />
+                        <xs:element name="StreetType" nillable="true" type="xs:string" />
+                        <xs:element name="Street" nillable="true" type="xs:string" />
+                        <xs:element name="House" nillable="true" type="xs:string" />
+                        <xs:element name="Building" nillable="true" type="xs:string" />
+                        <xs:element name="Flat" nillable="true" type="xs:string" />
+                        <xs:element name="Station" nillable="true" type="xs:string" />
+                        <xs:element name="PostalCode" nillable="true" type="xs:string" />
+                        <xs:element name="Kladr" nillable="true" type="xs:string" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ClientLocationKladr" nillable="true" type="xs:string" />
+            <xs:element name="ClientLocationName" nillable="true" type="xs:string" />
+            <xs:element name="ClientStatus" nillable="true" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ElementIntWithAttribute">
+    <xs:simpleContent>
+      <xs:extension base="xs:int">
+        <xs:attribute name="action" type="tns:Action" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BatchGetClientsByExternalIdRequestType">
+    <xs:sequence>
+      <xs:element name="LoyaltyProgramId" type="xs:int" />
+      <xs:element name="ReqClientsIdentifiers" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ReqClientIdentifier">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ClientExternalId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ElementDateTimeWithAttribute">
+    <xs:simpleContent>
+      <xs:extension base="xs:anySimpleType">
+        <xs:attribute name="action" type="tns:Action" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="UpdateClientProfileResponseType">
+    <xs:sequence>
+      <xs:element name="StatusCode" type="xs:int" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ElementStringWithAttribute">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="action" type="tns:Action" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="UpdateClientProfileRequestType">
+    <xs:sequence>
+      <xs:element name="ClientProfile" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ClientId" type="xs:string" />
+            <xs:element minOccurs="0" name="FirstName" type="tns:ElementStringWithAttribute" />
+            <xs:element minOccurs="0" name="MiddleName" nillable="true" type="tns:ElementStringWithAttribute" />
+            <xs:element minOccurs="0" name="LastName" type="tns:ElementStringWithAttribute" />
+            <xs:element minOccurs="0" name="BirthDate" nillable="true" type="tns:ElementDateTimeWithAttribute" />
+            <xs:element minOccurs="0" name="Gender" type="tns:ElementStringWithAttribute" />
+            <xs:element minOccurs="0" name="Email" nillable="true" type="tns:ElementStringWithAttribute" />
+            <xs:element minOccurs="0" name="Phones">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="Phone">
+                    <xs:complexType>
+                      <xs:complexContent mixed="false">
+                        <xs:extension base="tns:UpdatingPhone">
+                          <xs:sequence />
+                          <xs:attribute name="action" type="tns:Action" />
+                        </xs:extension>
+                      </xs:complexContent>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="ClientLocationKladr" nillable="true" type="tns:ElementStringWithAttribute" />
+            <xs:element minOccurs="0" name="ClientLocationName" nillable="true" type="tns:ElementStringWithAttribute" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UpdatingDocument">
+    <xs:sequence>
+      <xs:element name="DocumentId" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentTypeCode" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="DocumentSeries" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="DocumentNumber" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="IssuerName" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="IssuerCode" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="IssueDate" nillable="true" type="tns:ElementDateTimeWithAttribute" />
+      <xs:element minOccurs="0" name="IsPrimary" nillable="true" type="tns:ElementIntWithAttribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UpdatingAddress">
+    <xs:sequence>
+      <xs:element name="AddressId" type="xs:int" />
+      <xs:element minOccurs="0" name="SubjectRF" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="RegionType" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="CityType" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="PlaceType" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="Place" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="StreetType" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="House" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="Building" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="Flat" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="Station" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="tns:ElementStringWithAttribute" />
+      <xs:element minOccurs="0" name="Kladr" nillable="true" type="tns:ElementStringWithAttribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Action">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="U" />
+      <xs:enumeration value="D" />
+      <xs:enumeration value="I" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Регистрация завершена";
+}
+
+@Html.AddScriptBlock(
+    @<script>
+        require(['Shared/video-button'], function(videoButton) {
+            videoButton({ trigger: '#hiw-video-trigger' });
+        });
+     </script>
+    )
+
+<div class="full-content shdw">
+    <div class="fc-padding">
+
+        <div class="middle-line white">
+            <div class="ml-text"><span class="size28">Спасибо, Ваша заявка на участие в Коллекции принята!</span></div>
+        </div>
+
+        <figure class="hpwrks-registration" style="margin-top: 40px">
+            <ul class="hpwrks-registration__steps _is-sms-only">
+                <li class="hpwrks-registration__sms-step">
+                    <ol class="shared__num-list">
+                        <li class="shared__num-list-bullet _is-bold">Банк проверит Ваши данные</li>
+                        <li class="shared__num-list-bullet _is-bold">В течение 24 часов<br/> Вы получите подтверждающее SMS с данными для входа<br/> на сайт</li>
+                        <li class="shared__num-list-bullet _is-bold">Все Ваши карты,<br/> участвующие в программе,<br/> будут зарегистрированы<br/> автоматически</li>
+                    </ol>
+                </li>
+            </ul>
+            <ul class="hpwrks-registration__steps2">
+                <li class="hpwrks-registration__pay-step">Оплачивайте картой <br/>ВТБ24 товары и услуги <br/>в любых магазинах</li>
+                <li class="hpwrks-registration__promo-step">Участвуйте <br/>в акциях программы <br/>«Коллекция»</li>
+                <li class="hpwrks-registration__partner-step">Получайте бонусы от <br/>партнёров программы <br/>«Коллекция»</li>
+            </ul>
+            <figcaption><p>Копите бонусы</p></figcaption>
+        </figure>
+    </div>
+</div>

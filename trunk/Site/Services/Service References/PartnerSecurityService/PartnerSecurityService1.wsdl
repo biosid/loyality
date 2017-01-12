@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PartnerSecurityService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:700/PartnerSecurityService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:700/PartnerSecurityService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:700/PartnerSecurityService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PartnersConnector.Interfaces.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPartnerSecurityService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_CreateOnlinePartnerSignature_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOnlinePartnerSignature" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_CreateOnlinePartnerSignature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOnlinePartnerSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_CreateBankSignature_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBankSignature" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_CreateBankSignature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBankSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_VerifyBankSignature_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyBankSignature" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_VerifyBankSignature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyBankSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_VerifyOnlinePartnerSignature_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyOnlinePartnerSignature" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerSecurityService_VerifyOnlinePartnerSignature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyOnlinePartnerSignatureResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPartnerSecurityService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupportService/Echo" message="tns:IPartnerSecurityService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupportService/EchoResponse" message="tns:IPartnerSecurityService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOnlinePartnerSignature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPartnerSecurityService/CreateOnlinePartnerSignature" message="tns:IPartnerSecurityService_CreateOnlinePartnerSignature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPartnerSecurityService/CreateOnlinePartnerSignatureResponse" message="tns:IPartnerSecurityService_CreateOnlinePartnerSignature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBankSignature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPartnerSecurityService/CreateBankSignature" message="tns:IPartnerSecurityService_CreateBankSignature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPartnerSecurityService/CreateBankSignatureResponse" message="tns:IPartnerSecurityService_CreateBankSignature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyBankSignature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPartnerSecurityService/VerifyBankSignature" message="tns:IPartnerSecurityService_VerifyBankSignature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPartnerSecurityService/VerifyBankSignatureResponse" message="tns:IPartnerSecurityService_VerifyBankSignature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOnlinePartnerSignature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPartnerSecurityService/VerifyOnlinePartnerSignature" message="tns:IPartnerSecurityService_VerifyOnlinePartnerSignature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPartnerSecurityService/VerifyOnlinePartnerSignatureResponse" message="tns:IPartnerSecurityService_VerifyOnlinePartnerSignature_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPartnerSecurityService" type="tns:IPartnerSecurityService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISupportService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOnlinePartnerSignature">
+      <soap:operation soapAction="http://tempuri.org/IPartnerSecurityService/CreateOnlinePartnerSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBankSignature">
+      <soap:operation soapAction="http://tempuri.org/IPartnerSecurityService/CreateBankSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyBankSignature">
+      <soap:operation soapAction="http://tempuri.org/IPartnerSecurityService/VerifyBankSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOnlinePartnerSignature">
+      <soap:operation soapAction="http://tempuri.org/IPartnerSecurityService/VerifyOnlinePartnerSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PartnerSecurityService">
+    <wsdl:port name="BasicHttpBinding_IPartnerSecurityService" binding="tns:BasicHttpBinding_IPartnerSecurityService">
+      <soap:address location="http://rphqbuild1:700/PartnerSecurityService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

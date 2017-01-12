@@ -1,0 +1,4 @@
+ALTER TABLE mess.Threads ADD
+	MetaData NVARCHAR(1000) NULL
+GO
+

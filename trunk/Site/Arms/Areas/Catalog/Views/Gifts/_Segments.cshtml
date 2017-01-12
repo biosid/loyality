@@ -1,0 +1,21 @@
+﻿@model Vtb24.Arms.Catalog.Models.Gifts.SegmentModel[]
+@using (Html.BeginForm("SetSegments", "Gifts", FormMethod.Post, new { data_x = "gifts/modal_segments", @class = "modal hide" }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" tabindex="6">×</button>
+        <h4>Привязать выбранные вознаграждения к сегментам</h4>
+    </div>
+    <div class="modal-body">
+        @foreach (var segment in Model)
+        {
+            <label class="checkbox">
+                <input type="checkbox" data-segment-id="@segment.Id"/>
+                @segment.Id
+            </label>
+        }
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary pull-left" type="submit" tabindex="4">Привязать</button>
+        <button class="btn" tabindex="5" data-dismiss="modal">Отменить</button>
+    </div>
+}

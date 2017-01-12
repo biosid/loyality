@@ -1,0 +1,50 @@
+﻿@model Vtb24.Arms.Security.Models.Feedback.FeedbackIndexFiltersModel
+
+@using (Html.BeginForm("Index", "Feedback", FormMethod.Get))
+{
+    <input type="hidden" name="page" value="1" />
+
+    <div class="sticky-save">
+        <div class="navbar">
+            <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                <div class="row" style="width: 940px; margin-left: 0;">
+
+                    <div class="row mar-left-20">
+                        <div class="span3 mar-left-0">
+                            @Html.EnumDropDownListFor(m => m.type)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="well">
+        <div class="row">
+            <div class="span3">
+                @Html.LabelFor(m => m.keywords, "Ключевые слова:")
+                @Html.TextBoxFor(m => m.keywords, new { maxlength = 150 })
+
+                @Html.LabelFor(m => m.phone, "Номер телефона:")
+                @Html.TextBoxFor(m => m.phone, new { maxlength = 150 })
+            </div>
+            <div class="span3">
+                @Html.LabelFor(m => m.email, "Email:")
+                @Html.TextBoxFor(m => m.email, new { maxlength = 150 })
+
+                @Html.LabelFor(m => m.oplogin, "Логин оператора:")
+                @Html.TextBoxFor(m => m.oplogin, new { maxlength = 150 })
+            </div>
+            <div class="span4 offset1">
+                <label for="@Html.IdFor(m => m.from)">Период</label>
+                <div class="controls-row">
+                    <input type="text" name="@Html.NameFor(m=>m.from)" class="span2" placeholder="дата с" value="@(Model.from.HasValue ? Model.from.Value.ToShortDateString() : null)" />
+                    <input type="text" name="@Html.NameFor(m=>m.to)" class="span2" placeholder="по" value="@(Model.to.HasValue ? Model.to.Value.ToShortDateString() : null)" />
+                </div>
+                <br />
+                <button type="submit" class="btn pull-right"><i class="icon-search"></i> Найти</button>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,4 @@
+sqlcmd.exe -S @DBHOST@ -i Scripts\!DBCreate.sql
+AutoPatch\AutoPatch.exe /patchtolatest
+pause
+exit %ERRORLEVEL%

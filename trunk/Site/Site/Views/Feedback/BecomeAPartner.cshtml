@@ -1,0 +1,164 @@
+﻿@model Vtb24.Site.Models.Feedback.BecomeAPartnerModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Стать партнером программы";
+}
+
+<div class="full-content shdw">
+    <div class="fc-padding">
+        @using (Html.BeginForm("BecomeAPartner", "Feedback", FormMethod.Post, new { autocomplete = "off" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="middle-line white">
+                <div class="ml-text"><span class="size28">Стать партнером программы</span></div>
+            </div>
+            
+            <p class="italic">Если у Вас есть желание увеличить продажи Вашей компании и стать партнером программы лояльности от ВТБ24, пожалуйста, заполните эту форму.</p>
+            <p class="italic">Просим обратить внимание на минимально необходимые критерии для рассмотрения вопроса о партнерстве в Программе «Коллекция»:</p>
+            <ul class="shared__bullet-list" style="margin-bottom:20px">
+                <li class="shared__bullet-list-item">Наличие действующего интернет магазина, опыта продаж и обслуживания интернет заказов.</li>
+                <li class="shared__bullet-list-item">Территория доставки товара должна включать в себя более трех федеральных округов Российской Федерации.
+                <li class="shared__bullet-list-item">Товарный ассортимент должен включать в себя товары массового потребления и дополнять ассортимент, уже представленный в каталоге программы.</li>
+            </ul>
+            <p class="italic" style="margin-bottom:40px">В случае заинтересованности, наш сотрудник свяжется для проведения дальнейших переговоров о возможном сотрудничестве.</p>
+
+            @Html.ValidationSummary()
+            
+            <div class="table form-order">
+                <ul class="reset row">
+                    <li class="cell">
+                        Город
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.Location, new {maxlength=3000})
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Наименование юридического лица
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.LegalEntity, new { maxlength = 3000 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Контактное лицо
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.Contact, new { maxlength = 3000 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Телефон
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { maxlength = 3000 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        E-mail
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.Email, new { maxlength = 3000 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Отрасль компании
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.Branch, new { maxlength = 3000 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Группа товара
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.GroupOfGoods, new { maxlength = 3000 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Адрес сайта
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.Site, new { maxlength = 1000 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Количество торговых точек
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="cell">
+                                @Html.TextBoxFor(m => m.PosCount, new { maxlength = 3000 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Комментарии
+                    </li>
+                    <li class="cell">
+                        <ul class="reset table">
+                            <li class="textarea-wrapper">
+                                @Html.TextAreaFor(m => m.Comment, new { rows=2, cols=10 })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">
+                        Введите код с картинки
+                    </li>
+                    <li class="cell">
+                        <img src="@Url.CaptchaUrl(width: 72, height: 24)" width="72" height="24" id="captchaImage" />
+                        <input type="button" class="btn-capcha">
+                        @Html.TextBoxFor(x => x.Captcha, new { @class = "capcha", maxlength = "8" })
+                    </li>
+                </ul>
+            </div>
+            <div class="button-wrap mnt40">
+                <button class="btn-blue large" type="submit" id="submit-button"><span>Отправить</span></button>
+            </div>
+        }
+    </div>
+</div>

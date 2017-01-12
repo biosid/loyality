@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<appSettings>
+	<add key="UnitellerUrl" value="https://wpay.uniteller.ru/pay"/>
+	<add key="UnitellerUrlConfirm" value="https://wpay.uniteller.ru/pay/do/"/>
+	<add key="UnitellerUrlCheque" value="https://wpay.uniteller.ru/pay/check/"/>
+	<add key="UnitellerUrlResult" value="https://wpay.uniteller.ru/results/"/>
+	<add key="UnitellerResultFormat" value="1"/>
+	<add key="UnitellerResultFields" value="Response_Code;Status"/>
+	<add key="LoyaltyPosId" value="@LoyaltyPOSId@"/>
+  <add key="LoyaltyTerminalId" value="@LoyaltyTerminalId@"/>
+  <add key="LoyaltyPartnerId" value="@LoyaltyPartnerId@"/>
+	<add key="CardReaderId" value="@CARDREADERID@"/>
+	<add key="ChannelId" value="@CHANNELID@"/>
+	<add key="LoyaltyProgramId" value="@LOYALTYPROGRAMID@"/>
+  <add key="UnitellerPaymentLogin" value="739" />
+  <add key="UnitellerPassword" value="ENqN3zEtRz0NvnLwmYnOQFvORH1NjuO4l4lb0jWTdoHlu2W5T3tyqxBcxlKB0BU1kOoGqgOVfqk035bi" />
+  <add key="BatchSize" value="50"/>
+  <add key="UnitellerReturnUrl" value="http://not.specified" />
+  <add key="CV2" value="123" />
+  <add key="UnitellerRegisterShopId" value="00001436"/>
+  <add key="UnitellerRegisterLogin" value="739" />
+  <add key="UnitellerRegisterPassword" value="ENqN3zEtRz0NvnLwmYnOQFvORH1NjuO4l4lb0jWTdoHlu2W5T3tyqxBcxlKB0BU1kOoGqgOVfqk035bi" />
+  <add key="VtbSystemUser" value="@VTBSYSTEMUSER@"/>
+  <add key="DefaultCountryCode" value="7"/>
+	<add key="VtbEncryption" value="@VtbEncryption@"/>
+  <add key="ValidPhoneRegExp" value="^7[34589]\d{9}$(?&lt;!((7940\d{7}))|(79298((0[3-9]{1})|1[01])[0-9]{4}))" />
+  <add key="BankProductsPartnerId" value="@BankProductsPartnerId@" />
+  <!-- Настройки логирования -->
+  <add key="UseSerilog" value="1" />
+  <add key="LogFilesRoot" value="@loyaltyLogs@" />
+  <add key="LogAppName" value="BankConnector" />
+  <add key="LogSubsystemName" value="Tests" />
+</appSettings>

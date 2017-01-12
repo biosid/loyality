@@ -1,0 +1,61 @@
+﻿@model Vtb24.Arms.Actions.Models.ActionHistoryModel
+@{
+    ViewBag.Title = "История изменений механики";
+    Layout = "~/Areas/Actions/Views/Shared/_Layout.cshtml";
+}
+<div class="tab-pane active">
+    <div class="container">
+        <div class="sticky-save">
+            <div class="navbar mar-bottom-5">
+                <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                    <div class="row">
+                        <div class="span12">
+                            <div class="pull-right mar-right-20">
+                                <a href="@Url.Action("Edit", "Actions", new { id = Model.Id, Model.query })" class="btn">Назад</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <div class="mar-top-5 mar-bottom-20">
+                    <h4 class="font-normal">
+                        История изменений механики &laquo;@Model.Name&raquo;
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <table class="table table-bordered autocols font-size-13">
+                    <thead>
+                        <tr class="thleft">
+                            <th>Дата&nbsp;и&nbsp;время</th>
+                            <th>Что&nbsp;изменилось</th>
+                            <th>Автор&nbsp;изменения</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var historyRecord in Model.HistoryRecords)
+                        {
+                            <tr>
+                                <td><span class="nowrap">@historyRecord.When.ToString("dd.MM.yyyy HH:mm:ss")</span></td>
+                                <td>@historyRecord.What</td>
+                                <td>@historyRecord.Who</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+@*
+--------------------- Пейджинг
+*@
+        @if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.page ?? 1)
+        }
+    </div>
+</div>

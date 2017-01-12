@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2012-11-01 01:52">
+  <shop>
+    <name>OZON.ru</name>
+    <company>?????? "???????????????? ??????????????"</company>
+    <url>http://www.ozon.ru/</url>
+    <currencies>
+      <currency id="RUR" rate="1" />
+    </currencies>
+    <categories>
+      <category id="1135276">Обучающие программы</category>
+      <category id="1135285" parentId="1135276">ЕГЭ. Экзамены</category>
+      <category id="1135286" parentId="1135285">ЕГЭ (Единый Государственный Экзамен)</category>
+      <category id="1135287" parentId="1135285">Экзамены (Школа. Институт)</category>
+    </categories>
+    <offers>
+       <offer id="fullOkOffer" available="true" bid="23" cbid="43" type="vendor.model">
+				<categoryId>1135287</categoryId>
+				<title>Name</title>
+				<delivery>true</delivery>
+				<url>http://www.ozon.ru/context/detail/id/3421011/?from=prt_xml_facet</url>
+				<price>110</price>
+				<currencyId>RUR</currencyId>
+				<picture>http://www.ozon.ru/multimedia/audio_cd_covers/1000570573.jpg</picture>
+        <picture>http://www.ozon.ru/multimedia/audio_cd_covers/1000570573.jpg</picture>
+        <picture>http://www.ozon.ru/multimedia/audio_cd_covers/1000679294.jpg</picture>
+        <picture>http://www.ozon.ru/multimedia/audio_cd_covers/1002729712.jpg</picture>
+        <picture>http://www.ozon.ru/multimedia/audio_cd_covers/1001557623.jpg</picture>
+        <typePrefix> Принтер </typePrefix>
+				<vendor>Новый Диск / IDEX CT</vendor>
+				<model> Deskjet D2663 </model>
+				<name>Создаем уют. Ванная</name>
+				<store>true</store>
+				<pickup>true</pickup>
+				<description>Для многих из нас ванная комната - одно из главных помещений в доме. Стоя под прохладным душем, мы пытаемся взбодриться перед началом нового рабочего дня, а вечером, лежа в теплой воде, в ароматной пене, надеемся расслабиться и, возможно, настроиться на романтический лад. Вам хочется, чтобы эта комната была не только функциональной, но еще и комфортной, стильной и уютной, не так ли? Тогда новое мультимедийное издание "Ванная" создано именно для вас. Если вы задумали сделать ремонт в ванной комнате, а вместе с тем обновить систему водоснабжения, установить вентиляцию, поменять ванну и унитаз - вам поможет раздел "Из теории". Раздел "Вы решились..." подскажет, как быстро и качественно провести сантехнические работы, а также ответит на давно мучавший вас вопрос: можно ли стены ванной комнаты оклеивать обоями. "Обзор рынка" - это галерея фотографий самых лучших ванн и аксессуаров к ним от производителей со всего мира. Ну а раздел "Наслаждение в ванной" говорит сам за себя. ...</description>
+				<vendorCode> A1234567B </vendorCode>
+				<local_delivery_cost>300</local_delivery_cost>
+				<sales_notes> Необходима предоплата.</sales_notes>
+				<manufacturer_warranty>true</manufacturer_warranty>
+				<country_of_origin> Швейцария </country_of_origin>    
+				<downloadable>true</downloadable>    
+				<adult>true</adult>        
+				<barcode>4607149717309</barcode>    
+				<param name="Тип процессора">Atom</param>
+				<param name="Размер оперативной памяти" unit="Мб">2048</param>
+				<param name="Типоразмер корпуса">Micro-Tower</param>
+				<param name="Объём жесткого диска" unit="Гб">500</param>
+				<baseprice>130</baseprice>
+				<author>Александра Маринина</author>
+				<publisher>ЭКСМО — Пресс</publisher>
+				<series>А. Маринина — королева детектива</series>
+				<year>2007</year>
+				<ISBN>978-5-699-23647-3</ISBN>
+				<volume>2</volume>
+				<part>1</part>
+				<language>rus </language>
+				<binding>70x90/32</binding>
+				<page_extent>288</page_extent>
+				<table_of_contents>коммент</table_of_contents>
+				<performed_by> Николай Фоменко </performed_by>
+				<performance_type>начитана </performance_type>
+				<storage>CD </storage>
+				<format>mp3 </format>
+				<recording_length>45m23s</recording_length>    
+				<artist>Pink Floyd</artist>    
+				<media>CD</media>
+				<starring>Тони Колетт (Toni Collette), Рэйчел Грифитс (Rachel Griffiths)</starring>
+				<director>П Дж Хоген</director>
+				<originalName>Muriel's wedding</originalName>
+				<country>Австралия</country>
+				<worldRegion>Африка</worldRegion>
+				<region>Хургада</region>
+				<days>7</days>
+				<dataTour>01/01/03</dataTour>
+				<hotel_stars>5*****</hotel_stars>
+				<room>SNG</room>
+				<meal>ALL</meal>
+				<included>авиаперелет, трансфер, проживание, питание, страховка</included>
+				<transport>Авиа</transport>
+				<place>Московский  международный Дом музыки</place>
+				<hall plan="url плана зала">Большой  зал</hall>
+				<hall_part>Партер р. 1-5</hall_part>
+				<date>2004-12-31T19:00</date>
+				<is_premiere>true</is_premiere>
+				<is_kids>true</is_kids>    
+			</offer>
+			
+      </offers>
+	  </shop>
+</yml_catalog>

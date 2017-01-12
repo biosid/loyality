@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SecurityWebApi" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rphqbuild1:6761/SecurityWebApi.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rphqbuild1:6761/SecurityWebApi.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rphqbuild1:6761/SecurityWebApi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Vtb24.Site.SecurityWebServices.Security.Models.Inputs" />
+      <xsd:import schemaLocation="http://rphqbuild1:6761/SecurityWebApi.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Vtb24.Site.SecurityWebServices.Security.Models" />
+      <xsd:import schemaLocation="http://rphqbuild1:6761/SecurityWebApi.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Vtb24.Site.Security.SecurityService.Models.Inputs" />
+      <xsd:import schemaLocation="http://rphqbuild1:6761/SecurityWebApi.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://rphqbuild1:6761/SecurityWebApi.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Vtb24.Site.Security.SecurityService.Models" />
+      <xsd:import schemaLocation="http://rphqbuild1:6761/SecurityWebApi.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Vtb24.Site.SecurityWebServices.Security.Models.Outputs" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISecurityWebApi_CreateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_CreateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_DenyRegistrationRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DenyRegistrationRequest" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_DenyRegistrationRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DenyRegistrationRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_CreateUserAndPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserAndPassword" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_CreateUserAndPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserAndPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_DisableUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableUser" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_DisableUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_EnableUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableUser" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_EnableUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_BatchResolveUsersByClientId_InputMessage">
+    <wsdl:part name="parameters" element="tns:BatchResolveUsersByClientId" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_BatchResolveUsersByClientId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BatchResolveUsersByClientIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_BatchResolveUsersByPhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:BatchResolveUsersByPhone" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_BatchResolveUsersByPhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BatchResolveUsersByPhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_ChangeUserPhoneNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeUserPhoneNumber" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_ChangeUserPhoneNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeUserPhoneNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_ResetUserPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetUserPassword" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_ResetUserPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetUserPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="ISecurityWebApi_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISecurityWebApi">
+    <wsdl:operation name="CreateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/CreateUser" message="tns:ISecurityWebApi_CreateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/CreateUserResponse" message="tns:ISecurityWebApi_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DenyRegistrationRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/DenyRegistrationRequest" message="tns:ISecurityWebApi_DenyRegistrationRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/DenyRegistrationRequestResponse" message="tns:ISecurityWebApi_DenyRegistrationRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUserAndPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/CreateUserAndPassword" message="tns:ISecurityWebApi_CreateUserAndPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/CreateUserAndPasswordResponse" message="tns:ISecurityWebApi_CreateUserAndPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/DeleteUser" message="tns:ISecurityWebApi_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/DeleteUserResponse" message="tns:ISecurityWebApi_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/DisableUser" message="tns:ISecurityWebApi_DisableUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/DisableUserResponse" message="tns:ISecurityWebApi_DisableUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/EnableUser" message="tns:ISecurityWebApi_EnableUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/EnableUserResponse" message="tns:ISecurityWebApi_EnableUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchResolveUsersByClientId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/BatchResolveUsersByClientId" message="tns:ISecurityWebApi_BatchResolveUsersByClientId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/BatchResolveUsersByClientIdResponse" message="tns:ISecurityWebApi_BatchResolveUsersByClientId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchResolveUsersByPhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/BatchResolveUsersByPhone" message="tns:ISecurityWebApi_BatchResolveUsersByPhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/BatchResolveUsersByPhoneResponse" message="tns:ISecurityWebApi_BatchResolveUsersByPhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUserPhoneNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/ChangeUserPhoneNumber" message="tns:ISecurityWebApi_ChangeUserPhoneNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/ChangeUserPhoneNumberResponse" message="tns:ISecurityWebApi_ChangeUserPhoneNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetUserPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/ResetUserPassword" message="tns:ISecurityWebApi_ResetUserPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/ResetUserPasswordResponse" message="tns:ISecurityWebApi_ResetUserPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISecurityWebApi/Echo" message="tns:ISecurityWebApi_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISecurityWebApi/EchoResponse" message="tns:ISecurityWebApi_Echo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISecurityWebApi" type="tns:ISecurityWebApi">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DenyRegistrationRequest">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/DenyRegistrationRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUserAndPassword">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/CreateUserAndPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableUser">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/DisableUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableUser">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/EnableUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchResolveUsersByClientId">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/BatchResolveUsersByClientId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchResolveUsersByPhone">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/BatchResolveUsersByPhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUserPhoneNumber">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/ChangeUserPhoneNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetUserPassword">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/ResetUserPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/ISecurityWebApi/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SecurityWebApi">
+    <wsdl:port name="BasicHttpBinding_ISecurityWebApi" binding="tns:BasicHttpBinding_ISecurityWebApi">
+      <soap:address location="http://rphqbuild1:6761/SecurityWebApi.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

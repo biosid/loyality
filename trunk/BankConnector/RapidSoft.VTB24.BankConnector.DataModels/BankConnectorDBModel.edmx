@@ -1,0 +1,1605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RapidSoft.VTB24.BankConnectorModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RapidSoftVTB24BankConnectorModelStoreContainer">
+          <EntitySet Name="Accruals" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.Accruals" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BankOffers" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.BankOffers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BankSms" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.BankSms" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientAudienceRelations" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientAudienceRelations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientCardRegStatus" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientCardRegStatus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForActivation" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForActivation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForBankPwdReset" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForBankPwdReset" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForBankPwdResetResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForBankPwdResetResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForBankRegistration" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForBankRegistration" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForBankRegistrationResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForBankRegistrationResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForDeletion" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForDeletion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForDeletionResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForDeletionResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForRegistration" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForRegistration" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientForRegistrationResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientForRegistrationResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientLoginBankUpdates" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientLoginBankUpdates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientLoginBankUpdatesResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientLoginBankUpdatesResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientPersonalMessage" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientPersonalMessage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientPersonalMessageResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientPersonalMessageResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientUpdates" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ClientUpdates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LoyaltyClientUpdates" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.LoyaltyClientUpdates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderAttempts" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.OrderAttempts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderForPayment" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.OrderForPayment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItemsForPayment" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.OrderItemsForPayment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderPaymentResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.OrderPaymentResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderPaymentResponse2" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.OrderPaymentResponse2" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProfileCustomFields" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ProfileCustomFields" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProfileCustomFieldsValues" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.ProfileCustomFieldsValues" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PromoAction" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.PromoAction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PromoActionResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.PromoActionResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RegisterBankOffers" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.RegisterBankOffers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RegisterBankOffersResponse" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.RegisterBankOffersResponse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StepsBuffer" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.StepsBuffer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UnitellerPayments" EntityType="RapidSoft.VTB24.BankConnectorModel.Store.UnitellerPayments" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ProfileCustomFieldsValues_ProfileCustomFields" Association="RapidSoft.VTB24.BankConnectorModel.Store.FK_ProfileCustomFieldsValues_ProfileCustomFields">
+            <End Role="ProfileCustomFields" EntitySet="ProfileCustomFields" />
+            <End Role="ProfileCustomFieldsValues" EntitySet="ProfileCustomFieldsValues" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Accruals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReceiveEtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SendEtlSessionId" Type="uniqueidentifier" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="BonusSum" Type="nvarchar" Nullable="false" MaxLength="18" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Status" Type="int" />
+          <Property Name="BonusOperationDateTime" Type="datetime2" />
+          <Property Name="ExternalId" Type="nvarchar" MaxLength="40" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BankOffers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="BonusCost" Type="money" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="OfferId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExpirationDate" Type="date" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="CardLast4Digits" Type="nvarchar" MaxLength="4" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BankSms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TypeCode" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="11" />
+          <Property Name="DisplayPhone" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="EtlSessionId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="ClientAudienceRelations">
+          <Key>
+            <PropertyRef Name="SessionId" />
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="PromoId" />
+          </Key>
+          <Property Name="SessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="PromoId" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Status" Type="int" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientCardRegStatus">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="IsCardRegistered" Type="bit" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientForActivation">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="128" />
+          <Property Name="Segment" Type="int" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="DeletionEtlSessionId" Type="uniqueidentifier" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ClientForBankPwdReset">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="InsertedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientForBankPwdResetResponse">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ClientForBankRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MobilePhone" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="36" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Segment" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ErrorStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientForBankRegistrationResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="36" />
+          <Property Name="SessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientForDeletion">
+          <Key>
+            <PropertyRef Name="ExternalClientId" />
+          </Key>
+          <Property Name="InsertEtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SendEtlSessionId" Type="uniqueidentifier" />
+          <Property Name="ExternalClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="Status" Type="int" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="MobilePhone" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ClientForDeletionResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="DetachStatus" Type="int" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ClientForRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobilePhone" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="RequestSessionId" Type="uniqueidentifier" />
+          <Property Name="ResponseSessionId" Type="uniqueidentifier" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Segment" Type="int" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ProfileClientId" Type="nvarchar" MaxLength="36" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientForRegistrationResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="SessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Segment" Type="int" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="RegStatus" Type="int" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ClientLoginBankUpdates">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="InsertedDate" Type="datetime" Nullable="false" />
+          <Property Name="MobilePhone" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ClientLoginBankUpdatesResponse">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ClientPersonalMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="36" />
+          <Property Name="SessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="FromDateTime" Type="datetime" />
+          <Property Name="ToDateTime" Type="datetime" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ClientPersonalMessageResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="SessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientUpdates">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="InsertedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Segment" Type="int" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="UpdStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="LoyaltyClientUpdates">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="MobilePhoneId" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+          <Property Name="UpdateStatus" Type="int" />
+          <Property Name="SendEtlSessionId" Type="uniqueidentifier" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OrderAttempts">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderForPayment">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="PartnerOrderNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ArticleId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArticleName" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="OrderBonusCost" Type="money" Nullable="false" />
+          <Property Name="OrderTotalCost" Type="money" Nullable="false" />
+          <Property Name="OrderDateTime" Type="datetime" Nullable="false" />
+          <Property Name="POSId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DeliveryRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="OrderItemsCost" Type="money" Nullable="false" />
+          <Property Name="OrderDeliveryCost" Type="money" Nullable="false" />
+          <Property Name="CurrierId" Type="int" Nullable="false" />
+          <Property Name="UnitellerItemsShopId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UnitellerDeliveryShopId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderItemsForPayment">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="OrderItemId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderItemId" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="PartnerOrderNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ArticleId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArticleName" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="OrderBonusCost" Type="money" Nullable="false" />
+          <Property Name="OrderTotalCost" Type="money" Nullable="false" />
+          <Property Name="OrderDateTime" Type="datetime" Nullable="false" />
+          <Property Name="POSId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DeliveryRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="UnitellerItemsShopId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UnitellerDeliveryShopId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="Advance" Type="money" />
+          <Property Name="AdvancePOSId" Type="nvarchar" MaxLength="64" />
+          <Property Name="AdvanceRRN" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="OrderPaymentResponse">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderPaymentResponse2">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ItemPaymentStatus" Type="int" Nullable="false" />
+          <Property Name="DeliveryPaymentStatus" Type="int" Nullable="false" />
+          <Property Name="BonusGatewayStatus" Type="int" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ProfileCustomFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileCustomFieldsValues">
+          <Key>
+            <PropertyRef Name="FieldId" />
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="FieldId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="Value" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="PromoAction">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="PromoId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="PromoId" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="FromDate" Type="datetime" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="DateSent" Type="date" Nullable="false" />
+          <Property Name="IndexSent" Type="int" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="PromoActionResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EtlSessionId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="PromoId" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisterBankOffers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerOrderNum" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ArticleName" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="OrderBonusCost" Type="money" Nullable="false" />
+          <Property Name="ExpirationDate" Type="date" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="OfferId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="CardLast4Digits" Type="nvarchar" MaxLength="4" />
+          <Property Name="OrderAction" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="EtlSessionId" Type="uniqueidentifier" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisterBankOffersResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerOrderNum" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="OrderActionResult" Type="int" Nullable="false" />
+          <Property Name="EtlSessionId" Type="uniqueidentifier" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StepsBuffer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="nvarchar1_256" Type="nvarchar" MaxLength="256" />
+          <Property Name="nvarchar2_256" Type="nvarchar" MaxLength="256" />
+          <Property Name="tinyint1" Type="tinyint" />
+          <Property Name="bit1" Type="bit" />
+        </EntityType>
+        <EntityType Name="UnitellerPayments">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="BillNumber" Type="nvarchar" MaxLength="12" />
+          <Property Name="InsertedDate" Type="datetime2" Nullable="false" />
+          <Property Name="ShopId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="FormDate" Type="datetime2" />
+          <Property Name="ConfirmDate" Type="datetime2" />
+          <Property Name="CancelDate" Type="datetime2" />
+        </EntityType>
+        <Association Name="FK_ProfileCustomFieldsValues_ProfileCustomFields">
+          <End Role="ProfileCustomFields" Type="RapidSoft.VTB24.BankConnectorModel.Store.ProfileCustomFields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProfileCustomFieldsValues" Type="RapidSoft.VTB24.BankConnectorModel.Store.ProfileCustomFieldsValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileCustomFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProfileCustomFieldsValues">
+              <PropertyRef Name="FieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RapidSoft.VTB24.BankConnectorModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BankConnectorDBContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientCardRegStatuses" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientCardRegStatus" />
+          <EntitySet Name="OrderPaymentResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.OrderPaymentResponse" />
+          <EntitySet Name="PromoActions" EntityType="RapidSoft.VTB24.BankConnectorModel.PromoAction" />
+          <EntitySet Name="PromoActionResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.PromoActionResponse" />
+          <EntitySet Name="StepsBuffers" EntityType="RapidSoft.VTB24.BankConnectorModel.StepsBuffer" />
+          <EntitySet Name="ClientPersonalMessages" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientPersonalMessage" />
+          <EntitySet Name="ClientPersonalMessageResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientPersonalMessageResponse" />
+          <EntitySet Name="Accruals" EntityType="RapidSoft.VTB24.BankConnectorModel.Accrual" />
+          <EntitySet Name="ClientAudienceRelations" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientAudienceRelation" />
+          <EntitySet Name="ClientForBankRegistrations" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForBankRegistration" />
+          <EntitySet Name="ClientForBankRegistrationResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForBankRegistrationResponse" />
+          <EntitySet Name="ClientForRegistrations" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForRegistration" />
+          <EntitySet Name="ClientForDeletions" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForDeletion" />
+          <EntitySet Name="ClientForDeletionResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForDeletionResponse" />
+          <EntitySet Name="ClientForRegistrationResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForRegistrationResponse" />
+          <EntitySet Name="ClientUpdates" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientUpdate" />
+          <EntitySet Name="ClientForActivations" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForActivation" />
+          <EntitySet Name="OrderForPayments" EntityType="RapidSoft.VTB24.BankConnectorModel.OrderForPayment" />
+          <EntitySet Name="OrderPaymentResponse2" EntityType="RapidSoft.VTB24.BankConnectorModel.OrderPaymentResponse2" />
+          <EntitySet Name="ProfileCustomFields" EntityType="RapidSoft.VTB24.BankConnectorModel.ProfileCustomField" />
+          <EntitySet Name="ProfileCustomFieldsValues" EntityType="RapidSoft.VTB24.BankConnectorModel.ProfileCustomFieldsValue" />
+          <AssociationSet Name="FK_ProfileCustomFieldsValues_ProfileCustomFields" Association="RapidSoft.VTB24.BankConnectorModel.FK_ProfileCustomFieldsValues_ProfileCustomFields">
+            <End Role="ProfileCustomField" EntitySet="ProfileCustomFields" />
+            <End Role="ProfileCustomFieldsValue" EntitySet="ProfileCustomFieldsValues" />
+          </AssociationSet>
+          <EntitySet Name="ClientLoginBankUpdates" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientLoginBankUpdate" />
+          <EntitySet Name="ClientLoginBankUpdatesResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientLoginBankUpdatesResponse" />
+          <EntitySet Name="LoyaltyClientUpdates" EntityType="RapidSoft.VTB24.BankConnectorModel.LoyaltyClientUpdate" />
+          <EntitySet Name="ClientForBankPwdResets" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForBankPwdReset" />
+          <EntitySet Name="ClientForBankPwdResetResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.ClientForBankPwdResetResponse" />
+          <EntitySet Name="OrderItemsForPayments" EntityType="RapidSoft.VTB24.BankConnectorModel.OrderItemsForPayment" />
+          <EntitySet Name="UnitellerPayments" EntityType="RapidSoft.VTB24.BankConnectorModel.UnitellerPayment" />
+          <EntitySet Name="OrderAttempts" EntityType="RapidSoft.VTB24.BankConnectorModel.OrderAttempt" />
+          <EntitySet Name="BankOffers" EntityType="RapidSoft.VTB24.BankConnectorModel.BankOffer" />
+          <EntitySet Name="RegisterBankOffers" EntityType="RapidSoft.VTB24.BankConnectorModel.RegisterBankOffer" />
+          <EntitySet Name="RegisterBankOffersResponses" EntityType="RapidSoft.VTB24.BankConnectorModel.RegisterBankOffersResponse" />
+          <EntitySet Name="BankSms" EntityType="RapidSoft.VTB24.BankConnectorModel.BankSms" />
+</EntityContainer>
+        <EntityType Name="ClientCardRegStatus">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsCardRegistered" Nullable="false" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EntityType Name="OrderPaymentResponse">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Type="Guid" Name="EtlSessionId" Nullable="false" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Reason" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EnumType Name="RegisterClientStatus">
+          <Member Name="Success" Value="1" />
+          <Member Name="AlreadyRegistered" Value="2" />
+          <Member Name="TeradataError" Value="3" />
+          <Member Name="RejectedClient" Value="4" />
+          <Member Name="UnknownClient" Value="5" />
+        </EnumType>
+        <EnumType Name="ActivateClientStatus">
+          <Member Name="Success" Value="1" />
+          <Member Name="WrongClientId" Value="2" />
+          <Member Name="AlreadyActivated" Value="3" />
+          <Member Name="Error" Value="0" />
+          <Member Name="ClientForDeletion" Value="4" />
+        </EnumType>
+        <EntityType Name="PromoAction">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="PromoId" />
+          </Key>
+          <Property Type="String" Name="EtlSessionId" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="PromoId" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FromDate" Precision="3" />
+          <Property Type="DateTime" Name="ToDate" Precision="3" />
+          <Property Type="DateTime" Name="DateSent" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="IndexSent" Nullable="false" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="PromoActionResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="EtlSessionId" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="PromoId" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EnumType Name="Gender">
+          <Member Name="Male" Value="1" />
+          <Member Name="Female" Value="2" />
+          <Member Name="Other" Value="0" />
+        </EnumType>
+        <EntityType Name="StepsBuffer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="SessionId" Nullable="false" />
+          <Property Type="String" Name="String1_256" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="String2_256" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Byte1" />
+          <Property Type="Boolean" Name="Bool1" />
+        </EntityType>
+        <EnumType Name="AssignClientTargetAudienceStatus">
+          <Member Name="Success" Value="1" />
+          <Member Name="TargetAudienceNotFound" Value="2" />
+          <Member Name="ClientNotFound" Value="3" />
+        </EnumType>
+        <EntityType Name="ClientPersonalMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ClientId" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="SessionId" Nullable="false" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FromDateTime" Precision="3" />
+          <Property Type="DateTime" Name="ToDateTime" Precision="3" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ClientPersonalMessageResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="SessionId" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EnumType Name="ClientDetachStatus">
+          <Member Name="Success" Value="0" />
+          <Member Name="HasNonTerminatedOrders" Value="2" />
+          <Member Name="UnknkownError" Value="1" />
+          <Member Name="ReadyForProcessing" Value="3" />
+        </EnumType>
+        <EnumType Name="ClientSegment">
+          <Member Name="noVIP" Value="1" />
+          <Member Name="VIP" Value="0" />
+        </EnumType>
+        <EnumType Name="AccrualStatus">
+          <Member Name="Success" Value="1" />
+          <Member Name="IncorrectFormat" Value="2" />
+          <Member Name="IncorrectSum" Value="3" />
+          <Member Name="Error" Value="4" />
+        </EnumType>
+        <EntityType Name="Accrual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="ReceiveEtlSessionId" Nullable="false" />
+          <Property Type="Guid" Name="SendEtlSessionId" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BonusSum" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="DateTime" Name="BonusOperationDateTime" Precision="7" />
+          <Property Type="String" Name="ExternalId" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EntityType Name="ClientAudienceRelation">
+          <Key>
+            <PropertyRef Name="SessionId" />
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="PromoId" />
+          </Key>
+          <Property Type="Guid" Name="SessionId" Nullable="false" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PromoId" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EntityType Name="ClientForBankRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MobilePhone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ClientId" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Segment" Nullable="true" />
+          <Property Type="Guid" Name="SessionId" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="ErrorStatus" />
+        </EntityType>
+        <EntityType Name="ClientForBankRegistrationResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ClientId" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="SessionId" Nullable="false" />
+          <Property Type="String" Name="Login" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EnumType Name="ReceivedOrderStatus">
+          <Member Name="Approved" Value="1" />
+          <Member Name="Cancelled" Value="2" />
+        </EnumType>
+        <EntityType Name="ClientForRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MobilePhone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="RequestSessionId" />
+          <Property Type="Guid" Name="ResponseSessionId" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="Int32" Name="Segment" />
+          <Property Type="Int32" Name="Gender" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="ProfileClientId" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EntityType Name="ClientForDeletion">
+          <Key>
+            <PropertyRef Name="ExternalClientId" />
+          </Key>
+          <Property Type="Guid" Name="InsertEtlSessionId" Nullable="false" />
+          <Property Type="Guid" Name="SendEtlSessionId" />
+          <Property Type="String" Name="ExternalClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="MobilePhone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ClientForDeletionResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="EtlSessionId" Nullable="false" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="DetachStatus" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ClientForRegistrationResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="SessionId" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="Segment" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" />
+          <Property Type="Int32" Name="RegStatus" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ClientUpdate">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Type="Int32" Name="SeqId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="EtlSessionId" Nullable="false" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BirthDate" Precision="0" />
+          <Property Type="Int32" Name="Segment" />
+          <Property Type="Int32" Name="Gender" />
+          <Property Type="Int32" Name="UpdStatus" />
+        </EntityType>
+        <EnumType Name="LoyaltyClientUpdateStatuses">
+          <Member Name="Success" Value="0" />
+          <Member Name="UnknowError" Value="1" />
+          <Member Name="Profile_MoreThenOnePhoneFound" Value="2" />
+          <Member Name="Profile_PhoneNotFound" Value="3" />
+          <Member Name="GetProfile_InvalidResponse" Value="6" />
+          <Member Name="GetProfile_ErrorResponse" Value="7" />
+          <Member Name="GetProfile_ProfileNotFound" Value="8" />
+          <Member Name="GetTargetAudiences_InvalidResponse" Value="9" />
+          <Member Name="GetTargetAudiences_ErrorResponse" Value="10" />
+          <Member Name="ChangePhone_InvalidResponse" Value="11" />
+          <Member Name="ChangePhone_ErrorResponse" Value="12" />
+          <Member Name="ChangePhone_UserNotFound" Value="13" />
+          <Member Name="ChangePhone_PhoneIsAlreadyUsed" Value="14" />
+          <Member Name="UpdateProfile_InvalidResponse" Value="15" />
+          <Member Name="UpdateProfile_ErrorResponse" Value="16" />
+          <Member Name="UpdateProfile_ClientNotFound" Value="17" />
+          <Member Name="UpdateProfile_UnknownStatus" Value="18" />
+          <Member Name="UpdateSegment_InvalidResponse" Value="19" />
+          <Member Name="UpdateSegment_ErrorResponse" Value="20" />
+          <Member Name="UpdateCustomFields_FieldNotFound" Value="21" />
+        </EnumType>
+        <EntityType Name="ClientForActivation">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="Guid" Nullable="false" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Segment" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DeletionEtlSessionId" Type="Guid" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderForPayment">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="PartnerId" Type="Int32" Nullable="false" />
+          <Property Name="PartnerOrderNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="OrderBonusCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="OrderTotalCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="OrderDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="POSId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OrderItemsCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="OrderDeliveryCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CurrierId" Type="Int32" Nullable="false" />
+          <Property Name="UnitellerItemsShopId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitellerDeliveryShopId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EnumType Name="BonusGatewayConfirmStatus">
+          <Member Name="Confirmed" />
+          <Member Name="Error" />
+        </EnumType>
+        <EntityType Name="OrderPaymentResponse2">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="EtlSessionId" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ItemPaymentStatus" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryPaymentStatus" Type="Int32" Nullable="false" />
+          <Property Name="BonusGatewayStatus" Type="Int32" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EnumType Name="ClientForDeletionResponseDetachStatus">
+          <Member Name="Success" Value="1" />
+          <Member Name="Error" Value="0" />
+        </EnumType>
+        <EntityType Name="ProfileCustomField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProfileCustomFieldsValues" Relationship="RapidSoft.VTB24.BankConnectorModel.FK_ProfileCustomFieldsValues_ProfileCustomFields" FromRole="ProfileCustomField" ToRole="ProfileCustomFieldsValue" />
+        </EntityType>
+        <EntityType Name="ProfileCustomFieldsValue">
+          <Key>
+            <PropertyRef Name="FieldId" />
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="FieldId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProfileCustomField" Relationship="RapidSoft.VTB24.BankConnectorModel.FK_ProfileCustomFieldsValues_ProfileCustomFields" FromRole="ProfileCustomFieldsValue" ToRole="ProfileCustomField" />
+        </EntityType>
+        <Association Name="FK_ProfileCustomFieldsValues_ProfileCustomFields">
+          <End Type="RapidSoft.VTB24.BankConnectorModel.ProfileCustomField" Role="ProfileCustomField" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="RapidSoft.VTB24.BankConnectorModel.ProfileCustomFieldsValue" Role="ProfileCustomFieldsValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileCustomField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProfileCustomFieldsValue">
+              <PropertyRef Name="FieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ClientLoginBankUpdate">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EtlSessionId" Type="Guid" Nullable="false" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MobilePhone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ClientLoginBankUpdatesResponse">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EtlSessionId" Type="Guid" Nullable="false" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EnumType Name="BankClientLoginUpdateStatus">
+          <Member Name="Success" Value="0" />
+          <Member Name="Error" Value="1" />
+        </EnumType>
+        <EntityType Name="LoyaltyClientUpdate">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePhoneId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="RapidSoft.VTB24.BankConnectorModel.Gender" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateStatus" Type="RapidSoft.VTB24.BankConnectorModel.LoyaltyClientUpdateStatuses" />
+          <Property Name="SendEtlSessionId" Type="Guid" />
+          <Property Name="ChangedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ClientForBankPwdReset">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Type="Int32" Name="SeqId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="EtlSessionId" Nullable="false" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ClientForBankPwdResetResponse">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Type="Int32" Name="SeqId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="EtlSessionId" Nullable="false" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Message" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EnumType Name="ClientForBankPwdResetResponseStatus">
+          <Member Name="Success" Value="0" />
+          <Member Name="Error" Value="1" />
+        </EnumType>
+        <EntityType Name="OrderItemsForPayment">
+          <Key>
+            <PropertyRef Name="EtlSessionId" />
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="OrderItemId" />
+          </Key>
+          <Property Type="Guid" Name="EtlSessionId" Nullable="false" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="String" Name="OrderItemId" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PartnerId" Nullable="false" />
+          <Property Type="String" Name="PartnerOrderNum" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ArticleId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ArticleName" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Amount" Nullable="false" />
+          <Property Type="Decimal" Name="OrderBonusCost" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="OrderTotalCost" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="OrderDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="POSId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliveryRegion" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliveryCity" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliveryAddress" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContactName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContactPhone" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContactEmail" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UnitellerItemsShopId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UnitellerDeliveryShopId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" />
+          <Property Type="Decimal" Name="Advance" Precision="19" Scale="4" />
+          <Property Type="String" Name="AdvancePOSId" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AdvanceRRN" MaxLength="12" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UnitellerPayment">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="String" Name="BillNumber" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" />
+          <Property Type="String" Name="ShopId" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="DateTime" Name="FormDate" Precision="7" />
+          <Property Type="DateTime" Name="ConfirmDate" Precision="7" />
+          <Property Type="DateTime" Name="CancelDate" Precision="7" />
+        </EntityType>
+        <EntityType Name="OrderAttempt">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="BankOffer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BonusCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ProductId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="CardLast4Digits" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="RapidSoft.VTB24.BankConnectorModel.BankOfferStatus" Nullable="false" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="OfferId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EnumType Name="BankOfferStatus">
+          <Member Name="Active" Value="1" />
+          <Member Name="Inactive" Value="2" />
+        </EnumType>
+        <EntityType Name="RegisterBankOffer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerOrderNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OrderBonusCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ProductId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="CardLast4Digits" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OrderAction" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EtlSessionId" Type="Guid" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OfferId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RegisterBankOffersResponse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerOrderNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="OrderActionResult" Type="RapidSoft.VTB24.BankConnectorModel.RegisterBankOfferResult" Nullable="false" />
+          <Property Name="EtlSessionId" Type="Guid" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EnumType Name="RegisterBankOfferResult">
+          <Member Name="Success" Value="0" />
+          <Member Name="ClientNotFound" Value="1" />
+          <Member Name="OfferNotExists" Value="2" />
+          <Member Name="OfferAlreadyRegistered" Value="3" />
+          <Member Name="InternalError" Value="4" />
+        </EnumType>
+        <EntityType Name="BankSms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TypeCode" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DisplayPhone" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" Precision="7" />
+          <Property Type="Guid" Name="EtlSessionId" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RapidSoftVTB24BankConnectorModelStoreContainer" CdmEntityContainer="BankConnectorDBContext">
+          <EntitySetMapping Name="ClientCardRegStatuses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientCardRegStatus">
+              <MappingFragment StoreEntitySet="ClientCardRegStatus">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="IsCardRegistered" ColumnName="IsCardRegistered" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderPaymentResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.OrderPaymentResponse">
+              <MappingFragment StoreEntitySet="OrderPaymentResponse">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromoActions">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.PromoAction">
+              <MappingFragment StoreEntitySet="PromoAction">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="IndexSent" ColumnName="IndexSent" />
+                <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PromoId" ColumnName="PromoId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromoActionResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.PromoActionResponse">
+              <MappingFragment StoreEntitySet="PromoActionResponse">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PromoId" ColumnName="PromoId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StepsBuffers">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.StepsBuffer">
+              <MappingFragment StoreEntitySet="StepsBuffer">
+                <ScalarProperty Name="Bool1" ColumnName="bit1" />
+                <ScalarProperty Name="Byte1" ColumnName="tinyint1" />
+                <ScalarProperty Name="String2_256" ColumnName="nvarchar2_256" />
+                <ScalarProperty Name="String1_256" ColumnName="nvarchar1_256" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientPersonalMessages">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientPersonalMessage">
+              <MappingFragment StoreEntitySet="ClientPersonalMessage">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="ToDateTime" ColumnName="ToDateTime" />
+                <ScalarProperty Name="FromDateTime" ColumnName="FromDateTime" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientPersonalMessageResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientPersonalMessageResponse">
+              <MappingFragment StoreEntitySet="ClientPersonalMessageResponse">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accruals">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.Accrual">
+              <MappingFragment StoreEntitySet="Accruals">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="ExternalId" ColumnName="ExternalId" />
+                <ScalarProperty Name="BonusOperationDateTime" ColumnName="BonusOperationDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BonusSum" ColumnName="BonusSum" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="SendEtlSessionId" ColumnName="SendEtlSessionId" />
+                <ScalarProperty Name="ReceiveEtlSessionId" ColumnName="ReceiveEtlSessionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientAudienceRelations">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientAudienceRelation">
+              <MappingFragment StoreEntitySet="ClientAudienceRelations">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PromoId" ColumnName="PromoId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForBankRegistrations">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForBankRegistration">
+              <MappingFragment StoreEntitySet="ClientForBankRegistration">
+                <ScalarProperty Name="ErrorStatus" ColumnName="ErrorStatus" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="Segment" ColumnName="Segment" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForBankRegistrationResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForBankRegistrationResponse">
+              <MappingFragment StoreEntitySet="ClientForBankRegistrationResponse">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForRegistrations">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForRegistration">
+              <MappingFragment StoreEntitySet="ClientForRegistration">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="ProfileClientId" ColumnName="ProfileClientId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Segment" ColumnName="Segment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ResponseSessionId" ColumnName="ResponseSessionId" />
+                <ScalarProperty Name="RequestSessionId" ColumnName="RequestSessionId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForDeletions">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForDeletion">
+              <MappingFragment StoreEntitySet="ClientForDeletion">
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExternalClientId" ColumnName="ExternalClientId" />
+                <ScalarProperty Name="SendEtlSessionId" ColumnName="SendEtlSessionId" />
+                <ScalarProperty Name="InsertEtlSessionId" ColumnName="InsertEtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForDeletionResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForDeletionResponse">
+              <MappingFragment StoreEntitySet="ClientForDeletionResponse">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DetachStatus" ColumnName="DetachStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForRegistrationResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForRegistrationResponse">
+              <MappingFragment StoreEntitySet="ClientForRegistrationResponse">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RegStatus" ColumnName="RegStatus" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Segment" ColumnName="Segment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientUpdates">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientUpdate">
+              <MappingFragment StoreEntitySet="ClientUpdates">
+                <ScalarProperty Name="UpdStatus" ColumnName="UpdStatus" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Segment" ColumnName="Segment" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+                <ScalarProperty Name="SeqId" ColumnName="SeqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForActivations">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForActivation">
+              <MappingFragment StoreEntitySet="ClientForActivation">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DeletionEtlSessionId" ColumnName="DeletionEtlSessionId" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Segment" ColumnName="Segment" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderForPayments">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.OrderForPayment">
+              <MappingFragment StoreEntitySet="OrderForPayment">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="UnitellerDeliveryShopId" ColumnName="UnitellerDeliveryShopId" />
+                <ScalarProperty Name="UnitellerItemsShopId" ColumnName="UnitellerItemsShopId" />
+                <ScalarProperty Name="CurrierId" ColumnName="CurrierId" />
+                <ScalarProperty Name="OrderDeliveryCost" ColumnName="OrderDeliveryCost" />
+                <ScalarProperty Name="OrderItemsCost" ColumnName="OrderItemsCost" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+                <ScalarProperty Name="DeliveryCity" ColumnName="DeliveryCity" />
+                <ScalarProperty Name="DeliveryRegion" ColumnName="DeliveryRegion" />
+                <ScalarProperty Name="POSId" ColumnName="POSId" />
+                <ScalarProperty Name="OrderDateTime" ColumnName="OrderDateTime" />
+                <ScalarProperty Name="OrderTotalCost" ColumnName="OrderTotalCost" />
+                <ScalarProperty Name="OrderBonusCost" ColumnName="OrderBonusCost" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ArticleName" ColumnName="ArticleName" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PartnerOrderNum" ColumnName="PartnerOrderNum" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderPaymentResponse2">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.OrderPaymentResponse2">
+              <MappingFragment StoreEntitySet="OrderPaymentResponse2">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="BonusGatewayStatus" ColumnName="BonusGatewayStatus" />
+                <ScalarProperty Name="DeliveryPaymentStatus" ColumnName="DeliveryPaymentStatus" />
+                <ScalarProperty Name="ItemPaymentStatus" ColumnName="ItemPaymentStatus" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileCustomFields">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ProfileCustomField">
+              <MappingFragment StoreEntitySet="ProfileCustomFields">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileCustomFieldsValues">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ProfileCustomFieldsValue">
+              <MappingFragment StoreEntitySet="ProfileCustomFieldsValues">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientLoginBankUpdates">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientLoginBankUpdate">
+              <MappingFragment StoreEntitySet="ClientLoginBankUpdates">
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+                <ScalarProperty Name="SeqId" ColumnName="SeqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientLoginBankUpdatesResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientLoginBankUpdatesResponse">
+              <MappingFragment StoreEntitySet="ClientLoginBankUpdatesResponse">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+                <ScalarProperty Name="SeqId" ColumnName="SeqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoyaltyClientUpdates">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.LoyaltyClientUpdate">
+              <MappingFragment StoreEntitySet="LoyaltyClientUpdates">
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="SendEtlSessionId" ColumnName="SendEtlSessionId" />
+                <ScalarProperty Name="UpdateStatus" ColumnName="UpdateStatus" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobilePhoneId" ColumnName="MobilePhoneId" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="SeqId" ColumnName="SeqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForBankPwdResets">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForBankPwdReset">
+              <MappingFragment StoreEntitySet="ClientForBankPwdReset">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+                <ScalarProperty Name="SeqId" ColumnName="SeqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientForBankPwdResetResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.ClientForBankPwdResetResponse">
+              <MappingFragment StoreEntitySet="ClientForBankPwdResetResponse">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+                <ScalarProperty Name="SeqId" ColumnName="SeqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItemsForPayments">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.OrderItemsForPayment">
+              <MappingFragment StoreEntitySet="OrderItemsForPayment">
+                <ScalarProperty Name="AdvanceRRN" ColumnName="AdvanceRRN" />
+                <ScalarProperty Name="AdvancePOSId" ColumnName="AdvancePOSId" />
+                <ScalarProperty Name="Advance" ColumnName="Advance" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="UnitellerDeliveryShopId" ColumnName="UnitellerDeliveryShopId" />
+                <ScalarProperty Name="UnitellerItemsShopId" ColumnName="UnitellerItemsShopId" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+                <ScalarProperty Name="DeliveryCity" ColumnName="DeliveryCity" />
+                <ScalarProperty Name="DeliveryRegion" ColumnName="DeliveryRegion" />
+                <ScalarProperty Name="POSId" ColumnName="POSId" />
+                <ScalarProperty Name="OrderDateTime" ColumnName="OrderDateTime" />
+                <ScalarProperty Name="OrderTotalCost" ColumnName="OrderTotalCost" />
+                <ScalarProperty Name="OrderBonusCost" ColumnName="OrderBonusCost" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ArticleName" ColumnName="ArticleName" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PartnerOrderNum" ColumnName="PartnerOrderNum" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitellerPayments">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.UnitellerPayment">
+              <MappingFragment StoreEntitySet="UnitellerPayments">
+                <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+                <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+                <ScalarProperty Name="FormDate" ColumnName="FormDate" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="BillNumber" ColumnName="BillNumber" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderAttempts">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.OrderAttempt">
+              <MappingFragment StoreEntitySet="OrderAttempts">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankOffers">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.BankOffer">
+              <MappingFragment StoreEntitySet="BankOffers">
+                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CardLast4Digits" ColumnName="CardLast4Digits" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="BonusCost" ColumnName="BonusCost" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterBankOffers">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.RegisterBankOffer">
+              <MappingFragment StoreEntitySet="RegisterBankOffers">
+                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+                <ScalarProperty Name="OrderAction" ColumnName="OrderAction" />
+                <ScalarProperty Name="CardLast4Digits" ColumnName="CardLast4Digits" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderBonusCost" ColumnName="OrderBonusCost" />
+                <ScalarProperty Name="ArticleName" ColumnName="ArticleName" />
+                <ScalarProperty Name="PartnerOrderNum" ColumnName="PartnerOrderNum" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterBankOffersResponses">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.RegisterBankOffersResponse">
+              <MappingFragment StoreEntitySet="RegisterBankOffersResponse">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+                <ScalarProperty Name="OrderActionResult" ColumnName="OrderActionResult" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PartnerOrderNum" ColumnName="PartnerOrderNum" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankSms">
+            <EntityTypeMapping TypeName="RapidSoft.VTB24.BankConnectorModel.BankSms">
+              <MappingFragment StoreEntitySet="BankSms">
+                <ScalarProperty Name="EtlSessionId" ColumnName="EtlSessionId" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DisplayPhone" ColumnName="DisplayPhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

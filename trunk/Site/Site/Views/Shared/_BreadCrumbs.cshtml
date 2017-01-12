@@ -1,0 +1,11 @@
+﻿@model BreadCrumbModel[]
+<ul class="bread-crumb">
+    @if (Model != null && Model.Length > 0)
+    {
+        for (var i = 0; i < Model.Length - 1; i++)
+        {
+            <li><span><a href="@Model[i].Url">@Model[i].Text</a></span></li>
+        }
+        <li>@Model[Model.Length - 1].Text</li>
+    }
+</ul>

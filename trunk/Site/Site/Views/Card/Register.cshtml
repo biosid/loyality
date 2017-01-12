@@ -1,0 +1,23 @@
+﻿@model Vtb24.Site.Models.Card.CardRegistrationModel
+@{
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+    ViewBag.Title = "Регистрация карты";
+    var baseUrl = System.Configuration.ConfigurationManager.AppSettings["card_registration_return_url_base"]
+                  ?? string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
+}
+@Html.AddScriptBlock(
+    @<script>
+         require(['Card/register'], function(register) {
+             register();
+         });
+     </script>
+    )
+<form id="card-registration-starter" action="@Model.RegistratorUrl" method="POST">
+    <input type="hidden" name="Shop_IDP" value="@Model.ShopId"/>
+    <input type="hidden" name="Order_IDP" value="@Model.OrderId"/>
+    <input type="hidden" name="Customer_IDP" value="@Model.CustomerId"/>
+    <input type="hidden" name="Subtotal_P" value="@Model.Subtotal"/>
+    <input type="hidden" name="Signature" value="@Model.Signature"/>
+    <input type="hidden" name="URL_RETURN_OK" value="@(baseUrl + Model.SuccessUrl)"/>
+    <input type="hidden" name="URL_RETURN_NO" value="@(baseUrl + Model.ErrorUrl)"/>
+</form>

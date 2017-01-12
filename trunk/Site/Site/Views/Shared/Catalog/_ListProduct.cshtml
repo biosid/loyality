@@ -1,0 +1,53 @@
+﻿@model Vtb24.Site.Models.Catalog.ListProductModel
+@{
+    var tags = "";
+    if (Model.IsInAction)
+    {
+        tags += " sale";
+    }
+    if (Model.IsNew)
+    {
+        tags += " new";
+    }
+}
+<li class="product@(tags)">
+    <h5>
+        <a href="@Url.Action("Product", "Catalog", new { id = Model.Id })" title="@Model.Title">@Model.Title</a>
+    </h5>
+
+    <div class="prod-card">
+        <a class="prod-img" href="@Url.Action("Product", "Catalog", new { id = Model.Id })" style="background: url('/content/images/gift.png') no-repeat center center;">
+            <span class="prod-real-img" style="background: url('@Url.ImageProcessor("product_thumb", Model.Thumbnail)') no-repeat center center;">&nbsp;</span>
+        </a>        
+        @if (Model.IsInAction)
+        {
+            if (Model.DiscountPercent.HasValue)
+            {
+                <a class="product__discount-badge-small" href="@Url.Action("Product", "Catalog", new { id = Model.Id })">
+                    @Model.DiscountPercent
+                </a>
+            }
+            else
+            {
+                <a class="product__discount-badge-small _with-percent" href="@Url.Action("Product", "Catalog", new { id = Model.Id })"></a>
+            }
+        }
+        @if (Model.IsNew)
+        {
+            <a class="product__new-badge-small" href="@Url.Action("Product", "Catalog", new { id = Model.Id })"></a>
+        }
+
+        @if (!Model.CanRedeem)
+        {
+            <a class="basket-disabled" title="У Вас недостаточно бонусов для заказа, добавьте в «Мои желания»"></a>
+        }
+        else
+        {
+            <a class="basket" href="@Url.Action("Add", "Basket", new {id = Model.Id})" data-x="client/activation_required" rel="nofollow"></a>
+        }
+        <a class="wish" href="@Url.Action("Add", "WishList", new { id = Model.Id })" rel="nofollow"></a>
+        <div class="balls">
+            @(Model.Price.HasValue ? Html.Pluralize(Model.Price.Value, "{1:N0} бонус", "{2:N0} бонуса", "{5:N0} бонусов") : "-")
+        </div>
+    </div>
+</li>

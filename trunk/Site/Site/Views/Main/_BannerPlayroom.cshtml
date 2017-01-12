@@ -1,0 +1,44 @@
+@model dynamic
+@Html.AddScriptBlock(@<script>
+    require([
+        'Main/banner_playroom'
+    ], function(banner) {
+        banner({ selector: '#banner-playroom', max: 2000000, def: 2000000 });
+    });
+</script>)
+<div class="banner-carousel__item @(Model.IsActive ? "active" : null)" id="banner-playroom">
+    <div class="banner-playroom__background">
+        <div class="banner-playroom__wrap">
+            <a class="banner-playroom__toy toy-car"      href="@Url.Action("Search", "Catalog", new { term = "модель авто" })"                data-bonus-value="1234" data-baloon="baloon-car"></a>
+            <a class="banner-playroom__toy toy-toy"      href="@Url.Action("Search", "Catalog", new { term = "игрушка-каталка" })"            data-bonus-value="1803" data-baloon="baloon-toy"></a>
+            <a class="banner-playroom__toy toy-lego1"    href="@Url.Action("Search", "Catalog", new { term = "lego" })"                       data-bonus-value="1833" data-baloon="baloon-lego1"></a>
+            <a class="banner-playroom__toy toy-book2"    href="@Url.Action("Search", "Catalog", new { term = "атлас", category = 1013 })"     data-bonus-value="2163" data-baloon="baloon-book2"></a>
+            <a class="banner-playroom__toy toy-ball"     href="@Url.Action("Search", "Catalog", new { term = "футбольный м€ч" })"              data-bonus-value="2323" data-baloon="baloon-ball"></a>
+            <a class="banner-playroom__toy toy-cat"      href="@Url.Action("Search", "Catalog", new { term = "м€гка€ игрушка" })"             data-bonus-value="2347" data-baloon="baloon-cat"></a>
+            <a class="banner-playroom__toy toy-kit"      href="@Url.Action("Search", "Catalog", new { term = "Space Rail" })"                 data-bonus-value="2800" data-baloon="baloon-kit"></a>
+            <a class="banner-playroom__toy toy-bike"     href="@Url.Action("Search", "Catalog", new { term = "ћотоцикл" })"                   data-bonus-value="4267" data-baloon="baloon-bike"></a>
+            <a class="banner-playroom__toy toy-book1"    href="@Url.Action("Search", "Catalog", new { term = "книжка-игрушка" })"             data-bonus-value="6636" data-baloon="baloon-book1"></a>
+            <a class="banner-playroom__toy toy-lego2"    href="@Url.Action("Search", "Catalog", new { term = "lego" })"                       data-bonus-value="14067" data-baloon="baloon-lego2"></a>
+            <a class="banner-playroom__toy toy-globe"    href="@Url.Action("Search", "Catalog", new { term = "глобус" })"                     data-bonus-value="2500" data-baloon="baloon-globe"></a>
+            <a class="banner-playroom__toy toy-backpack" href="@Url.Action("Search", "Catalog", new { term = "рюкзак школьный" })"             data-bonus-value="14710" data-baloon="baloon-backpack"></a>
+            <a class="banner-playroom__toy toy-ipad"     href="@Url.Action("Search", "Catalog", new { term = "планшетный компьютер" })"       data-bonus-value="52967" data-baloon="baloon-ipad"></a>
+            <a class="banner-playroom__baloon baloon-dl toy-car"      href="@Url.Action("Search", "Catalog", new { term = "модель авто" })"            id="baloon-car">1 234</a>
+            <a class="banner-playroom__baloon baloon-dl toy-toy"      href="@Url.Action("Search", "Catalog", new { term = "игрушка-каталка" })"        id="baloon-toy">1 803</a>
+            <a class="banner-playroom__baloon baloon-ur toy-lego1"    href="@Url.Action("Search", "Catalog", new { term = "lego" })"                   id="baloon-lego1">1 833</a>
+            <a class="banner-playroom__baloon baloon-dl toy-book2"    href="@Url.Action("Search", "Catalog", new { term = "атлас", category = 1013 })" id="baloon-book2">2 163</a>
+            <a class="banner-playroom__baloon baloon-dr toy-ball"     href="@Url.Action("Search", "Catalog", new { term = "футбольный м€ч" })"         id="baloon-ball">2 323</a>
+            <a class="banner-playroom__baloon baloon-dl toy-cat"      href="@Url.Action("Search", "Catalog", new { term = "м€гка€ игрушка" })"         id="baloon-cat">2 347</a>
+            <a class="banner-playroom__baloon baloon-ul toy-kit"      href="@Url.Action("Search", "Catalog", new { term = "Space Rail" })"             id="baloon-kit">2 800</a>
+            <a class="banner-playroom__baloon baloon-dl toy-bike"     href="@Url.Action("Search", "Catalog", new { term = "ћотоцикл" })"               id="baloon-bike">4 267</a>
+            <a class="banner-playroom__baloon baloon-dr toy-book1"    href="@Url.Action("Search", "Catalog", new { term = "книжка-игрушка" })"         id="baloon-book1">6 636</a>
+            <a class="banner-playroom__baloon baloon-ul toy-lego2"    href="@Url.Action("Search", "Catalog", new { term = "lego" })"                   id="baloon-lego2">14 067</a>
+            <a class="banner-playroom__baloon baloon-dl toy-globe"    href="@Url.Action("Search", "Catalog", new { term = "глобус" })"                 id="baloon-globe">2 500</a>
+            <a class="banner-playroom__baloon baloon-dl toy-backpack" href="@Url.Action("Search", "Catalog", new { term = "рюкзак школьный" })"         id="baloon-backpack">14 710</a>
+            <a class="banner-playroom__baloon baloon-dl toy-ipad"     href="@Url.Action("Search", "Catalog", new { term = "планшетный компьютер" })"   id="baloon-ipad">52 967</a>
+        </div>
+    </div>
+    <div class="card-slider">
+        <div class="card-slider__controls-wrap" style="height:53px;">
+        </div>
+    </div>
+</div>

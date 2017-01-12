@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="RapidSoft.Loyalty.BonusGateway.Service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="RapidSoft.Loyalty.BonusGateway.Service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="RapidSoft.Loyalty.BonusGateway.Service/Imports">
+      <xsd:import schemaLocation="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd0" namespace="RapidSoft.Loyalty.BonusGateway.Service" />
+      <xsd:import schemaLocation="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd2" namespace="RapidSoft.Loyalty.BonusGateway" />
+      <xsd:import schemaLocation="http://192.168.62.159:19120/BonusGateway.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loyalty.BonusGateway.API.Entity" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="BonusGateway_GetBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_GetBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_GetAccountsByClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountsByClient" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_GetAccountsByClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountsByClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_ApplyDiscount_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyDiscount" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_ApplyDiscount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyDiscountResponse" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_ApplyWithdrawByAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyWithdrawByAccount" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_ApplyWithdrawByAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyWithdrawByAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_RefundPointsByCheque_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefundPointsByCheque" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_RefundPointsByCheque_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefundPointsByChequeResponse" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_RefundPoints_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefundPoints" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_RefundPoints_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefundPointsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_RollbackPoints_InputMessage">
+    <wsdl:part name="parameters" element="tns:RollbackPoints" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_RollbackPoints_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RollbackPointsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_ConfirmPoints_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmPoints" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_ConfirmPoints_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmPointsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_GetCurrenciesByLoyaltyProgram_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrenciesByLoyaltyProgram" />
+  </wsdl:message>
+  <wsdl:message name="BonusGateway_GetCurrenciesByLoyaltyProgram_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrenciesByLoyaltyProgramResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BonusGateway">
+    <wsdl:operation name="GetBalance">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/GetBalance" message="tns:BonusGateway_GetBalance_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/GetBalanceResponse" message="tns:BonusGateway_GetBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountsByClient">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/GetAccountsByClient" message="tns:BonusGateway_GetAccountsByClient_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/GetAccountsByClientResponse" message="tns:BonusGateway_GetAccountsByClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyDiscount">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/ApplyDiscount" message="tns:BonusGateway_ApplyDiscount_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/ApplyDiscountResponse" message="tns:BonusGateway_ApplyDiscount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyWithdrawByAccount">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/ApplyWithdrawByAccount" message="tns:BonusGateway_ApplyWithdrawByAccount_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/ApplyWithdrawByAccountResponse" message="tns:BonusGateway_ApplyWithdrawByAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefundPointsByCheque">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/RefundPointsByCheque" message="tns:BonusGateway_RefundPointsByCheque_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/RefundPointsByChequeResponse" message="tns:BonusGateway_RefundPointsByCheque_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefundPoints">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/RefundPoints" message="tns:BonusGateway_RefundPoints_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/RefundPointsResponse" message="tns:BonusGateway_RefundPoints_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RollbackPoints">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/RollbackPoints" message="tns:BonusGateway_RollbackPoints_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/RollbackPointsResponse" message="tns:BonusGateway_RollbackPoints_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmPoints">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/ConfirmPoints" message="tns:BonusGateway_ConfirmPoints_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/ConfirmPointsResponse" message="tns:BonusGateway_ConfirmPoints_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrenciesByLoyaltyProgram">
+      <wsdl:input wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/GetCurrenciesByLoyaltyProgram" message="tns:BonusGateway_GetCurrenciesByLoyaltyProgram_InputMessage" />
+      <wsdl:output wsaw:Action="RapidSoft.Loyalty.BonusGateway.Service/BonusGateway/GetCurrenciesByLoyaltyProgramResponse" message="tns:BonusGateway_GetCurrenciesByLoyaltyProgram_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

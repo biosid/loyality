@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A197184A-8429-4DC1-8541-37F57A802F61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.VTB24.BankConnector.DataModels</RootNamespace>
+    <AssemblyName>RapidSoft.VTB24.BankConnector.DataModels</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\RapidSoft.VTB24.BankConnector.Solution\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accrual.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccrualStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActivateClientStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AssignClientTargetAudienceStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankClientLoginUpdateStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankConnectorDBContext.cs" />
+    <Compile Include="BankConnectorDBModel.Context.cs">
+      <DependentUpon>BankConnectorDBModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BankConnectorDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankConnectorDBModel.Designer.cs">
+      <DependentUpon>BankConnectorDBModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BankOffer.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankOfferStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankSms.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BonusGatewayConfirmStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForBankPwdReset.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForBankPwdResetResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForBankPwdResetResponseStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForDeletionResponseDetachStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientLoginBankUpdate.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientLoginBankUpdatesResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderAttempt.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderItemsForPayment.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalMessageStatuses.cs" />
+    <Compile Include="FieldLenght.cs" />
+    <Compile Include="LoyaltyClientUpdateStatuses.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientAudienceRelation.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientCardRegStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientDetachStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForActivation.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForBankRegistration.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForBankRegistrationResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForDeletion.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForDeletionResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForDeletionResponseStatuses.cs" />
+    <Compile Include="ClientForRegistration.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForRegistrationResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientPersonalMessage.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientPersonalMessageResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientSegment.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientUpdate.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientUpdateStatuses.cs" />
+    <Compile Include="LoyaltyClientUpdate.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderPaymentResponse2.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileCustomField.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileCustomFieldsValue.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceivedOrderStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegClientStatuses.cs" />
+    <Compile Include="Gender.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InsertDateExtension.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InsertDateExtension.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderForPayment.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderPaymentResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PromoAction.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PromoActionResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterBankOffer.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterBankOfferResult.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterBankOffersResponse.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterClientStatus.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StepsBuffer.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitellerPayment.cs">
+      <DependentUpon>BankConnectorDBModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="BankConnectorDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BankConnectorDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BankConnectorDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BankConnectorDBModel.edmx</DependentUpon>
+      <LastGenOutput>BankConnectorDBModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="BankConnectorDBModel.edmx.diagram">
+      <DependentUpon>BankConnectorDBModel.edmx</DependentUpon>
+    </None>
+    <None Include="BankConnectorDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BankConnectorDBModel.edmx</DependentUpon>
+      <LastGenOutput>BankConnectorDBModel.cs</LastGenOutput>
+    </None>
+    <None Include="InsertDateExtension.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>InsertDateExtension.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

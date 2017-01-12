@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs\ProductCatalog</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Environment settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ENVIRONMENTNAME@</string>
+          </Patterns>
+          <ReplaceTo>loyalty-win0_TEST</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ENVIRONMENTFROMEMAIL@</string>
+          </Patterns>
+          <ReplaceTo>loyalty-win0_TEST@loyalty.ru</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Database settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBHOST@</string>
+          </Patterns>
+          <ReplaceTo>loyalty-win0</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- PartnerIntegration -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@FixBasketItemPriceUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://ows.ozon.ru/VTB24TestAPI/api/FixPrice</ReplaceTo>
+          <!--                         <ReplaceTo>https://loyalty-win0.rapidsoft.local:643/Actions/FixBasketItemPrice</ReplaceTo> -->
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@CheckOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://ows.ozon.ru/VTB24TestAPI/api/CheckOrder</ReplaceTo>
+          <!--                         <ReplaceTo>https://loyalty-win0.rapidsoft.local:643/Actions/CheckOrder</ReplaceTo> -->
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ConfirmOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://ows.ozon.ru/VTB24TestAPI/api/ConfirmOrder</ReplaceTo>
+          <!--      <ReplaceTo>https://loyalty-win0.rapidsoft.local:643/Actions/ConfirmOrder</ReplaceTo> -->
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BatchConfirmOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://loyalty-win0.rapidsoft.local:643/Actions/BatchConfirmOrder</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TestPartnerThumbprint@</string>
+          </Patterns>
+          <ReplaceTo>‎a6 bd 0e 7e 84 d4 4d 1f d1 01 56 47 49 45 93 0a 53 1a 02 96</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BiletixPublickKey@</string>
+          </Patterns>
+          <ReplaceTo><![CDATA[&lt;RSAKeyValue&gt;&lt;Modulus&gt;wE86KO1FElMcBoMk3X1mVxaj3JEx2KqPnxNea8TA7s+siah/+N+Z+II0wuRBmupiivuL6IAc0sKi+yIi1BUprxSVDjXySrefw65Llg53JU2J+hcJfwJKp8lM6kJ7e1Uf4KCU1aWWguS23KaG5LHwZ67Rbj3AeoOV85yeYNaMS/U=&lt;/Modulus&gt;&lt;Exponent&gt;AQAB&lt;/Exponent&gt;&lt;/RSAKeyValue&gt;]]></ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BankProductsPartnerId@</string>
+          </Patterns>
+          <ReplaceTo>101</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@STUBFOREXTERNALSERVICE@</string>
+          </Patterns>
+          <ReplaceTo>false</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- OrdersNotifications  -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ArmOrderUrlTemplate@</string>
+          </Patterns>
+          <ReplaceTo>http://loyalty-win0:3051/catalog/orders/edit/{0}</ReplaceTo>
+        </ConfigFileTransformation>
+
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\loyalty-win0_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

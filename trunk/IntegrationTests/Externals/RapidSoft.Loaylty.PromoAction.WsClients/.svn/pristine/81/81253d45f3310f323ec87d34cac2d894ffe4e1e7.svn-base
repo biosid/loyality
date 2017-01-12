@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.InputParameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:57451/AdminMechanicsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" />
+  <xs:complexType name="GetRulesParameters">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="ApproveStatuses" nillable="true" type="q1:ArrayOfApproveStatus" />
+      <xs:element minOccurs="0" name="CalcTotalCount" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CountSkip" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CountTake" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DateTimeFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateTimeTo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateTimeUntil" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RuleDomainId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchTerm" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortDirect" nillable="true" type="tns:SortDirections" />
+      <xs:element minOccurs="0" name="SortProperty" nillable="true" type="tns:SortProperty" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="Status" nillable="true" type="q2:RuleStatuses" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" minOccurs="0" name="Type" nillable="true" type="q3:RuleTypes" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetRulesParameters" nillable="true" type="tns:GetRulesParameters" />
+  <xs:simpleType name="SortDirections">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Asc" />
+      <xs:enumeration value="Desc" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortDirections" nillable="true" type="tns:SortDirections" />
+  <xs:simpleType name="SortProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Priority" />
+      <xs:enumeration value="DateTimeTo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortProperty" nillable="true" type="tns:SortProperty" />
+  <xs:complexType name="GetRuleHistoryParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CalcTotalCount" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CountSkip" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CountTake" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RuleId" type="xs:long" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetRuleHistoryParameters" nillable="true" type="tns:GetRuleHistoryParameters" />
+  <xs:complexType name="ArrayOfApprove">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Approve" nillable="true" type="tns:Approve" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApprove" nillable="true" type="tns:ArrayOfApprove" />
+  <xs:complexType name="Approve">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsApproved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RuleId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Approve" nillable="true" type="tns:Approve" />
+</xs:schema>

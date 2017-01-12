@@ -1,0 +1,2 @@
+.\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\bin\Quartz.Server.exe uninstall /instance:PartnersConnector
+.\RapidSoft.Loaylty.PartnersConnector.Quartz.Server\bin\Quartz.Server.exe install /instance:PartnersConnector

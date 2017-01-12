@@ -1,0 +1,18 @@
+﻿@model string
+<div class="header">
+    <div class="row">
+        <div class="span1">
+            <a href="@Url.Action("Index", "Home", new { area = "" })" class="logo"></a>
+        </div>
+        <div class="span6">
+            <h4 class="font-normal">@Model</h4>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="span3">
+                <div class="user-name">@User.Identity.Name</div>
+            </div>
+            <div class="span2 text-right"><a href="@Url.Action("Logout", "Account", new { area = "" })" class="btn">Выйти</a></div>
+        }
+    </div>
+</div>

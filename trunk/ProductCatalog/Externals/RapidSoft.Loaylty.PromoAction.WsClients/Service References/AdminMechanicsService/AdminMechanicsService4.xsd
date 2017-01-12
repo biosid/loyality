@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RapidSoft.Loaylty.PromoAction.Api.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfEntityMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EntityMetadata" nillable="true" type="tns:EntityMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEntityMetadata" nillable="true" type="tns:ArrayOfEntityMetadata" />
+  <xs:complexType name="EntityMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Attributes" nillable="true" type="tns:ArrayOfAttribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityMetadata" nillable="true" type="tns:EntityMetadata" />
+  <xs:complexType name="ArrayOfAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attribute" nillable="true" type="tns:Attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttribute" nillable="true" type="tns:ArrayOfAttribute" />
+  <xs:complexType name="Attribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DictionaryId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" type="tns:AttributeTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Attribute" nillable="true" type="tns:Attribute" />
+  <xs:simpleType name="AttributeTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Number" />
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="Boolean" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AttributeTypes" nillable="true" type="tns:AttributeTypes" />
+  <xs:complexType name="RuleDomain">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DefaultBaseAdditionFactor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DefaultBaseMultiplicationFactor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="LimitFactor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="LimitType" type="tns:LimitTypes" />
+          <xs:element minOccurs="0" name="Metadata" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StopLimitFactor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="StopLimitType" type="tns:LimitTypes" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RuleDomain" nillable="true" type="tns:RuleDomain" />
+  <xs:complexType name="BaseEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InsertedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedUserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseEntity" nillable="true" type="tns:BaseEntity" />
+  <xs:simpleType name="LimitTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Fixed" />
+      <xs:enumeration value="Percent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LimitTypes" nillable="true" type="tns:LimitTypes" />
+  <xs:complexType name="ArrayOfRuleDomain">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RuleDomain" nillable="true" type="tns:RuleDomain" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRuleDomain" nillable="true" type="tns:ArrayOfRuleDomain" />
+  <xs:complexType name="Rule">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApproveDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Approved" type="tns:ApproveStatus" />
+          <xs:element minOccurs="0" name="ConditionalFactors" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DateTimeFrom" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DateTimeTo" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Factor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="IsExclusive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsNotExcludedBy" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Predicate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Priority" type="xs:int" />
+          <xs:element minOccurs="0" name="RuleDomainId" type="xs:long" />
+          <xs:element minOccurs="0" name="Status" type="tns:RuleStatuses" />
+          <xs:element minOccurs="0" name="Type" type="tns:RuleTypes" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Rule" nillable="true" type="tns:Rule" />
+  <xs:simpleType name="ApproveStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotApproved" />
+      <xs:enumeration value="Approved" />
+      <xs:enumeration value="Correction" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ApproveStatus" nillable="true" type="tns:ApproveStatus" />
+  <xs:simpleType name="RuleStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="NotActive" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RuleStatuses" nillable="true" type="tns:RuleStatuses" />
+  <xs:simpleType name="RuleTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BaseMultiplication" />
+      <xs:enumeration value="BaseAddition" />
+      <xs:enumeration value="Multiplication" />
+      <xs:enumeration value="Addition" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RuleTypes" nillable="true" type="tns:RuleTypes" />
+  <xs:complexType name="ArrayOfApproveStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApproveStatus" type="tns:ApproveStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApproveStatus" nillable="true" type="tns:ArrayOfApproveStatus" />
+  <xs:complexType name="ArrayOfRule">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rule" nillable="true" type="tns:Rule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRule" nillable="true" type="tns:ArrayOfRule" />
+</xs:schema>

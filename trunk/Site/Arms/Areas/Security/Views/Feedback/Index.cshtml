@@ -1,0 +1,115 @@
+﻿@using Vtb24.Arms.Security.Models.Feedback
+@model FeedbackIndexModel
+@{
+    ViewBag.Title = "Список обращений";
+    ViewBag.MenuId = "feedback";
+    Layout = "~/Areas/Security/Views/Shared/_Layout.cshtml";
+}
+
+@Html.AddScriptBlock(
+    @<script>
+         require(['Security/Feedback/index'], function(index) {
+             var container = $('#threads');
+             index(container);
+         });
+         $('.sticky-save').sticky({ topSpacing: 0, center: false });
+     </script>
+)
+<div class="tab-pane active" id="threads">
+    @Html.Partial("_Filters", Model.Filters ?? new FeedbackIndexFiltersModel())
+
+    @if (Model.Threads.Any())
+    {
+        <table class="table table-bordered table-hover feedback__index_threads">
+            <thead>
+                <tr>
+                    <th>Тип</th>
+                    <th>Сообщение</th>
+                    <th>От</th>
+                    <th>Обновлено</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var thread in Model.Threads)
+                {
+                    var filter = Model.SerializeFilters();
+                    var threadUrl = thread.ThreadUrl((id, page) => Url.Action("Thread", "Feedback", new {id, page, filter}));
+                    <tr data-x="feedback/index/row">
+                        <td class="nowrap feedback__index_type-cell">
+                            <a href="@threadUrl">
+                                @if (thread.Type == FeedbackTypeModel.Suggestion)
+                                {
+                                    <span class="label label-success">Предложение</span>
+                                }
+                                else if (thread.Type == FeedbackTypeModel.Issue)
+                                {
+                                    <span class="label label-important">Претензия</span>
+                                }
+                                else if (thread.Type == FeedbackTypeModel.OrderIncident)
+                                {
+                                    <span class="label label-important">Вопрос по заказу</span>
+                                }
+                            </a>
+                        </td>
+                        <td class="feedback__index_message-cell">
+                            <small class="feedback__index_message">
+                                <a href="@threadUrl">
+                                    @if (thread.IsUnanswered)
+                                    {
+                                        <strong>@thread.Message</strong>
+                                    }
+                                    else
+                                    {
+                                        @thread.Message
+                                    }
+                                </a>
+                            </small>
+                            @if (thread.SearchMatches != null && thread.SearchMatches.Any())
+                            {
+                                <p>
+                                    Coвпадения:
+                                    @for (var i = 0; i < thread.SearchMatches.Length; i++)
+                                    {
+                                        var match = thread.SearchMatches[i];
+                                        var matchUrl = thread.ThreadUrl((id, page) => Url.Action("Thread", "Feedback", new { id, page, filter }) + "#message-" + match);
+                                        var delim = i != thread.SearchMatches.Length -1 ? "," : "";
+                                        <a href="@matchUrl">@(i + 1)</a>@delim
+                                    }
+                                </p>
+                            }
+                        </td>
+                        <td class="nowrap">
+                            @if (@thread.ShowAuthorLink)
+                            {
+                                var authorUrl = thread.AuthorUrl(clientId => Url.Action("EditByClientId", "Users", new {clientId}));
+                                <a href="@authorUrl" target="_blank" class="feedback__index_author">
+                                    @thread.Author
+                                </a>
+                            }
+                            else
+                            {
+                                <div class="feedback__index_author">@thread.Author</div>
+                            }
+                            <small class="muted">@thread.CreatedTime</small>
+                        </td>
+                        <td class="nowrap">
+                            <div class="feedback__index_last-message-by">
+                                @thread.LastMessageBy
+                            </div>
+                            <small class="muted">@thread.LastMessageTime</small>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        if (Model.PagesCount > 1)
+        {
+            @Html.Pager(total: Model.PagesCount, page: Model.Filters.page)
+        }
+    }
+    else
+    {
+        <p>Поиск не дал результатов</p>
+    }
+</div>

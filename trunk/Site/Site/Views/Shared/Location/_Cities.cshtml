@@ -1,0 +1,21 @@
+﻿@using Vtb24.Site.Infrastructure
+@model Vtb24.Site.Models.Shared.Location.CitiesModel
+
+<h4 class="title">@Model.RegionName  &nbsp;&nbsp;&nbsp;&nbsp; <a id="changeRegion" class="js-link link-back"><span class="js-link-text">Сменить регион</span></a></h4>
+<div class="table">
+    @if (Model.Cities != null && Model.Cities.Count > 0)
+    {
+        var columns = Model.Cities.Split(4);
+        foreach (var column in columns)
+        {
+            <div class="cell">
+                <ul class="town-list">
+                    @foreach (var item in column)
+                    {
+                        <li class="tl-item"><span><a rel="@item.KladrCode" class="location">@item.Name</a></span></li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+</div>

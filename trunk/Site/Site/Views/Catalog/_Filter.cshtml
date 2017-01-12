@@ -1,0 +1,63 @@
+﻿@model Vtb24.Site.Models.Catalog.FilterModel
+
+@if(Model != null)
+{
+    <form method="@(Model.UsePostMethod ? "POST" : "GET")" data-x="catalog/filter/form">
+        <input type="hidden" name="sort" value="@Model.Query.sort" data-x="catalog/filter/input_get"/>
+        @if (!string.IsNullOrEmpty(Model.Query.term))
+        {
+            <input type="hidden" name="term" value="@Model.Query.term" data-x="catalog/filter/input_get"/>
+        }
+        @if (Model.Query.category.HasValue)
+        {
+            <input type="hidden" name="category" value="@Model.Query.category" data-x="catalog/filter/input_get"/>
+        }
+        <div class="slider-range @(Model.IsExpanded ? "open" : null)" id="catalog-filter">
+            <div class="in clearfix" id="slider-range">
+                <input type="hidden" name="min_price" value="@Model.Query.min_price" data-x="catalog/filter/input_get" />
+                <input type="hidden" name="max_price" value="@Model.Query.max_price" data-x="catalog/filter/input_get" />
+                <input class="min-price" type="text" />
+                <input class="max-price" type="text" />
+                <div class="rs-slider-range"></div>
+                <button type="submit">Подобрать</button>
+            </div>
+            @if (Model.HasExtendedFilters)
+            {
+                <div class="more-filter">
+                    <span class="more-filter-title">Дополнительные параметры</span>
+                    <div data-x="catalog/filter/extended" style="@(!Model.IsExpanded ? "display:none;" : null)">
+                        <ul>
+                            @if(Model.Vendors != null && Model.Vendors.Length > 0)
+                            {
+                                <li class="filter-item">
+                                    @Html.Label("vendor", "Производитель")
+                                    <div class="select-decor cat-filter">
+                                        @Html.DropDownList("vendor", Model.Vendors, "", new {@class = "html-select", @data_placeholder = "- все производители -", data_x = "catalog/filter/input_get"})
+                                    </div>
+                                </li>
+                            }
+                            @foreach (var parameter in Model.Parameters)
+                            {
+                                <li class="filter-item">
+                                    <label>@parameter.Name</label>
+                                    <div class="select-decor cat-filter">
+                                        @Html.DropDownList(parameter.NameInUrl, parameter.Values, "", new { @class = "html-select", @data_placeholder = "- любое значение -" })
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <div style="clear: left; height: 12px;"></div>
+                    </div>
+                </div>
+            }
+        </div>
+    </form>
+}
+
+@Html.AddScriptBlock(
+    @<script>
+         require(['Catalog/filter'], function(module) {
+             module({ el: '#catalog-filter', maxPriceScale: @(Model.PriceScaleMax) });
+         });
+     </script>
+)

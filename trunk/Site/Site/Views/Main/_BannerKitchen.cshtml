@@ -1,0 +1,43 @@
+﻿@model dynamic
+@Html.AddScriptBlock(@<script>
+    require([
+        'Main/banner-kitchen'
+    ], function(banner) {
+        banner({
+            selector: '#banner-kitchen',
+            max: 300000,
+            def: 300000
+        });
+    });
+</script>)
+<div class="banner-carousel__item @(Model.IsActive ? "active" : null)" id="banner-kitchen">
+    <div class="banner-kitchen__background">
+        <div class="banner-kitchen__wrap">
+            <a class="banner-kitchen__gift gift-tea"    href="@Url.Action("Search", "Catalog", new { term = "чайник" })" data-bonus-value="3500" >
+                <span class="banner-kitchen__star"></span>
+                <span class="banner-kitchen__baloon">3 500</span>
+            </a>
+            <a class="banner-kitchen__gift gift-coffee" href="@Url.Action("Search", "Catalog", new { term = "кофемашина" })" data-bonus-value="5300" >
+                <span class="banner-kitchen__star"></span>
+                <span class="banner-kitchen__baloon">5 300</span>
+            </a>
+            <a class="banner-kitchen__gift gift-juice"  href="@Url.Action("Search", "Catalog", new { term = "соковыжималка" })" data-bonus-value="5800" >
+                <span class="banner-kitchen__star"></span>
+                <span class="banner-kitchen__baloon">5 800</span>
+            </a>
+            <a class="banner-kitchen__gift gift-tost"   href="@Url.Action("Search", "Catalog", new { term = "тостер" })" data-bonus-value="3600" >
+                <span class="banner-kitchen__star"></span>
+                <span class="banner-kitchen__baloon">3 600</span>
+            </a>
+            <a class="banner-kitchen__gift gift-steam"  href="@Url.Action("Search", "Catalog", new { term = "пароварка", category = 677 })" data-bonus-value="5200" >
+                <span class="banner-kitchen__star"></span>
+                <span class="banner-kitchen__baloon">5 200</span>
+            </a>
+            <a class="banner-kitchen__gift gift-multi"  href="@Url.Action("Search", "Catalog", new { term = "мультиварка" })" data-bonus-value="4000" >
+                <span class="banner-kitchen__star"></span>
+                <span class="banner-kitchen__baloon">4 000</span>
+            </a>
+        </div>
+    </div>
+    @Html.Partial("_CardSlider", new { Model.IsActive, Model.IsAuthenticated })
+</div>

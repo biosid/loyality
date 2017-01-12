@@ -1,0 +1,286 @@
+@model dynamic
+@Html.AddScriptBlock(@<script>
+    require([
+        'Main/banner_shelves'
+    ], function(banner) {
+        banner({ 
+            selectedCard: '#selectedCard',
+            cardSelector: '#cardSelector',
+            moneyRate: 'data-moneyrate',
+            slider: '#slider' 
+        });
+    });
+</script>)
+<div class="banner-carousel__item promo-block @(Model.IsActive ? "active" : null)">
+    <div class="in">
+        <div class="slogan">
+            <strong>Теперь покупки</strong>
+            <div><strong>дарят подарки!</strong></div>
+        </div>
+        <div class="toys-block">
+            <div class="fl-left toys">
+                <ul class="up-toys clearfix">
+                    <li class="utoy">
+                        <a href="@Url.Action("Index", "Catalog", new { @id=590 })"><img class="toy" src="~/Content/pics/main_banner/row1col1_idk.jpg" alt="" style="margin: 5px 0 0 1px;"></a>
+                        <a class="snowflake blue" style="top: 17px; left: 120px;">
+                            <span class="inner" style="top: 130px; left: 10px;">
+                                <span class="buble down-buble">
+                                    <span class="points" data-amount="3000">
+                                        <em>3 000</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="utoy"></li>
+                    <li class="utoy"></li>
+                </ul>
+                <ul class="bottom-toys clearfix">
+                    <li class="btoy">
+                        <a href="@Url.Action("Index", "Catalog", new { @id = 1014 })"><img class="toy" src="~/Content/pics/main_banner/row2col1_books.jpg" alt="" style="margin-left:1px"></a>
+                        <a class="snowflake red" style="left: 31px; top: 0px;">
+                            <span class="inner">
+                                <span class="buble">
+                                    <span class="points" data-amount="1200">
+                                        <em>1 200</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="btoy">
+                        <!--#3#-->
+                        <a href="@Url.Action("Index", "Catalog", new { @id=680 })"><img class="toy" src="~/Content/pics/main_banner/renew_coffe.png" alt="" style="margin-top: 32px; margin-left: 15px;"></a>
+                        <a class="snowflake blue" style="left: 102px; top: 11px;">
+                            <span class="inner">
+                                <span class="buble">
+                                    <span class="points" data-amount="3700">
+                                        <em>3 700</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="btoy">
+                        <!--#1#-->
+                        <a href="@Url.Action("Index", "Catalog", new { @id=586 })"><img class="toy" src="~/Content/pics/main_banner/row2col3_teddy.jpg" alt=""></a>
+                        <a class="snowflake red" style="left: 115px; top: 65px;">
+                            <span class="inner">
+                                <span class="buble" style="margin-left:-7px;">
+                                    <span class="points" data-amount="1900">
+                                        <em>1 900</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="fl-right toys">
+                <ul class="up-toys clearfix">
+                    <li class="utoy">
+                        <!--#6#-->
+                        <a href="@Url.Action("Index", "Catalog", new { @id=735 })"><img class="toy" src="~/Content/pics/main_banner/new_mini.png" alt="" style="margin-top: 49px; margin-left: 15px;"></a>
+                        <a class="snowflake red" style="left: 20px; top: 32px;">
+                            <span class="inner" style="top: 144px; left: 0px;">
+                                <span class="buble down-buble">
+                                    <span class="points" data-amount="19000">
+                                        <em>19 000</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="utoy">
+                        <a href="@Url.Action("Index", "Catalog", new { @id=1011 })"><img class="toy" src="~/Content/pics/main_banner/certs.png" alt="" style="margin-top: 70px; margin-left: 25px;"></a>
+                        <a class="snowflake red" style="left: 100px; top: 10px;">
+                            <span class="inner" style="top: 145px; left: -5px;">
+                                <span class="buble down-buble">
+                                    <span class="points" data-amount="1667">
+                                        <em>1 667</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="utoy">
+                        <a href="@Url.Action("OnlineCategory", "Catalog", new { @id=682 })"><img class="toy" src="~/Content/pics/main_banner/travel.png" alt=""></a>
+                        <a class="snowflake blue" style="left: 10px; top: 100px;">
+                            <span class="inner" style="top: -10px;">
+                                <span class="buble">
+                                    <span class="points" data-amount="26000">
+                                        <em>26 000</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="bottom-toys clearfix">
+                    <li class="btoy">
+                        <a href="@Url.Action("Index", "Catalog", new { @id=591 })"><img class="toy" src="~/Content/pics/main_banner/row2col6_kennel.jpg" style="margin-top:1px" alt=""></a>
+                        <a class="snowflake blue" style="left: 92px; top: 19px;">
+                            <span class="inner">
+                                <span class="buble">
+                                    <span class="points" data-amount="1600">
+                                        <em>1 600</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="btoy">
+                        <!--#2#-->
+                        <a href="@Url.Action("Index", "Catalog", new { @id=588 })">
+                            <img class="toy" src="~/Content/pics/main_banner/row2col5_tools.jpg" alt="" style="margin:0;">
+                        </a>
+                        <a class="snowflake blue" style="left: 98px; top: 80px;">
+                            <span class="inner">
+                                <span class="buble">
+                                    <span class="points" data-amount="4500">
+                                        <em>4 500</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="btoy">
+                        <a href="@Url.Action("Index", "Catalog", new { @id=680 })"><img class="toy" src="~/Content/pics/main_banner/row2col4_crockpot.jpg" alt=""></a>
+                        <a class="snowflake red" style="left: 7px; top: 7px;">
+                            <span class="inner">
+                                <span class="buble">
+                                    <span class="points" data-amount="7000">
+                                        <em>7 000</em>
+                                        <small>бонусов</small>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="center-toy">
+                <a href="@Url.Action("Index", "Catalog", new { @id=575 })"><img src="~/Content/pics/main_banner/center_gifts-pile.jpg" alt="Подарки!" class="toy" style="bottom:20px; margin-left: 36px;"></a>
+                <a class="snowflake red" style="left: 13px; top: 155px;">
+                    <span class="inner">
+                        <span class="buble" style="left: -65px; top: -110px;">
+                            <span class="points" data-amount="2200">
+                                <em>2 200</em>
+                                <small>бонусов</small>
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="slider-cart-wrap clearfix">
+        <div class="slider-cart">
+            <div class="fl-left">
+                <div class="drop" id="selectedCard" data-cardtype="Platinum" data-moneyrate="25">
+                    <img src="~/Content/images/platinum.png" alt="" class="cart">
+                    <input type="text" value="Привилегия" id="cart" readonly="readonly">
+                    <label for="cart"></label>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="fl-right clearfix">
+                @if (!Model.IsAuthenticated)
+                {
+                    <a href="@Url.Action("Register", "Account")" class="btn-red large">
+                        <span>Зарегистрироваться</span>
+                    </a>
+                }
+            </div>
+            <div class="slider-wr">
+                <div class="slider" id="slider">
+                    <a href="#" class="ui-slider-handle">
+                        <div class="rel">
+                            <div class="buble">
+                                <div class="points">
+                                    <div class="red"><span class="amount">100</span> <small>бонусов</small></div>
+                                    <div class="blue"><span class="amount">2000</span> <small>RUR</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-down shdw" id="cardSelector">
+            <div class="slider-down-in">
+                <ul class="reset quad clearfix">
+                    <li class="qd fl-left" data-cardtype="Classic" data-moneyrate="50">
+                        <a class="table">
+                            <span class="cell">
+                                <img src="~/Content/images/classic.png" alt="Классика" title="Классическая карта BТБ24" class="cart">
+                            </span>
+                            <span class="cell pdl16">
+                                <strong>
+                                    Классика
+                                </strong>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="qd fl-left" data-cardtype="Gold" data-moneyrate="30">
+                        <a class="table">
+                            <span class="cell">
+                                <img src="~/Content/images/gold.png" alt="Золото" title="Золотая карта Visa ВТБ" class="cart">
+                            </span>
+                            <span class="cell pdl16">
+                                <strong>
+                                    Золото
+                                </strong>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="qd fl-left" data-cardtype="Platinum" data-moneyrate="25">
+                        <a class="table">
+                            <span class="cell">
+                                <img src="~/Content/images/platinum.png" alt="Привилегия" title="Платиновая карта ВТБ24" class="cart">
+                            </span>
+                            <span class="cell pdl16">
+                                <strong>
+                                    Привилегия
+                                </strong>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="qd fl-left" data-cardtype="Prime" data-moneyrate="20">
+                        <a class="table">
+                            <span class="cell">
+                                <img src="~/Content/images/prime.png" alt="Прайм" title="Карта Прайм ВТБ24" class="cart">
+                            </span>
+                            <span class="cell pdl16">
+                                <strong>
+                                    Прайм
+                                </strong>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="qd fl-left">
+                        <a class="table" href="http://www.vtb24.ru/personal/cards/credit/Pages/default.aspx" target="_blank" onclick="ga('send', 'event', 'Outbound Links', 'A01/homepageordercart', this.href )">
+                            <span class="cell" style="width: 60px;">
+                                <span style="width: 50px; height: 31px; display: block;"><img src="~/Content/images/order_cards.png" alt="Order" title="Оформить кредитную карту" style="position: relative; top: -4px;"></span>
+                            </span>
+                            <span class="cell pdl16">
+                                <strong class="inline-block pdl10">
+                                    Заказать карту
+                                </strong>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

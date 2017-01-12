@@ -1,0 +1,68 @@
+﻿@using Vtb24.Site.Models.Catalog
+@model CatalogSectionModel[]
+
+@Html.AddScriptBlock(
+    @<script>
+         require(['Catalog/category-menu'], function(menu) {
+             menu();
+         });
+     </script>
+)
+
+<div class="catalog-menu__sections-list" data-x="catalog/category-menu">
+    @foreach (var sectionModel in Model)
+    {
+        @CatalogSection(sectionModel)
+    }
+</div>
+
+@helper CatalogSection(CatalogSectionModel sectionModel)
+{
+    var hasRubrics = sectionModel.RubricsColumns != null && sectionModel.RubricsColumns.Length > 0;
+
+    <div data-x="catalog/category-menu/section">
+        <a class="catalog-menu__section" href="@sectionModel.Url" data-x="catalog/category-menu/section-title">
+            @if (!string.IsNullOrEmpty(sectionModel.IconName))
+            {
+                <span class="catalog-menu__section-icon" style="background-image: url('/content/images/caticons/@sectionModel.IconName');"></span>
+            }
+            else
+            {
+                <span class="catalog-menu__section-icon" ></span>
+            }
+            <span class="catalog-menu__section-title">@sectionModel.Text</span>
+            @if (hasRubrics)
+            {
+                <span class="catalog-menu__section-arrow"></span>
+            }
+        </a>
+        @if (hasRubrics)
+        {
+            <div class="catalog-menu__rubrics-list" style="display: none;" data-x="catalog/category-menu/section-menu">
+                @foreach (var rubricsColumnModel in sectionModel.RubricsColumns)
+                {
+                    <div class="catalog-menu__rubrics-column">
+                        @foreach (var rubricModel in rubricsColumnModel)
+                        {
+                            @CatalogRubric(rubricModel)
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
+
+@helper CatalogRubric(CatalogRubricModel rubricModel)
+{
+    <div class="catalog-menu__subrubrics-list">
+        <a class="catalog-menu__rubric-title" href="@rubricModel.Url">@rubricModel.Text</a>
+        @if (rubricModel.SubRubrics != null && rubricModel.SubRubrics.Length > 0)
+        {
+            foreach (var subRubric in rubricModel.SubRubrics)
+            {
+                <a class="catalog-menu__subrubric-title" href="@subRubric.Url">@subRubric.Text</a>
+            }
+        }
+    </div>
+}

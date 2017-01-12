@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B2AC9EAF-0D4E-4974-BA2D-56869EF236D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.ProductCatalog.Tests</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.ProductCatalog.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>True</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\Moq.4.2.1312.1622\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>..\RapidSoft.Loaylty.Solution\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="BasketServiceClientTests.cs" />
+    <Compile Include="DataSources\OrdersNotificationsRepositoryTests.cs" />
+    <Compile Include="DataSources\ProductCategoriesDataSourceTest.cs" />
+    <Compile Include="DataSources\TestDeliveryRatesRepository.cs" />
+    <Compile Include="DataSources\DeliveryRate.cs" />
+    <Compile Include="DeliveryInfoHelperTests.cs" />
+    <Compile Include="DeliveryProviderTest.cs" />
+    <Compile Include="DeliverySpecTest.cs" />
+    <Compile Include="OrderNotificationHelpersTests.cs" />
+    <Compile Include="OrderPaymentTests.cs" />
+    <Compile Include="PickupSpecTest.cs" />
+    <Compile Include="InitTests.cs" />
+    <Compile Include="MechanicsProviderTest.cs" />
+    <Compile Include="DeliveryVariantsProviderTest.cs" />
+    <Compile Include="ProductParamComparerTest.cs" />
+    <Compile Include="ProductsSearcherTests.cs" />
+    <Compile Include="RandomHelper.cs" />
+    <Compile Include="DataSources\DeliveryRatesRepositoryTests.cs" />
+    <Compile Include="DataSources\OrderHistoryRepositoryTests.cs" />
+    <Compile Include="DataSources\OrdersRepositoryTests.cs" />
+    <Compile Include="DataSources\PartnerRepositoryTests.cs" />
+    <Compile Include="DataSources\ProductsDataSourceTests.cs" />
+    <Compile Include="DataSources\OrdersDataSourceTests.cs" />
+    <Compile Include="DataSources\CategoryPermissionRepositoryTests.cs" />
+    <Compile Include="DataSources\PartnerProductCateroryLinkRepositoryTests.cs" />
+    <Compile Include="DataSources\ProductsRepositoryTests.cs" />
+    <Compile Include="DataSources\ProductCatalogLoadTaskRepositoryTests.cs" />
+    <Compile Include="PartnerThrustCalculatorTests.cs" />
+    <Compile Include="AdoMapComparerTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CatalogImporterTests.cs" />
+    <Compile Include="CatalogSearcherTests.cs" />
+    <Compile Include="MockFactory.cs" />
+    <Compile Include="DataSources\ProductAttributesRepositoryTests.cs" />
+    <Compile Include="OrderManagementServiceTest.cs" />
+    <Compile Include="ProductCatalogDB.cs" />
+    <Compile Include="ParameterUtilitiesTest.cs" />
+    <Compile Include="PriceSpecificationTest.cs" />
+    <Compile Include="ProductContextBuilderTest.cs" />
+    <Compile Include="ProductViewStatisticRepositoryTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClientContextParserTest.cs" />
+    <Compile Include="GeoPointProviderTests.cs" />
+    <Compile Include="GetCatalogParameters.cs" />
+    <Compile Include="CatalogAdminServiceTests.cs" />
+    <Compile Include="StubLogEmailSender.cs" />
+    <Compile Include="TestDataStore.cs" />
+    <Compile Include="DataSources\BasketRepositoryTests.cs" />
+    <Compile Include="TestGeoPointProvider.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="OrderExtensionsTests.cs" />
+    <Compile Include="DataSources\WishListRepositoryTests.cs" />
+    <Compile Include="WishListNotificationsBuilderTest.cs" />
+    <Compile Include="WishListServiceTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.config-TEMPLATE" />
+    <None Include="packages.config" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="log4net.config-TEMPLATE" />
+    <None Include="Properties\DataSources\RapidSoft.Loaylty.ProductCatalog.Entities.Partner.datasource" />
+    <None Include="Properties\DataSources\RapidSoft.Loaylty.ProductCatalog.Entities.ProductCategorySearchResult.datasource" />
+    <None Include="Properties\DataSources\RapidSoft.Loaylty.ProductCatalog.Entities.SearchProductResult.datasource" />
+    <None Include="quartz.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="quartz.config-TEMPLATE" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Externals\RapidSoft.Etl\RapidSoft.Etl.LogSender\RapidSoft.Etl.LogSender.csproj">
+      <Project>{3B1B8941-6273-4E45-B8E2-FD5D0261402C}</Project>
+      <Name>RapidSoft.Etl.LogSender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Extensions\RapidSoft.Extensions.csproj">
+      <Project>{63df64b8-c9f3-4a51-841d-58d6d1841627}</Project>
+      <Name>RapidSoft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.BonusGateway\RapidSoft.Loaylty.BonusGateway.csproj">
+      <Project>{a130d3dc-72ea-4e07-ae64-caa194245b6e}</Project>
+      <Name>RapidSoft.Loaylty.BonusGateway</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.ClientProfile\RapidSoft.Loaylty.ClientProfile.csproj">
+      <Project>{FBD2E6DA-8492-4E71-B227-C1BB7D517DBD}</Project>
+      <Name>RapidSoft.Loaylty.ClientProfile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.Monitoring\RapidSoft.Loaylty.Monitoring.csproj">
+      <Project>{E10328E0-16F8-448C-8F26-E754D9A1FE83}</Project>
+      <Name>RapidSoft.Loaylty.Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PartnersConnector.WsClients\RapidSoft.Loaylty.PartnersConnector.WsClients.csproj">
+      <Project>{DD738EF3-D84F-4C70-A19D-45335A11DC8A}</Project>
+      <Name>RapidSoft.Loaylty.PartnersConnector.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.Loaylty.PromoAction.WsClients\RapidSoft.Loaylty.PromoAction.WsClients.csproj">
+      <Project>{8533AA36-8D8A-4215-94B7-C8A4989C6F32}</Project>
+      <Name>RapidSoft.Loaylty.PromoAction.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.ArmSecurity\RapidSoft.VTB24.ArmSecurity.csproj">
+      <Project>{87F9069D-E59F-4195-97F4-9309E6A764DF}</Project>
+      <Name>RapidSoft.VTB24.ArmSecurity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Externals\RapidSoft.VTB24.BankConnector.WsClients\RapidSoft.VTB24.BankConnector.WsClients.csproj">
+      <Project>{40bdd6b9-bcfe-4364-bb9e-4890f966ebbc}</Project>
+      <Name>RapidSoft.VTB24.BankConnector.WsClients</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Kladr.Model\RapidSoft.Kladr.Model.csproj">
+      <Project>{064E46F3-99CF-46AF-BCCF-F30F40B5435C}</Project>
+      <Name>RapidSoft.Kladr.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.ProductCatalog.API\RapidSoft.Loaylty.ProductCatalog.API.csproj">
+      <Project>{35363bec-901f-4796-bff5-33f43203727b}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Loaylty.ProductCatalog\RapidSoft.Loaylty.ProductCatalog.csproj">
+      <Project>{403EC8F3-437D-42DB-A0D5-5A8E1C116F49}</Project>
+      <Name>RapidSoft.Loaylty.ProductCatalog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RapidSoft.Yml\RapidSoft.YML.csproj">
+      <Project>{A51241B4-5064-491C-B2F1-26764DFE0E50}</Project>
+      <Name>RapidSoft.YML</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestData\" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

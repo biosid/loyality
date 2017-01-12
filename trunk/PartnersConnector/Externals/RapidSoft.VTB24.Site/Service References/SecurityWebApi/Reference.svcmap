@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="970d0d81-8362-4d8d-80ee-16d4f36d1e34" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://loyalty-win0:6761/SecurityWebApi.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SecurityWebApi6.xsd" MetadataType="Schema" ID="9cb1e1ad-e16f-4dcd-9abd-5570725bf565" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?xsd=xsd5" />
+    <MetadataFile FileName="SecurityWebApi7.xsd" MetadataType="Schema" ID="31b81ccb-ca7d-4ba7-8570-694635307a65" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?xsd=xsd2" />
+    <MetadataFile FileName="SecurityWebApi1.wsdl" MetadataType="Wsdl" ID="a8c689a8-2865-44d3-aade-0e2c886dafee" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?wsdl" />
+    <MetadataFile FileName="SecurityWebApi8.xsd" MetadataType="Schema" ID="f5731374-e8d2-4ca0-9cb8-23ea7e0ad402" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?xsd=xsd0" />
+    <MetadataFile FileName="SecurityWebApi9.xsd" MetadataType="Schema" ID="9a9474ff-d71c-428c-a124-be5e524f48c8" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?xsd=xsd6" />
+    <MetadataFile FileName="SecurityWebApi10.xsd" MetadataType="Schema" ID="d3c5aaa2-46df-4dab-ad6d-03cc53a75998" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?xsd=xsd3" />
+    <MetadataFile FileName="SecurityWebApi11.xsd" MetadataType="Schema" ID="bf21153d-41de-4b19-b6f7-64dd89456da7" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?xsd=xsd4" />
+    <MetadataFile FileName="SecurityWebApi12.xsd" MetadataType="Schema" ID="416f67f8-f966-4c51-a291-982176d8e72b" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?xsd=xsd1" />
+    <MetadataFile FileName="SecurityWebApi13.xsd" MetadataType="Schema" ID="461435bf-d042-47a4-95fb-cf3b8236736d" SourceId="1" SourceUrl="http://loyalty-win0:6761/SecurityWebApi.svc?xsd=xsd7" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

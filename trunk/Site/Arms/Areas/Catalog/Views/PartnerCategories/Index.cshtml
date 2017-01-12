@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Привязка категорий";
+    ViewBag.MenuId = "partner_categories";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@model Vtb24.Arms.Catalog.Models.PartnerCategories.SupplierCategoriesModel
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/PartnerCategories/index',
+                'Catalog/Shared/Categories/folding'
+            ],
+            function (index, folding) {
+                var tree = $('#categories-tree');
+                index({ tree: tree });
+                folding({ tree: tree });
+            });
+    </script>
+)
+@if (Model.Permissions.Access)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(
+                 [
+                    'Catalog/PartnerCategories/change-availability'
+                 ],
+                 function (permissions) {
+                     var tree = $('#categories-tree');
+                     permissions({ tree: tree, changeUrl: '@Url.Action("ChangePermissions", "PartnerCategories")' });
+                 });
+         </script>
+    )
+}
+@if (Model.Permissions.Binding)
+{
+    @Html.AddScriptBlock(
+        @<script>
+             require(
+                 [
+                     'Catalog/PartnerCategories/set-bindings'
+                 ],
+                 function (bindings) {
+                     bindings({
+                         setBindingsUrl: '@Url.Action("SetSupplierCategories", "PartnerCategories")'
+                     });
+                 });
+         </script>
+    )
+}
+<div class="tab-pane active" id="tab2">
+    @if(Model.Suppliers.Length != 0)   
+    {
+        @* --------------------- Шапка  *@
+        <div class="sticky-save">
+            <div class="navbar">
+                <div class="navbar-inner no-border pad-right-0 pad-left-0">
+                    <div class="row" style="width: 940px; margin-left: 0px;">
+                        @if (Model.Permissions.Access)
+                        {
+                            <div data-x="partner_categories/actions_panel" style="display: none" class="pull-right">
+                                <div class="pull-right mar-right-20">
+                                    <button class="btn btn-primary" data-x="partner_categories/save_changes">Сохранить</button>
+                                    <a href="#roll-back" role="button" data-toggle="modal" class="btn" data-x="partner_categories/cancel_changes">Отменить</a>
+                                </div>
+                                <div class="pull-right mar-right-10 line-height-30 mar-top-5">
+                                    Есть несохраненные изменения
+                                </div>
+                            </div>
+                        }
+                        <div class="pull-left span4 mar-left-0 line-height-30 mar-top-10">
+                            <label class="checkbox mar-left-20">
+                                <input type="checkbox" autocomplete="off" checked="checked" data-x="partner_categories/unavailable_toggler"> Показывать неактивные категории
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" value="@Model.SelectedSupplierId" data-x="partner_categories/partner_id">
+        <table class="table table-bordered table-category magneto" id="categories-tree">
+            <colgroup>
+                <col width="1" valign="middle" align="center">
+                <col>
+                <col width="1" valign="middle" align="center">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th><span class="nowrap">Доступна для</span> Поставщика</th>
+                    <th>Категории вознаграждений Бонусной Программы</th>
+                    <th>
+                        <span class="line-height-30">Категории Поставщика:</span>
+                        <select name="partnersDropdown" data-urlselect="">
+                            @foreach (var supplier in Model.Suppliers)
+                            {
+                                var url = Url.Action("Index", "PartnerCategories", new { supplierId = supplier.Id });
+                                var selected = Model.SelectedSupplierId == supplier.Id ? "selected" : null;
+                                <option value="@url" selected="@selected">@supplier.Name</option>
+                            }
+                        </select>
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var cat in Model.Categories)
+            {
+                @Html.Partial("_PartnerCategoryRow", cat)
+            }
+        </table>
+    }
+    else
+    {
+        <p>Нет доступных поставщиков</p>
+    }
+</div>

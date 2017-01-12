@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1672b604-3c70-4a34-a4b6-c4dc26af8a77" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:63910/AdminBankConnectorService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AdminBankConnectorService.xsd" MetadataType="Schema" ID="cf1ae7af-d218-4613-ac70-d7edc74ff27e" SourceId="1" SourceUrl="http://rphqbuild1:63910/AdminBankConnectorService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdminBankConnectorService1.xsd" MetadataType="Schema" ID="d76cba78-85f4-4166-bc59-6f69b6421512" SourceId="1" SourceUrl="http://rphqbuild1:63910/AdminBankConnectorService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AdminBankConnectorService2.xsd" MetadataType="Schema" ID="580e7584-75b3-4d40-9a00-5827d7f60f2e" SourceId="1" SourceUrl="http://rphqbuild1:63910/AdminBankConnectorService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AdminBankConnectorService3.xsd" MetadataType="Schema" ID="370980d2-554a-4985-8dcb-8ebca9aa66e3" SourceId="1" SourceUrl="http://rphqbuild1:63910/AdminBankConnectorService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AdminBankConnectorService.wsdl" MetadataType="Wsdl" ID="2b645d22-e387-4ed7-86a0-c39ea7dba600" SourceId="1" SourceUrl="http://rphqbuild1:63910/AdminBankConnectorService.svc?wsdl" />
+    <MetadataFile FileName="AdminBankConnectorService1.wsdl" MetadataType="Wsdl" ID="160a5287-19b0-4594-9bbd-f017ee33706b" SourceId="1" SourceUrl="http://rphqbuild1:63910/AdminBankConnectorService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="AdminBankConnectorService.disco" MetadataType="Disco" ID="4c7bbb5c-3fd1-4046-be35-497addd9ec88" SourceId="1" SourceUrl="http://rphqbuild1:63910/AdminBankConnectorService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

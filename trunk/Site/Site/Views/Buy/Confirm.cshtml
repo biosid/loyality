@@ -1,0 +1,118 @@
+﻿@model Vtb24.Site.Models.Buy.ConfirmOtpModel
+@{
+    Layout = Model.IsIframe ? "~/Views/Shared/_LayoutBlank.cshtml" : "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Подтверждение заказа";
+}
+
+@Html.AddScriptBlock(
+    @<text>
+         @if (Model.IsIframe)
+         {
+             @Scripts.Render("~/Scripts/Api/online-category_v0.1.js")
+         }
+         <script>
+             require(['Otp/renew'], function (module) {
+                 var options = {
+                     el: '#confirm-form',
+                     expires: @Model.ExpiresInSeconds
+                 };
+                 module(options);
+                 @if (Model.IsIframe)
+                 {
+                     <text>
+                    options.onsizechange = Vtb24Collection.OnlineCategory.syncFrameSize
+                    Vtb24Collection.OnlineCategory.syncFrameSize();
+                    </text>
+                 }
+             });
+             
+             require(['Shared/form.submit'], function (module) {
+                 module({ form: '#confirm-form' });
+             });
+         </script>
+     </text>
+)
+@if (Model.IsIframe)
+{
+    @*TODO: Вынести в HEAD  через ScriptsBlock *@
+    <style>
+         html {
+             height: auto;
+         }
+         body {
+             background-color: transparent;
+             min-width: inherit;
+             min-height: inherit;
+             height: auto;
+         }
+    </style>
+    <div class="full-content">
+        <div class="fc-padding">
+            @Form()
+        </div>
+    </div>
+}
+else
+{
+    <div class="full-content shdw">
+        <div class="fc-padding">
+
+            <div style="float: right;"><div class="dostavka-order"><a href="/dostavka" target="_blank">Правила доставки</a></div></div>
+
+                <ul class="steps clearfix reset">
+                    <li class="step">
+                        <div class="st">Шаг 1</div>
+                        <div class="name">Оформление заказа</div>
+                    </li>
+                    <li class="step curent">
+                        <div class="st">Шаг 2</div>
+                        <div class="name">Подтверждение</div>
+                    </li>
+                </ul>
+                @Form()
+        </div>
+    </div>
+}
+@helper Form()
+{
+    using (Html.BeginForm("ConfirmOtp", "Buy", FormMethod.Post, new { id = "confirm-form", autocomplete = "off" }))
+    {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="@Html.NameFor(m => m.OrderDraftId)" value="@Model.OrderDraftId"/>
+            <input type="hidden" name="@Html.NameFor(m => m.OtpToken)" value="@Model.OtpToken"/>
+            <input type="hidden" name="@Html.NameFor(m => m.ExpirationTimeUtc)" value="@Model.ExpirationTimeUtc"/>
+            <input type="hidden" name="@Html.NameFor(m => m.UserTicket)" value="@Model.UserTicket"/>
+            <div class="middle-line white">
+                <div class="ml-text"><span class="size28">Подтверждение заказа</span></div>
+            </div>
+            @Html.ValidationSummary()
+
+            <p>
+                На ваш номер мобильного телефона направлен код подтверждения заказа. Пожалуйста, введите полученный код.
+            </p>
+            <div class="table form-order">
+                <ul class="reset row">
+                    <li class="cell"></li>
+                    <li class="cell"></li>
+                </ul>
+                <ul class="reset row">
+                    <li class="cell">Код подтверждения заказа</li>
+                    <li class="cell">@Html.TextBoxFor(m => m.Otp, new { maxlength = 6, data_numeric = "" })</li>
+                </ul>
+
+            </div>
+            <div class="space45"></div>
+
+            <div class="button-wrap">
+                @if (!Model.IsIframe)
+                {
+                    <a href="@Url.Action("Edit", "Buy", new { orderDraftId = Model.OrderDraftId })" class="goback">Назад</a>
+                }
+                <button type="submit" class="btn-blue large" @(Model.DisableButton ? "disabled" : "")><span>Подтвердить</span></button>
+            </div>
+            <p class="pdt10" style="@(Model.DisplayResendOtp ? "" : "display:none")" data-x="otp/renew">
+                Не получили код? <a href="@Url.Action("Renew", "Otp", new { token = Model.OtpToken })">Выслать код подтвердения повторно</a>
+            </p>
+    }
+}
+

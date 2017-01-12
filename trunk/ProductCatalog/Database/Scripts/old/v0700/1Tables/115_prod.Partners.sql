@@ -1,0 +1,1 @@
+ALTER TABLE prod.Partners DROP COLUMN ImportDeliveryRatesEtlPackageId

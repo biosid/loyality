@@ -1,0 +1,14 @@
+﻿@model string
+
+<ul class="content-menu size25 middle">
+    <li class="item@(Model == "WishList" ? " active": null)">
+        <span>
+            <a href="@Url.Action("Index", "WishList")">Мои желания</a>
+        </span>
+    </li>
+    <li class="item@(Model == "Basket" ? " active": null)">
+        <span>
+            <a href="@Url.Action("Index", "Basket")" data-x="client/activation_required">Корзина</a>
+        </span>
+    </li>
+</ul>

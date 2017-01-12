@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Загрузка каталога вознаграждений";
+    ViewBag.MenuId = "gifts";
+    Layout = "~/Areas/Catalog/Views/Shared/_Layout.cshtml";
+}
+@using System.Globalization
+@using Vtb24.Arms.Catalog.Models.Shared
+@model Vtb24.Arms.Catalog.Models.Gifts.GiftsImportModel
+@*
+--------------------- Скрипты
+*@
+@Html.AddScriptBlock(
+    @<script>
+         require(
+            [
+                'Catalog/Gifts/Import/index'
+            ],
+            function (index) {
+                index();
+            });
+    </script>
+)
+<div id="tab3" class="tab-pane active">
+    <div class="sticky-save">
+        <div class="navbar navbar-inner no-border">
+            <a href="@Url.Action("List", "Gifts", Model.GiftsQueryModel)" class="btn btn-primary pull-right">Готово</a>
+        </div>        
+    </div>
+
+    <div class="row">        
+        <div class="span11 line-height-30 pad-left-12 mar-top-5">
+            <h4 class="font-normal">Поставщик "@Model.SupplierName": загрузка каталога вознаграждений</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span10 pad-left-12 mar-top-5">
+            <form method="post" data-x="gifts/import/form" enctype="multipart/form-data" action="@Url.Action("Import", "Gifts")" novalidate="novalidate">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m=>m.query)
+                @Html.HiddenFor(m=>m.SupplierId)
+                
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="input-append">
+                            <div class="uneditable-input span3">
+                                <i class="icon-file fileupload-exists"></i> 
+                                <span class="fileupload-preview">Файл не выбран</span>
+                            </div>
+                            <span class="btn btn-file">
+                                <span class="fileupload-new">Выберите файл</span>
+                                <span class="fileupload-exists">Другой файл</span>
+                                <input type="file" data-x="gifts/import/file_input" name="file" />
+                            </span>
+                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Отмена</a>
+                        </div>
+                    </div>
+                        
+                    <button autocomplete="off" type="submit" data-loading-text="Загружается" class="btn btn-success" data-x="gifts_import/upload_button">Загрузить</button>
+                       
+            </form> 
+        </div>              
+    </div>         
+        
+
+    @if (Model.HistoryRows.Any())
+    {
+        <h4 class="font-normal">
+            История загрузок каталога вознаграждений
+        </h4>
+
+        <table class="table table-bordered table-load-history">
+            <thead>
+                <tr>
+                    <th><div class="nowrap">Дата загрузки</div></th>
+                    <th><div class="nowrap">Начало обработки</div></th>
+                    <th><div class="nowrap">Конец обработки</div> </th>
+                    <th><div class="nowrap">Источник</div></th>
+                    <th><div class="nowrap">Статус</div></th>
+                    <th><div class="nowrap">Загружено</div></th>
+                    <th><div class="nowrap">Не загружено</div></th>
+                    <th><div class="nowrap">Загрузил</div></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var row in Model.HistoryRows)
+            {
+                string labelClass;
+                switch (row.Status)
+                {
+                    case ImportTaskStatuses.completed:
+                        labelClass = "label-success";
+                        break;
+                    case ImportTaskStatuses.error:
+                        labelClass = "label-important";
+                        break;
+                    default:
+                        labelClass = "label-warning";
+                        break;
+                }
+                <tr>
+                    <td>@row.Created</td>
+                    <td>@(row.Start.HasValue ? row.Start.Value.ToString(CultureInfo.CurrentCulture) : "-")</td>
+                    <td>@(row.End.HasValue ? row.End.Value.ToString(CultureInfo.CurrentCulture) : "-")</td>
+                    <td>@row.SourceUrl</td>
+                    <td class="nowrap">
+                        <span class="label @labelClass">@Html.DescriptionFor(row.Status)</span>
+                    </td>
+                    <td><div class="text-right">@row.SuccessCount</div></td>
+                    <td><div class="text-right">@row.FailCount</div></td>
+                    <td>@row.UserId</td>
+                </tr>
+
+            }
+            </tbody>
+        </table>
+            
+        if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.page ?? 1)
+        }              
+    }
+    
+</div>

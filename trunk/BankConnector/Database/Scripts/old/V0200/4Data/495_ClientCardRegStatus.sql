@@ -1,0 +1,6 @@
+INSERT INTO [dbo].[ClientCardRegStatus] ([ClientId], [IsCardRegistered]) VALUES ('vtb_1', 1)
+INSERT INTO [dbo].[ClientCardRegStatus] ([ClientId], [IsCardRegistered]) VALUES ('vtb_2', 1)
+INSERT INTO [dbo].[ClientCardRegStatus] ([ClientId], [IsCardRegistered]) VALUES ('5a03a1f3-97f2-4bb1-8a19-9beaadde45dc', 1)
+INSERT INTO [dbo].[ClientCardRegStatus] ([ClientId], [IsCardRegistered]) VALUES ('4fe355ed-faf4-49f8-a714-6fceb7412dab', 1)
+INSERT INTO [dbo].[ClientCardRegStatus] ([ClientId], [IsCardRegistered]) VALUES ('95730f02-ea11-48e9-8d23-6f6a200cf2ce', 1)
+INSERT INTO [dbo].[ClientCardRegStatus] ([ClientId], [IsCardRegistered]) VALUES ('3d413011-f6ef-43e0-8a35-faacdb776cdd', 1)

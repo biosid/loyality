@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<quartz>
+  <add key="quartz.scheduler.instanceName" value="Loaylty.ProductCatalog.Scheduler"/>
+  <add key="quartz.threadPool.type" value="Quartz.Simpl.SimpleThreadPool, Quartz"/>
+  <add key="quartz.threadPool.threadCount" value="10"/>
+  <add key="quartz.threadPool.threadPriority" value="Normal"/>
+
+  <!--<add key="quartz.jobStore.type" value="Quartz.Simpl.RAMJobStore, Quartz" />-->
+  <add key="quartz.jobStore.type" value="Quartz.Impl.AdoJobStore.JobStoreTX, Quartz"/>
+  <add key="quartz.jobStore.driverDelegateType" value="Quartz.Impl.AdoJobStore.StdAdoDelegate, Quartz"/>
+  <add key="quartz.jobStore.tablePrefix" value="QRTZ_"/>
+  <add key="quartz.jobStore.dataSource" value="Quartz"/>
+  <add key="quartz.dataSource.Quartz.connectionString" value="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;User ID=@DBUSER@;Password=@DBPASS@;Connect Timeout=@DBTIMEOUT@"/>
+  <add key="quartz.dataSource.Quartz.provider" value="SqlServer-20"/>
+
+  <!-- NOTE: так как quartz.jobStore.useProperties = true, то job.JobDataMap.Put("ключ", "строка и только строка!!!"); -->
+  <add key="quartz.jobStore.useProperties" value="false"/>
+
+  <!-- add key="quartz.plugin.xml.type" value="Quartz.Plugin.Xml.XMLSchedulingDataProcessorPlugin, Quartz" />
+  <add key="quartz.plugin.xml.fileNames" value="~/quartz_jobs.xml" /-->
+</quartz>

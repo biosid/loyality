@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="RapidSoft.Loyalty.BonusGateway.Service" elementFormDefault="qualified" targetNamespace="RapidSoft.Loyalty.BonusGateway.Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.62.169:19120/BonusGateway.svc?xsd=xsd2" namespace="RapidSoft.Loyalty.BonusGateway" />
+  <xs:element name="GetBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q1:GetBalanceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="GetBalanceResult" nillable="true" type="q2:GetBalanceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsByClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q3:GetAccountsByClientRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsByClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="GetAccountsByClientResult" nillable="true" type="q4:GetAccountsByClientResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApplyDiscount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q5:ApplyDiscountRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApplyDiscountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="ApplyDiscountResult" nillable="true" type="q6:ApplyDiscountResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApplyWithdrawByAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q7:ApplyWithdrawByAccountRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApplyWithdrawByAccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="ApplyWithdrawByAccountResult" nillable="true" type="q8:ApplyWithdrawByAccountResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefundPointsByCheque">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q9:RefundPointsByChequeRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefundPointsByChequeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="RefundPointsByChequeResult" nillable="true" type="q10:RefundPointsByChequeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefundPoints">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q11:RefundPointsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefundPointsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="RefundPointsResult" nillable="true" type="q12:RefundPointsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RollbackPoints">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q13:RollbackPointsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RollbackPointsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="RollbackPointsResult" nillable="true" type="q14:RollbackPointsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmPoints">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q15:ConfirmPointsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmPointsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="ConfirmPointsResult" nillable="true" type="q16:ConfirmPointsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrenciesByLoyaltyProgram">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="request" nillable="true" type="q17:GetCurrenciesByLoyaltyProgramRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrenciesByLoyaltyProgramResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="RapidSoft.Loyalty.BonusGateway" minOccurs="0" name="GetCurrenciesByLoyaltyProgramResult" nillable="true" type="q18:GetCurrenciesByLoyaltyProgramResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

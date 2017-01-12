@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8533AA36-8D8A-4215-94B7-C8A4989C6F32}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidSoft.Loaylty.PromoAction.WsClients</RootNamespace>
+    <AssemblyName>RapidSoft.Loaylty.PromoAction.WsClients</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AdminMechanicsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MechanicsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TargetAudienceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService.wsdl" />
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminMechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.AdminMechanicsService.GetMetadataByDomainIdResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.AdminMechanicsService.GetRuleHistoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.AdminMechanicsService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.AdminMechanicsService.RuleDomainResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.AdminMechanicsService.RuleDomainsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.AdminMechanicsService.RuleResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminMechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.AdminMechanicsService.RulesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService.wsdl" />
+    <None Include="Service References\MechanicsService\MechanicsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\MechanicsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.MechanicsService.CalculateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.MechanicsService.FactorsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MechanicsService\RapidSoft.Loaylty.PromoAction.WsClients.MechanicsService.GenerateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\RapidSoft.Loaylty.PromoAction.WsClients.TargetAudienceService.AssignClientAudienceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\RapidSoft.Loaylty.PromoAction.WsClients.TargetAudienceService.GetClientTargetAudiencesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\RapidSoft.Loaylty.PromoAction.WsClients.TargetAudienceService.GetTargetAudiencesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\RapidSoft.Loaylty.PromoAction.WsClients.TargetAudienceService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.wsdl" />
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdminMechanicsService\" />
+    <WCFMetadataStorage Include="Service References\MechanicsService\" />
+    <WCFMetadataStorage Include="Service References\TargetAudienceService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminMechanicsService\AdminMechanicsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminMechanicsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminMechanicsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminMechanicsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MechanicsService\MechanicsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MechanicsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MechanicsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MechanicsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\TargetAudienceService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TargetAudienceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

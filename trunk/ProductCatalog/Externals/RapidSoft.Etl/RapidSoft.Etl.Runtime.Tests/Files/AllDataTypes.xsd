@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="item">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="null" type="xs:string" use="required" />
+            <xs:attribute name="boolean" type="xs:boolean" use="required" />
+            <xs:attribute name="byte" type="xs:byte" use="required" />
+            <xs:attribute name="datetime" type="xs:dateTime" use="required" />
+            <xs:attribute name="decimal" type="xs:decimal" use="required" />
+            <xs:attribute name="double" type="xs:double" use="required" />
+            <xs:attribute name="guid" type="xs:string" use="required" />
+            <xs:attribute name="int16" type="xs:short" use="required" />
+            <xs:attribute name="int32" type="xs:int" use="required" />
+            <xs:attribute name="int64" type="xs:long" use="required" />
+            <xs:attribute name="single" type="xs:float" use="required" />
+            <xs:attribute name="string" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

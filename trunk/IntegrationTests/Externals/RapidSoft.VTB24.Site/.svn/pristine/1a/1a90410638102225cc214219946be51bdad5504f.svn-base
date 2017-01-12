@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="32f58cd5-79f8-41d3-b581-097e55e0ac7a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rphqbuild1:6761/SecurityTokenWebApi.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SecurityTokenWebApi1.wsdl" MetadataType="Wsdl" ID="b2ebdaf1-dff3-486e-be1e-27cf1dcf2726" SourceId="1" SourceUrl="http://rphqbuild1:6761/SecurityTokenWebApi.svc?wsdl" />
+    <MetadataFile FileName="SecurityTokenWebApi4.xsd" MetadataType="Schema" ID="c553fc63-ae57-49ed-a886-3a5b61cd4f5d" SourceId="1" SourceUrl="http://rphqbuild1:6761/SecurityTokenWebApi.svc?xsd=xsd3" />
+    <MetadataFile FileName="SecurityTokenWebApi5.xsd" MetadataType="Schema" ID="33cce9f5-cb25-4b71-be27-b73c80d2440b" SourceId="1" SourceUrl="http://rphqbuild1:6761/SecurityTokenWebApi.svc?xsd=xsd2" />
+    <MetadataFile FileName="SecurityTokenWebApi1.disco" MetadataType="Disco" ID="c076ece3-1f92-4871-91f9-5f36bab2cb60" SourceId="1" SourceUrl="http://rphqbuild1:6761/SecurityTokenWebApi.svc?disco" />
+    <MetadataFile FileName="SecurityTokenWebApi6.xsd" MetadataType="Schema" ID="d15b244e-53dd-46a3-b920-2594b77280b1" SourceId="1" SourceUrl="http://rphqbuild1:6761/SecurityTokenWebApi.svc?xsd=xsd0" />
+    <MetadataFile FileName="SecurityTokenWebApi7.xsd" MetadataType="Schema" ID="9abed172-1c2c-4aba-be15-b177a3f4bb82" SourceId="1" SourceUrl="http://rphqbuild1:6761/SecurityTokenWebApi.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

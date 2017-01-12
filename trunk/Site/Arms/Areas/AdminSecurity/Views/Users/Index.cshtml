@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Пользователи";
+    ViewBag.MenuId = "users";
+    Layout = "~/Areas/AdminSecurity/Views/Shared/_Layout.cshtml";
+}
+@model Vtb24.Arms.AdminSecurity.Models.Users.UsersModel
+@Html.AddScriptBlock(
+    @<script>
+         require(['AdminSecurity/Users/index', 'AdminSecurity/Users/delete'], function (index, del) {
+             index();
+             del({ url: '@Url.Action("Delete", "Users")' });
+         });
+     </script>
+    )
+<div class="tab-pane active">
+    <div class="container">
+        @*
+        --------------------- Панель действий
+        *@
+        <div class="sticky-save" data-x="adminsecurity/users/navbar">
+            <div class="navbar">
+                <div class="navbar-inner no-border pad-left-0">
+                    <div class="row">
+                        <div class="span12">
+                            <a class="btn btn-success mar-left-20 pull-left" href="@Url.Action("Create", "Users", new { query = Url.ToQuery(Model.Query) })">
+                                <i class="icon-plus icon-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*
+        --------------------- Список пользователей
+        *@
+        @if (Model.Users != null && Model.Users.Length > 0)
+        {
+            <div class="row">
+                <div class="span12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;" class="text-left">Логин</th>
+                                <th style="width: 50%;">Группы</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model.Users)
+                            {
+                                <tr data-adminsecurity-user-name="@user.Login">
+                                    <td><a href="@Url.Action("Edit", "Users", new { login = user.Login })">@user.Login</a></td>
+                                    <td>
+                                        @foreach (var group in user.Groups)
+                                        {
+                                            <span class="label">@group</span>
+                                        }
+                                    </td>
+                                    <th>
+                                        @if (user.IsDeleteDenied)
+                                        {
+                                            <a class="btn remove disabled" style="cursor: help; opacity: 0.3;"><i class="icon-remove" title="@user.DenyDeleteReason"></i></a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn" href="#" data-x="adminsecurity/users/delete"><i class="icon-remove"></i></a>
+                                        }
+                                    </th>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row" style="min-height: 400px;">
+                <div class="span12">
+                    <h4 class="font-normal mar-left-10">
+                        Пользователи не найдены
+                    </h4>
+                </div>
+            </div>
+        }
+        @*
+        --------------------- Пэйджинг
+        *@
+        @if (Model.TotalPages > 1)
+        {
+            @Html.Pager(Model.TotalPages, Model.Query.page ?? 1)
+        }
+    </div>
+</div>
+@*
+--------------------- Удаление
+*@
+@Html.Partial("_Delete")

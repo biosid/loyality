@@ -1,0 +1,10 @@
+﻿@using Vtb24.Site.Models.Main
+@model CustomProductModel
+
+<li class="product">
+    <h5><a href="@Model.Url" title="@Model.Title">@Model.Title</a></h5>
+    <div class="custom-prod__card">
+        <a class="custom-prod__img" href="@Model.Url" style="background: url('@Model.Thumbnail') no-repeat center center;"></a>
+        <div class="custom-prod__balls">@Model.PriceText</div>
+    </div>
+</li>

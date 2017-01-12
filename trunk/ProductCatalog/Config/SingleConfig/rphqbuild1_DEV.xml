@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SingleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SkipDevConfigFilesCheck>true</SkipDevConfigFilesCheck>
+  <IncludeSingleConfigs>
+    <IncludeSingleConfig>
+      <FilePath>local.xml</FilePath>
+      <GlobalConfigFileTransformations>
+        <!-- Logs -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@logsRoot@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs\ProductCatalog</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@loyaltyLogs@</string>
+          </Patterns>
+          <ReplaceTo>c:\LoyaltyLogs</ReplaceTo>
+        </ConfigFileTransformation>
+        <!-- Environment settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ENVIRONMENTNAME@</string>
+          </Patterns>
+          <ReplaceTo>rphqbuild1_DEV</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ENVIRONMENTFROMEMAIL@</string>
+          </Patterns>
+          <ReplaceTo>rphqbuild1_DEV@loyalty.ru</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- Database settings -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBHOST@</string>
+          </Patterns>
+          <ReplaceTo>RPHQBUILD1\MSSQLSERVER2008</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBUSER@</string>
+          </Patterns>
+          <ReplaceTo>LoyaltyDB</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@DBPASS@</string>
+          </Patterns>
+          <ReplaceTo>LoyaltyDB</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@STUBFOREXTERNALSERVICE@</string>
+          </Patterns>
+          <ReplaceTo>false</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- PartnerIntegration -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@FixBasketItemPriceUrl@</string>
+          </Patterns>
+          <ReplaceTo>https://rphqbuild1.rapidsoft.local:643/Actions/FixBasketItemPrice</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@CheckOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://rphqbuild1.rapidsoft.local:643/Actions/CheckOrder</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ConfirmOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://rphqbuild1.rapidsoft.local:643/Actions/ConfirmOrder</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BatchConfirmOrderURL@</string>
+          </Patterns>
+          <ReplaceTo>https://rphqbuild1.rapidsoft.local:643/Actions/BatchConfirmOrder</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@TestPartnerThumbprint@</string>
+          </Patterns>
+          <ReplaceTo>d1 6c e5 79 ad 19 cb 9a 99 37 67 cc 66 ec ad 37 ee ac 98 c2</ReplaceTo>
+        </ConfigFileTransformation>
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@BankProductsPartnerId@</string>
+          </Patterns>
+          <ReplaceTo>171</ReplaceTo>
+        </ConfigFileTransformation>
+
+        <!-- OrdersNotifications  -->
+        <ConfigFileTransformation xsi:type="StringReplaceConfigFileTransformation">
+          <Patterns>
+            <string>@ArmOrderUrlTemplate@</string>
+          </Patterns>
+          <ReplaceTo>http://rphqbuild1:3051/catalog/orders/edit/{0}</ReplaceTo>
+        </ConfigFileTransformation>
+
+      </GlobalConfigFileTransformations>
+
+      <ExternalTransformationsFiles>
+        <ExternalTransformationsFile>
+          <FilePath>CommonConfiguration\rphqbuild1_endpoints.xml</FilePath>
+        </ExternalTransformationsFile>
+      </ExternalTransformationsFiles>
+
+    </IncludeSingleConfig>
+  </IncludeSingleConfigs>
+</SingleConfig>

@@ -1,0 +1,124 @@
+﻿@using Vtb24.Site.Models.Buy
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Онлайн категория</title>
+        <link rel="stylesheet" href="/Content/meta.css" />
+        <link rel="stylesheet" href="/Content/iframe-confirm.css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    </head>
+    <body class="collectionstyle">
+        <h1><span>Подтверждение оплаты <small></small></span></h1>
+		<div class="errortext">Неверно указан номер, попробуйте еще раз</div>
+		<div class="errortext">Неверно указан срок, попробуйте еще раз</div>
+        <p>Введите регистрационные данные, полученные в sms сообщении от Банка при подключении к Программе (активации).<br/>Данные вводятся единожды при первом заказе.</p>
+        
+        <form>
+                <div class="nowrap hspace-5">
+                    <span class="incard"><label for="cdnum">Номер Карты Участника</label></span>
+                    <input type="text" size="19" maxlength="19" id="cdnum" class="input-text-wide error" placeholder="0000-0000-0000-0000" tabindex="1" />
+                </div>
+                
+                <div class="nowrap hspace-5" style="position: relative; height: 2em; padding-left: 260px;">
+                    <span class="incard" style="position: absolute; left: 0px; top: 1ex;">
+                        Срок действия Карты Участника
+					</span>
+					<div class="select-decor error">
+						<select class="html-select">
+							<option value="">00</option>
+							<option>01</option>
+							<option>02</option>
+							<option>03</option>
+							<option>04</option>
+							<option>05</option>
+							<option>06</option>
+							<option>07</option>
+							<option>08</option>
+							<option>09</option>
+							<option>10</option>
+							<option>11</option>
+							<option>12</option>
+						</select>
+					</div>
+					<span style="display:inline-block; position: absolute; top: 1ex;">/</span>                    
+					<div class="select-decor" style="margin-left: 1.3ex;">
+						<select class="html-select">
+							<option value="">00</option>						
+							<option>13</option>
+							<option>14</option>
+							<option>15</option>
+							<option>16</option>
+							<option>17</option>
+							<option>18</option>
+							<option>19</option>
+							<option>20</option>
+							<option>21</option>
+						</select>
+					</div>
+                </div>
+				
+                <div class="actionbar">
+                    <button class="btn" tabindex="4">Подтвердить</button>
+                    <button class="btn" tabindex="5">Отменить</button>
+                </div>
+				<p align="center">Если вы не можете найти регистрационные данные, пожалуйста, обратитесь в Банк <nobr>по телефону 8-800-100-24-24</nobr></p>
+        </form>
+		<script src="/scripts/jquery-1.9.1.js"></script>
+        <link href="/scripts/legacy/select2/select2.css" rel="stylesheet"/>
+		<script src="/scripts/legacy/select2/select2.js"></script>
+		<script src="/scripts/legacy/select2/select2_locale_ru.js"></script>
+		<script>
+		    $('select').select2({ minimumResultsForSearch: -1, placeholderOption: 'first' });
+		//Vtb24Collection.OnlineCategory.syncFrameSize();
+		</script>
+        
+        
+
+        <p><a id="trigger" href="#">Показать много текста</a></p>
+        <p><a href="#" id="scrollBottom">Проскроллить вниз</a></p>
+        <p id="toggle" style="display:none">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, esse, nam, corrupti, totam animi molestias iste eos nobis alias asperiores cupiditate reiciendis maxime inventore est aspernatur dolor explicabo voluptates quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, eaque rem dolorum facere quaerat ab voluptatum dolores ullam officiis veritatis enim eius. Excepturi, voluptatum illum quidem inventore ab distinctio. Soluta? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ratione praesentium sequi dicta earum ipsa tempora minus nulla perferendis esse impedit in nostrum quibusdam delectus sit eveniet libero assumenda dolorem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, ipsam magnam ad rem rerum quae praesentium placeat asperiores culpa iure ut libero consectetur deserunt ducimus suscipit hic fuga animi excepturi? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ipsum, incidunt sint accusamus aspernatur maiores facilis quis ullam itaque ducimus corporis voluptatem laborum maxime delectus laudantium culpa recusandae ad odio? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, eveniet, quisquam, nemo enim reprehenderit odio inventore repellendus modi voluptates voluptatem non ab distinctio natus pariatur expedita repudiandae reiciendis earum asperiores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nihil voluptas quas adipisci earum vel consectetur iusto assumenda necessitatibus ratione. Aliquam, eum error id architecto quo expedita voluptatibus dolores minima?
+
+            <br>
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, esse, nam, corrupti, totam animi molestias iste eos nobis alias asperiores cupiditate reiciendis maxime inventore est aspernatur dolor explicabo voluptates quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, eaque rem dolorum facere quaerat ab voluptatum dolores ullam officiis veritatis enim eius. Excepturi, voluptatum illum quidem inventore ab distinctio. Soluta? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ratione praesentium sequi dicta earum ipsa tempora minus nulla perferendis esse impedit in nostrum quibusdam delectus sit eveniet libero assumenda dolorem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, ipsam magnam ad rem rerum quae praesentium placeat asperiores culpa iure ut libero consectetur deserunt ducimus suscipit hic fuga animi excepturi? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ipsum, incidunt sint accusamus aspernatur maiores facilis quis ullam itaque ducimus corporis voluptatem laborum maxime delectus laudantium culpa recusandae ad odio? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, eveniet, quisquam, nemo enim reprehenderit odio inventore repellendus modi voluptates voluptatem non ab distinctio natus pariatur expedita repudiandae reiciendis earum asperiores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nihil voluptas quas adipisci earum vel consectetur iusto assumenda necessitatibus ratione. Aliquam, eum error id architecto quo expedita voluptatibus dolores minima?
+
+            <br>
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, esse, nam, corrupti, totam animi molestias iste eos nobis alias asperiores cupiditate reiciendis maxime inventore est aspernatur dolor explicabo voluptates quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, eaque rem dolorum facere quaerat ab voluptatum dolores ullam officiis veritatis enim eius. Excepturi, voluptatum illum quidem inventore ab distinctio. Soluta? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ratione praesentium sequi dicta earum ipsa tempora minus nulla perferendis esse impedit in nostrum quibusdam delectus sit eveniet libero assumenda dolorem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, ipsam magnam ad rem rerum quae praesentium placeat asperiores culpa iure ut libero consectetur deserunt ducimus suscipit hic fuga animi excepturi? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ipsum, incidunt sint accusamus aspernatur maiores facilis quis ullam itaque ducimus corporis voluptatem laborum maxime delectus laudantium culpa recusandae ad odio? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, eveniet, quisquam, nemo enim reprehenderit odio inventore repellendus modi voluptates voluptatem non ab distinctio natus pariatur expedita repudiandae reiciendis earum asperiores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nihil voluptas quas adipisci earum vel consectetur iusto assumenda necessitatibus ratione. Aliquam, eum error id architecto quo expedita voluptatibus dolores minima?
+
+            <br>
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, esse, nam, corrupti, totam animi molestias iste eos nobis alias asperiores cupiditate reiciendis maxime inventore est aspernatur dolor explicabo voluptates quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, eaque rem dolorum facere quaerat ab voluptatum dolores ullam officiis veritatis enim eius. Excepturi, voluptatum illum quidem inventore ab distinctio. Soluta? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ratione praesentium sequi dicta earum ipsa tempora minus nulla perferendis esse impedit in nostrum quibusdam delectus sit eveniet libero assumenda dolorem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, ipsam magnam ad rem rerum quae praesentium placeat asperiores culpa iure ut libero consectetur deserunt ducimus suscipit hic fuga animi excepturi? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ipsum, incidunt sint accusamus aspernatur maiores facilis quis ullam itaque ducimus corporis voluptatem laborum maxime delectus laudantium culpa recusandae ad odio? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, eveniet, quisquam, nemo enim reprehenderit odio inventore repellendus modi voluptates voluptatem non ab distinctio natus pariatur expedita repudiandae reiciendis earum asperiores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nihil voluptas quas adipisci earum vel consectetur iusto assumenda necessitatibus ratione. Aliquam, eum error id architecto quo expedita voluptatibus dolores minima?
+        </p>
+        <p><a href="#" id="scrollTop">Проскроллить вверх</a></p>
+
+        @Scripts.Render("~/Scripts/Api/online-category_v0.1.js")
+        <script>
+
+            window.setInterval(function() {
+                Vtb24Collection.OnlineCategory.syncFrameSize();
+            }, 300);
+
+            document.getElementById('trigger').onclick = function() {
+                var t = document.getElementById('toggle');
+                t.style.display = t.style.display == 'none' ? 'block' : 'none';
+                Vtb24Collection.OnlineCategory.syncFrameSize();
+                return false;
+            };
+            
+            document.getElementById('scrollTop').onclick = function () {
+                Vtb24Collection.OnlineCategory.scrollTo('top');
+                return false;
+            };
+            
+            document.getElementById('scrollBottom').onclick = function () {
+                Vtb24Collection.OnlineCategory.scrollTo('bottom');
+                return false;
+            };
+            
+ 
+        </script>
+    </body>
+</html>

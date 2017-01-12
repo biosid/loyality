@@ -1,0 +1,1 @@
+﻿$.datepicker.setDefaults($.datepicker.regional['ru']);

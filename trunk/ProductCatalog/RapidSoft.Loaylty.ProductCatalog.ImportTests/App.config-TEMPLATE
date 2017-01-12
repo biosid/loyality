@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<configSections>
+		<section name="fakeData" type="RapidSoft.Loaylty.ProductCatalog.Fake.FakeDataConfigSection, RapidSoft.Loaylty.ProductCatalog"/>
+		<section name="log4net"
+						 type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+	</configSections>
+	
+	<connectionStrings>
+		<add name="LoyaltyProductCatalogDB" 
+				 connectionString="Data Source=@DBHOST@;Initial Catalog=@DBNAME@;user id=@DBUSER@;password=@DBPASS@;Connect Timeout=@DBTIMEOUT@" 
+				 providerName="System.Data.SqlClient"/>
+	</connectionStrings>
+	
+	<appSettings>
+		<add key="MaxResultsCountBasketItems" value="10"/>
+		<add key="IsAssemblyInitialize" value="true"/>
+		<add key="TestPartnerIds" value="1,2"/>
+		<!-- Список email адресов через ";", на которые необходимо отправлять отчеты импорта. -->
+		<add key="reportRecipients" value="@MAILTO@" />
+    <!-- Настройки для рассчета скидок. -->
+    <add key="ProductPriceDropThresholdPercent" value="90" />
+    <add key="ProductPriceRiseThresholdPercent" value="95" />
+    <add key="ProductPriceDiscountPeriod" value="30" />
+    <!-- Настройки логирования -->
+    <add key="UseSerilog" value="1" />
+    <add key="LogFilesRoot" value="Logs" />
+    <add key="LogAppName" value="ProductCatalog" />
+    <add key="LogSubsystemName" value="ImportTests" />
+  </appSettings>
+
+	<system.net>
+		<mailSettings>
+			<smtp
+					deliveryMethod="Network"
+					from="@MAILFROM@">
+				<network
+						host="@MAILSMTPHOST@"
+						port="@MAILSMTPPORT@"
+						enableSsl="@MailEnableSsl@"
+						userName="@MAILUSERNAME@"
+						password="@MAILPASSWORD@"
+						/>
+			</smtp>
+		</mailSettings>
+	</system.net>
+	
+	<system.serviceModel>
+		<bindings>
+			<basicHttpBinding>
+				<binding name="" maxReceivedMessageSize = "1000000"/>
+			</basicHttpBinding>
+		</bindings>
+		<client>
+		<endpoint address="@GEOSERVICEURL@" binding="basicHttpBinding"
+			contract="GeoPointService.IGeoPointService" name="BasicHttpBinding_IGeoPointService" />
+	</client>
+	</system.serviceModel>
+	
+	<log4net>
+		<appender name="CsvAppender2" type="log4net.Appender.ConsoleAppender">
+			<layout type="RapidSoft.Loaylty.Logging.Cvs.CsvPatternLayout">
+				<conversionPattern value='%d{yyyy-MM-dd HH:mm:ss,fff};%level;%csvmessage;%csvexception;%n' />
+			</layout>
+		</appender>
+		<root>
+			<level value="ALL" />
+			<appender-ref ref="CsvAppender2" />
+		</root>
+	</log4net>
+
+	<fakeData>
+		<fakeGeopoints useFake="@STUBFOREXTERNALSERVICE@" />
+	</fakeData>
+</configuration>

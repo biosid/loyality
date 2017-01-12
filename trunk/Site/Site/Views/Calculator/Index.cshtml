@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Бонусный калькулятор";
+    ViewBag.Menu = "Calculator";
+}
+
+
+@section secondary
+{
+    @Html.Action("ClientMenu", "Layout", new { activeMenu = ViewBag.Menu })
+}
+
+
+<div class="mnl16 white-shadowed bonus-calc">    
+    <div class="middle-line white">
+        <div class="ml-text"><span class="size28">Бонусный калькулятор</span></div>
+    </div>
+    @Html.Partial("~/Views/Calculator/_Calculator.cshtml")
+</div>
